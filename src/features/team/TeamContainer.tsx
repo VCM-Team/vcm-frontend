@@ -1,4 +1,5 @@
 import PageHero from "@/src/shared/components/ui/PageHero";
+import OurPeople from "./OurPeople";
 
 const HERO = {
     badge: "Team",
@@ -17,7 +18,7 @@ export default function TeamContainer() {
                 image={HERO.image}
             />
 
-            {/* siguientes secciones */}
+            <OurPeople />
         </div>
     );
 }
