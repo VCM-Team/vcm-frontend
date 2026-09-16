@@ -3,6 +3,8 @@ import { Poppins } from "next/font/google";
 import Header from "@/src/shared/components/layout/Header";
 import "./globals.css";
 import Footer from "@/src/shared/components/layout/Footer";
+import { SiteHeader, SiteFooter } from "@/src/shared/components/layout/SiteChrome";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -39,9 +41,9 @@ export default function RootLayout({
         Skip to content
       </a>
 
-      <Header />
-      <main id="main">{children}</main>
-      <Footer />
+      <SiteHeader />
+      {children}
+      <SiteFooter />
       </body>
       </html>
   );
