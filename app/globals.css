@@ -28,6 +28,29 @@
   --spacing-header-sm: 4.5rem;
 }
 
+/* Transiciones personalizadas para Tailwind v4 */
+@utility transition-header {
+  transition-property: transform, background-color, box-shadow;
+}
+
+@utility transition-drawer {
+  transition-property: grid-template-rows, opacity, visibility;
+}
+
+@utility transition-panel {
+  transition-property: opacity, transform, visibility;
+}
+
+/* Animaciones globales secundarias */
+@keyframes caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-caret {
+  animation: caret 0.8s infinite;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--spacing-header);
@@ -36,4 +59,3 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
-

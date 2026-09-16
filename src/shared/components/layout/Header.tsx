@@ -4,72 +4,100 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { useHeaderScroll} from "@/src/shared/hooks/useHeaderScroll";
-import { NAV_ITEMS, type NavItem, type NavMenu } from "@/src/shared/data/navigation";
+import { useHeaderScroll } from "@/src/shared/hooks/useHeaderScroll";
+import {
+    NAV_ITEMS,
+    type NavItem,
+    type NavMenu,
+} from "@/src/shared/data/navigation";
 import { cn } from "@/src/lib/utils";
 
 const CLOSE_DELAY = 140;
 
+const EASE_IN = "ease-[cubic-bezier(0.22,1,0.36,1)]";
+const EASE_OUT = "ease-[cubic-bezier(0.55,0,1,0.45)]";
+
 export default function Header() {
     const pathname = usePathname();
     const { hidden, scrolled } = useHeaderScroll();
+
     const [openKey, setOpenKey] = useState<string | null>(null);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
+
     const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const isHome = pathname === "/";
     const isTransparent = isHome && !scrolled && !mobileOpen;
+    const isHidden = hidden && !mobileOpen;
 
-    // cerrar al navegar
-    useEffect(() => {
-        setOpenKey(null);
-        setMobileOpen(false);
-    }, [pathname]);
+    // Cerrar al navegar
+    const lastPath = useRef(pathname);
 
-    // el submenú móvil solo vive mientras el drawer está abierto
-    useEffect(() => {
-        if (!mobileOpen) setMobileSubmenu(null);
-    }, [mobileOpen]);
+    if (lastPath.current !== pathname) {
+        lastPath.current = pathname;
 
-    // bloquear el scroll del body con el drawer abierto
+        if (openKey !== null) setOpenKey(null);
+        if (mobileOpen) setMobileOpen(false);
+    }
+
+    // El menú abierto no sobrevive al header oculto
+    const activeKey = hidden ? null : openKey;
+
+    // El submenú no sobrevive al drawer cerrado
+    const activeSubmenu = mobileOpen ? mobileSubmenu : null;
+
+    // Bloquear scroll del body con el drawer abierto
     useEffect(() => {
         if (!mobileOpen) return;
+
         const previous = document.body.style.overflow;
         document.body.style.overflow = "hidden";
+
         return () => {
             document.body.style.overflow = previous;
         };
     }, [mobileOpen]);
 
-    // cerrar cuando el header se oculta
-    useEffect(() => {
-        if (hidden) setOpenKey(null);
-    }, [hidden]);
-
-    // cerrar con Escape
+    // Cerrar con Escape
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => {
             if (e.key !== "Escape") return;
+
             setOpenKey(null);
             setMobileOpen(false);
         };
+
         window.addEventListener("keydown", onKey);
+
         return () => window.removeEventListener("keydown", onKey);
     }, []);
 
-    useEffect(() => () => {
-        if (closeTimer.current) clearTimeout(closeTimer.current);
+    // Limpiar timer
+    useEffect(() => {
+        return () => {
+            if (closeTimer.current) {
+                clearTimeout(closeTimer.current);
+            }
+        };
     }, []);
 
     const open = (key: string) => {
-        if (closeTimer.current) clearTimeout(closeTimer.current);
+        if (closeTimer.current) {
+            clearTimeout(closeTimer.current);
+        }
+
         setOpenKey(key);
     };
 
     const scheduleClose = () => {
-        if (closeTimer.current) clearTimeout(closeTimer.current);
-        closeTimer.current = setTimeout(() => setOpenKey(null), CLOSE_DELAY);
+        if (closeTimer.current) {
+            clearTimeout(closeTimer.current);
+        }
+
+        closeTimer.current = setTimeout(() => {
+            setOpenKey(null);
+        }, CLOSE_DELAY);
     };
 
     return (
@@ -77,14 +105,16 @@ export default function Header() {
             data-transparent={isTransparent}
             className={cn(
                 "group fixed inset-x-0 top-0 z-50",
-                "transition-[transform,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                "transition-[translate,background-color,box-shadow]",
                 "motion-reduce:transition-none will-change-transform",
-                "bg-white shadow-sm translate-y-0",
+                "bg-white shadow-sm",
                 isTransparent && "lg:bg-transparent lg:shadow-none",
-                hidden && !mobileOpen && "lg:-translate-y-full"
+                isHidden
+                    ? cn("lg:-translate-y-full duration-300", EASE_OUT)
+                    : cn("translate-y-0 duration-[600ms]", EASE_IN)
             )}
         >
-            <div className="mx-auto flex min-h-header-sm max-w-7xl items-center justify-between px-1 pb-4 pt-4 lg:min-h-header lg:px-1 lg:pb-8 lg:pt-7">
+            <div className="mx-auto flex min-h-header-sm max-w-7xl items-center justify-between px-7 pb-4 pt-4 lg:min-h-header lg:px-1 lg:pb-8 lg:pt-7">
                 <Link href="/" className="shrink-0">
                     <Image
                         src="https://workninjas.com/wp-content/uploads/2025/02/colorWN.svg"
@@ -92,7 +122,7 @@ export default function Header() {
                         width={260}
                         height={54}
                         priority
-                        className="h-10 w-auto lg:h-13"
+                        className="h-10 w-auto lg:h-12.5"
                     />
                 </Link>
 
@@ -104,7 +134,7 @@ export default function Header() {
                         <NavEntry
                             key={item.key}
                             item={item}
-                            isOpen={openKey === item.key}
+                            isOpen={activeKey === item.key}
                             onOpen={() => open(item.key)}
                             onClose={scheduleClose}
                         />
@@ -113,7 +143,7 @@ export default function Header() {
 
                 <Link
                     href="/contact-us"
-                    className="hidden rounded-full bg-brand-400 px-8 py-3.5 text-base font-medium text-[#044065] transition-colors hover:bg-brand-500 lg:inline-flex"
+                    className="hidden rounded-full bg-brand-400 px-7 py-2.5 text-base font-medium text-[#044065] transition-colors hover:bg-brand-500 lg:inline-flex"
                 >
                     Book a Demo
                 </Link>
@@ -124,39 +154,59 @@ export default function Header() {
                     aria-expanded={mobileOpen}
                     aria-controls="mobile-nav"
                     aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
-                    className="grid size-12 place-items-center rounded-full bg-navy-800 text-white lg:hidden"
+                    className="grid size-12 place-items-center rounded-full bg-navy-800 text-white transition-transform duration-200 active:scale-95 lg:hidden"
                 >
-                    {mobileOpen ? <CloseIcon /> : <GridIcon />}
+          <span
+              className={cn(
+                  "transition-transform duration-300",
+                  mobileOpen && "rotate-90"
+              )}
+          >
+            {mobileOpen ? <CloseIcon /> : <GridIcon />}
+          </span>
                 </button>
             </div>
 
+            {/* Drawer móvil */}
             <div
                 id="mobile-nav"
-                hidden={!mobileOpen}
-                className="max-h-[calc(100dvh-var(--spacing-header-sm))] overflow-y-auto overscroll-contain border-t border-black/5 bg-surface-soft lg:hidden"
+                className={cn(
+                    "grid lg:hidden",
+                    "transition-[grid-template-rows,opacity,visibility] duration-[400ms]",
+                    "motion-reduce:transition-none",
+                    mobileOpen
+                        ? cn("visible grid-rows-[1fr] opacity-100", EASE_IN)
+                        : cn("invisible grid-rows-[0fr] opacity-0", EASE_OUT)
+                )}
             >
-                <ul>
-                    {NAV_ITEMS.map((item) => (
-                        <MobileEntry
-                            key={item.key}
-                            item={item}
-                            isOpen={mobileSubmenu === item.key}
-                            onToggle={() =>
-                                setMobileSubmenu((k) => (k === item.key ? null : item.key))
-                            }
-                            onNavigate={() => setMobileOpen(false)}
-                        />
-                    ))}
-                </ul>
+                <div className="min-h-0 overflow-hidden">
+                    <div className="max-h-[calc(100dvh-var(--spacing-header-sm))] overflow-y-auto overscroll-contain border-t border-black/5 bg-surface-soft">
+                        <ul>
+                            {NAV_ITEMS.map((item) => (
+                                <MobileEntry
+                                    key={item.key}
+                                    item={item}
+                                    isOpen={activeSubmenu === item.key}
+                                    onToggle={() =>
+                                        setMobileSubmenu((k) =>
+                                            k === item.key ? null : item.key
+                                        )
+                                    }
+                                    onNavigate={() => setMobileOpen(false)}
+                                />
+                            ))}
+                        </ul>
 
-                <div className="p-5">
-                    <Link
-                        href="/contact-us"
-                        onClick={() => setMobileOpen(false)}
-                        className="flex justify-center rounded-full bg-brand-400 px-7 py-3.5 text-base font-medium text-white transition-colors hover:bg-brand-500"
-                    >
-                        Book a Demo
-                    </Link>
+                        <div className="p-5">
+                            <Link
+                                href="/contact-us"
+                                onClick={() => setMobileOpen(false)}
+                                className="flex justify-center rounded-full bg-brand-400 px-7 py-3.5 text-base font-medium text-white transition-colors hover:bg-brand-500"
+                            >
+                                Book a Demo
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
@@ -170,16 +220,29 @@ type EntryProps = {
     onClose: () => void;
 };
 
-function NavEntry({ item, isOpen, onOpen, onClose }: EntryProps) {
+function NavEntry({
+                      item,
+                      isOpen,
+                      onOpen,
+                      onClose,
+                  }: EntryProps) {
     const hasMenu = Boolean(item.menu);
 
     return (
         <div
-            className={cn("flex h-full items-center", item.menu?.type === "simple" && "relative")}
+            className={cn(
+                "flex h-full items-center",
+                item.menu?.type === "simple" && "relative"
+            )}
             onMouseEnter={hasMenu ? onOpen : undefined}
             onFocus={hasMenu ? onOpen : undefined}
             onBlur={(e) => {
-                if (hasMenu && !e.currentTarget.contains(e.relatedTarget as Node)) onClose();
+                if (
+                    hasMenu &&
+                    !e.currentTarget.contains(e.relatedTarget as Node)
+                ) {
+                    onClose();
+                }
             }}
         >
             <Link
@@ -190,18 +253,27 @@ function NavEntry({ item, isOpen, onOpen, onClose }: EntryProps) {
                     "transition-colors duration-200",
                     "text-ink-900 hover:text-brand-500",
                     "group-data-[transparent=true]:text-white",
-                    !isOpen && "group-data-[transparent=true]:hover:text-white/80",
+                    !isOpen &&
+                    "group-data-[transparent=true]:hover:text-white/80",
                     isOpen &&
                     "bg-white/90 text-brand-500 shadow-sm hover:text-brand-500 group-data-[transparent=true]:text-brand-500"
                 )}
             >
                 {item.label}
+
                 {hasMenu && (
-                    <Chevron className={cn("transition-transform duration-200", isOpen && "rotate-180")} />
+                    <Chevron
+                        className={cn(
+                            "transition-transform duration-300",
+                            isOpen && "rotate-180"
+                        )}
+                    />
                 )}
             </Link>
 
-            {item.menu && <MenuPanel menu={item.menu} isOpen={isOpen} />}
+            {item.menu && (
+                <MenuPanel menu={item.menu} isOpen={isOpen} />
+            )}
         </div>
     );
 }
@@ -213,7 +285,12 @@ type MobileEntryProps = {
     onNavigate: () => void;
 };
 
-function MobileEntry({ item, isOpen, onToggle, onNavigate }: MobileEntryProps) {
+function MobileEntry({
+                         item,
+                         isOpen,
+                         onToggle,
+                         onNavigate,
+                     }: MobileEntryProps) {
     const links = item.menu?.links ?? [];
 
     return (
@@ -236,39 +313,66 @@ function MobileEntry({ item, isOpen, onToggle, onNavigate }: MobileEntryProps) {
                         className="grid size-14 place-items-center text-ink-900 transition-colors hover:text-brand-500"
                     >
                         <Chevron
-                            className={cn("transition-transform duration-200", isOpen && "rotate-180")}
+                            className={cn(
+                                "transition-transform duration-300",
+                                isOpen && "rotate-180"
+                            )}
                         />
                     </button>
                 )}
             </div>
 
             {links.length > 0 && (
-                <ul hidden={!isOpen} className="bg-white/60 pb-2">
-                    {links.map((l) => (
-                        <li key={l.href}>
-                            <Link
-                                href={l.href}
-                                onClick={onNavigate}
-                                className="block px-8 py-3 text-[15px] text-ink-900 transition-colors hover:bg-brand-400 hover:text-white"
-                            >
-                                {l.label}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                <div
+                    className={cn(
+                        "grid transition-[grid-template-rows,opacity,visibility] duration-300",
+                        "motion-reduce:transition-none",
+                        isOpen
+                            ? cn("visible grid-rows-[1fr] opacity-100", EASE_IN)
+                            : cn(
+                                "invisible grid-rows-[0fr] opacity-0",
+                                EASE_OUT
+                            )
+                    )}
+                >
+                    <ul className="min-h-0 overflow-hidden bg-white/60">
+                        {links.map((l) => (
+                            <li key={l.href}>
+                                <Link
+                                    href={l.href}
+                                    onClick={onNavigate}
+                                    className="block px-8 py-3 text-[15px] text-ink-900 transition-colors hover:bg-brand-400 hover:text-white"
+                                >
+                                    {l.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             )}
         </li>
     );
 }
 
-function MenuPanel({ menu, isOpen }: { menu: NavMenu; isOpen: boolean }) {
+function MenuPanel({
+                       menu,
+                       isOpen,
+                   }: {
+    menu: NavMenu;
+    isOpen: boolean;
+}) {
     const wrapper = cn(
         "absolute top-full z-10 pt-3",
-        "transition-all duration-200 ease-out motion-reduce:transition-none",
+        "transition-[opacity,translate,visibility] duration-300 motion-reduce:transition-none",
         isOpen
-            ? "visible translate-y-0 opacity-100"
-            : "invisible -translate-y-1 opacity-0 pointer-events-none",
-        menu.type === "mega" ? "left-1/2 w-[780px] -translate-x-1/2" : "left-0"
+            ? cn("visible translate-y-0 opacity-100", EASE_IN)
+            : cn(
+                "invisible -translate-y-2 opacity-0 pointer-events-none",
+                EASE_OUT
+            ),
+        menu.type === "mega"
+            ? "left-1/2 w-[780px] -translate-x-1/2"
+            : "left-0"
     );
 
     if (menu.type === "simple") {
@@ -291,7 +395,14 @@ function MenuPanel({ menu, isOpen }: { menu: NavMenu; isOpen: boolean }) {
     }
 
     return (
-        <div className={cn(wrapper, isOpen && "translate-y-0 -translate-x-1/2")}>
+        <div
+            className={cn(
+                wrapper,
+                isOpen
+                    ? "-translate-x-1/2 translate-y-0"
+                    : "-translate-x-1/2 -translate-y-2"
+            )}
+        >
             <div className="grid grid-cols-[300px_1fr] gap-10 rounded-3xl bg-surface-soft p-8 shadow-xl ring-1 ring-black/5">
                 <Link
                     href={menu.promo.ctaHref}
@@ -300,8 +411,10 @@ function MenuPanel({ menu, isOpen }: { menu: NavMenu; isOpen: boolean }) {
                     <p className="text-lg font-semibold leading-snug text-brand-400">
                         {menu.promo.title}
                     </p>
+
                     <span className="mt-16 inline-flex items-center gap-2 text-sm font-medium text-white">
             {menu.promo.ctaLabel}
+
                         <span className="grid size-5 place-items-center rounded-full bg-brand-400 text-navy-800 transition-transform duration-200 group-hover/promo:translate-x-0.5">
               <ArrowUpRight />
             </span>
@@ -312,6 +425,7 @@ function MenuPanel({ menu, isOpen }: { menu: NavMenu; isOpen: boolean }) {
                     <p className="mb-5 text-xs font-semibold tracking-[0.12em] text-ink-600">
                         {menu.groupLabel}
                     </p>
+
                     <ul className="space-y-1">
                         {menu.links.map((l) => (
                             <li key={l.href}>
@@ -332,25 +446,61 @@ function MenuPanel({ menu, isOpen }: { menu: NavMenu; isOpen: boolean }) {
 
 function Chevron({ className }: { className?: string }) {
     return (
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-            <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            className={className}
+            aria-hidden
+        >
+            <path
+                d="m6 9 6 6 6-6"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+            />
         </svg>
     );
 }
 
 function ArrowUpRight() {
     return (
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M7 17 17 7M8 7h9v9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <svg
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden
+        >
+            <path
+                d="M7 17 17 7M8 7h9v9"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+            />
         </svg>
     );
 }
 
 function GridIcon() {
     return (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden
+        >
             {[5, 12, 19].map((cy) =>
-                [5, 12, 19].map((cx) => <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.8" />)
+                [5, 12, 19].map((cx) => (
+                    <circle
+                        key={`${cx}-${cy}`}
+                        cx={cx}
+                        cy={cy}
+                        r="1.8"
+                    />
+                ))
             )}
         </svg>
     );
@@ -358,8 +508,19 @@ function GridIcon() {
 
 function CloseIcon() {
     return (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden
+        >
+            <path
+                d="M6 6l12 12M18 6 6 18"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+            />
         </svg>
     );
 }
