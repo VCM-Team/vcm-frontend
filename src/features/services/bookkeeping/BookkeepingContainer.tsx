@@ -1,19 +1,20 @@
 import PageHero from "@/src/shared/components/ui/PageHero";
-import FeatureSplit from "@/src/shared/components/ui/FeatureSplit";
-import WhatWeHandle from "@/src/features/services/crm-migration/WhatWeHandle";
 import AccordionSection from "@/src/shared/components/ui/AccordionSection";
-import {AccordionItem} from "@/src/shared/components/ui/Accordion";
-import {NumberedCardItem} from "@/src/shared/components/ui/NumberedCard";
+import FeatureSplit from "@/src/shared/components/ui/FeatureSplit";
 import ProcessSection from "@/src/shared/components/ui/ProcessSection";
+import type { AccordionItem } from "@/src/shared/components/ui/Accordion";
+import type { NumberedCardItem } from "@/src/shared/components/ui/NumberedCard";
+import TestimonialsSection from "@/src/shared/components/ui/TestimonialsSection";
+import { TESTIMONIALS } from "@/src/shared/data/testimonials.data";
 import StickyCardSection from "@/src/shared/components/ui/StickyCardSection";
+
 
 const HERO = {
     badge: "Services",
-    title: "Primera línea del titular",
-    titleRest: "segunda línea del titular",
+    title: "Titular de la página",
     description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Get a Quote", href: "/contact-us" },
-    image: "https://workninjas.com/wp-content/uploads/2025/08/DoxJeorge-2048x970.webp",
+    cta: { label: "Free Consultation", href: "/contact-us" },
+    image: "https://workninjas.com/wp-content/uploads/2025/07/juanbook-2048x960.png",
 };
 
 const INTRO = {
@@ -30,21 +31,9 @@ const INTRO = {
 };
 
 const INTRO_ITEMS: readonly AccordionItem[] = [
-    {
-        key: "item-1",
-        title: "Título del primer punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
-    },
-    {
-        key: "item-2",
-        title: "Título del segundo punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
-    },
-    {
-        key: "item-3",
-        title: "Título del tercer punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
-    },
+    { key: "item-1", title: "Título del primer punto", content: "Descripción del punto — reemplázala." },
+    { key: "item-2", title: "Título del segundo punto", content: "Descripción del punto — reemplázala." },
+    { key: "item-3", title: "Título del tercer punto", content: "Descripción del punto — reemplázala." },
 ];
 
 const WHY_IT_MATTERS = {
@@ -52,14 +41,13 @@ const WHY_IT_MATTERS = {
     title: "Primera línea del titular",
     titleRest: "segunda línea",
     description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    image: "https://workninjas.com/wp-content/uploads/2026/02/Scene-24-scaled.jpg",
+    image: "https://workninjas.com/wp-content/uploads/2025/06/davidbook.png",
 };
 
 const PROCESS = {
     badge: "Our Process",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada del titular",
-    cta: { label: "Get a Quote", href: "/contact-us" },
+    title: "Titular de la sección",
+    cta: { label: "Free Consultation", href: "/contact-us" },
 };
 
 const PROCESS_STEPS: readonly NumberedCardItem[] = [
@@ -69,23 +57,29 @@ const PROCESS_STEPS: readonly NumberedCardItem[] = [
     { number: "04", title: "Título del cuarto paso", description: "Descripción del paso — reemplázala." },
 ];
 
-const WHY_US = {
-    badge: "Why us?",
-    title: "Primera línea del titular.",
-    titleTyped: "Segunda línea.",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
-    image: "https://workninjas.com/wp-content/uploads/2026/02/Photo-2-2-scaled.jpg",
+const TESTIMONIALS_HEADING = {
+    badge: "Testimonials",
+    title: "Primera parte del titular",
+    titleAccent: "parte resaltada",
+    titleRest: "cierre del titular",
+    cta: { label: "Read Success Story", href: "/success-story" },
 };
 
+const WHY_US = {
+    badge: "Why us?",
+    title: "Primera línea del titular",
+    titleTyped: "segunda línea",
+    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    cta: { label: "Schedule a Call", href: "/contact-us" },
+    image: "https://workninjas.com/wp-content/uploads/2025/06/prefooterbook.png",
+};
 
-export default function CrmMigrationContainer() {
+export default function BookkeepingContainer() {
     return (
         <div className="pt-header-sm lg:pt-header">
             <PageHero
                 badge={HERO.badge}
                 title={HERO.title}
-                titleRest={HERO.titleRest}
                 description={HERO.description}
                 cta={HERO.cta}
                 image={HERO.image}
@@ -109,13 +103,21 @@ export default function CrmMigrationContainer() {
                 imageAspect="lg:aspect-square"
                 columns="lg:grid-cols-2"
             />
-            <WhatWeHandle />
+
             <ProcessSection
                 badge={PROCESS.badge}
                 title={PROCESS.title}
-                titleAccent={PROCESS.titleAccent}
                 steps={PROCESS_STEPS}
                 cta={PROCESS.cta}
+            />
+
+            <TestimonialsSection
+                badge={TESTIMONIALS_HEADING.badge}
+                title={TESTIMONIALS_HEADING.title}
+                titleAccent={TESTIMONIALS_HEADING.titleAccent}
+                titleRest={TESTIMONIALS_HEADING.titleRest}
+                cta={TESTIMONIALS_HEADING.cta}
+                items={TESTIMONIALS}
             />
 
             <StickyCardSection
@@ -126,7 +128,8 @@ export default function CrmMigrationContainer() {
                 cta={WHY_US.cta}
                 image={WHY_US.image}
             />
-
         </div>
     );
 }
+
+
