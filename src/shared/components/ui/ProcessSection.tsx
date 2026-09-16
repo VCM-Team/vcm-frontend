@@ -39,9 +39,14 @@ export default function ProcessSection({
                     </h2>
                 </div>
 
-                <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+                <div className="mt-14 flex flex-wrap justify-center gap-5 lg:mt-16">
                     {steps.map((step) => (
-                        <NumberedCard key={step.number} item={step} />
+                        <div
+                            key={step.number}
+                            className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)]"
+                        >
+                            <NumberedCard item={step} />
+                        </div>
                     ))}
                 </div>
 

@@ -11,8 +11,12 @@ type Props = {
     titleAccent?: string;
     description: string;
     cta?: { label: string; href: string };
+    /** Pasa false para ocultar el botón. */
+    showCta?: boolean;
     items: readonly AccordionItem[];
     features?: readonly string[];
+    /** Pasa false para ocultar las píldoras y su línea separadora. */
+    showFeatures?: boolean;
     className?: string;
 };
 
@@ -22,10 +26,15 @@ export default function AccordionSection({
                                              titleAccent,
                                              description,
                                              cta,
+                                             showCta = true,
                                              items,
                                              features,
+                                             showFeatures = true,
                                              className,
                                          }: Props) {
+    const withCta = showCta && Boolean(cta);
+    const withFeatures = showFeatures && Boolean(features?.length);
+
     return (
         <section className={cn("py-16 lg:py-24", className)}>
             <Container>
@@ -48,7 +57,7 @@ export default function AccordionSection({
                             {description}
                         </p>
 
-                        {cta && (
+                        {withCta && cta && (
                             <Button href={cta.href} variant="dark" size="sm" className="mt-8">
                                 {cta.label}
                             </Button>
@@ -59,9 +68,14 @@ export default function AccordionSection({
                     <Accordion items={items} />
                 </div>
 
-                {features && features.length > 0 && (
-                    <div className="mt-12 border-t border-border pt-10 lg:mt-16 lg:pt-12">
-                        <ul className="mx-auto flex max-w-4xl flex-wrap justify-center gap-3">
+                {withFeatures && features && (
+                    <div
+                        className={cn(
+                            "mt-12 lg:mt-16",
+                            withCta && "border-t border-border pt-10 lg:pt-12"
+                        )}
+                    >
+                        <ul className="mx-auto flex max-w-5xl flex-wrap justify-center gap-3">
                             {features.map((f) => (
                                 <Pill key={f}>{f}</Pill>
                             ))}
