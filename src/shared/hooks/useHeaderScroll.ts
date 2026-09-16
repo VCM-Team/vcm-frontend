@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const HIDE_AFTER = 120; // px mínimos antes de permitir ocultar
+const TOP_OFFSET = 8;   // a partir de aquí ya no estamos arriba del todo
 const DELTA = 6;        // movimiento mínimo para registrar dirección
 
 export function useHeaderScroll() {
@@ -17,9 +17,9 @@ export function useHeaderScroll() {
         const update = () => {
             const y = window.scrollY;
 
-            setScrolled(y > 8);
+            setScrolled(y > TOP_OFFSET);
 
-            if (y <= HIDE_AFTER) {
+            if (y <= TOP_OFFSET) {
                 setHidden(false);
                 lastY.current = y;
             } else {

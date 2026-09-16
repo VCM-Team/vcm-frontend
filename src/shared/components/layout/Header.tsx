@@ -15,16 +15,32 @@ export default function Header() {
     const { hidden, scrolled } = useHeaderScroll();
     const [openKey, setOpenKey] = useState<string | null>(null);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
     const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const isHome = pathname === "/";
-    const isTransparent = isHome && !scrolled && !openKey;
+    const isTransparent = isHome && !scrolled && !mobileOpen;
 
     // cerrar al navegar
     useEffect(() => {
         setOpenKey(null);
         setMobileOpen(false);
     }, [pathname]);
+
+    // el submenú móvil solo vive mientras el drawer está abierto
+    useEffect(() => {
+        if (!mobileOpen) setMobileSubmenu(null);
+    }, [mobileOpen]);
+
+    // bloquear el scroll del body con el drawer abierto
+    useEffect(() => {
+        if (!mobileOpen) return;
+        const previous = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = previous;
+        };
+    }, [mobileOpen]);
 
     // cerrar cuando el header se oculta
     useEffect(() => {
@@ -33,7 +49,11 @@ export default function Header() {
 
     // cerrar con Escape
     useEffect(() => {
-        const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpenKey(null);
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key !== "Escape") return;
+            setOpenKey(null);
+            setMobileOpen(false);
+        };
         window.addEventListener("keydown", onKey);
         return () => window.removeEventListener("keydown", onKey);
     }, []);
@@ -56,17 +76,24 @@ export default function Header() {
         <header
             data-transparent={isTransparent}
             className={cn(
-                "fixed inset-x-0 top-0 z-50",
-                "transition-[transform,background-color,box-shadow] duration-300 ease-out",
+                "group fixed inset-x-0 top-0 z-50",
+                "transition-[transform,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
                 "motion-reduce:transition-none will-change-transform",
                 "bg-white shadow-sm translate-y-0",
                 isTransparent && "lg:bg-transparent lg:shadow-none",
                 hidden && !mobileOpen && "lg:-translate-y-full"
             )}
         >
-            <div className="mx-auto flex h-header-sm max-w-7xl items-center justify-between px-5 lg:h-header lg:px-8">
+            <div className="mx-auto flex min-h-header-sm max-w-7xl items-center justify-between px-1 pb-4 pt-4 lg:min-h-header lg:px-1 lg:pb-8 lg:pt-7">
                 <Link href="/" className="shrink-0">
-                    <Image src="/logo.svg" alt="WorkNinjas" width={196} height={40} priority />
+                    <Image
+                        src="https://workninjas.com/wp-content/uploads/2025/02/colorWN.svg"
+                        alt="WorkNinjas"
+                        width={260}
+                        height={54}
+                        priority
+                        className="h-10 w-auto lg:h-13"
+                    />
                 </Link>
 
                 <nav
@@ -86,7 +113,7 @@ export default function Header() {
 
                 <Link
                     href="/contact-us"
-                    className="hidden rounded-full bg-brand-400 px-7 py-3 text-[15px] font-medium text-white transition-colors hover:bg-brand-500 lg:inline-flex"
+                    className="hidden rounded-full bg-brand-400 px-8 py-3.5 text-base font-medium text-[#044065] transition-colors hover:bg-brand-500 lg:inline-flex"
                 >
                     Book a Demo
                 </Link>
@@ -95,11 +122,42 @@ export default function Header() {
                     type="button"
                     onClick={() => setMobileOpen((v) => !v)}
                     aria-expanded={mobileOpen}
-                    aria-label="Abrir menú"
-                    className="grid size-11 place-items-center rounded-full bg-navy-800 text-white lg:hidden"
+                    aria-controls="mobile-nav"
+                    aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+                    className="grid size-12 place-items-center rounded-full bg-navy-800 text-white lg:hidden"
                 >
-                    <GridIcon />
+                    {mobileOpen ? <CloseIcon /> : <GridIcon />}
                 </button>
+            </div>
+
+            <div
+                id="mobile-nav"
+                hidden={!mobileOpen}
+                className="max-h-[calc(100dvh-var(--spacing-header-sm))] overflow-y-auto overscroll-contain border-t border-black/5 bg-surface-soft lg:hidden"
+            >
+                <ul>
+                    {NAV_ITEMS.map((item) => (
+                        <MobileEntry
+                            key={item.key}
+                            item={item}
+                            isOpen={mobileSubmenu === item.key}
+                            onToggle={() =>
+                                setMobileSubmenu((k) => (k === item.key ? null : item.key))
+                            }
+                            onNavigate={() => setMobileOpen(false)}
+                        />
+                    ))}
+                </ul>
+
+                <div className="p-5">
+                    <Link
+                        href="/contact-us"
+                        onClick={() => setMobileOpen(false)}
+                        className="flex justify-center rounded-full bg-brand-400 px-7 py-3.5 text-base font-medium text-white transition-colors hover:bg-brand-500"
+                    >
+                        Book a Demo
+                    </Link>
+                </div>
             </div>
         </header>
     );
@@ -131,7 +189,10 @@ function NavEntry({ item, isOpen, onOpen, onClose }: EntryProps) {
                     "flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[15px] font-medium",
                     "transition-colors duration-200",
                     "text-ink-900 hover:text-brand-500",
-                    isOpen && "bg-white/90 text-ink-900 shadow-sm"
+                    "group-data-[transparent=true]:text-white",
+                    !isOpen && "group-data-[transparent=true]:hover:text-white/80",
+                    isOpen &&
+                    "bg-white/90 text-brand-500 shadow-sm hover:text-brand-500 group-data-[transparent=true]:text-brand-500"
                 )}
             >
                 {item.label}
@@ -142,6 +203,61 @@ function NavEntry({ item, isOpen, onOpen, onClose }: EntryProps) {
 
             {item.menu && <MenuPanel menu={item.menu} isOpen={isOpen} />}
         </div>
+    );
+}
+
+type MobileEntryProps = {
+    item: NavItem;
+    isOpen: boolean;
+    onToggle: () => void;
+    onNavigate: () => void;
+};
+
+function MobileEntry({ item, isOpen, onToggle, onNavigate }: MobileEntryProps) {
+    const links = item.menu?.links ?? [];
+
+    return (
+        <li className="border-b border-white/70">
+            <div className="flex items-center">
+                <Link
+                    href={item.href}
+                    onClick={onNavigate}
+                    className="flex-1 px-5 py-4 text-[15px] font-medium text-ink-900 transition-colors hover:bg-brand-400 hover:text-white"
+                >
+                    {item.label}
+                </Link>
+
+                {links.length > 0 && (
+                    <button
+                        type="button"
+                        onClick={onToggle}
+                        aria-expanded={isOpen}
+                        aria-label={`${isOpen ? "Cerrar" : "Abrir"} ${item.label}`}
+                        className="grid size-14 place-items-center text-ink-900 transition-colors hover:text-brand-500"
+                    >
+                        <Chevron
+                            className={cn("transition-transform duration-200", isOpen && "rotate-180")}
+                        />
+                    </button>
+                )}
+            </div>
+
+            {links.length > 0 && (
+                <ul hidden={!isOpen} className="bg-white/60 pb-2">
+                    {links.map((l) => (
+                        <li key={l.href}>
+                            <Link
+                                href={l.href}
+                                onClick={onNavigate}
+                                className="block px-8 py-3 text-[15px] text-ink-900 transition-colors hover:bg-brand-400 hover:text-white"
+                            >
+                                {l.label}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </li>
     );
 }
 
@@ -236,6 +352,14 @@ function GridIcon() {
             {[5, 12, 19].map((cy) =>
                 [5, 12, 19].map((cx) => <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.8" />)
             )}
+        </svg>
+    );
+}
+
+function CloseIcon() {
+    return (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
         </svg>
     );
 }
