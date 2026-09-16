@@ -199,7 +199,7 @@ export default function Header() {
 
                         <div className="p-5">
                             <Link
-                                href="/contact-us"
+                                href="/book-demo"
                                 onClick={() => setMobileOpen(false)}
                                 className="flex justify-center rounded-full bg-brand-400 px-7 py-3.5 text-base font-medium text-white transition-colors hover:bg-brand-500"
                             >
