@@ -26,34 +26,34 @@ const HOME_STATS: readonly StatItem[] = [
 ];
 
 const INTRO = {
-    badge: "Etiqueta de la sección",
-    title: "Titular de la sección",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    badge: "WHO WE ARE",
+    title: "For Those Who Build Beyond the Roof",
+    description: "We know what it takes to run and grow a roofing business because we've experienced it ourselves. The long days, constant calls, missed moments, and pressure of keeping every part of the business moving. That's why we built a team that takes the weight off your shoulders, so you can spend less time chasing details and more time leading your team, closing jobs, and growing your business.",
     cta: { label: "Schedule a Call", href: "/contact-us" },
     features: [
-        "Primer atributo",
-        "Segundo atributo",
-        "Tercer atributo",
-        "Cuarto atributo",
-        "Quinto atributo",
+        "Roofing Experts Support",
+        "Supplement Maximization",
+        "Opportunity Conversion",
+        "Business Growth",
+        "Operational Relief",
     ],
 };
 
 const INTRO_ITEMS: readonly AccordionItem[] = [
     {
         key: "item-1",
-        title: "Título del primer punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        title: "Take Control with Roofing Experts",
+        content: "Partner with industry specialists who understand the day-to-day operations of your business and provide dedicated support to streamline your workflow.",
     },
     {
         key: "item-2",
-        title: "Título del segundo punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        title: "Maximize Every Claim with Supplements",
+        content: "Ensure no money is left on the table by letting our expert team handle insurance supplements with precision and thorough documentation.",
     },
     {
         key: "item-3",
-        title: "Título del tercer punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        title: "Turn More Leads into Real Opportunities",
+        content: "Optimize your sales pipeline with strategic lead follow-ups and management that convert inquiries into profitable roofing projects.",
     },
 ];
 
@@ -61,26 +61,26 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
     {
         key: "about",
         badge: "About Us",
-        title: "Titular de la tarjeta — reemplázalo.",
+        title: "Built by roofers. Driven by hard work. Made to make roofing easier.",
         href: "/about-us",
-        image: "https://workninjas.com/wp-content/uploads/2025/06/NH-1024x601.png",
+        image: "/assets/images/shared/card_roofers.webp",
     },
     {
         key: "careers",
         badge: "Careers",
-        title: "Titular de la tarjeta — reemplázalo.",
+        title: "Join a driven team working to change the way roofing support gets done.",
         href: "/about-us/jobs",
-        image: "https://workninjas.com/wp-content/uploads/2025/06/david.png",
+        image: "/assets/images/shared/card_v.webp",
         variant: "accent",
         imagePosition: "top",
     },
     {
         key: "partnerships",
         badge: "Partnerships",
-        title: "Titular de la tarjeta — reemplázalo.",
+        title: "We work alongside CRMs, vendors, and coaches to help roofing businesses grow.",
         href: "/partnerships",
         image:
-            "https://workninjas.com/wp-content/uploads/2025/06/DSC01065-Editada-1024x693.jpg",
+            "/assets/images/shared/card_workers.webp",
     },
 ];
 
@@ -207,9 +207,8 @@ export default function HomeContainer() {
                 badge={INTRO.badge}
                 title={INTRO.title}
                 description={INTRO.description}
+                cta={INTRO.cta}
                 items={INTRO_ITEMS}
-                showCta={false}
-                showFeatures={false}
             />
             <PromoCardsGrid items={PROMO_CARDS} />
             <ServicesGrid

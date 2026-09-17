@@ -1,25 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 
-  --color-brand-400: oklch(0.78 0.11 220);
-  --color-brand-500: oklch(0.72 0.13 226);
-  --color-ink-900: oklch(0.28 0.06 250);
-  --color-ink-600: oklch(0.45 0.04 250);
-  --color-surface-soft: oklch(0.96 0.02 230);
-  --color-navy-800: oklch(0.36 0.08 240);
-  --color-bg: oklch(1 0 0);
-  --color-surface: oklch(0.96 0.02 230);
-  --color-fg: oklch(0.28 0.06 250);
-  --color-fg-muted: oklch(0.45 0.04 250);
-  --color-accent: oklch(0.72 0.13 226);
-  --color-accent-fg: oklch(1 0 0);
-  --color-border: oklch(0.92 0.01 250);
-  --color-accent-soft: oklch(0.80 0.10 232);   /* tarjeta azul del final */
-  --color-field-border: oklch(0.86 0.02 250);
+  --color-brand-400: #FEBD17;
+  --color-brand-500: #E2A200;
+  --color-ink-900: #1C1A16;
+  --color-ink-600: #6B6355;
+  --color-surface-soft: #F8F5EF;
+  --color-navy-800: #2B2721;
+  --color-bg: #FFFFFF;
+  --color-surface: #F8F5EF;
+  --color-fg: #1C1A16;
+  --color-fg-muted: #6B6355;
+  --color-accent: #DC9D06;
+  --color-accent-soft: #FFF0D4;
+  --color-accent-fg: #FFFFFF;
+  --color-border: #E7E2D8;
+  --color-field-border: #D5CEC0;
   --color-danger: oklch(0.58 0.19 25);
-  --color-accent-subtle: #ecf6fd;
+  --color-accent-subtle: #FDF6E6;
 
   --radius-panel: 2rem;
   --radius-card: 1rem;
@@ -28,9 +29,29 @@
   --spacing-header-sm: 4.5rem;
 }
 
+/* Urbanist para texto corrido; Montserrat para títulos, botones y navegación */
+@layer base {
+  body {
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  button,
+  a {
+    font-family: var(--font-heading);
+  }
+
+  /* los links dentro de texto corrido siguen la fuente del párrafo */
+  p a,
+  .prose a,
+  li a {
+    font-family: inherit;
+  }
+}
+
 /* Transiciones personalizadas para Tailwind v4 */
 @utility transition-header {
-  transition-property: transform, background-color, box-shadow;
+  transition-property: translate, background-color, box-shadow;
 }
 
 @utility transition-drawer {
@@ -38,7 +59,7 @@
 }
 
 @utility transition-panel {
-  transition-property: opacity, transform, visibility;
+  transition-property: opacity, translate, visibility;
 }
 
 /* Animaciones globales secundarias */

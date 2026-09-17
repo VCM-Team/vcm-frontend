@@ -56,7 +56,7 @@ export default function Footer() {
                     <div className="mx-auto max-w-6xl">
                         {/* Logo centrado en mobile */}
                         <Image
-                            src="/logo.svg"
+                            src="https://workninjas.com/wp-content/uploads/2025/02/colorWN.svg"
                             alt="VCM"
                             width={172}
                             height={36}

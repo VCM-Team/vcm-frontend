@@ -10,7 +10,7 @@ export type PromoCardItem = {
     title: string;
     href: string;
     image: string;
-    /** "soft" (fondo claro) o "accent" (fondo de acento) */
+    /** "soft" (fondo negro) o "accent" (fondo amarillo) */
     variant?: "soft" | "accent";
     /** "bottom" (imagen abajo) o "top" (imagen arriba) */
     imagePosition?: "bottom" | "top";
@@ -37,9 +37,10 @@ export default function PromoCard({ item, className }: Props) {
     return (
         <article
             className={cn(
-                "group relative flex min-h-[32rem] flex-col overflow-hidden rounded-card",
-                "transition-shadow duration-300 hover:shadow-lg",
-                isAccent ? "bg-accent-soft" : "bg-surface",
+                "group relative flex min-h-[34.5rem] flex-col overflow-hidden",
+                "rounded-bl-xl rounded-br-xl rounded-tl-[3rem] rounded-tr-none",
+                "transition-shadow duration-300 hover:shadow-xl",
+                isAccent ? "bg-accent" : "bg-black",
                 className
             )}
         >
@@ -53,7 +54,9 @@ export default function PromoCard({ item, className }: Props) {
                 <div className="min-w-0">
                     <Badge
                         className={cn(
-                            isAccent && "border-navy-800/20 bg-transparent text-navy-800"
+                            isAccent
+                                ? "border-black/70 text-black"
+                                : "border-white/50 text-white"
                         )}
                     >
                         {badge}
@@ -61,8 +64,8 @@ export default function PromoCard({ item, className }: Props) {
 
                     <h3
                         className={cn(
-                            "mt-6 text-xl font-semibold leading-snug lg:text-[1.375rem]",
-                            isAccent ? "text-navy-800" : "text-fg"
+                            "mt-6 text-lg font-medium leading-snug lg:text-xl",
+                            isAccent ? "text-black font-semibold" : "text-white"
                         )}
                     >
                         <Link
@@ -79,19 +82,20 @@ export default function PromoCard({ item, className }: Props) {
                     className={cn(
                         "grid size-10 shrink-0 place-items-center rounded-full transition-transform duration-200",
                         "group-hover:-translate-y-0.5",
-                        isAccent ? "bg-white text-navy-800" : "bg-transparent text-fg"
+                        isAccent ? "bg-ink-900 text-accent" : "bg-accent text-black"
                     )}
                 >
-          <ArrowUpRight className="size-4" />
-        </span>
+                    <ArrowUpRight className="size-4" />
+                </span>
             </div>
 
             {/* imagen */}
             <div
                 className={cn(
-                    "relative flex-1",
-                    imageFirst ? "order-first" : "mt-auto",
-                    !imageFirst && "mx-7 mb-0 overflow-hidden rounded-t-[0.75rem] lg:mx-8"
+                    "relative",
+                    imageFirst
+                        ? "order-first min-h-0 flex-1 w-full"
+                        : "mx-7 mt-auto aspect-[4/3] overflow-hidden rounded-tl-2xl rounded-tr-none lg:mx-8"
                 )}
             >
                 <Image
@@ -99,7 +103,10 @@ export default function PromoCard({ item, className }: Props) {
                     alt=""
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover object-center"
+                    className={cn(
+                        "object-center",
+                        imageFirst ? "object-contain" : "object-cover"
+                    )}
                 />
             </div>
         </article>

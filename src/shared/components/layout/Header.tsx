@@ -114,20 +114,32 @@ export default function Header() {
                     : cn("translate-y-0 duration-[600ms]", EASE_IN)
             )}
         >
-            <div className="mx-auto flex min-h-header-sm max-w-7xl items-center justify-between px-7 pb-4 pt-4 lg:min-h-header lg:px-1 lg:pb-8 lg:pt-7">
+            <div className="mx-auto flex min-h-header-sm max-w-7xl items-center justify-between gap-4 px-5 pb-4 pt-4 sm:px-6 lg:min-h-header lg:px-8 lg:pb-8 lg:pt-10">
                 <Link href="/" className="shrink-0">
+                    {/* Logo Oscuro: Se muestra en Mobile/Tablet SIEMPRE (donde el fondo es blanco),
+        y en Desktop cuando NO es transparente */}
                     <Image
-                        src="https://workninjas.com/wp-content/uploads/2025/02/colorWN.svg"
-                        alt="WorkNinjas"
+                        src="/assets/brand/vcm_dark_logo.webp"
+                        alt="VCM"
                         width={260}
                         height={54}
                         priority
-                        className="h-10 w-auto lg:h-12.5"
+                        className={cn("h-6 w-auto lg:h-7", isTransparent && "lg:hidden")}
+                    />
+
+                    {/* Logo Blanco: Se muestra ÚNICAMENTE en Desktop (lg:) cuando es transparente */}
+                    <Image
+                        src="/assets/brand/vcm_logo.webp"
+                        alt="VCM"
+                        width={260}
+                        height={54}
+                        priority
+                        className={cn("hidden h-7 w-auto", isTransparent && "lg:block")}
                     />
                 </Link>
 
                 <nav
-                    className="relative hidden h-full lg:flex lg:items-center lg:gap-2"
+                    className="relative hidden h-full lg:flex lg:items-center lg:gap-1"
                     onMouseLeave={scheduleClose}
                 >
                     {NAV_ITEMS.map((item) => (
@@ -143,7 +155,7 @@ export default function Header() {
 
                 <Link
                     href="/book-demo"
-                    className="hidden rounded-full bg-brand-400 px-7 py-2.5 text-base font-medium text-[#044065] transition-colors hover:bg-brand-500 lg:inline-flex"
+                    className="hidden rounded-full bg-brand-400 px-7 py-2.5 text-base font-semibold text-black transition-colors duration-200 hover:text-white lg:inline-flex"
                 >
                     Book a Demo
                 </Link>
@@ -154,16 +166,16 @@ export default function Header() {
                     aria-expanded={mobileOpen}
                     aria-controls="mobile-nav"
                     aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
-                    className="grid size-12 place-items-center rounded-full bg-navy-800 text-white transition-transform duration-200 active:scale-95 lg:hidden"
+                    className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-400 text-black transition-transform duration-200 active:scale-95 sm:size-12 lg:hidden"
                 >
-          <span
-              className={cn(
-                  "transition-transform duration-300",
-                  mobileOpen && "rotate-90"
-              )}
-          >
-            {mobileOpen ? <CloseIcon /> : <GridIcon />}
-          </span>
+                    <span
+                        className={cn(
+                            "transition-transform duration-300",
+                            mobileOpen && "rotate-90"
+                        )}
+                    >
+                        {mobileOpen ? <CloseIcon /> : <GridIcon />}
+                    </span>
                 </button>
             </div>
 
@@ -180,7 +192,7 @@ export default function Header() {
                 )}
             >
                 <div className="min-h-0 overflow-hidden">
-                    <div className="max-h-[calc(100dvh-var(--spacing-header-sm))] overflow-y-auto overscroll-contain border-t border-black/5 bg-surface-soft">
+                    <div className="max-h-[calc(100dvh-var(--spacing-header-sm))] overflow-y-auto overscroll-contain border-t border-black/10 bg-white px-2 pb-2">
                         <ul>
                             {NAV_ITEMS.map((item) => (
                                 <MobileEntry
@@ -197,11 +209,11 @@ export default function Header() {
                             ))}
                         </ul>
 
-                        <div className="p-5">
+                        <div className="px-3 py-5">
                             <Link
                                 href="/book-demo"
                                 onClick={() => setMobileOpen(false)}
-                                className="flex justify-center rounded-full bg-brand-400 px-7 py-3.5 text-base font-medium text-white transition-colors hover:bg-brand-500"
+                                className="flex justify-center rounded-full bg-brand-400 px-7 py-3.5 text-base font-semibold text-black transition-colors duration-200 hover:bg-brand-500"
                             >
                                 Book a Demo
                             </Link>
@@ -250,13 +262,15 @@ function NavEntry({
                 aria-expanded={hasMenu ? isOpen : undefined}
                 className={cn(
                     "flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[15px] font-medium",
-                    "transition-colors duration-200",
-                    "text-ink-900 hover:text-brand-500",
-                    "group-data-[transparent=true]:text-white",
-                    !isOpen &&
-                    "group-data-[transparent=true]:hover:text-white/80",
+                    "transition-[background-color,color,box-shadow] duration-200",
+                    // Reposo
+                    "text-ink-900 group-data-[transparent=true]:text-white",
+                    // La píldora aparece en hover para TODOS los items
+                    "hover:bg-white hover:text-ink-900 hover:shadow-sm",
+                    "group-data-[transparent=true]:hover:bg-white group-data-[transparent=true]:hover:text-ink-900",
+                    // Y se queda fija mientras el menú está abierto
                     isOpen &&
-                    "bg-white/90 text-brand-500 shadow-sm hover:text-brand-500 group-data-[transparent=true]:text-brand-500"
+                    "bg-white text-ink-900 shadow-sm group-data-[transparent=true]:bg-white group-data-[transparent=true]:text-ink-900"
                 )}
             >
                 {item.label}
@@ -264,7 +278,7 @@ function NavEntry({
                 {hasMenu && (
                     <Chevron
                         className={cn(
-                            "transition-transform duration-300",
+                            "text-brand-400 transition-transform duration-300",
                             isOpen && "rotate-180"
                         )}
                     />
@@ -294,12 +308,12 @@ function MobileEntry({
     const links = item.menu?.links ?? [];
 
     return (
-        <li className="border-b border-white/70">
+        <li className="border-b border-black/5 last:border-b-0">
             <div className="flex items-center">
                 <Link
                     href={item.href}
                     onClick={onNavigate}
-                    className="flex-1 px-5 py-4 text-[15px] font-medium text-ink-900 transition-colors hover:bg-brand-400 hover:text-white"
+                    className="flex-1 rounded-xl px-3 py-4 text-[15px] font-medium text-ink-900 transition-colors duration-200 hover:bg-brand-400/15"
                 >
                     {item.label}
                 </Link>
@@ -310,11 +324,11 @@ function MobileEntry({
                         onClick={onToggle}
                         aria-expanded={isOpen}
                         aria-label={`${isOpen ? "Cerrar" : "Abrir"} ${item.label}`}
-                        className="grid size-14 place-items-center text-ink-900 transition-colors hover:text-brand-500"
+                        className="grid size-14 shrink-0 place-items-center rounded-xl transition-colors duration-200 hover:bg-brand-400/15"
                     >
                         <Chevron
                             className={cn(
-                                "transition-transform duration-300",
+                                "text-brand-400 transition-transform duration-300",
                                 isOpen && "rotate-180"
                             )}
                         />
@@ -335,19 +349,21 @@ function MobileEntry({
                             )
                     )}
                 >
-                    <ul className="min-h-0 overflow-hidden bg-white/60">
+                    <ul className="min-h-0 overflow-hidden">
                         {links.map((l) => (
                             <li key={l.href}>
                                 <Link
                                     href={l.href}
                                     onClick={onNavigate}
-                                    className="block px-8 py-3 text-[15px] text-ink-900 transition-colors hover:bg-brand-400 hover:text-white"
+                                    className="block rounded-xl px-6 py-3 text-[15px] text-ink-600 transition-colors duration-200 hover:bg-brand-400/15 hover:text-ink-900"
                                 >
                                     {l.label}
                                 </Link>
                             </li>
                         ))}
                     </ul>
+
+                    <span className="sr-only">fin del submenú</span>
                 </div>
             )}
         </li>
@@ -378,12 +394,12 @@ function MenuPanel({
     if (menu.type === "simple") {
         return (
             <div className={wrapper}>
-                <ul className="min-w-[184px] rounded-2xl bg-surface-soft p-3 shadow-xl ring-1 ring-black/5">
+                <ul className="min-w-[200px] rounded-2xl bg-white p-3 shadow-xl ring-1 ring-black/5">
                     {menu.links.map((l) => (
                         <li key={l.href}>
                             <Link
                                 href={l.href}
-                                className="block rounded-lg px-4 py-2.5 text-[15px] text-ink-900 transition-colors hover:bg-white hover:text-brand-500"
+                                className="block rounded-xl px-4 py-2.5 text-[15px] text-ink-900 transition-colors duration-200 hover:bg-brand-400/15"
                             >
                                 {l.label}
                             </Link>
@@ -403,22 +419,22 @@ function MenuPanel({
                     : "-translate-x-1/2 -translate-y-2"
             )}
         >
-            <div className="grid grid-cols-[300px_1fr] gap-10 rounded-3xl bg-surface-soft p-8 shadow-xl ring-1 ring-black/5">
+            <div className="grid grid-cols-[300px_1fr] gap-10 rounded-3xl bg-white p-8 shadow-xl ring-1 ring-black/5">
                 <Link
                     href={menu.promo.ctaHref}
-                    className="group/promo flex flex-col justify-between rounded-2xl bg-navy-800 p-7 transition-transform duration-200 hover:-translate-y-0.5"
+                    className="group/promo flex flex-col justify-between rounded-2xl bg-ink-900 p-7 transition-transform duration-200 hover:-translate-y-0.5"
                 >
                     <p className="text-lg font-semibold leading-snug text-brand-400">
                         {menu.promo.title}
                     </p>
 
                     <span className="mt-16 inline-flex items-center gap-2 text-sm font-medium text-white">
-            {menu.promo.ctaLabel}
+                        {menu.promo.ctaLabel}
 
-                        <span className="grid size-5 place-items-center rounded-full bg-brand-400 text-navy-800 transition-transform duration-200 group-hover/promo:translate-x-0.5">
-              <ArrowUpRight />
-            </span>
-          </span>
+                        <span className="grid size-5 place-items-center rounded-full bg-brand-400 text-black transition-transform duration-200 group-hover/promo:translate-x-0.5">
+                            <ArrowUpRight />
+                        </span>
+                    </span>
                 </Link>
 
                 <div>
@@ -431,7 +447,7 @@ function MenuPanel({
                             <li key={l.href}>
                                 <Link
                                     href={l.href}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-[15px] text-ink-900 transition-colors hover:bg-white hover:text-brand-500"
+                                    className="-mx-3 block rounded-xl px-3 py-2 text-[15px] text-ink-900 transition-colors duration-200 hover:bg-brand-400/15"
                                 >
                                     {l.label}
                                 </Link>
@@ -447,8 +463,8 @@ function MenuPanel({
 function Chevron({ className }: { className?: string }) {
     return (
         <svg
-            width="12"
-            height="12"
+            width="15"
+            height="15"
             viewBox="0 0 24 24"
             fill="none"
             className={className}
