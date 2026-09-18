@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
+import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
 
 type InsightItem = {
     key: string;
@@ -40,25 +41,37 @@ const INSIGHTS_ITEMS: readonly InsightItem[] = [
 
 export default function Insights() {
     return (
-        <section className="bg-gradient-to-b from-surface/40 to-bg py-16 lg:py-24">
+        <section className="bg-ink-900 py-20 lg:py-28">
             <Container>
-                <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
-                    <Badge>{INSIGHTS.badge}</Badge>
-                    <h2 className="text-4xl font-semibold text-navy-800 lg:text-5xl">
+                <div className="mx-auto flex max-w-2xl flex-col items-center gap-5 text-center">
+                    <Badge className="border-brand-400 bg-transparent text-brand-400">
+                        {INSIGHTS.badge}
+                    </Badge>
+
+                    <h2 className="text-4xl font-normal text-white lg:text-5xl">
                         {INSIGHTS.title}
                     </h2>
-                    <p className="text-base text-fg-muted lg:text-lg">
-                        {INSIGHTS.description}
-                    </p>
+
+                    <p className="text-base text-white/70">{INSIGHTS.description}</p>
                 </div>
 
-                <div className="mt-12 grid gap-6 lg:grid-cols-2">
+                <div className="mt-14 grid gap-6 lg:grid-cols-2">
                     {INSIGHTS_ITEMS.map((item) => (
                         <Link
                             key={item.key}
                             href={item.href}
-                            className="group flex flex-col gap-5 rounded-[2rem] bg-accent-subtle p-4 transition-colors hover:bg-accent-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:flex-row sm:gap-6 sm:p-5"
+                            className="group relative isolate flex flex-col gap-5 overflow-hidden rounded-[2rem] bg-[#0F0F0F] p-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 sm:flex-row sm:gap-6 sm:p-5"
                         >
+                            {/* Fondo: franja superior más clara, separada por una diagonal */}
+                            <svg
+                                aria-hidden
+                                viewBox="0 0 100 100"
+                                preserveAspectRatio="none"
+                                className="absolute inset-0 -z-10 size-full"
+                            >
+                                <path d="M0 0 L100 0 L100 22 L0 62 Z" fill="#252525" />
+                            </svg>
+
                             <div className="relative aspect-[5/4] w-full shrink-0 overflow-hidden rounded-3xl sm:w-[44%]">
                                 <Image
                                     src={item.image}
@@ -70,45 +83,33 @@ export default function Insights() {
                             </div>
 
                             <div className="flex flex-1 flex-col justify-center gap-3 pb-2 sm:py-8 sm:pr-4">
-                                <span className="text-xs font-semibold uppercase tracking-[0.12em] text-navy-800/70">
+                                <span className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-400">
                                     {item.category}
                                 </span>
-                                <h3 className="text-2xl font-semibold leading-snug text-navy-800 lg:text-[1.75rem]">
+
+                                <h3 className="text-xl font-normal leading-snug text-white lg:text-[1.375rem]">
                                     {item.title}
                                 </h3>
+
                                 <span className="mt-4 flex justify-end sm:mt-8">
-                                    <ArrowUpRightIcon className="h-5 w-5 text-navy-800 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                                    <span className="grid size-10 place-items-center rounded-full bg-brand-400 text-black transition-transform duration-200 group-hover:-translate-y-0.5">
+                                        <ArrowUpRight className="size-4" />
+                                    </span>
                                 </span>
                             </div>
                         </Link>
                     ))}
                 </div>
 
-                <div className="mt-10 flex justify-center">
+                <div className="mt-12 flex justify-center">
                     <Link
                         href={INSIGHTS.cta.href}
-                        className="rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-accent-fg transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                        className="rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
                     >
                         {INSIGHTS.cta.label}
                     </Link>
                 </div>
             </Container>
         </section>
-    );
-}
-
-/* ── Iconos ─────────────────────────────── */
-
-function ArrowUpRightIcon({ className }: { className?: string }) {
-    return (
-        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-            <path
-                d="M7 17 17 7M9 7h8v8"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-        </svg>
     );
 }

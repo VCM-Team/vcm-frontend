@@ -25,13 +25,15 @@ const TECH_LOGOS: readonly TechLogo[] = [
 
 export default function TechStack() {
     return (
-        <section className="bg-bg py-20 lg:py-28">
+        <section className="bg-ink-900 py-20 lg:py-28">
             {/* 14/16 del ancho total, en vez del Container de página */}
             <div className="mx-auto w-[87.5%]">
                 <div className="flex items-center gap-4 lg:gap-8">
-                    <span className="h-px flex-1 bg-border" aria-hidden />
-                    <Badge>{TECH_STACK.badge}</Badge>
-                    <span className="h-px flex-1 bg-border" aria-hidden />
+                    <span className="h-px flex-1 bg-white/15" aria-hidden />
+                    <Badge className="border-brand-400 bg-transparent text-brand-400">
+                        {TECH_STACK.badge}
+                    </Badge>
+                    <span className="h-px flex-1 bg-white/15" aria-hidden />
                 </div>
 
                 <ul className="mt-16 grid grid-cols-2 items-center gap-x-10 gap-y-16 md:grid-cols-3 lg:mt-20 lg:flex lg:flex-nowrap lg:justify-between lg:gap-10">
@@ -45,7 +47,7 @@ export default function TechStack() {
                                 alt={logo.name}
                                 width={280}
                                 height={80}
-                                className="h-12 w-auto max-w-full object-contain md:h-14 lg:h-12 xl:h-14"
+                                className="h-12 w-auto max-w-full object-contain brightness-0 invert md:h-14 lg:h-12 xl:h-14"
                             />
                         </li>
                     ))}
