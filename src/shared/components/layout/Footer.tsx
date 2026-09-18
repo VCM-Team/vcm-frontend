@@ -57,12 +57,12 @@ export default function Footer() {
                     alt="VCM"
                     width={200}
                     height={42}
-                    className="h-10 w-auto"
+                    className="mx-auto h-10 w-auto lg:mx-0"
                 />
 
                 <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16">
                     {/* Izquierda: titular, subtítulo y botón */}
-                    <div className="flex flex-col items-start">
+                    <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                         <h2 className="max-w-[18ch] text-3xl font-semibold leading-[1.2] sm:text-4xl lg:text-[2.5rem]">
                             {CTA.title}{" "}
                             <span className="text-brand-400">{CTA.titleAccent}</span>{" "}
@@ -95,7 +95,7 @@ export default function Footer() {
                     </div>
 
                     {/* Derecha: contacto */}
-                    <div className="lg:pt-24">
+                    <div className="text-center lg:pt-24 lg:text-left">
                         <p className="text-[15px] uppercase tracking-[0.04em] text-white">
                             {CONTACT.label}
                         </p>
@@ -130,7 +130,7 @@ export default function Footer() {
                             </div>
                         </dl>
 
-                        <p className="mt-8 max-w-[24ch] text-[15px] text-white/80">
+                        <p className="mx-auto mt-8 max-w-[24ch] text-[15px] text-white/80 lg:mx-0">
                             {CONTACT.note}
                         </p>
                     </div>

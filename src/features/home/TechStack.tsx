@@ -36,7 +36,7 @@ export default function TechStack() {
                     <span className="h-px flex-1 bg-white/15" aria-hidden />
                 </div>
 
-                <ul className="mt-16 grid grid-cols-2 items-center gap-x-10 gap-y-16 md:grid-cols-3 lg:mt-20 lg:flex lg:flex-nowrap lg:justify-between lg:gap-10">
+                <ul className="mt-16 grid grid-cols-3 items-center gap-x-6 gap-y-12 lg:mt-20 lg:flex lg:flex-nowrap lg:justify-between lg:gap-10">
                     {TECH_LOGOS.map((logo) => (
                         <li
                             key={logo.key}
