@@ -1,6 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
 import Container from "./Container";
-import Button from "./Button";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
 import { cn } from "@/src/lib/utils";
 
@@ -43,14 +43,14 @@ export default function ImageCta({
                     {Icon && (
                         <span
                             aria-hidden
-                            className="absolute left-6 top-6 grid size-11 place-items-center rounded-full bg-white text-navy-800"
+                            className="absolute left-6 top-6 grid size-11 place-items-center rounded-full bg-white text-black"
                         >
-              <Icon className="size-5" />
-            </span>
+                            <Icon className="size-5" />
+                        </span>
                     )}
 
                     <div className="absolute inset-x-6 bottom-6 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:inset-x-9 lg:bottom-9">
-                        <h2 className="max-w-[22ch] text-xl font-semibold leading-snug text-white lg:text-2xl">
+                        <h2 className="max-w-[24ch] text-xl font-light leading-snug text-white lg:text-3xl">
                             {title}
                             {titleRest && (
                                 <>
@@ -60,16 +60,26 @@ export default function ImageCta({
                             )}
                         </h2>
 
-                        <div className="flex shrink-0 items-center gap-2">
-                            <Button href={cta.href} size="sm">
-                                {cta.label}
-                            </Button>
-                            <span
-                                aria-hidden
-                                className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-navy-800"
+                        <div className="group flex w-fit shrink-0 items-center gap-2">
+                            <Link
+                                href={cta.href}
+                                className="inline-flex items-center rounded-full bg-brand-400 px-7 py-4 text-[15px] font-semibold leading-none text-black transition-colors duration-300 group-hover:bg-brand-500 group-hover:text-white"
                             >
-                <ArrowUpRight className="size-4" />
-              </span>
+                                {cta.label}
+                            </Link>
+
+                            <Link
+                                href={cta.href}
+                                aria-hidden
+                                tabIndex={-1}
+                                className="relative grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-brand-400 text-black transition-colors duration-300 group-hover:bg-brand-500 group-hover:text-white"
+                            >
+                                <ArrowUpRight className="col-start-1 row-start-1 size-5 transition-[translate] duration-300 group-hover:-translate-y-11" />
+                                <ArrowUpRight
+                                    aria-hidden
+                                    className="col-start-1 row-start-1 size-5 translate-y-11 transition-[translate] duration-300 group-hover:translate-y-0"
+                                />
+                            </Link>
                         </div>
                     </div>
                 </div>

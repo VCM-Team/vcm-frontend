@@ -19,10 +19,10 @@ import DiscoveryCall from "@/src/features/home/DiscoveryCall";
 
 
 const HOME_STATS: readonly StatItem[] = [
-    { value: "00", label: "Etiqueta del indicador" },
-    { value: "00", label: "Etiqueta del indicador" },
-    { value: "00", label: "Etiqueta del indicador" },
-    { value: "00", label: "Etiqueta del indicador" },
+    { value: "14", suffix: " Days", label: "To fully integrate your Ninja team" },
+    { prefix: "$", value: "10M", label: "Supplements client overage last year" },
+    { value: "12", suffix: "K+", label: "To fully integrate your Ninja team" },
+    { prefix: ">", value: "90", label: "Repeat clients or referrals" },
 ];
 
 const INTRO = {
@@ -96,40 +96,40 @@ const SERVICES_HEADING = {
 
 const EXPERTISE = {
     badge: "Proven Expertise",
-    title: "Primera línea del titular;",
-    titleRest: "segunda línea del titular",
+    title: "Freedom to Build, Power to Grow;",
+    titleRest: "We Carry the Load Behind the Scenes",
 };
 
 const EXPERTISE_ITEMS: readonly BubbleFeatureItem[] = [
     {
         key: "item-1",
-        title: "Título del primer punto",
-        description: "Descripción — reemplázala con el texto propio.",
+        title: "Built by Roofers",
+        description: "We understand your challenges firsthand. That’s why our support makes a real difference.",
         Icon: PeopleIcon,
     },
     {
         key: "item-2",
-        title: "Título del segundo punto",
-        description: "Descripción — reemplázala con el texto propio.",
+        title: "Plug & Play Pros",
+        description: "We get inside your tools, your systems, and your day to day… fast.",
         Icon: LayersIcon,
     },
     {
         key: "item-3",
-        title: "Título del tercer punto",
-        description: "Descripción — reemplázala con el texto propio.",
+        title: "Real-World Impact",
+        description: "No fluff. Just real wins where they matter: leads, jobs, and cash flow.",
         Icon: SparkIcon,
     },
     {
         key: "item-4",
-        title: "Título del cuarto punto",
-        description: "Descripción — reemplázala con el texto propio.",
+        title: "Stress-Free Scaling",
+        description: "We slot into your day to day and clear your to do list without you needing to train a thing.",
         Icon: LinkIcon,
     },
 ];
 
 const IMAGE_CTA = {
-    title: "Primera línea del titular",
-    titleRest: "segunda línea",
+    title: "Helping Roofing Teams Expand ",
+    titleRest: "Smoothly and Sustainably",
     cta: { label: "Set an Appointment", href: "/contact-us" },
     image: "https://workninjas.com/wp-content/uploads/2025/09/image-48-1.avif",
 };
@@ -329,43 +329,55 @@ function DollarIcon({ className }: { className?: string }) {
 
 function PeopleIcon({ className }: { className?: string }) {
     return (
-        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-            <circle cx="12" cy="8" r="3.2" stroke="currentColor" strokeWidth="1.8" />
-            <path d="M5.5 19c0-3 2.9-5 6.5-5s6.5 2 6.5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <svg viewBox="0 0 26 26" fill="none" className={className} aria-hidden>
+            <path
+                d="M13.4062 21.8021C12.7743 21.1701 12.4583 20.4028 12.4583 19.5C12.4583 18.5972 12.7743 17.8299 13.4062 17.1979C14.0382 16.566 14.8056 16.25 15.7083 16.25C16.6111 16.25 17.3785 16.566 18.0104 17.1979C18.6424 17.8299 18.9583 18.5972 18.9583 19.5C18.9583 20.4028 18.6424 21.1701 18.0104 21.8021C17.3785 22.434 16.6111 22.75 15.7083 22.75C14.8056 22.75 14.0382 22.434 13.4062 21.8021ZM13.65 13.4333C12.4944 12.2778 11.9167 10.8694 11.9167 9.20833C11.9167 7.54722 12.4944 6.13889 13.65 4.98333C14.8056 3.82778 16.2139 3.25 17.875 3.25C19.5361 3.25 20.9444 3.82778 22.1 4.98333C23.2556 6.13889 23.8333 7.54722 23.8333 9.20833C23.8333 10.8694 23.2556 12.2778 22.1 13.4333C20.9444 14.5889 19.5361 15.1667 17.875 15.1667C16.2139 15.1667 14.8056 14.5889 13.65 13.4333ZM7.58333 19.5C6.39167 19.5 5.37153 19.0757 4.52292 18.2271C3.67431 17.3785 3.25 16.3583 3.25 15.1667C3.25 13.975 3.67431 12.9549 4.52292 12.1063C5.37153 11.2576 6.39167 10.8333 7.58333 10.8333C8.775 10.8333 9.79514 11.2576 10.6438 12.1063C11.4924 12.9549 11.9167 13.975 11.9167 15.1667C11.9167 16.3583 11.4924 17.3785 10.6438 18.2271C9.79514 19.0757 8.775 19.5 7.58333 19.5Z"
+                fill="currentColor"
+            />
         </svg>
     );
 }
 
 function LayersIcon({ className }: { className?: string }) {
     return (
-        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-            <path d="m12 4 8 4-8 4-8-4 8-4Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-            <path d="m4 12 8 4 8-4M4 16l8 4 8-4" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+        <svg viewBox="0 0 26 26" fill="none" className={className} aria-hidden>
+            <path
+                d="M12.9997 19.5L1.70592 13.352L3.98092 12.1062L12.9997 17.0354L22.0184 12.1062L24.2934 13.352L12.9997 19.5ZM12.9997 23.8333L1.70592 17.6854L3.98092 16.4395L12.9997 21.3687L22.0184 16.4395L24.2934 17.6854L12.9997 23.8333ZM12.9997 15.1666L1.08301 8.66663L12.9997 2.16663L14.083 2.76246V7.58329H22.9393L24.9163 8.66663L12.9997 15.1666Z"
+                fill="currentColor"
+            />
         </svg>
     );
 }
 
 function SparkIcon({ className }: { className?: string }) {
     return (
-        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-            <path d="M12 3v18M3 12h18M5.5 5.5l13 13M18.5 5.5l-13 13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <svg viewBox="0 0 26 26" fill="none" className={className} aria-hidden>
+            <path
+                d="M13.0005 18.3896L14.5984 16.7916H16.7921V14.5979L18.39 13L16.7921 11.4021V9.2083H14.5984L13.0005 7.61038L11.4025 9.2083H9.20879V11.4021L7.61087 13L9.20879 14.5979V16.7916H11.4025L13.0005 18.3896ZM13.0005 25.2416L9.37129 21.6666H4.33379V16.6291L0.758789 13L4.33379 9.3708V4.3333H9.37129L13.0005 0.758301L16.6296 4.3333H21.6671V9.3708L25.2421 13L21.6671 16.6291V21.6666H16.6296L13.0005 25.2416Z"
+                fill="currentColor"
+            />
         </svg>
     );
 }
 
 function LinkIcon({ className }: { className?: string }) {
     return (
-        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-            <path d="M10 14a4 4 0 0 0 5.7 0l2.8-2.8a4 4 0 1 0-5.7-5.7L11.5 7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-            <path d="M14 10a4 4 0 0 0-5.7 0L5.5 12.8a4 4 0 1 0 5.7 5.7l1.3-1.3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <svg viewBox="6 9.1 21.7 21.7" fill="none" className={className} aria-hidden>
+            <path
+                d="M9.95801 22.2149L12.2561 19.9168L8.42595 16.0866L21.4485 15.3206L20.6825 28.3432L16.8523 24.513L14.5542 26.8111L9.95801 22.2149ZM12.2561 12.2565L25.2787 11.4904L24.5126 24.513L22.4635 22.4639L22.9806 13.7885L14.3052 14.3056L12.2561 12.2565Z"
+                fill="currentColor"
+            />
         </svg>
     );
 }
 
 function ChartIcon({ className }: { className?: string }) {
     return (
-        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-            <path d="M5 19V11M10 19V5M15 19v-6M20 19V8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+        <svg viewBox="0 0 30 30" fill="none" className={className} aria-hidden>
+            <path
+                d="M2.5625 26.25L10.625 15H16.9375L26.25 4.125V26.25H2.5625ZM4.75 18.9688L2.75 17.5312L8.125 10H14.4375L20.3125 3.15625L22.1875 4.78125L15.5625 12.5H9.375L4.75 18.9688Z"
+                fill="currentColor"
+            />
         </svg>
     );
 }
