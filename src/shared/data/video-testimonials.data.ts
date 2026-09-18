@@ -29,12 +29,12 @@ export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
             src: "https://workninjas.com/wp-content/uploads/2025/07/Testimonial-–-Boss-Hogg-Roofing_1.mp4",
             poster:
                 "https://workninjas.com/wp-content/uploads/2025/06/Captura-de-pantalla-2025-06-09-a-las-3.53.14%E2%80%AFp.-m.-2.png",
-            title: "Título del video",
+            title: "Behind Every Roof is a Bigger Vision",
         },
-        badge: "Success story",
-        title: "Título del caso — reemplázalo.",
-        statValue: "00%",
-        statLabel: "Descripción del indicador — reemplázala.",
+        badge: "INDUSTRIES",
+        title: "Behind Every Roof is a Bigger Vision",
+        statValue: "50%",
+        statLabel: "faster project delivery, Clear systems and accountability turned delays into consistent, on time execution.",
         cta: { label: "Read Full Story", href: "/success-story" },
     },
     {

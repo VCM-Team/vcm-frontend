@@ -8,6 +8,8 @@ type Props = {
     badge: string;
     title: string;
     titleRest?: string;
+    /** Parte final del titular, en amarillo. */
+    titleAccent?: string;
     image: string;
     items: readonly AccordionItem[];
     className?: string;
@@ -17,6 +19,7 @@ export default function ImageAccordionSplit({
                                                 badge,
                                                 title,
                                                 titleRest,
+                                                titleAccent,
                                                 image,
                                                 items,
                                                 className,
@@ -26,7 +29,7 @@ export default function ImageAccordionSplit({
             <Container>
                 <Badge>{badge}</Badge>
 
-                <h2 className="mt-8 max-w-[26ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]">
+                <h2 className="mt-8 max-w-[26ch] text-3xl font-bold leading-[1.15] tracking-tight text-fg sm:text-4xl lg:text-[2.75rem]">
                     {title}
                     {titleRest && (
                         <>
@@ -34,11 +37,17 @@ export default function ImageAccordionSplit({
                             {titleRest}
                         </>
                     )}
+                    {titleAccent && (
+                        <>
+                            {" "}
+                            <span className="text-brand-400">{titleAccent}</span>
+                        </>
+                    )}
                 </h2>
 
-                <div className="mt-12 grid items-center gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-16">
+                <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-16">
                     {/* imagen */}
-                    <div className="relative aspect-square">
+                    <div className="relative aspect-square self-center">
                         <Image
                             src={image}
                             alt=""
@@ -49,7 +58,7 @@ export default function ImageAccordionSplit({
                     </div>
 
                     {/* acordeón */}
-                    <Accordion items={items} />
+                    <Accordion items={items} className="self-center" />
                 </div>
             </Container>
         </section>

@@ -187,18 +187,19 @@ const VIDEO = {
 
 const INDUSTRIES = {
     badge: "Industries",
-    title: "Primera línea del titular",
-    titleRest: "segunda línea del titular",
-    image: "https://workninjas.com/wp-content/uploads/2025/07/Graph-1.png",
+    title: "Helping Roofing Companies",
+    titleRest: "Run Smoother,",
+    titleAccent: "Faster, Smarter",
+    image: "/assets/images/shared/chart.webp",
 };
 
 const INDUSTRIES_ITEMS: readonly AccordionItem[] = [
-    { key: "ind-1", title: "Título del primer punto", content: "Descripción — reemplázala con el texto propio." },
-    { key: "ind-2", title: "Título del segundo punto", content: "Descripción — reemplázala con el texto propio." },
-    { key: "ind-3", title: "Título del tercer punto", content: "Descripción — reemplázala con el texto propio." },
-    { key: "ind-4", title: "Título del cuarto punto", content: "Descripción — reemplázala con el texto propio." },
-    { key: "ind-5", title: "Título del quinto punto", content: "Descripción — reemplázala con el texto propio." },
-    { key: "ind-6", title: "Título del sexto punto", content: "Descripción — reemplázala con el texto propio." },
+    { key: "ind-1", title: "Scheduling and Admin Chaos", content: "Descripción — reemplázala con el texto propio." },
+    { key: "ind-2", title: "CRM Overload", content: "Descripción — reemplázala con el texto propio." },
+    { key: "ind-3", title: "Lead Follow Up Gaps", content: "Descripción — reemplázala con el texto propio." },
+    { key: "ind-4", title: "Insurance Supplement Delays", content: "Descripción — reemplázala con el texto propio." },
+    { key: "ind-5", title: "Brand Inconsistency", content: "Descripción — reemplázala con el texto propio." },
+    { key: "ind-6", title: "Messy Books and Missing Receipts", content: "Descripción — reemplázala con el texto propio." },
 ];
 
 export default function HomeContainer() {
@@ -246,6 +247,7 @@ export default function HomeContainer() {
                 badge={INDUSTRIES.badge}
                 title={INDUSTRIES.title}
                 titleRest={INDUSTRIES.titleRest}
+                titleAccent={INDUSTRIES.titleAccent}
                 image={INDUSTRIES.image}
                 items={INDUSTRIES_ITEMS}
             />

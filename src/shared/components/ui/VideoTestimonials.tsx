@@ -8,6 +8,7 @@ import Button from "./Button";
 import VideoPlayer from "./VideoPlayer";
 import type { VideoTestimonial } from "@/src/shared/data/video-testimonials.data";
 import { cn } from "@/src/lib/utils";
+import Link from "next/link";
 
 type Props = {
     items: readonly VideoTestimonial[];
@@ -87,7 +88,7 @@ export default function VideoTestimonials({ items, className }: Props) {
                                 aria-current={i === active}
                                 className={cn(
                                     "size-2 rounded-full transition-colors duration-200",
-                                    i === active ? "bg-accent" : "bg-border"
+                                    i === active ? "bg-ink-900" : "bg-black/20"
                                 )}
                             />
                         ))}
@@ -100,40 +101,54 @@ export default function VideoTestimonials({ items, className }: Props) {
 
 function StoryCard({ item }: { item: Extract<VideoTestimonial, { variant: "story" }> }) {
     return (
-        <article className="relative flex flex-col overflow-hidden rounded-card bg-accent-soft p-7 lg:p-9">
-            <div className="flex items-start justify-between gap-4">
-                <Badge className="border-navy-800/20 bg-transparent text-navy-800">
-                    {item.badge}
-                </Badge>
+        <article className="relative isolate flex flex-col overflow-hidden rounded-card bg-accent p-7 lg:p-9">
+            {/* Fondo: franja inferior más oscura, separada por una curva */}
+            <svg
+                aria-hidden
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                className="absolute inset-0 -z-10 size-full"
+            >
+                <path
+                    d="M0 64 C22 64 38 46 100 6 L100 100 L0 100 Z"
+                    fill="rgb(0 0 0 / 0.07)"
+                />
+            </svg>
 
-                {item.mark && (
-                    <Image
-                        src={item.mark}
-                        alt=""
-                        width={64}
-                        height={64}
-                        className="size-12 object-contain lg:size-14"
-                    />
-                )}
-            </div>
+            <Badge className="w-fit border-black/40 bg-transparent text-black">
+                {item.badge}
+            </Badge>
 
-            <h3 className="mt-6 max-w-[20ch] text-xl font-semibold leading-snug text-navy-800 lg:text-2xl">
+            <h3 className="mt-7 max-w-[20ch] text-2xl font-semibold leading-snug text-black lg:text-[1.75rem]">
                 {item.title}
             </h3>
 
-            <div className="mt-auto flex flex-col gap-6 pt-12 sm:flex-row sm:items-end sm:justify-between">
+            <div className="mt-auto flex flex-col gap-8 pt-16 sm:flex-row sm:items-end sm:justify-between">
                 <div className="min-w-0">
-                    <p className="text-2xl font-semibold text-navy-800 lg:text-3xl">
+                    <p className="text-3xl font-semibold text-black lg:text-4xl">
                         {item.statValue}
                     </p>
-                    <p className="mt-2 max-w-[34ch] text-[13px] leading-relaxed text-navy-800/80">
+                    <p className="mt-3 max-w-[34ch] text-[13px] leading-relaxed text-black/75">
                         {item.statLabel}
                     </p>
                 </div>
 
-                <Button href={item.cta.href} variant="dark" size="sm" className="shrink-0">
-                    {item.cta.label}
-                </Button>
+                <div className="flex shrink-0 flex-col items-start gap-5 sm:items-end">
+                    <Image
+                        src="/assets/brand/vcm_black_logo.webp"
+                        alt="VCM"
+                        width={120}
+                        height={32}
+                        className="h-7 w-auto object-contain"
+                    />
+
+                    <Link
+                        href={item.cta.href}
+                        className="rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-white"
+                    >
+                        {item.cta.label}
+                    </Link>
+                </div>
             </div>
         </article>
     );
@@ -142,37 +157,37 @@ function StoryCard({ item }: { item: Extract<VideoTestimonial, { variant: "story
 function QuoteCard({ item }: { item: Extract<VideoTestimonial, { variant: "quote" }> }) {
     return (
         <figure className="flex flex-col rounded-card bg-surface p-7 lg:p-9">
-            <QuoteMark className="size-8 shrink-0 text-navy-800 lg:size-9" />
+            <QuoteMark className="size-8 shrink-0 text-brand-400 lg:size-9" />
 
             <blockquote className="mt-8 text-lg leading-relaxed text-fg">
                 {item.quote}
             </blockquote>
 
             <figcaption className="mt-auto flex items-center gap-4 pt-10">
-        <span className="grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-bg">
-          {item.logo ? (
-              <Image
-                  src={item.logo}
-                  alt=""
-                  width={44}
-                  height={44}
-                  className="size-full object-contain p-1.5"
-              />
-          ) : (
-              <span aria-hidden className="text-xs font-semibold text-fg-muted">
-              {item.company.slice(0, 2).toUpperCase()}
-            </span>
-          )}
-        </span>
+                <span className="grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-bg">
+                    {item.logo ? (
+                        <Image
+                            src={item.logo}
+                            alt=""
+                            width={44}
+                            height={44}
+                            className="size-full object-contain p-1.5"
+                        />
+                    ) : (
+                        <span aria-hidden className="text-xs font-semibold text-fg-muted">
+                            {item.company.slice(0, 2).toUpperCase()}
+                        </span>
+                    )}
+                </span>
 
                 <span className="min-w-0">
-          <span className="block text-[15px] font-medium text-fg">
-            {item.authorName} — {item.authorRole}
-          </span>
-          <span className="block text-[11px] uppercase tracking-[0.08em] text-fg-muted">
-            {item.company}
-          </span>
-        </span>
+                    <span className="block text-[15px] font-medium text-fg">
+                        {item.authorName} — {item.authorRole}
+                    </span>
+                    <span className="block text-[11px] uppercase tracking-[0.08em] text-fg-muted">
+                        {item.company}
+                    </span>
+                </span>
             </figcaption>
         </figure>
     );

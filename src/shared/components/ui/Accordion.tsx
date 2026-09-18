@@ -33,7 +33,7 @@ export default function Accordion({ items, defaultOpen, className }: Props) {
                                 aria-expanded={isOpen}
                                 aria-controls={`accordion-panel-${item.key}`}
                                 id={`accordion-trigger-${item.key}`}
-                                className="group flex w-full items-center justify-between gap-6 py-6 text-left"
+                                className="group flex w-full items-center justify-between gap-6 py-3.5 text-left"
                             >
                                 <span className="text-xl font-medium text-fg lg:text-[1.375rem]">
                                     {item.title}
@@ -61,7 +61,7 @@ export default function Accordion({ items, defaultOpen, className }: Props) {
                             )}
                         >
                             <div className="overflow-hidden">
-                                <p className="max-w-[64ch] pb-7 pr-16 text-[15px] leading-relaxed text-fg-muted">
+                                <p className="max-w-[64ch] pb-5 pr-16 text-[15px] leading-relaxed text-fg-muted">
                                     {item.content}
                                 </p>
                             </div>
