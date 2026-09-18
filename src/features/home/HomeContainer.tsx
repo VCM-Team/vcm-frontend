@@ -180,8 +180,9 @@ const SERVICES: readonly ServiceCardItem[] = [
     },
 ];
 const VIDEO = {
-    id: "AZzH9Y4uWh4",
-    title: "Título del video — reemplázalo",
+    src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1789757625/Work_Ninjas_Scalable_Back_Office_Solutions_for_Roofing_Contractors_Beyond_vnduhs.mp4",
+    poster: "/assets/images/video/thumbnail.webp",
+    title: "This is VCM",
 };
 
 const INDUSTRIES = {
@@ -220,9 +221,11 @@ export default function HomeContainer() {
                 cta={SERVICES_HEADING.cta}
             />
             {/* video */}
-            <Container className="py-16 lg:py-20">
-                <VideoEmbed videoId={VIDEO.id} title={VIDEO.title} />
-            </Container>
+            <section className="bg-ink-900 py-16 lg:py-20">
+                <Container>
+                    <VideoEmbed src={VIDEO.src} poster={VIDEO.poster} title={VIDEO.title} />
+                </Container>
+            </section>
             <BubbleFeatures
                 badge={EXPERTISE.badge}
                 title={EXPERTISE.title}

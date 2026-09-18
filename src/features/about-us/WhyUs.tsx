@@ -23,8 +23,9 @@ const CONTENT = {
 };
 
 const VIDEO = {
-    id: "AZzH9Y4uWh4",
-    title: "Título del video — reemplázalo",
+    src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1789757625/Work_Ninjas_Scalable_Back_Office_Solutions_for_Roofing_Contractors_Beyond_vnduhs.mp4",
+    poster: "/assets/images/video/thumbnail.webp",
+    title: "This is VCM",
 };
 
 const QUOTE: QuoteCardData = {
@@ -94,11 +95,7 @@ export default function WhyUs() {
                 </div>
 
                 {/* video */}
-                <VideoEmbed
-                    videoId={VIDEO.id}
-                    title={VIDEO.title}
-                    className="mt-16 lg:mt-20"
-                />
+                <VideoEmbed src={VIDEO.src} poster={VIDEO.poster} title={VIDEO.title} />
 
                 {/* tarjetas */}
                 <div className="mt-6 grid gap-6 md:grid-cols-3">
