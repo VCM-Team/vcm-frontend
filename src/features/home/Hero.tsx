@@ -51,7 +51,7 @@ export default function Hero() {
                             href={HERO.cta.href}
                             aria-hidden
                             tabIndex={-1}
-                            className="relative grid size-12 shrink-0 place-items-center overflow-hidden rounded-full bg-accent text-black transition-colors duration-300 group-hover:bg-brand-800 group-hover:text-white"
+                            className="relative grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-accent text-black transition-colors duration-300 group-hover:bg-brand-800 group-hover:text-white"
                         >
                             <ArrowUpRight className="col-start-1 row-start-1 size-5 transition-[translate] duration-300 group-hover:-translate-y-12" />
                             <ArrowUpRight

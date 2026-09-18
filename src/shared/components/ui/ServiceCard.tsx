@@ -22,12 +22,12 @@ export default function ServiceCard({ item, className }: Props) {
     return (
         <article
             className={cn(
-                "group relative flex h-full flex-col overflow-hidden rounded-card bg-surface",
-                "transition-shadow duration-300 hover:shadow-lg",
+                "group relative flex h-full flex-col overflow-hidden bg-black",
+                "rounded-bl-2xl rounded-br-2xl rounded-tl-[3.5rem] rounded-tr-none",
                 className
             )}
         >
-            <div className="relative aspect-[4/3] overflow-hidden">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-bl-2xl rounded-br-2xl">
                 <Image
                     src={item.image}
                     alt=""
@@ -38,14 +38,14 @@ export default function ServiceCard({ item, className }: Props) {
 
                 <span
                     aria-hidden
-                    className="absolute left-5 top-5 grid size-11 place-items-center rounded-full bg-accent text-navy-800"
+                    className="absolute left-5 top-5 grid size-11 place-items-center rounded-full bg-brand-400 text-black"
                 >
-          <Icon className="size-5" />
-        </span>
+                    <Icon className="size-5" />
+                </span>
             </div>
 
-            <div className="flex flex-1 items-center justify-between gap-4 p-6">
-                <h3 className="text-lg font-semibold leading-snug text-fg">
+            <div className="flex flex-1 items-center justify-between gap-4 px-6 py-6">
+                <h3 className="max-w-[18ch] text-base font-normal leading-snug text-white">
                     <Link
                         href={item.href}
                         className="after:absolute after:inset-0 after:z-10 focus-visible:outline-none"
@@ -56,10 +56,10 @@ export default function ServiceCard({ item, className }: Props) {
 
                 <span
                     aria-hidden
-                    className="grid size-11 shrink-0 place-items-center rounded-full bg-bg text-fg transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:text-accent"
+                    className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-400 text-black transition-transform duration-200 group-hover:-translate-y-0.5"
                 >
-          <ArrowUpRight className="size-4" />
-        </span>
+                    <ArrowUpRight className="size-5" />
+                </span>
             </div>
         </article>
     );

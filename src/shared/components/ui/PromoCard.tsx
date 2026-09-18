@@ -85,7 +85,7 @@ export default function PromoCard({ item, className }: Props) {
                         isAccent ? "bg-ink-900 text-accent" : "bg-accent text-black"
                     )}
                 >
-                    <ArrowUpRight className="size-4" />
+                    <ArrowUpRight className="size-5" />
                 </span>
             </div>
 
