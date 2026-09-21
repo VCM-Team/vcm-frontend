@@ -5,9 +5,9 @@ import StickyCardSection from "@/src/shared/components/ui/StickyCardSection";
 import InsightsSection, {InsightItem} from "@/src/shared/components/ui/InsightsSection";
 
 const HERO = {
-    badge: "Services",
-    title: "Titular de la página",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    badge: "Roofing Services",
+    title: "Simplifying your Roofing Business & Increasing your profits is easier than you think",
+    description: "We do the day-to-day work so you don’t have to, giving you more time and freedom to pursue your business objectives and sell more roofing jobs.",
     cta: { label: "Free Consultation", href: "/contact-us" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/Hero1.png",
 };
@@ -17,49 +17,48 @@ const CARD_IMAGE =
 
 const SERVICES_HEADING = {
     badge: "Services",
-    title: "Primera línea del titular,",
-    titleRest: "segunda línea del titular",
+    title: "We Handle the Chaos,So You Can Close More Deals",
 };
 
 const SERVICES: readonly ServiceCardItem[] = [
     {
         key: "roofing-specialists",
-        title: "Nombre del servicio",
+        title: "Roofing Specialists",
         href: "/services/roofing-specialists",
         image: CARD_IMAGE,
         Icon: RoofIcon,
     },
     {
         key: "lead-management",
-        title: "Nombre del servicio",
+        title: "Lead Management Specialist",
         href: "/services/lead-management-specialists",
         image: CARD_IMAGE,
         Icon: HeadsetIcon,
     },
     {
         key: "supplements",
-        title: "Nombre del servicio",
+        title: "Supplements & Xactimates",
         href: "/services/supplements-xactimates-billing",
         image: CARD_IMAGE,
         Icon: ShieldIcon,
     },
     {
         key: "measurements",
-        title: "Nombre del servicio",
+        title: "Measurements & Take Offs",
         href: "/services/measurements-take-offs",
         image: CARD_IMAGE,
         Icon: RulerIcon,
     },
     {
         key: "marketing",
-        title: "Nombre del servicio",
+        title: "Marketing & Lead Generation",
         href: "/services/marketing",
         image: CARD_IMAGE,
         Icon: MegaphoneIcon,
     },
     {
         key: "bookkeeping",
-        title: "Nombre del servicio",
+        title: "BookKeeping",
         href: "/services/bookkeeping",
         image: CARD_IMAGE,
         Icon: DollarIcon,
@@ -68,17 +67,17 @@ const SERVICES: readonly ServiceCardItem[] = [
 
 const WHY_US = {
     badge: "Why us?",
-    title: "Primera línea del titular",
-    titleTyped: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    title: "We focus on solutions",
+    titleTyped: "not problems",
+    description: "We are Transparent Like that. No Gimmicks.",
     cta: { label: "Schedule a Call", href: "/contact-us" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/Group-3898-scaled.jpg",
 };
 
 const INSIGHTS_HEADING = {
     badge: "Insights",
-    title: "Titular de la sección",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    title: "Insights from the Field",
+    description: "Stay ahead with expert advice and actionable tips to grow your roofing business confidently.",
     cta: { label: "More Insights", href: "/success-story" },
 };
 
@@ -86,16 +85,16 @@ const INSIGHTS: readonly InsightItem[] = [
     {
         key: "insight-1",
         label: "Success story",
-        title: "Becoming Insurance-Ready Without Changing the Business",
+        title: "High-Volume Estimating Support During a Winter Storm Surge",
         href: "/success-story/historia-uno",
         image: "https://workninjas.com/wp-content/uploads/2026/03/DSC01782.jpg",
     },
     {
         key: "insight-2",
         label: "Success story",
-        title: "Título del segundo caso",
+        title: "Becoming Insurance-Ready Without Changing the Business",
         href: "/success-story/historia-dos",
-        image: "https://workninjas.com/wp-content/uploads/2026/03/DSC01782.jpg",
+        image: "https://workninjas.com/wp-content/uploads/2026/02/Photo-1-3-2048x1365.jpg",
     },
 ];
 
@@ -106,15 +105,15 @@ export default function ServicesContainer() {
                 badge={HERO.badge}
                 title={HERO.title}
                 description={HERO.description}
-                cta={HERO.cta}
                 image={HERO.image}
+
             />
 
             <ServicesGrid
                 badge={SERVICES_HEADING.badge}
                 title={SERVICES_HEADING.title}
-                titleRest={SERVICES_HEADING.titleRest}
                 items={SERVICES}
+                variant="light"
             />
 
             <StickyCardSection

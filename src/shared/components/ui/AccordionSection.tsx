@@ -32,7 +32,7 @@ export default function AccordionSection({
     const withFeatures = Boolean(features?.length);
 
     return (
-        <section className={cn("py-16 lg:py-24", className)}>
+        <section className={cn("py-16 lg:py-24 bg--color--bg", className)}>
             <Container>
                 <Badge>{badge}</Badge>
 

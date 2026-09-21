@@ -10,6 +10,8 @@ type Props = {
     titleRest?: string;
     items: readonly ServiceCardItem[];
     cta?: { label: string; href: string };
+    /** "dark" (por defecto) o "light": solo cambia fondo, titular y badge. */
+    variant?: "dark" | "light";
     className?: string;
 };
 
@@ -19,15 +21,38 @@ export default function ServicesGrid({
                                          titleRest,
                                          items,
                                          cta,
+                                         variant = "dark",
                                          className,
                                      }: Props) {
+    const isLight = variant === "light";
+
     return (
-        <section className={cn("bg-ink-900 py-20 lg:py-28", className)}>
+        <section
+            className={cn(
+                "py-20 lg:py-28",
+                isLight ? "bg-[#F0F0F0]" : "bg-ink-900",
+                className
+            )}
+        >
             <Container>
                 <div className="flex flex-col items-center text-center">
-                    <Badge className="border-brand-400 text-brand-400">{badge}</Badge>
+                    <Badge
+                        className={cn(
+                            "bg-transparent",
+                            isLight
+                                ? "border-ink-900 text-ink-900"
+                                : "border-brand-400 text-brand-400"
+                        )}
+                    >
+                        {badge}
+                    </Badge>
 
-                    <h2 className="mt-7 max-w-[24ch] text-3xl font-semibold leading-[1.25] text-white sm:text-4xl lg:text-[2.5rem]">
+                    <h2
+                        className={cn(
+                            "mt-7 max-w-[24ch] text-3xl font-semibold leading-[1.25] sm:text-4xl lg:text-[2.5rem]",
+                            isLight ? "text-ink-900" : "text-white"
+                        )}
+                    >
                         {title}
                         {titleRest && (
                             <>

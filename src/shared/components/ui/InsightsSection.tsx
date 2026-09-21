@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "./Container";
 import Badge from "./Badge";
-import Button from "./Button";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
 import { cn } from "@/src/lib/utils";
 
@@ -34,29 +33,31 @@ export default function InsightsSection({
                                             className,
                                         }: Props) {
     return (
-        <section className={cn("bg-gradient-to-b from-bg to-surface/40 py-16 lg:py-24", className)}>
+        <section className={cn("bg-ink-900 py-20 lg:py-28", className)}>
             <Container>
                 <div className="flex flex-col items-center text-center">
-                    <Badge>{badge}</Badge>
+                    <Badge className="border-brand-400 bg-transparent text-brand-400">
+                        {badge}
+                    </Badge>
 
-                    <h2 className="mt-8 max-w-[22ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]">
+                    <h2 className="mt-7 max-w-[22ch] text-3xl font-normal leading-[1.15] text-white sm:text-4xl lg:text-[2.75rem]">
                         {title}
                         {titleAccent && (
                             <>
                                 {" "}
-                                <span className="text-accent">{titleAccent}</span>
+                                <span className="text-brand-400">{titleAccent}</span>
                             </>
                         )}
                     </h2>
 
                     {description && (
-                        <p className="mt-5 max-w-[48ch] text-[15px] leading-relaxed text-fg-muted">
+                        <p className="mt-5 max-w-[48ch] text-[15px] leading-relaxed text-white/70">
                             {description}
                         </p>
                     )}
                 </div>
 
-                <div className="mt-12 grid grid-cols-1 gap-6 lg:mt-14 lg:grid-cols-2">
+                <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
                     {items.map((item) => (
                         <InsightCard key={item.key} item={item} />
                     ))}
@@ -64,9 +65,12 @@ export default function InsightsSection({
 
                 {cta && (
                     <div className="mt-12 flex justify-center lg:mt-14">
-                        <Button href={cta.href} size="sm">
+                        <Link
+                            href={cta.href}
+                            className="rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white"
+                        >
                             {cta.label}
-                        </Button>
+                        </Link>
                     </div>
                 )}
             </Container>
@@ -78,12 +82,21 @@ function InsightCard({ item }: { item: InsightItem }) {
     return (
         <article
             className={cn(
-                "group relative flex flex-col gap-5 overflow-hidden rounded-card bg-surface p-5",
-                "transition-colors duration-300 hover:bg-accent-soft",
+                "group relative isolate flex flex-col gap-5 overflow-hidden rounded-[2rem] bg-[#0F0F0F] p-5",
                 "sm:min-h-[22rem] sm:flex-row sm:items-stretch sm:gap-6"
             )}
         >
-            <div className="relative aspect-[4/5] shrink-0 overflow-hidden rounded-[0.75rem] sm:aspect-auto sm:w-[40%]">
+            {/* Fondo: franja superior más clara, separada por una diagonal */}
+            <svg
+                aria-hidden
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                className="absolute inset-0 -z-10 size-full"
+            >
+                <path d="M0 0 L100 0 L100 22 L0 62 Z" fill="#252525" />
+            </svg>
+
+            <div className="relative aspect-[4/5] shrink-0 overflow-hidden rounded-2xl sm:aspect-auto sm:w-[50%]">
                 <Image
                     src={item.image}
                     alt=""
@@ -94,11 +107,11 @@ function InsightCard({ item }: { item: InsightItem }) {
             </div>
 
             <div className="flex min-w-0 flex-1 flex-col py-1">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-fg-muted transition-colors duration-300 group-hover:text-navy-800/70">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-brand-400">
                     {item.label}
                 </p>
 
-                <h3 className="mt-4 text-xl font-semibold leading-snug text-fg transition-colors duration-300 group-hover:text-navy-800">
+                <h3 className="mt-8 text-xl font-normal leading-snug text-white lg:text-[1.375rem]">
                     <Link
                         href={item.href}
                         className="after:absolute after:inset-0 after:z-10 focus-visible:outline-none"
@@ -109,14 +122,10 @@ function InsightCard({ item }: { item: InsightItem }) {
 
                 <span
                     aria-hidden
-                    className={cn(
-                        "mt-auto grid size-10 self-end place-items-center rounded-full",
-                        "bg-transparent text-fg transition-all duration-300",
-                        "group-hover:bg-navy-800 group-hover:text-accent"
-                    )}
+                    className="mt-auto grid size-12 place-items-center self-end rounded-full bg-brand-400 text-black transition-transform duration-300 group-hover:-translate-y-0.5"
                 >
-          <ArrowUpRight className="size-4" />
-        </span>
+                    <ArrowUpRight className="size-5" />
+                </span>
             </div>
         </article>
     );

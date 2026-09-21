@@ -220,6 +220,7 @@ export default function HomeContainer() {
                 titleRest={SERVICES_HEADING.titleRest}
                 items={SERVICES}
                 cta={SERVICES_HEADING.cta}
+                variant="dark"
             />
             {/* video */}
             <section className="bg-ink-900 py-16 lg:py-20">

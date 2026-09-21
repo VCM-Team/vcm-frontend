@@ -10,13 +10,13 @@
   --color-ink-600: #6B6355;
   --color-surface-soft: #F8F5EF;
   --color-navy-800: #171717;
-  --color-bg: #FFFFFF;
+  --color-bg: #F0F0F0;
   --color-surface: #F8F5EF;
   --color-fg: #1C1A16;
   --color-fg-muted: #6B6355;
   --color-accent: #DC9D06;
   --color-accent-soft: #FFF0D4;
-  --color-accent-fg: #FFFFFF;
+  --color-accent-fg: #F0F0F0;
   --color-border: #E7E2D8;
   --color-field-border: #D5CEC0;
   --color-danger: oklch(0.58 0.19 25);

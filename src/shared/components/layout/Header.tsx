@@ -107,7 +107,7 @@ export default function Header() {
                 "group fixed inset-x-0 top-0 z-50",
                 "transition-[translate,background-color,box-shadow]",
                 "motion-reduce:transition-none will-change-transform",
-                "bg-white shadow-sm",
+                "bg-bg",
                 isTransparent && "lg:bg-transparent lg:shadow-none",
                 isHidden
                     ? cn("lg:-translate-y-full duration-300", EASE_OUT)

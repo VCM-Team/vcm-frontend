@@ -10,16 +10,16 @@ export default function Pill({
     return (
         <li
             className={cn(
-                "inline-flex items-center gap-2.5 rounded-full bg-surface py-2.5 pl-2.5 pr-6",
+                "inline-flex items-center gap-2.5 rounded-full bg-[#E5E5E5] py-2.5 pl-2.5 pr-6",
                 className
             )}
         >
-      <span
-          aria-hidden
-          className="grid size-7 shrink-0 place-items-center rounded-full bg-navy-800 text-white"
-      >
-        <CheckIcon />
-      </span>
+            <span
+                aria-hidden
+                className="grid size-7 shrink-0 place-items-center rounded-full bg-accent text-white"
+            >
+                <CheckIcon />
+            </span>
             <span className="text-sm text-fg">{children}</span>
         </li>
     );
