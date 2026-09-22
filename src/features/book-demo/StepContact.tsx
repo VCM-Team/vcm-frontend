@@ -74,24 +74,24 @@ export default function StepContact({ data, update, next }: StepProps) {
                         onChange={(e) => update({ smsConsent: e.target.checked })}
                         className="mt-0.5 size-4 shrink-0 accent-brand-400"
                     />
-                    <span className="text-sm leading-snug text-ink-600">{CONTACT.consent}</span>
+                    <span className="text-sm leading-snug text-white/60">
+                        {CONTACT.consent}
+                    </span>
                 </label>
 
-                <div className={cn("mt-2", !isValid && "cursor-not-allowed")}>
-                    <button
-                        type="button"
-                        onClick={next}
-                        disabled={!isValid}
-                        className={cn(
-                            "w-full rounded-full px-9 py-4 text-base font-semibold transition-colors duration-200",
-                            isValid
-                                ? "bg-brand-400 text-white hover:bg-brand-500"
-                                : "cursor-not-allowed bg-brand-400/40 text-white/70"
-                        )}
-                    >
-                        {CONTACT.cta}
-                    </button>
-                </div>
+                <button
+                    type="button"
+                    onClick={next}
+                    disabled={!isValid}
+                    className={cn(
+                        "mt-2 w-full cursor-pointer  rounded-full px-9 py-4 text-base font-semibold transition-colors duration-200",
+                        isValid
+                            ? "bg-brand-400 text-black hover:bg-brand-500 hover:text-white"
+                            : "cursor-not-allowed bg-white/10 text-white/40"
+                    )}
+                >
+                    {CONTACT.cta}
+                </button>
             </div>
         </StepShell>
     );

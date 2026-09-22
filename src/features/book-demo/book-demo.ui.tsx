@@ -20,17 +20,17 @@ export function StepShell({
         <div className="mx-auto w-full max-w-2xl px-5 py-12 lg:py-20">
             <div className="flex flex-col items-center text-center">
                 {icon && (
-                    <span className="mb-6 grid size-14 place-items-center rounded-full bg-brand-400/15 text-brand-500">
+                    <span className="mb-6 grid size-14 place-items-center rounded-full bg-brand-400/15 text-brand-400">
                         {icon}
                     </span>
                 )}
 
-                <h1 className="text-3xl font-semibold leading-tight text-navy-800 lg:text-[2.5rem]">
+                <h1 className="text-3xl font-semibold leading-tight text-white lg:text-[2.5rem]">
                     {title}
                 </h1>
 
                 {description && (
-                    <p className="mt-3 text-base text-ink-600 lg:text-lg">{description}</p>
+                    <p className="mt-3 text-base text-white/60 lg:text-lg">{description}</p>
                 )}
             </div>
 
@@ -61,34 +61,39 @@ export function ChoiceCard({
             aria-checked={selected}
             onClick={onSelect}
             className={cn(
-                "flex w-full items-center gap-4 rounded-2xl border p-5 text-left",
+                "flex w-full cursor-pointer items-center gap-4 rounded-2xl border p-5 text-left",
                 "transition-[background-color,border-color,translate] duration-200",
                 "hover:-translate-y-0.5",
                 selected
                     ? "border-brand-400 bg-brand-400/10"
-                    : "border-black/10 bg-white/70 hover:border-brand-400/60"
+                    : "border-white/10 bg-white/[0.06] hover:border-white/25"
             )}
         >
             {Icon && (
-                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-400/15 text-brand-500">
+                <span
+                    className={cn(
+                        "grid size-11 shrink-0 place-items-center rounded-full transition-colors duration-200",
+                        selected ? "bg-brand-400 text-black" : "bg-white/10 text-white/70"
+                    )}
+                >
                     <Icon className="size-5" />
                 </span>
             )}
 
             <span className="flex-1">
-                <span className="block text-lg font-semibold text-navy-800">{title}</span>
+                <span className="block text-lg font-semibold text-white">{title}</span>
                 {description && (
-                    <span className="mt-1 block text-sm text-ink-600">{description}</span>
+                    <span className="mt-1 block text-sm text-white/55">{description}</span>
                 )}
             </span>
 
             <span
                 className={cn(
                     "grid size-5 shrink-0 place-items-center rounded-full border-2 transition-colors duration-200",
-                    selected ? "border-brand-500" : "border-black/20"
+                    selected ? "border-brand-400" : "border-white/25"
                 )}
             >
-                {selected && <span className="size-2.5 rounded-full bg-brand-500" />}
+                {selected && <span className="size-2.5 rounded-full bg-brand-400" />}
             </span>
         </button>
     );
@@ -114,17 +119,17 @@ export function ToggleCard({
             aria-checked={selected}
             onClick={onToggle}
             className={cn(
-                "flex flex-col items-center gap-3 rounded-2xl border p-6",
+                "flex cursor-pointer flex-col items-center gap-3 rounded-2xl border p-6",
                 "transition-[background-color,border-color,translate] duration-200 hover:-translate-y-0.5",
                 selected
                     ? "border-brand-400 bg-brand-400/10"
-                    : "border-black/10 bg-white/70 hover:border-brand-400/60"
+                    : "border-white/10 bg-white/[0.06] hover:border-white/25"
             )}
         >
             <span
                 className={cn(
                     "grid size-12 place-items-center rounded-full transition-colors duration-200",
-                    selected ? "bg-brand-400 text-white" : "bg-black/5 text-ink-600"
+                    selected ? "bg-brand-400 text-black" : "bg-white/10 text-white/70"
                 )}
             >
                 <Icon className="size-6" />
@@ -132,7 +137,7 @@ export function ToggleCard({
             <span
                 className={cn(
                     "text-sm font-medium transition-colors duration-200",
-                    selected ? "text-brand-500" : "text-navy-800"
+                    selected ? "text-brand-400" : "text-white/80"
                 )}
             >
                 {label}
@@ -158,10 +163,10 @@ export function SelectPill({
             aria-pressed={selected}
             onClick={onToggle}
             className={cn(
-                "rounded-full border px-5 py-2.5 text-sm font-medium transition-colors duration-200",
+                "cursor-pointer rounded-full border px-5 py-2.5 text-sm font-medium transition-colors duration-200",
                 selected
-                    ? "border-brand-400 bg-brand-400 text-white"
-                    : "border-black/10 bg-white/70 text-navy-800 hover:border-brand-400"
+                    ? "border-brand-400 bg-brand-400 text-black"
+                    : "border-white/10 bg-white/[0.06] text-white/80 hover:border-white/25"
             )}
         >
             {label}
@@ -188,14 +193,14 @@ export function TextField({
 }) {
     return (
         <label className="block">
-            <span className="mb-2 block text-sm font-semibold text-navy-800">{label}</span>
+            <span className="mb-2 block text-sm font-semibold text-white">{label}</span>
             <input
                 type={type}
                 value={value}
                 placeholder={placeholder}
                 autoComplete={autoComplete}
                 onChange={(e) => onChange(e.target.value)}
-                className="w-full rounded-full border border-black/10 bg-white px-5 py-3.5 text-[15px] text-navy-800 outline-none transition-colors duration-200 placeholder:text-ink-600/60 focus:border-brand-400"
+                className="w-full rounded-full border border-white/15 bg-white/5 px-5 py-3.5 text-[15px] text-white outline-none transition-colors duration-200 placeholder:text-white/35 focus:border-brand-400"
             />
         </label>
     );
@@ -220,11 +225,11 @@ export function StepButton({
             onClick={onClick}
             disabled={disabled}
             className={cn(
-                "inline-flex items-center justify-center gap-2 rounded-full px-9 py-4 text-base font-semibold",
-                "transition-[background-color,opacity] duration-200",
+                "inline-flex cursor-pointer items-center justify-center gap-2 rounded-full px-9 py-4 text-base font-semibold",
+                "transition-colors duration-200",
                 disabled
-                    ? "cursor-not-allowed bg-brand-400/40 text-white/70"
-                    : "bg-brand-400 text-white hover:bg-brand-500"
+                    ? "cursor-not-allowed bg-white/10 text-white/40"
+                    : "bg-brand-400 text-black hover:bg-brand-500 hover:text-white"
             )}
         >
             {children}

@@ -14,7 +14,7 @@ import StepTimeline from "./StepTimeline";
 import StepSource from "./StepSource";
 import StepSummary from "./StepSummary";
 
-const LOGO = "https://workninjas.com/wp-content/uploads/2025/02/colorWN.svg";
+const LOGO = "/assets/brand/vcm_text_logo.webp";
 
 /** El índice 0 es la portada: sin barra de progreso. */
 const TOTAL_STEPS = 10;
@@ -38,7 +38,7 @@ export default function BookDemoContainer() {
     const stepProps = { data, update, next };
 
     return (
-        <div className="min-h-dvh bg-surface-soft">
+        <div className="min-h-dvh bg-ink-900">
             {step > 0 && (
                 <>
                     <div
@@ -46,11 +46,11 @@ export default function BookDemoContainer() {
                         style={{ width: `${progress}%` }}
                     />
 
-                    <header className="sticky top-0 z-40 border-b border-black/5 bg-surface-soft/95 backdrop-blur">
+                    <header className="sticky top-0 z-40 border-b border-white/10 bg-ink-900/95 backdrop-blur">
                         <div className="mx-auto flex max-w-5xl items-center gap-6 px-5 py-4">
                             <Image
                                 src={LOGO}
-                                alt="WorkNinjas"
+                                alt="VCM"
                                 width={200}
                                 height={42}
                                 className="h-8 w-auto"
@@ -59,13 +59,13 @@ export default function BookDemoContainer() {
                             <button
                                 type="button"
                                 onClick={back}
-                                className="inline-flex items-center gap-2 text-sm font-medium text-ink-900 transition-colors duration-200 hover:text-brand-500"
+                                className="inline-flex items-center gap-2 text-sm font-medium text-white transition-colors duration-200 hover:text-brand-400"
                             >
                                 <ArrowLeftIcon className="size-4" />
                                 Back
                             </button>
 
-                            <span className="ml-auto text-sm font-medium text-ink-600">
+                            <span className="ml-auto text-sm font-medium text-white/60">
                                 {progress}% Completed
                             </span>
                         </div>

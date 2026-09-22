@@ -32,9 +32,9 @@ export default function StepTerritories({ data, update, next }: StepProps) {
             description={TERRITORIES.description}
             icon={<PinIcon className="size-6" />}
         >
-            <div className="rounded-3xl border border-black/10 bg-white p-5">
-                <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5">
-                    <PinIcon className="size-5 shrink-0 text-ink-600" />
+            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5">
+                <div className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5">
+                    <PinIcon className="size-5 shrink-0 text-white/50" />
                     <input
                         value={draft}
                         placeholder={TERRITORIES.placeholder}
@@ -44,13 +44,13 @@ export default function StepTerritories({ data, update, next }: StepProps) {
                             e.preventDefault();
                             add();
                         }}
-                        className="flex-1 bg-transparent py-2 text-[15px] text-navy-800 outline-none placeholder:text-ink-600/60"
+                        className="flex-1 bg-transparent py-2 text-[15px] text-white outline-none placeholder:text-white/35"
                     />
                     <button
                         type="button"
                         onClick={add}
                         disabled={draft.trim() === ""}
-                        className="inline-flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-brand-500 transition-colors duration-200 hover:bg-brand-400/10 disabled:cursor-not-allowed disabled:text-ink-600/50 disabled:hover:bg-transparent"
+                        className="inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-brand-400 transition-colors duration-200 hover:bg-brand-400/15 disabled:cursor-not-allowed disabled:text-white/30 disabled:hover:bg-transparent"
                     >
                         <PlusIcon className="size-4" />
                         Add
@@ -61,13 +61,13 @@ export default function StepTerritories({ data, update, next }: StepProps) {
                     <ul className="mt-5 flex flex-wrap gap-3">
                         {data.territories.map((territory) => (
                             <li key={territory}>
-                                <span className="inline-flex items-center gap-2 rounded-full bg-brand-400 px-4 py-2 text-sm font-medium text-white">
+                                <span className="inline-flex items-center gap-2 rounded-full bg-brand-400 px-4 py-2 text-sm font-medium text-black">
                                     {territory}
                                     <button
                                         type="button"
                                         onClick={() => remove(territory)}
                                         aria-label={`Quitar ${territory}`}
-                                        className="transition-opacity duration-200 hover:opacity-70"
+                                        className="cursor-pointer transition-opacity duration-200 hover:opacity-60"
                                     >
                                         <CloseIcon className="size-3.5" />
                                     </button>

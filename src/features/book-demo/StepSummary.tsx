@@ -62,23 +62,23 @@ export default function StepSummary({
                 <CheckIcon className="size-7" />
             </span>
 
-            <h1 className="mt-8 text-3xl font-semibold text-navy-800 lg:text-[2.5rem]">
+            <h1 className="mt-8 text-3xl font-semibold text-white lg:text-[2.5rem]">
                 {SUMMARY.title}
             </h1>
 
-            <p className="mx-auto mt-4 max-w-xl text-base text-ink-600 lg:text-lg">
+            <p className="mx-auto mt-4 max-w-xl text-base text-white lg:text-lg">
                 Based on your responses, {data.company || "your company"} is perfectly
                 positioned for our scaling system. Let&apos;s schedule your strategy call.
             </p>
 
-            <div className="mt-10 rounded-3xl border border-black/10 bg-white p-7 text-left">
-                <p className="text-lg font-semibold text-navy-800">{SUMMARY.heading}</p>
+            <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.06] p-7 text-left">
+                <p className="text-lg font-semibold text-white">{SUMMARY.heading}</p>
 
-                <dl className="mt-6 grid gap-6 border-t border-black/10 pt-6 sm:grid-cols-2">
+                <dl className="mt-6 grid gap-6 border-t border-white/10 pt-6 sm:grid-cols-2">
                     {rows.map((row) => (
                         <div key={row.label}>
-                            <dt className="text-sm text-ink-600">{row.label}</dt>
-                            <dd className="mt-1 font-semibold text-navy-800">{row.value}</dd>
+                            <dt className="text-sm text-white/55">{row.label}</dt>
+                            <dd className="mt-1 font-semibold text-white">{row.value}</dd>
                         </div>
                     ))}
                 </dl>
