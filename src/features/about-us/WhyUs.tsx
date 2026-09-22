@@ -12,7 +12,7 @@ const CONTENT = {
     title: "Primera parte del titular",
     titleAccent: "parte resaltada",
     cta: { label: "Schedule a Call", href: "/contact-us" },
-    description: "Párrafo de apoyo de la sección — reemplázalo con el texto propio.",
+    description: "We help roofing companies get back to what they do best by handling the work that gets in the way. From answering inbound calls to organizing CRMs, following up with leads, managing supplements, and keeping schedules on track, we cover the backend so you can focus on selling, building, and leading your team. Think of us as the crew behind your crew, ready to take on the day to day and help your business run smoother, faster, and with fewer dropped balls.",
     features: [
         "Primer atributo",
         "Segundo atributo",
@@ -29,14 +29,14 @@ const VIDEO = {
 };
 
 const QUOTE: QuoteCardData = {
-    quote: "Cita del testimonio — reemplázala con el texto propio.",
+    quote: "“Our goal is to feel like an extension of your team from day one. We align with your tools and systems fast; usually within 14 days.”",
     authorName: "Nombre de la persona",
     authorRole: "Cargo",
-    authorImage: "/team/avatar.jpg",
+    authorImage: "https://workninjas.com/wp-content/uploads/2025/06/Mask-group-1.jpg",
     cta: { label: "Free Consultation", href: "/contact-us" },
 };
 
-const TEAM_IMAGE = "/about/team.jpg";
+const TEAM_IMAGE = "https://workninjas.com/wp-content/uploads/2025/06/Mask-group.jpg";
 
 const JOIN_CARD = {
     title: "Título de la tarjeta de reclutamiento",
@@ -58,12 +58,12 @@ export default function WhyUs() {
                         </h2>
 
                         <div className="mt-8 flex items-center gap-2">
-                            <Button href={CONTENT.cta.href} size="sm">
+                            <Button href={CONTENT.cta.href} size="sm" variant={"accent"}>
                                 {CONTENT.cta.label}
                             </Button>
                             <span
                                 aria-hidden
-                                className="grid size-11 shrink-0 place-items-center rounded-full bg-navy-800 text-white"
+                                className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-400 text-black"
                             >
                 <ArrowUpRight className="size-4" />
               </span>
@@ -74,7 +74,7 @@ export default function WhyUs() {
                     <div>
             <span
                 aria-hidden
-                className="grid size-14 place-items-center rounded-full bg-accent text-navy-800"
+                className="grid size-12 place-items-center rounded-full bg-brand-400 text-navy-800"
             >
               <StarIcon />
             </span>
@@ -86,7 +86,7 @@ export default function WhyUs() {
                 </div>
 
                 {/* píldoras */}
-                <div className="mt-12 border-t border-border pt-10 lg:mt-16 lg:pt-12">
+                <div className="my-12  border-t border-border pt-10 lg:mt-16 lg:pt-12">
                     <ul className="mx-auto flex max-w-5xl flex-wrap justify-center gap-3">
                         {CONTENT.features.map((f) => (
                             <Pill key={f}>{f}</Pill>
@@ -98,10 +98,10 @@ export default function WhyUs() {
                 <VideoEmbed src={VIDEO.src} poster={VIDEO.poster} title={VIDEO.title} />
 
                 {/* tarjetas */}
-                <div className="mt-6 grid gap-6 md:grid-cols-3">
+                <div className="mt-24 grid gap-6 md:grid-cols-3">
                     <QuoteCard data={QUOTE} />
 
-                    <div className="relative aspect-[3/4] overflow-hidden rounded-card md:aspect-auto">
+                    <div className="relative aspect-[3/4] overflow-hidden rounded-bl-[2rem] rounded-br-[2rem] rounded-tl-[2rem] rounded-tr-none md:aspect-auto">
                         <Image
                             src={TEAM_IMAGE}
                             alt=""
@@ -111,20 +111,16 @@ export default function WhyUs() {
                         />
                     </div>
 
-                    <div className="relative isolate flex min-h-[26rem] flex-col justify-between overflow-hidden rounded-card bg-navy-800 p-7 lg:p-8">
-                        <h3 className="max-w-[16ch] text-xl font-semibold leading-snug text-accent lg:text-2xl">
+                    <div className="relative isolate flex min-h-[26rem] flex-col justify-between overflow-hidden rounded-bl-[2rem] rounded-br-[2rem] rounded-tl-[2rem] rounded-tr-none bg-accent p-7 lg:p-8">
+                        <JoinShape />
+
+                        <h3 className="max-w-[20ch] text-xl font-bold leading-snug text-black lg:text-[1.375rem]">
                             {JOIN_CARD.title}
                         </h3>
 
-                        <span
-                            aria-hidden
-                            className="absolute -bottom-10 -right-6 -z-10 size-72 rounded-full bg-accent/85 blur-[1px]"
-                        />
-
-                        <div className="flex items-center gap-2 text-accent">
-                            <span aria-hidden className="text-xl">✳</span>
-                            <span className="text-xs">{JOIN_CARD.year}</span>
-                        </div>
+                        <span className="text-xs font-semibold text-black">
+                            {JOIN_CARD.year}
+                        </span>
                     </div>
                 </div>
             </Container>
@@ -134,8 +130,29 @@ export default function WhyUs() {
 
 function StarIcon() {
     return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
             <path d="M12 2.5c.4 0 .7.2.9.6l2.3 4.7 5.2.8c.4 0 .7.3.8.7.1.4 0 .8-.3 1l-3.8 3.7.9 5.2c.1.4-.1.8-.4 1a1 1 0 0 1-1 .1L12 17.9l-4.6 2.4a1 1 0 0 1-1-.1c-.3-.2-.5-.6-.4-1l.9-5.2-3.8-3.7a1 1 0 0 1-.3-1c.1-.4.4-.7.8-.7l5.2-.8 2.3-4.7c.2-.4.5-.6.9-.6Z" />
+        </svg>
+    );
+}
+
+/* Silueta de la V, recortada por la tarjeta */
+function JoinShape() {
+    return (
+        <svg
+            aria-hidden
+            viewBox="60 75 270 325"
+            fill="none"
+            className="pointer-events-none absolute -bottom-10 -right-16 -z-10 h-[70%] w-auto"
+        >
+            <path
+                d="M271.594 348.019L245.022 394.006L75.6697 165.223C67.0856 153.613 66.2016 138.081 73.4139 125.599L97.9168 83.192L269.039 308.003C277.877 319.628 278.882 335.405 271.575 348.052L271.594 348.019Z"
+                fill="rgb(255 255 255 / 0.28)"
+            />
+            <path
+                d="M295.361 148.515L322.37 101.772L124.288 81.5764L186.599 159.525L260.582 166.467C274.684 167.769 288.282 160.767 295.361 148.515Z"
+                fill="rgb(255 255 255 / 0.28)"
+            />
         </svg>
     );
 }

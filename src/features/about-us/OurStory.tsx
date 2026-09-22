@@ -5,6 +5,7 @@ import Image from "next/image";
 import Container from "@/src/shared/components/ui/Container";
 import YearTabs from "@/src/shared/components/ui/YearTabs";
 import { cn } from "@/src/lib/utils";
+import Badge from "@/src/shared/components/ui/Badge";
 
 const HEADING = {
     title: "Primera parte del titular",
@@ -54,7 +55,8 @@ export default function OurStory() {
     return (
         <section>
             <Container className="pb-12 text-center lg:pb-16">
-                <h2 className="mx-auto max-w-[22ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-5xl">
+                <Badge>Our Story</Badge>
+                <h2 className="mx-auto max-w-[22ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-5xl mt-8">
                     {HEADING.title}{" "}
                     <span className="text-accent">{HEADING.titleAccent}</span>
                 </h2>

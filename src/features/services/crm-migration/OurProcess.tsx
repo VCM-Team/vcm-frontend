@@ -5,7 +5,7 @@ const HEADING = {
     badge: "Our Process",
     title: "Primera parte del titular",
     titleAccent: "parte resaltada del titular",
-    cta: { label: "Get a Quote", href: "/contact-us" },
+    cta: { label: "Free Consultation", href: "/contact-us" },
 };
 
 const STEPS: readonly NumberedCardItem[] = [

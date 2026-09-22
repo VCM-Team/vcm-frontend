@@ -4,20 +4,22 @@ import Stats, { type StatItem } from "@/src/shared/components/ui/Stats";
 import OurValues from "./OurValues";
 import OurStory from "./OurStory";
 import WhyUs from "./WhyUs";
+import OurProcess from "@/src/features/services/crm-migration/OurProcess";
 
 const HERO = {
     badge: "Who we are",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
+    title: "What We’ve Built and",
+    titleAccent: "Who We Are",
     image: "https://workninjas.com/wp-content/uploads/2025/06/NH.png",
 };
 
 const ABOUT_STATS: readonly StatItem[] = [
-    { value: "00", label: "Etiqueta del indicador" },
-    { value: "00", label: "Etiqueta del indicador" },
-    { value: "00", label: "Etiqueta del indicador" },
-    { value: "00", label: "Etiqueta del indicador" },
+    { value: "14", suffix: " Days", label: "To fully integrate your Ninja team" },
+    { prefix: "$", value: "10M", label: "Supplements client overage last year" },
+    { value: "12", suffix: "K+", label: "To fully integrate your Ninja team" },
+    { prefix: ">", value: "90", label: "Repeat clients or referrals" },
 ];
+
 
 export default function AboutContainer() {
     return (
@@ -29,11 +31,11 @@ export default function AboutContainer() {
                 image={HERO.image}
             />
 
-            <Container className="py-16 lg:py-24">
+            <Container>
                 <Stats items={ABOUT_STATS} />
             </Container>
 
-            <OurValues />
+            <OurProcess />
             <OurStory />
             <WhyUs />
         </div>
