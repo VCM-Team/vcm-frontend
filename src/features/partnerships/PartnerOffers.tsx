@@ -55,7 +55,7 @@ export default function PartnerOffers() {
                 </p>
             </Container>
 
-            <div className="mx-3 mt-12 rounded-panel bg-gradient-to-b from-surface to-bg lg:mx-4 lg:mt-16">
+            <div className="mx-3 mt-12 rounded-panel bg-gradient-to-b from-brand-400/12 to-bg lg:mx-4 lg:mt-16">
                 <Container className="py-14 lg:py-20">
                     <ul className="flex flex-col items-center gap-16 lg:gap-20">
                         {OFFERS.map((o) => (
