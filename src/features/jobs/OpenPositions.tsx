@@ -3,10 +3,9 @@ import Badge from "@/src/shared/components/ui/Badge";
 
 const CONTENT = {
     badge: "Open Positions",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
-    titleRest: "cierre del titular",
-    description: "Párrafo de apoyo de la sección — reemplázalo con el texto propio.",
+    title: "Join the",
+    titleAccent: "VCM Team",
+    description: "We’re always looking for sharp, reliable people who want to do real work and grow with a team that moves fast and supports each other. Below are our current open roles, each one is a chance to build something meaningful, learn new skills, and be part of a crew that actually has your back. Take a look. If one fits, we’d love to hear from you.",
 };
 
 const POSITIONS = [
@@ -19,13 +18,8 @@ export default function OpenPositions() {
     return (
         <section
             id="open-positions"
-            className="relative isolate mx-3 overflow-hidden rounded-panel bg-navy-800 lg:mx-4"
+            className="relative isolate mb-15 mx-3 overflow-hidden rounded-panel bg-navy-800 lg:mx-4"
         >
-            {/* forma decorativa de fondo */}
-            <span
-                aria-hidden
-                className="absolute -left-24 top-1/2 -z-10 size-[30rem] -translate-y-1/2 rounded-full bg-white/[0.03]"
-            />
 
             <Container className="py-14 lg:py-20">
                 <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
@@ -36,9 +30,8 @@ export default function OpenPositions() {
                         </Badge>
 
                         <h2 className="mt-8 max-w-[14ch] text-3xl font-semibold leading-[1.15] text-white sm:text-4xl lg:text-[2.75rem]">
-                            {CONTENT.title}{" "}
+                            {CONTENT.title}{" "}<br/>
                             <span className="text-accent">{CONTENT.titleAccent}</span>{" "}
-                            {CONTENT.titleRest}
                         </h2>
 
                         <p className="mt-8 max-w-[52ch] text-[15px] leading-relaxed text-white/85">

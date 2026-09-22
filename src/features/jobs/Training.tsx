@@ -1,16 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
-import Button from "@/src/shared/components/ui/Button";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
 
 const CONTENT = {
     badge: "Join the team",
     title: "Titular de la sección",
     description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Open Positions", href: "#open-positions" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Mask-group-2.jpg",
-    seal: "https://workninjas.com/wp-content/uploads/2025/03/great-place-logo.svg",
+    cta: { label: "Free Consultation", href: "#open-positions" },
+    image: "https://workninjas.com/wp-content/uploads/2025/06/Mask-group-2.jpg"
 };
 
 export default function Training() {
@@ -19,7 +18,7 @@ export default function Training() {
             <Container>
                 <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
                     {/* imagen */}
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-card lg:aspect-auto lg:min-h-[34rem]">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] lg:aspect-auto lg:min-h-[34rem]">
                         <Image
                             src={CONTENT.image}
                             alt=""
@@ -27,53 +26,66 @@ export default function Training() {
                             sizes="(min-width: 1024px) 60vw, 100vw"
                             className="object-cover"
                         />
-
-                        {CONTENT.seal && (
-                            <span className="absolute bottom-6 right-6 block w-20 lg:w-24">
-                <Image
-                    src={CONTENT.seal}
-                    alt=""
-                    width={96}
-                    height={120}
-                    className="h-auto w-full"
-                />
-              </span>
-                        )}
                     </div>
 
                     {/* tarjeta */}
-                    <div className="flex flex-col rounded-card bg-accent-soft p-7 lg:p-9">
+                    <div className="flex flex-col rounded-[2rem] bg-brand-400 p-7 lg:p-9">
                         <div className="flex items-start justify-between gap-4">
-                            <Badge className="border-transparent bg-white/70">
+                            <Badge className="border-black bg-transparent text-black">
                                 {CONTENT.badge}
                             </Badge>
-                            <span aria-hidden className="text-2xl leading-none text-navy-800">
-                ✳
-              </span>
+
+                            <span
+                                aria-hidden
+                                className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-black"
+                            >
+                                <ChartIcon className="size-5" />
+                            </span>
                         </div>
 
-                        <h2 className="mt-8 max-w-[14ch] text-2xl font-semibold leading-snug text-navy-800 lg:text-3xl">
+                        <h2 className="mt-8 max-w-[14ch] text-3xl font-bold leading-tight text-black lg:text-[2.25rem]">
                             {CONTENT.title}
                         </h2>
 
-                        <p className="mt-8 text-[15px] leading-relaxed text-navy-800/85 lg:mt-auto lg:pt-12">
+                        <p className="mt-8 max-w-[38ch] text-[15px] leading-relaxed text-black/80 lg:mt-auto lg:pt-12">
                             {CONTENT.description}
                         </p>
 
-                        <div className="mt-8 flex items-center gap-2">
-                            <Button href={CONTENT.cta.href} variant="dark" size="sm">
-                                {CONTENT.cta.label}
-                            </Button>
-                            <span
-                                aria-hidden
-                                className="grid size-11 shrink-0 place-items-center rounded-full bg-navy-800 text-white"
+                        <div className="group mt-8 flex w-fit items-center gap-2">
+                            <Link
+                                href={CONTENT.cta.href}
+                                className="inline-flex items-center rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 group-hover:bg-black group-hover:text-white"
                             >
-                <ArrowUpRight className="size-4" />
-              </span>
+                                {CONTENT.cta.label}
+                            </Link>
+
+                            <Link
+                                href={CONTENT.cta.href}
+                                aria-hidden
+                                tabIndex={-1}
+                                className="relative grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-white text-black transition-colors duration-300 group-hover:bg-black group-hover:text-white"
+                            >
+                                <ArrowUpRight className="col-start-1 row-start-1 size-4 transition-[translate] duration-300 group-hover:-translate-y-11" />
+                                <ArrowUpRight
+                                    aria-hidden
+                                    className="col-start-1 row-start-1 size-4 translate-y-11 transition-[translate] duration-300 group-hover:translate-y-0"
+                                />
+                            </Link>
                         </div>
                     </div>
                 </div>
             </Container>
         </section>
+    );
+}
+
+function ChartIcon({ className }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 30 30" fill="none" className={className} aria-hidden>
+            <path
+                d="M2.5625 26.25L10.625 15H16.9375L26.25 4.125V26.25H2.5625ZM4.75 18.9688L2.75 17.5312L8.125 10H14.4375L20.3125 3.15625L22.1875 4.78125L15.5625 12.5H9.375L4.75 18.9688Z"
+                fill="currentColor"
+            />
+        </svg>
     );
 }

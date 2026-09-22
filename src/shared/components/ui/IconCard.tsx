@@ -18,23 +18,28 @@ export default function IconCard({ item, className }: Props) {
     return (
         <article
             className={cn(
-                "group flex h-full flex-col rounded-card border border-border bg-bg p-5",
-                "transition-colors duration-300 hover:border-transparent hover:bg-accent",
+                "group flex h-full flex-col bg-[#DFDFDF] p-5",
+                "rounded-bl-[2rem] rounded-br-[2rem] rounded-tl-[2rem] rounded-tr-none",
                 className
             )}
         >
-      <span
-          aria-hidden
-          className="grid size-14 shrink-0 place-items-center rounded-full bg-accent text-navy-800 transition-colors duration-300 group-hover:bg-transparent"
-      >
-        <Icon className="size-6" />
-      </span>
+            <span
+                aria-hidden
+                className="grid size-14 shrink-0 place-items-center rounded-full bg-accent text-black"
+            >
+                <Icon className="size-6" />
+            </span>
 
-            <div className="mt-14 flex flex-1 flex-col rounded-card bg-surface p-6 transition-colors duration-300 group-hover:bg-white/35">
+            <div
+                className={cn(
+                    "mt-14 flex flex-1 flex-col bg-[#EDEDED] p-6",
+                    "rounded-bl-2xl rounded-br-2xl rounded-tl-2xl rounded-tr-none"
+                )}
+            >
                 <h3 className="text-lg font-semibold leading-snug text-fg">
                     {item.title}
                 </h3>
-                <p className="mt-6 text-[15px] leading-relaxed text-fg-muted transition-colors duration-300 group-hover:text-navy-800">
+                <p className="mt-6 text-[15px] leading-relaxed text-fg-muted">
                     {item.description}
                 </p>
             </div>
