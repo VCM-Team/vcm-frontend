@@ -11,6 +11,7 @@ import {
     type NavMenu,
 } from "@/src/shared/data/navigation";
 import { cn } from "@/src/lib/utils";
+import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
 
 const CLOSE_DELAY = 140;
 
@@ -424,21 +425,25 @@ function MenuPanel({
                     href={menu.promo.ctaHref}
                     className="group/promo relative isolate flex flex-col justify-between overflow-hidden rounded-[2rem] bg-black p-7"
                 >
-                    <PromoShape />
+                    <PromoShape isOpen={isOpen} />
 
                     <p className="max-w-[16ch] text-lg font-semibold leading-snug text-white">
                         {menu.promo.title}
                     </p>
 
                     <span className="mt-16 inline-flex items-center gap-2">
-                        <span className="rounded-full bg-brand-400 px-5 py-2.5 text-sm font-semibold leading-none text-black transition-colors duration-200 group-hover/promo:bg-brand-500 group-hover/promo:text-white">
-                            {menu.promo.ctaLabel}
-                        </span>
-
-                        <span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand-400 text-black transition-colors duration-200 group-hover/promo:bg-brand-500 group-hover/promo:text-white">
-                            <ArrowUpRight />
-                        </span>
+                    <span className="rounded-full bg-brand-400 px-5 py-2.5 text-sm font-semibold leading-none text-black transition-colors duration-200 group-hover/promo:bg-brand-500 group-hover/promo:text-white">
+                        {menu.promo.ctaLabel}
                     </span>
+
+                    <span className="relative grid size-9 shrink-0 place-items-center overflow-hidden rounded-full bg-brand-400 text-black transition-colors duration-200 group-hover/promo:bg-brand-500 group-hover/promo:text-white">
+                        <ArrowUpRight className="col-start-1 row-start-1 size-3.5 transition-[translate] duration-300 group-hover/promo:-translate-y-9" />
+                        <ArrowUpRight
+                            aria-hidden
+                            className="col-start-1 row-start-1 size-3.5 translate-y-9 transition-[translate] duration-300 group-hover/promo:translate-y-0"
+                        />
+                    </span>
+                </span>
                 </Link>
 
                 <div className="py-3 pr-3">
@@ -464,13 +469,18 @@ function MenuPanel({
     );
 }
 
-function PromoShape() {
+function PromoShape({ isOpen }: { isOpen: boolean }) {
     return (
         <svg
             aria-hidden
             viewBox="60 75 270 325"
             fill="none"
-            className="pointer-events-none absolute -bottom-6 -right-10 -z-10 h-[62%] w-auto"
+            className={cn(
+                "pointer-events-none absolute -bottom-6 -z-10 h-[62%] w-auto",
+                "transition-[translate,opacity] duration-700 delay-100",
+                "ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+                isOpen ? "-right-10 opacity-100" : "-right-10 translate-x-24 opacity-0"
+            )}
         >
             <path
                 d="M271.594 348.019L245.022 394.006L75.6697 165.223C67.0856 153.613 66.2016 138.081 73.4139 125.599L97.9168 83.192L269.039 308.003C277.877 319.628 278.882 335.405 271.575 348.052L271.594 348.019Z"
@@ -496,25 +506,6 @@ function Chevron({ className }: { className?: string }) {
         >
             <path
                 d="m6 9 6 6 6-6"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-            />
-        </svg>
-    );
-}
-
-function ArrowUpRight() {
-    return (
-        <svg
-            width="10"
-            height="10"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden
-        >
-            <path
-                d="M7 17 17 7M8 7h9v9"
                 stroke="currentColor"
                 strokeWidth="2.5"
                 strokeLinecap="round"
