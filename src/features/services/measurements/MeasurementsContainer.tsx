@@ -147,6 +147,7 @@ export default function MeasurementsContainer() {
                 titleRest={TESTIMONIALS_HEADING.titleRest}
                 cta={TESTIMONIALS_HEADING.cta}
                 items={TESTIMONIALS}
+                variant={"dark"}
             />
 
             <StickyCardSection

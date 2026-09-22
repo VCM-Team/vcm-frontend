@@ -39,7 +39,7 @@ export default function FeatureGrid({
                         <article key={key}>
               <span
                   aria-hidden
-                  className="grid size-14 place-items-center rounded-full bg-surface text-navy-800"
+                  className="grid size-14 place-items-center rounded-full bg-[#F2EAD6] text-navy-800"
               >
                 <Icon className="size-6" />
               </span>

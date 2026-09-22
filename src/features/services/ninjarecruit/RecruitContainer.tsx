@@ -125,7 +125,7 @@ export default function RecruitContainer() {
                 cta={PROCESS.cta}
             />
 
-            <FaqSection badge={FAQ.badge} title={FAQ.title} items={FAQ_ITEMS} />
+            <FaqSection badge={FAQ.badge} title={FAQ.title} items={FAQ_ITEMS} variant={"dark"} />
 
             <TestimonialsSection
                 badge={TESTIMONIALS_HEADING.badge}
@@ -134,6 +134,7 @@ export default function RecruitContainer() {
                 titleRest={TESTIMONIALS_HEADING.titleRest}
                 cta={TESTIMONIALS_HEADING.cta}
                 items={TESTIMONIALS}
+                variant={"dark"}
             />
 
             <StickyCardSection

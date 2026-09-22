@@ -32,7 +32,7 @@ export default function FeatureSplit({
                 <div className={cn("grid gap-6", columns)}>
                     <div
                         className={cn(
-                            "relative aspect-[4/3] overflow-hidden rounded-card",
+                            "relative aspect-[4/3] overflow-hidden rounded-panel",
                             imageAspect
                         )}
                     >
@@ -45,21 +45,21 @@ export default function FeatureSplit({
                         />
                     </div>
 
-                    <div className="flex flex-col rounded-card bg-accent-soft p-7 lg:p-10">
+                    <div className="flex flex-col rounded-panel bg-brand-400 p-7 lg:p-10">
                         <div className="flex items-start justify-between gap-4">
-                            <Badge className="border-transparent bg-transparent ring-1 ring-navy-800/20">
+                            <Badge className="border-black bg-transparent text-black">
                                 {badge}
                             </Badge>
 
                             <span
                                 aria-hidden
-                                className="grid size-12 shrink-0 place-items-center rounded-full bg-navy-800 text-accent"
+                                className="grid size-12 shrink-0 place-items-center rounded-full bg-accent text-black"
                             >
-                <ChartIcon />
-              </span>
+                                <ChartIcon className="size-5" />
+                            </span>
                         </div>
 
-                        <h2 className="mt-8 max-w-[14ch] text-3xl font-semibold leading-tight text-navy-800 lg:text-4xl">
+                        <h2 className="mt-8 max-w-[14ch] text-3xl font-semibold leading-tight text-black lg:text-4xl">
                             {title}
                             {titleRest && (
                                 <>
@@ -69,7 +69,7 @@ export default function FeatureSplit({
                             )}
                         </h2>
 
-                        <p className="mt-10 max-w-[46ch] text-[15px] leading-relaxed text-navy-800/85 lg:mt-auto lg:pt-16">
+                        <p className="mt-10 max-w-[46ch] text-[15px] leading-relaxed text-black/80 lg:mt-auto lg:pt-16">
                             {description}
                         </p>
                     </div>
@@ -79,14 +79,12 @@ export default function FeatureSplit({
     );
 }
 
-function ChartIcon() {
+function ChartIcon({ className }: { className?: string }) {
     return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+        <svg viewBox="0 0 30 30" fill="none" className={className} aria-hidden>
             <path
-                d="M5 19V11M10 19V5M15 19v-6M20 19V8"
-                stroke="currentColor"
-                strokeWidth="2.4"
-                strokeLinecap="round"
+                d="M2.5625 26.25L10.625 15H16.9375L26.25 4.125V26.25H2.5625ZM4.75 18.9688L2.75 17.5312L8.125 10H14.4375L20.3125 3.15625L22.1875 4.78125L15.5625 12.5H9.375L4.75 18.9688Z"
+                fill="currentColor"
             />
         </svg>
     );

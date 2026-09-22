@@ -56,7 +56,7 @@ export default function PageHero({
                             </h1>
 
                             {description && (
-                                <p className="mt-6 max-w-[48ch] text-[15px] leading-relaxed text-fg-muted">
+                                <p className="mt-6 max-w-[48ch] text-[15px] leading-relaxed text-black">
                                     {description}
                                 </p>
                             )}
@@ -64,12 +64,12 @@ export default function PageHero({
 
                         {cta && (
                             <div className="flex items-center gap-2 lg:justify-end lg:pb-1">
-                                <Button href={cta.href} variant="dark" size="sm">
+                                <Button href={cta.href} variant="accent" size="sm">
                                     {cta.label}
                                 </Button>
                                 <span
                                     aria-hidden
-                                    className="grid size-11 shrink-0 place-items-center rounded-full bg-ink-900 text-brand-400"
+                                    className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-400 text-black"
                                 >
                                     <ArrowUpRight className="size-4" />
                                 </span>

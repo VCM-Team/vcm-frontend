@@ -394,7 +394,7 @@ function MenuPanel({
     if (menu.type === "simple") {
         return (
             <div className={wrapper}>
-                <ul className="min-w-[200px] rounded-2xl bg-white p-3 shadow-xl ring-1 ring-black/5">
+                <ul className="min-w-[200px] rounded-2xl bg-bg p-3 shadow-xl ring-1 ring-black/5">
                     {menu.links.map((l) => (
                         <li key={l.href}>
                             <Link
@@ -419,35 +419,39 @@ function MenuPanel({
                     : "-translate-x-1/2 -translate-y-2"
             )}
         >
-            <div className="grid grid-cols-[300px_1fr] gap-10 rounded-3xl bg-white p-8 shadow-xl ring-1 ring-black/5">
+            <div className="grid grid-cols-[300px_1fr] gap-10 rounded-[2.5rem] bg-bg p-5 shadow-xl ring-1 ring-black/5">
                 <Link
                     href={menu.promo.ctaHref}
-                    className="group/promo flex flex-col justify-between rounded-2xl bg-ink-900 p-7 transition-transform duration-200 hover:-translate-y-0.5"
+                    className="group/promo relative isolate flex flex-col justify-between overflow-hidden rounded-[2rem] bg-black p-7"
                 >
-                    <p className="text-lg font-semibold leading-snug text-brand-400">
+                    <PromoShape />
+
+                    <p className="max-w-[16ch] text-lg font-semibold leading-snug text-white">
                         {menu.promo.title}
                     </p>
 
-                    <span className="mt-16 inline-flex items-center gap-2 text-sm font-medium text-white">
-                        {menu.promo.ctaLabel}
+                    <span className="mt-16 inline-flex items-center gap-2">
+                        <span className="rounded-full bg-brand-400 px-5 py-2.5 text-sm font-semibold leading-none text-black transition-colors duration-200 group-hover/promo:bg-brand-500 group-hover/promo:text-white">
+                            {menu.promo.ctaLabel}
+                        </span>
 
-                        <span className="grid size-5 place-items-center rounded-full bg-brand-400 text-black transition-transform duration-200 group-hover/promo:translate-x-0.5">
+                        <span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand-400 text-black transition-colors duration-200 group-hover/promo:bg-brand-500 group-hover/promo:text-white">
                             <ArrowUpRight />
                         </span>
                     </span>
                 </Link>
 
-                <div>
-                    <p className="mb-5 text-xs font-semibold tracking-[0.12em] text-ink-600">
+                <div className="py-3 pr-3">
+                    <span className="inline-flex rounded-full border border-ink-900/25 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-900">
                         {menu.groupLabel}
-                    </p>
+                    </span>
 
-                    <ul className="space-y-1">
+                    <ul className="mt-5 space-y-0.5">
                         {menu.links.map((l) => (
                             <li key={l.href}>
                                 <Link
                                     href={l.href}
-                                    className="-mx-3 block rounded-xl px-3 py-2 text-[15px] text-ink-900 transition-colors duration-200 hover:bg-brand-400/15"
+                                    className="-mx-3 block rounded-xl px-3 py-2 text-[15px] text-ink-900 transition-colors duration-200 hover:bg-brand-400/20"
                                 >
                                     {l.label}
                                 </Link>
@@ -457,6 +461,26 @@ function MenuPanel({
                 </div>
             </div>
         </div>
+    );
+}
+
+function PromoShape() {
+    return (
+        <svg
+            aria-hidden
+            viewBox="60 75 270 325"
+            fill="none"
+            className="pointer-events-none absolute -bottom-6 -right-10 -z-10 h-[62%] w-auto"
+        >
+            <path
+                d="M271.594 348.019L245.022 394.006L75.6697 165.223C67.0856 153.613 66.2016 138.081 73.4139 125.599L97.9168 83.192L269.039 308.003C277.877 319.628 278.882 335.405 271.575 348.052L271.594 348.019Z"
+                fill="#1F1F1F"
+            />
+            <path
+                d="M295.361 148.515L322.37 101.772L124.288 81.5764L186.599 159.525L260.582 166.467C274.684 167.769 288.282 160.767 295.361 148.515Z"
+                fill="#1F1F1F"
+            />
+        </svg>
     );
 }
 

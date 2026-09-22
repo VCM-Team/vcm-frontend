@@ -4,6 +4,7 @@ import Button from "./Button";
 import NumberedCard, { type NumberedCardItem } from "./NumberedCard";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
 import { cn } from "@/src/lib/utils";
+import Link from "next/link";
 
 type Props = {
     badge: string;
@@ -51,16 +52,28 @@ export default function ProcessSection({
                 </div>
 
                 {cta && (
-                    <div className="mt-12 flex items-center justify-center gap-2 lg:mt-14">
-                        <Button href={cta.href} variant="dark" size="sm">
-                            {cta.label}
-                        </Button>
-                        <span
-                            aria-hidden
-                            className="grid size-11 shrink-0 place-items-center rounded-full bg-navy-800 text-accent"
-                        >
-              <ArrowUpRight className="size-4" />
-            </span>
+                    <div className="mt-12 flex justify-center lg:mt-14">
+                        <div className="group flex w-fit items-center gap-2">
+                            <Link
+                                href={cta.href}
+                                className="inline-flex items-center rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300  group-hover:text-white"
+                            >
+                                {cta.label}
+                            </Link>
+
+                            <Link
+                                href={cta.href}
+                                aria-hidden
+                                tabIndex={-1}
+                                className="relative grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-brand-400 text-black transition-colors duration-300  group-hover:text-white"
+                            >
+                                <ArrowUpRight className="col-start-1 row-start-1 size-4 transition-[translate] duration-300 group-hover:-translate-y-11" />
+                                <ArrowUpRight
+                                    aria-hidden
+                                    className="col-start-1 row-start-1 size-4 translate-y-11 transition-[translate] duration-300 group-hover:translate-y-0"
+                                />
+                            </Link>
+                        </div>
                     </div>
                 )}
             </Container>

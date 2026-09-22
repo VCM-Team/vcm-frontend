@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import Container from "./Container";
 import Badge from "./Badge";
 import Button from "./Button";
@@ -15,6 +16,8 @@ type Props = {
     titleRest?: string;
     cta?: { label: string; href: string };
     items: readonly Testimonial[];
+    /** "light" (por defecto) o "dark". */
+    variant?: "light" | "dark";
     className?: string;
 };
 
@@ -25,11 +28,14 @@ export default function TestimonialsSection({
                                                 titleRest,
                                                 cta,
                                                 items,
+                                                variant = "light",
                                                 className,
                                             }: Props) {
     const trackRef = useRef<HTMLDivElement>(null);
     const [atStart, setAtStart] = useState(true);
     const [atEnd, setAtEnd] = useState(false);
+
+    const isDark = variant === "dark";
 
     const measure = useCallback(() => {
         const el = trackRef.current;
@@ -62,34 +68,56 @@ export default function TestimonialsSection({
     };
 
     return (
-        <section className={cn("py-16 lg:py-24", className)}>
+        <section className={cn("py-16 lg:py-24", isDark && "bg-ink-900", className)}>
             <Container>
                 <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
                     {/* encabezado */}
                     <div className="flex flex-col">
-                        <Badge className="self-start">{badge}</Badge>
+                        <Badge
+                            className={cn(
+                                "self-start",
+                                isDark && "border-brand-400 bg-transparent text-brand-400"
+                            )}
+                        >
+                            {badge}
+                        </Badge>
 
-                        <h2 className="mt-8 max-w-[18ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]">
+                        <h2
+                            className={cn(
+                                "mt-8 max-w-[18ch] text-3xl font-semibold leading-[1.15] sm:text-4xl lg:text-[2.75rem]",
+                                isDark ? "text-white" : "text-fg"
+                            )}
+                        >
                             {title}
                             {titleAccent && (
                                 <>
                                     {" "}
-                                    <span className="text-accent">{titleAccent}</span>
+                                    <span className={isDark ? "text-brand-400" : "text-accent"}>
+                                        {titleAccent}
+                                    </span>
                                 </>
                             )}
                             {titleRest && <> {titleRest}</>}
                         </h2>
 
-                        {cta && (
-                            <Button
-                                href={cta.href}
-                                variant="dark"
-                                size="sm"
-                                className="mt-8 self-start lg:mt-auto"
-                            >
-                                {cta.label}
-                            </Button>
-                        )}
+                        {cta &&
+                            (isDark ? (
+                                <Link
+                                    href={cta.href}
+                                    className="mt-8 inline-flex self-start rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white lg:mt-auto"
+                                >
+                                    {cta.label}
+                                </Link>
+                            ) : (
+                                <Button
+                                    href={cta.href}
+                                    variant="dark"
+                                    size="sm"
+                                    className="mt-8 self-start lg:mt-auto"
+                                >
+                                    {cta.label}
+                                </Button>
+                            ))}
                     </div>
 
                     {/* carrusel */}
@@ -105,7 +133,7 @@ export default function TestimonialsSection({
                                     key={t.key}
                                     className="w-full shrink-0 snap-start sm:w-[calc(50%-0.625rem)] lg:w-full"
                                 >
-                                    <TestimonialCard testimonial={t} />
+                                    <TestimonialCard testimonial={t} variant={variant} />
                                 </div>
                             ))}
                         </div>
@@ -117,7 +145,12 @@ export default function TestimonialsSection({
                                 onClick={() => go(-1)}
                                 disabled={atStart}
                                 aria-label="Previous testimonial"
-                                className="pointer-events-auto grid size-8 place-items-center text-fg transition-opacity hover:text-accent disabled:opacity-25"
+                                className={cn(
+                                    "pointer-events-auto grid size-8 place-items-center transition-opacity disabled:opacity-25",
+                                    isDark
+                                        ? "text-brand-400 hover:text-brand-500"
+                                        : "text-fg hover:text-accent"
+                                )}
                             >
                                 <Arrow className="size-5 rotate-180" />
                             </button>
@@ -127,7 +160,12 @@ export default function TestimonialsSection({
                                 onClick={() => go(1)}
                                 disabled={atEnd}
                                 aria-label="Next testimonial"
-                                className="pointer-events-auto grid size-8 place-items-center text-fg transition-opacity hover:text-accent disabled:opacity-25"
+                                className={cn(
+                                    "pointer-events-auto grid size-8 place-items-center transition-opacity disabled:opacity-25",
+                                    isDark
+                                        ? "text-brand-400 hover:text-brand-500"
+                                        : "text-fg hover:text-accent"
+                                )}
                             >
                                 <Arrow className="size-5" />
                             </button>

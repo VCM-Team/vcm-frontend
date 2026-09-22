@@ -8,6 +8,8 @@ type Props = {
     title: string;
     titleAccent?: string;
     items: readonly AccordionItem[];
+    /** "light" (por defecto) o "dark". */
+    variant?: "light" | "dark";
     className?: string;
 };
 
@@ -16,27 +18,47 @@ export default function FaqSection({
                                        title,
                                        titleAccent,
                                        items,
+                                       variant = "light",
                                        className,
                                    }: Props) {
+    const isDark = variant === "dark";
+
     return (
-        <section className={cn("py-16 lg:py-24", className)}>
+        <section className={cn("py-16 lg:py-24", isDark && "bg-ink-900", className)}>
             <Container>
                 <div className="mx-auto max-w-3xl">
                     <div className="flex flex-col items-center text-center">
-                        <Badge>{badge}</Badge>
+                        <Badge
+                            className={cn(
+                                isDark && "border-brand-400 bg-transparent text-brand-400"
+                            )}
+                        >
+                            {badge}
+                        </Badge>
 
-                        <h2 className="mt-8 text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]">
+                        <h2
+                            className={cn(
+                                "mt-8 text-3xl font-semibold leading-[1.15] sm:text-4xl lg:text-[2.75rem]",
+                                isDark ? "text-white" : "text-fg"
+                            )}
+                        >
                             {title}
                             {titleAccent && (
                                 <>
                                     {" "}
-                                    <span className="text-accent">{titleAccent}</span>
+                                    <span className={isDark ? "text-brand-400" : "text-accent"}>
+                                        {titleAccent}
+                                    </span>
                                 </>
                             )}
                         </h2>
                     </div>
 
-                    <Accordion items={items} className="mt-12 lg:mt-14" />
+                    <Accordion
+                        items={items}
+                        variant={variant}
+                        className="mt-12 lg:mt-14"
+                    />
                 </div>
             </Container>
         </section>

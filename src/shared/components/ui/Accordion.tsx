@@ -13,11 +13,20 @@ type Props = {
     items: readonly AccordionItem[];
     /** Clave del item abierto al cargar. Por defecto, ninguno. */
     defaultOpen?: string;
+    /** "light" (por defecto) o "dark". */
+    variant?: "light" | "dark";
     className?: string;
 };
 
-export default function Accordion({ items, defaultOpen, className }: Props) {
+export default function Accordion({
+                                      items,
+                                      defaultOpen,
+                                      variant = "light",
+                                      className,
+                                  }: Props) {
     const [openKey, setOpenKey] = useState<string | null>(defaultOpen ?? null);
+
+    const isDark = variant === "dark";
 
     return (
         <div className={className}>
@@ -33,15 +42,25 @@ export default function Accordion({ items, defaultOpen, className }: Props) {
                                 aria-expanded={isOpen}
                                 aria-controls={`accordion-panel-${item.key}`}
                                 id={`accordion-trigger-${item.key}`}
-                                className="group flex w-full items-center justify-between gap-6 py-3.5 text-left"
+                                className="group flex w-full cursor-pointer items-center justify-between gap-6 py-3.5 text-left"
                             >
-                                <span className="text-xl font-medium text-fg lg:text-[1.375rem]">
+                                <span
+                                    className={cn(
+                                        "text-xl font-medium lg:text-[1.375rem]",
+                                        isDark ? "text-white" : "text-fg"
+                                    )}
+                                >
                                     {item.title}
                                 </span>
 
                                 <span
                                     aria-hidden
-                                    className="grid size-10 cursor-pointer shrink-0 place-items-center rounded-full bg-ink-900 text-brand-400 transition-colors duration-200 group-hover:bg-black"
+                                    className={cn(
+                                        "grid size-10 shrink-0 place-items-center rounded-full transition-colors duration-200",
+                                        isDark
+                                            ? "bg-brand-400 text-black group-hover:bg-brand-500"
+                                            : "bg-ink-900 text-brand-400 group-hover:bg-black"
+                                    )}
                                 >
                                     <PlusMinus isOpen={isOpen} />
                                 </span>
@@ -61,16 +80,24 @@ export default function Accordion({ items, defaultOpen, className }: Props) {
                             )}
                         >
                             <div className="overflow-hidden">
-                                <p className="max-w-[64ch] pb-5 pr-16 text-[15px] leading-relaxed text-fg-muted">
+                                <p
+                                    className={cn(
+                                        "max-w-[64ch] pb-5 pr-16 text-[15px] leading-relaxed",
+                                        isDark ? "text-white/60" : "text-fg-muted"
+                                    )}
+                                >
                                     {item.content}
                                 </p>
                             </div>
                         </div>
 
-                        {/* Separador: negro a la izquierda, se desvanece a la derecha */}
+                        {/* Separador: sólido a la izquierda, se desvanece a la derecha */}
                         <span
                             aria-hidden
-                            className="mr-16 block h-px bg-gradient-to-r from-ink-900/60 to-transparent"
+                            className={cn(
+                                "mr-16 block h-px bg-gradient-to-r to-transparent",
+                                isDark ? "from-white/30" : "from-ink-900/60"
+                            )}
                         />
                     </div>
                 );
