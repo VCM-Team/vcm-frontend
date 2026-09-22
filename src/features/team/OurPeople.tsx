@@ -6,10 +6,9 @@ import { LEADERSHIP, TEAM_MEMBERS } from "@/src/shared/data/team.data";
 
 const HEADING = {
     badge: "Our People",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
-    titleRest: "cierre del titular",
-    description: "Párrafo de apoyo de la sección — reemplázalo con el texto propio.",
+    title: "Behind the Work",
+    titleAccent: "The People",
+    description: "Our team is made up of seasoned business professionals with extensive experience in entrepreneurship, finance, analytics, strategy, and consulting. We are dedicated to leveraging our knowledge and skills to support and guide aspiring entrepreneurs, helping them navigate challenges and achieve success.",
 };
 
 const GROUPS = {
@@ -25,8 +24,8 @@ export default function OurPeople() {
 
                 <div className="mt-8 grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
                     <h2 className="max-w-[16ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]">
-                        <span className="text-accent">{HEADING.titleAccent}</span>{" "}
-                        {HEADING.title} {HEADING.titleRest}
+                        <span className="text-accent">{HEADING.titleAccent}</span><br/>{" "}
+                        {HEADING.title}
                     </h2>
 
                     <p className="text-[15px] leading-relaxed text-fg-muted lg:pt-2">
@@ -39,7 +38,7 @@ export default function OurPeople() {
                 <Container>
                     {/* Leadership — carrusel */}
                     <p className="text-xs font-semibold uppercase tracking-[0.1em] text-fg-muted">
-                        {GROUPS.leadership}
+                        <Badge>{GROUPS.leadership}</Badge>
                     </p>
 
                     <Carousel
@@ -64,7 +63,7 @@ export default function OurPeople() {
 
                     {/* Team — grid */}
                     <p className="text-xs font-semibold uppercase tracking-[0.1em] text-fg-muted">
-                        {GROUPS.team}
+                        <Badge>{GROUPS.team}</Badge>
                     </p>
 
                     <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
