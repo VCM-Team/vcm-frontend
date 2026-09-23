@@ -38,7 +38,7 @@ export default function StepSource({ data, update, next }: StepProps) {
                             "transition-[background-color,border-color,translate] duration-200 hover:-translate-y-0.5",
                             data.source === option
                                 ? "border-brand-400 bg-brand-400/10 text-brand-400"
-                                : "border-white/10 bg-white/[0.06] text-white/80 hover:border-white/25",
+                                : "border-white/1 bg-white/[0.06] text-white/80 hover:border-white/25",
                             // "Other" queda solo en la última fila: lo centramos
                             index === SOURCE_OPTIONS.length - 1 &&
                             SOURCE_OPTIONS.length % 2 === 1 &&

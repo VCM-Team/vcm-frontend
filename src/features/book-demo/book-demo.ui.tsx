@@ -66,7 +66,7 @@ export function ChoiceCard({
                 "hover:-translate-y-0.5",
                 selected
                     ? "border-brand-400 bg-brand-400/10"
-                    : "border-white/10 bg-white/[0.06] hover:border-white/25"
+                    : "border-white/1 bg-white/[0.06] hover:border-white/25"
             )}
         >
             {Icon && (
@@ -123,7 +123,7 @@ export function ToggleCard({
                 "transition-[background-color,border-color,translate] duration-200 hover:-translate-y-0.5",
                 selected
                     ? "border-brand-400 bg-brand-400/10"
-                    : "border-white/10 bg-white/[0.06] hover:border-white/25"
+                    : "border-white/1 bg-white/[0.06] hover:border-white/25"
             )}
         >
             <span
@@ -200,7 +200,7 @@ export function TextField({
                 placeholder={placeholder}
                 autoComplete={autoComplete}
                 onChange={(e) => onChange(e.target.value)}
-                className="w-full rounded-full border border-white/15 bg-white/5 px-5 py-3.5 text-[15px] text-white outline-none transition-colors duration-200 placeholder:text-white/35 focus:border-brand-400"
+                className="w-full rounded-full border border-white/0 bg-white/5 px-5 py-3.5 text-[15px] text-white outline-none transition-colors duration-200 placeholder:text-white/35 focus:border-brand-400"
             />
         </label>
     );

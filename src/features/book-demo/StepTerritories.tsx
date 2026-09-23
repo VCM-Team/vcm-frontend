@@ -32,8 +32,8 @@ export default function StepTerritories({ data, update, next }: StepProps) {
             description={TERRITORIES.description}
             icon={<PinIcon className="size-6" />}
         >
-            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5">
-                <div className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5">
+            <div className="rounded-3xl border border-white/1 bg-white/[0.06] p-5">
+                <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5">
                     <PinIcon className="size-5 shrink-0 text-white/50" />
                     <input
                         value={draft}
