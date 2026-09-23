@@ -10,16 +10,16 @@ export default function BlogCard({ post }: { post: BlogPost }) {
             className={cn(
                 "group relative flex h-full flex-col overflow-hidden",
                 "bg-gradient-to-b from-transparent from-[45%] to-black to-[45%]",
-                "rounded-bl-2xl rounded-br-2xl rounded-tl-[3rem] rounded-tr-none"
+                "rounded-tl-[5.25rem] rounded-tr-none rounded-bl-3xl rounded-br-3xl"
             )}
         >
-            <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden">
+            <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-tl-[5.25rem] rounded-tr-none rounded-bl-3xl rounded-br-3xl">
                 <Image
                     src={post.image}
                     alt=""
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    className="object-cover transition-[scale] duration-500 group-hover:scale-[1.04]"
                 />
             </div>
 
@@ -38,7 +38,15 @@ export default function BlogCard({ post }: { post: BlogPost }) {
                 </h3>
 
                 <div className="mt-auto flex justify-end pt-6">
-                    <span className="grid size-10 place-items-center rounded-full bg-brand-400 text-black transition-transform duration-200 group-hover:-translate-y-0.5">
+                    <span
+                        aria-hidden
+                        className={cn(
+                            "grid size-10 place-items-center rounded-full bg-brand-400 text-black",
+                            "transition-[background-color,translate] duration-200",
+                            "group-hover:-translate-y-0.5 group-hover:bg-[#F2EBD8]",
+                            "group-focus-within:-translate-y-0.5 group-focus-within:bg-[#F2EBD8]"
+                        )}
+                    >
                         <ArrowUpRight className="size-4" />
                     </span>
                 </div>

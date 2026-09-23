@@ -40,7 +40,7 @@ export default function ImageAccordionSplit({
                     {titleAccent && (
                         <>
                             {" "}
-                            <span className="text-brand-400">{titleAccent}</span>
+                            <span className="text-accent">{titleAccent}</span>
                         </>
                     )}
                 </h2>

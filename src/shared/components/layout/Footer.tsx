@@ -63,7 +63,7 @@ export default function Footer() {
                 <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16">
                     {/* Izquierda: titular, subtítulo y botón */}
                     <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-                        <h2 className="max-w-[18ch] text-3xl font-semibold leading-[1.2] sm:text-4xl lg:text-[2.5rem]">
+                        <h2 className="max-w-[19ch] text-3xl font-semibold leading-[1.2] sm:text-4xl lg:text-[2.5rem]">
                             {CTA.title}{" "}
                             <span className="text-brand-400">{CTA.titleAccent}</span>{" "}
                             {CTA.titleRest}

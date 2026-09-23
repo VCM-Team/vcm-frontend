@@ -19,7 +19,7 @@ export default function IconCard({ item, className }: Props) {
         <article
             className={cn(
                 "group flex h-full flex-col bg-[#DFDFDF] p-5",
-                "rounded-bl-[2rem] rounded-br-[2rem] rounded-tl-[2rem] rounded-tr-none",
+                "rounded-tl-[2.5rem] rounded-tr-none rounded-bl-3xl rounded-br-3xl",
                 className
             )}
         >

@@ -24,7 +24,7 @@ export default function ProcessSection({
                                            className,
                                        }: Props) {
     return (
-        <section className={cn("bg-gradient-to-b from-surface/50 to-bg py-16 lg:py-24", className)}>
+        <section className={cn("bg-bg from-surface/50 to-bg py-16 lg:py-24", className)}>
             <Container>
                 <div className="flex flex-col items-center text-center">
                     <Badge>{badge}</Badge>

@@ -72,10 +72,10 @@ export default function AccordionSection({
                     <div
                         className={cn(
                             "mt-12 lg:mt-16",
-                            cta && "border-t border-border pt-10 lg:pt-12"
+                            cta && "border-t border-black/30 pt-10 lg:pt-12"
                         )}
                     >
-                        <ul className="mx-auto flex max-w-5xl flex-wrap justify-center gap-3">
+                        <ul className="mx-auto flex max-w-5xl flex-wrap justify-center gap-8">
                             {features.map((f) => (
                                 <Pill key={f}>{f}</Pill>
                             ))}

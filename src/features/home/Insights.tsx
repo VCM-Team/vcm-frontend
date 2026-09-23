@@ -97,7 +97,7 @@ export default function Insights() {
                                 aria-hidden
                                 className="absolute bottom-4 right-4 grid size-11 place-items-center rounded-full bg-brand-400 text-black transition-colors duration-300 group-hover:bg-ink-900 group-hover:text-brand-400 group-focus-visible:bg-ink-900 group-focus-visible:text-brand-400 sm:bottom-5 sm:right-5"
                             >
-                                <ArrowUpRight className="size-4" />
+                                <ArrowUpRight className="size-5" />
                             </span>
                         </Link>
                     ))}

@@ -54,7 +54,7 @@ export default function Training() {
                         <div className="group mt-8 flex w-fit items-center gap-2">
                             <Link
                                 href={CONTENT.cta.href}
-                                className="inline-flex items-center rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 group-hover:bg-black group-hover:text-white"
+                                className="inline-flex items-center rounded-full bg-black px-7 py-3.5 text-[15px] font-semibold leading-none text-white transition-colors duration-300 group-hover:bg-white group-hover:text-black"
                             >
                                 {CONTENT.cta.label}
                             </Link>
@@ -63,7 +63,7 @@ export default function Training() {
                                 href={CONTENT.cta.href}
                                 aria-hidden
                                 tabIndex={-1}
-                                className="relative grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-white text-black transition-colors duration-300 group-hover:bg-black group-hover:text-white"
+                                className="relative grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-black text-white transition-colors duration-300 group-hover:bg-white group-hover:text-black"
                             >
                                 <ArrowUpRight className="col-start-1 row-start-1 size-4 transition-[translate] duration-300 group-hover:-translate-y-11" />
                                 <ArrowUpRight

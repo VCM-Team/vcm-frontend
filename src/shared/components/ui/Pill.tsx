@@ -27,7 +27,7 @@ export default function Pill({
 
 function CheckIcon() {
     return (
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>
             <path
                 d="m5 13 4.5 4.5L19 7"
                 stroke="currentColor"

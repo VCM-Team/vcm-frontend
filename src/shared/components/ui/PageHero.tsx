@@ -1,7 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import Container from "./Container";
 import Badge from "./Badge";
-import Button from "./Button";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
 import { cn } from "@/src/lib/utils";
 
@@ -63,16 +63,23 @@ export default function PageHero({
                         </div>
 
                         {cta && (
-                            <div className="flex items-center gap-2 lg:justify-end lg:pb-1">
-                                <Button href={cta.href} variant="accent" size="sm">
-                                    {cta.label}
-                                </Button>
-                                <span
-                                    aria-hidden
-                                    className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-400 text-black"
+                            <div className="group flex w-fit items-center gap-2 lg:justify-self-end lg:pb-1">
+                                <Link
+                                    href={cta.href}
+                                    className="inline-flex items-center rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300  group-hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
                                 >
-                                    <ArrowUpRight className="size-4" />
-                                </span>
+                                    {cta.label}
+                                </Link>
+
+                                <Link
+                                    href={cta.href}
+                                    aria-hidden
+                                    tabIndex={-1}
+                                    className="relative grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-brand-400 text-black transition-colors duration-300  group-hover:text-white"
+                                >
+                                    <ArrowUpRight className="col-start-1 row-start-1 size-4 transition-[translate] duration-300 group-hover:-translate-y-11" />
+                                    <ArrowUpRight className="col-start-1 row-start-1 size-4 translate-y-11 transition-[translate] duration-300 group-hover:translate-y-0" />
+                                </Link>
                             </div>
                         )}
                     </div>

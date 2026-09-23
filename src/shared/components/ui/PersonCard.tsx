@@ -15,7 +15,7 @@ export default function PersonCard({ member, href, className }: Props) {
         <article
             className={cn(
                 "group relative flex h-full flex-col bg-[#DFDFDF] p-4",
-                "rounded-bl-[2rem] rounded-br-[2rem] rounded-tl-[2rem] rounded-tr-none",
+                "rounded-tl-[2.5rem] rounded-tr-none rounded-bl-3xl rounded-br-3xl",
                 className
             )}
         >
@@ -56,7 +56,7 @@ export default function PersonCard({ member, href, className }: Props) {
                 {href && (
                     <span
                         aria-hidden
-                        className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-400 text-black transition-transform duration-200 group-hover:-translate-y-0.5"
+                        className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-400 text-black transition-[translate] duration-200 group-hover:-translate-y-0.5"
                     >
                         <ArrowUpRight className="size-4" />
                     </span>
