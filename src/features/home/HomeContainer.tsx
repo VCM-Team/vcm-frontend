@@ -27,7 +27,8 @@ const HOME_STATS: readonly StatItem[] = [
 
 const INTRO = {
     badge: "WHO WE ARE",
-    title: "For Those Who Build Beyond the Roof",
+    title: "More Than Staffing a Strategic",
+    titleAccent:"Growth Partner",
     description: "We know what it takes to run and grow a roofing business because we've experienced it ourselves. The long days, constant calls, missed moments, and pressure of keeping every part of the business moving. That's why we built a team that takes the weight off your shoulders, so you can spend less time chasing details and more time leading your team, closing jobs, and growing your business.",
     cta: { label: "Schedule a Call", href: "/contact-us" },
     features: [
@@ -209,6 +210,7 @@ export default function HomeContainer() {
             <AccordionSection
                 badge={INTRO.badge}
                 title={INTRO.title}
+                titleAccent={INTRO.titleAccent}
                 description={INTRO.description}
                 cta={INTRO.cta}
                 items={INTRO_ITEMS}

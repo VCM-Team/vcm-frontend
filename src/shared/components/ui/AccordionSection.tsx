@@ -41,13 +41,13 @@ export default function AccordionSection({
                     {titleAccent && (
                         <>
                             {" "}
-                            <span className="text-brand-400">{titleAccent}</span>
+                            <span className="text-accent">{titleAccent}</span>
                         </>
                     )}
                     {titleRest && <> {titleRest}</>}
                 </h2>
 
-                <div className="mt-12 grid items-start gap-12 lg:mt-16 lg:grid-cols-2 lg:gap-20">
+                <div className="mt-7 grid items-start gap-12 lg:mt-7 lg:grid-cols-2 lg:gap-20">
                     {/* columna izquierda */}
                     <div>
                         <p className="max-w-[48ch] text-base leading-[1.75] text-fg-muted">
