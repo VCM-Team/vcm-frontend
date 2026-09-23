@@ -38,7 +38,7 @@ export default function PromoCard({ item, className }: Props) {
         <article
             className={cn(
                 "group relative flex min-h-[34.5rem] flex-col overflow-hidden",
-                "rounded-bl-xl rounded-br-xl rounded-tl-[3rem] rounded-tr-none",
+                "rounded-tl-[5.25rem] rounded-tr-none rounded-bl-3xl rounded-br-3xl",
                 "transition-shadow duration-300 hover:shadow-xl",
                 isAccent ? "bg-accent" : "bg-black",
                 className
@@ -48,7 +48,7 @@ export default function PromoCard({ item, className }: Props) {
             <div
                 className={cn(
                     "flex items-start justify-between gap-4 p-7 lg:p-8",
-                    imageFirst && "mt-auto"
+                    imageFirst ? "mt-auto" : "pt-12 lg:pt-16"
                 )}
             >
                 <div className="min-w-0">
@@ -80,8 +80,10 @@ export default function PromoCard({ item, className }: Props) {
                 <span
                     aria-hidden
                     className={cn(
-                        "grid size-10 shrink-0 place-items-center rounded-full transition-transform duration-200",
-                        "group-hover:-translate-y-0.5",
+                        "grid size-10 shrink-0 place-items-center rounded-full",
+                        "transition-[background-color,color,translate] duration-200",
+                        "group-hover:-translate-y-0.5 group-hover:bg-[#F2EBD8] group-hover:text-black",
+                        "group-focus-within:-translate-y-0.5 group-focus-within:bg-[#F2EBD8] group-focus-within:text-black",
                         isAccent ? "bg-ink-900 text-accent" : "bg-accent text-black"
                     )}
                 >
@@ -95,7 +97,7 @@ export default function PromoCard({ item, className }: Props) {
                     "relative",
                     imageFirst
                         ? "order-first min-h-0 flex-1 w-full"
-                        : "mx-7 mt-auto aspect-[4/3] overflow-hidden rounded-tl-2xl rounded-tr-none lg:mx-8"
+                        : "mx-7 mt-auto aspect-[4/3] overflow-hidden rounded-tl-[2rem] rounded-tr-none rounded-bl-lg rounded-br-lg lg:mx-8"
                 )}
             >
                 <Image
