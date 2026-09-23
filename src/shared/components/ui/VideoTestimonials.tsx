@@ -2,13 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Container from "./Container";
 import Badge from "./Badge";
 import Button from "./Button";
 import VideoPlayer from "./VideoPlayer";
 import type { VideoTestimonial } from "@/src/shared/data/video-testimonials.data";
 import { cn } from "@/src/lib/utils";
-import Link from "next/link";
 
 type Props = {
     items: readonly VideoTestimonial[];
@@ -49,35 +50,58 @@ export default function VideoTestimonials({ items, className }: Props) {
         el.scrollTo({ left: step * i, behavior: "smooth" });
     };
 
+    const hasMany = items.length > 1;
+    const isFirst = active === 0;
+    const isLast = active === items.length - 1;
+
     return (
         <section className={cn("py-16 lg:py-24", className)}>
             <Container>
-                <div
-                    ref={trackRef}
-                    role="region"
-                    aria-label="Testimonials"
-                    className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                >
-                    {items.map((item) => (
-                        <div key={item.key} className="w-full shrink-0 snap-start">
-                            <div className="grid gap-6 lg:grid-cols-2">
-                                <VideoPlayer
-                                    src={item.video.src}
-                                    poster={item.video.poster}
-                                    title={item.video.title}
-                                />
+                <div className="relative">
+                    <div
+                        ref={trackRef}
+                        role="region"
+                        aria-label="Testimonials"
+                        className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                    >
+                        {items.map((item) => (
+                            <div key={item.key} className="w-full shrink-0 snap-start">
+                                <div className="grid gap-6 lg:grid-cols-2">
+                                    <VideoPlayer
+                                        src={item.video.src}
+                                        poster={item.video.poster}
+                                        title={item.video.title}
+                                    />
 
-                                {item.variant === "story" ? (
-                                    <StoryCard item={item} />
-                                ) : (
-                                    <QuoteCard item={item} />
-                                )}
+                                    {item.variant === "story" ? (
+                                        <StoryCard item={item} />
+                                    ) : (
+                                        <QuoteCard item={item} />
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
+
+                    {hasMany && (
+                        <>
+                            <ArrowButton
+                                direction="prev"
+                                disabled={isFirst}
+                                onClick={() => goTo(active - 1)}
+                                className="left-0 cursor-pointer -translate-x-[calc(100%+1rem)]"
+                            />
+                            <ArrowButton
+                                direction="next"
+                                disabled={isLast}
+                                onClick={() => goTo(active + 1)}
+                                className="right-0 cursor-pointer translate-x-[calc(100%+1rem)]"
+                            />
+                        </>
+                    )}
                 </div>
 
-                {items.length > 1 && (
+                {hasMany && (
                     <div className="mt-8 flex justify-center gap-2">
                         {items.map((item, i) => (
                             <button
@@ -96,6 +120,35 @@ export default function VideoTestimonials({ items, className }: Props) {
                 )}
             </Container>
         </section>
+    );
+}
+
+function ArrowButton({
+                         direction,
+                         disabled,
+                         onClick,
+                         className,
+                     }: {
+    direction: "prev" | "next";
+    disabled: boolean;
+    onClick: () => void;
+    className?: string;
+}) {
+    const Icon = direction === "prev" ? FiChevronLeft : FiChevronRight;
+
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            disabled={disabled}
+            aria-label={direction === "prev" ? "Testimonio anterior" : "Testimonio siguiente"}
+            className={cn(
+                "absolute top-1/2 hidden size-10 -translate-y-1/2 place-items-center rounded-full text-ink-900 transition-[color,opacity] duration-200 hover:text-brand-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 disabled:pointer-events-none disabled:opacity-30 xl:grid",
+                className
+            )}
+        >
+            <Icon className="size-6" aria-hidden />
+        </button>
     );
 }
 
