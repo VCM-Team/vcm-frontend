@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { INITIAL_DATA, type BookDemoData } from "./book-demo.types";
 import StepIntro from "./StepIntro";
@@ -22,6 +23,9 @@ const TOTAL_STEPS = 10;
 export default function BookDemoContainer() {
     const [step, setStep] = useState(0);
     const [data, setData] = useState<BookDemoData>(INITIAL_DATA);
+    const [sending, setSending] = useState(false);
+    const [sendError, setSendError] = useState(false);
+    const [done, setDone] = useState(false);
 
     const update = (patch: Partial<BookDemoData>) =>
         setData((prev) => ({ ...prev, ...patch }));
@@ -29,13 +33,53 @@ export default function BookDemoContainer() {
     const next = () => setStep((s) => Math.min(s + 1, TOTAL_STEPS - 1));
     const back = () => setStep((s) => Math.max(s - 1, 0));
 
-    const submit = () => {
-        // TODO: enviar a /api/book-demo y luego redirigir al calendario
-        console.log("book-demo", data);
+    const submit = async () => {
+        setSending(true);
+        setSendError(false);
+        try {
+            const res = await fetch("/api/book-demo", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+            if (!res.ok) throw new Error();
+            setSending(false);
+            setDone(true);
+        } catch {
+            setSending(false);
+            setSendError(true);
+        }
     };
 
     const progress = step * 10;
     const stepProps = { data, update, next };
+
+    /* ── Pantalla final: sin header ni barra de progreso ── */
+    if (done) {
+        return (
+            <div className="flex min-h-dvh flex-col items-center justify-center bg-ink-900 px-5 py-16 text-center">
+                <span className="grid size-16 place-items-center rounded-full bg-emerald-500/15 text-emerald-500">
+                    <CheckIcon className="size-7" />
+                </span>
+
+                <h1 className="mt-8 text-3xl font-semibold text-white lg:text-[2.5rem]">
+                    Thanks, {data.firstName || "we got it"}!
+                </h1>
+
+                <p className="mt-4 max-w-xl text-base text-white/60 lg:text-lg">
+                    We received your assessment. Someone from our team will reach out
+                    within one business day to schedule your strategy call.
+                </p>
+
+                <Link
+                    href="/"
+                    className="mt-10 inline-flex cursor-pointer items-center rounded-full bg-brand-400 px-9 py-4 text-base font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white"
+                >
+                    Back to home
+                </Link>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-dvh bg-ink-900">
@@ -59,7 +103,7 @@ export default function BookDemoContainer() {
                             <button
                                 type="button"
                                 onClick={back}
-                                className="inline-flex items-center gap-2 text-sm font-medium text-white transition-colors duration-200 hover:text-brand-400"
+                                className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-white transition-colors duration-200 hover:text-brand-400"
                             >
                                 <ArrowLeftIcon className="size-4" />
                                 Back
@@ -82,15 +126,33 @@ export default function BookDemoContainer() {
             {step === 6 && <StepCrm {...stepProps} />}
             {step === 7 && <StepTimeline {...stepProps} />}
             {step === 8 && <StepSource {...stepProps} />}
-            {step === 9 && <StepSummary data={data} onSubmit={submit} />}
+            {step === 9 && (
+                <StepSummary
+                    data={data}
+                    onSubmit={submit}
+                    sending={sending}
+                    error={sendError}
+                />
+            )}
         </div>
     );
 }
+
+/* ── Iconos ─────────────────────────────── */
 
 function ArrowLeftIcon({ className }: { className?: string }) {
     return (
         <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
             <path d="M19 12H6M11 6l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    );
+}
+
+function CheckIcon({ className }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+            <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+            <path d="m8.5 12 2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     );
 }

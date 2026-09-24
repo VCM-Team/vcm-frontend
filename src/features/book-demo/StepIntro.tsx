@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { StepButton } from "./book-demo.ui";
 
 const INTRO = {
     logo: "/assets/brand/vcm_text_logo.webp",
+    back: { label: "Back to home", href: "/" },
     badge: "Scale Readiness Diagnostic",
     title: "Ready to scale your",
     titleRest: "roofing company?",
@@ -16,7 +18,15 @@ const INTRO = {
 
 export default function StepIntro({ next }: { next: () => void }) {
     return (
-        <div className="flex min-h-dvh flex-col items-center justify-center bg-ink-900 px-5 py-16 text-center">
+        <div className="relative flex min-h-dvh flex-col items-center justify-center bg-ink-900 px-5 py-16 text-center">
+            <Link
+                href={INTRO.back.href}
+                className="group absolute left-5 top-5 inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-white/70 transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:left-8 lg:top-8"
+            >
+                <ArrowLeftIcon className="size-4 transition-[translate] duration-200 group-hover:-translate-x-0.5" />
+                {INTRO.back.label}
+            </Link>
+
             <Image
                 src={INTRO.logo}
                 alt="VCM"
@@ -50,6 +60,14 @@ export default function StepIntro({ next }: { next: () => void }) {
                 {INTRO.note}
             </p>
         </div>
+    );
+}
+
+function ArrowLeftIcon({ className }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+            <path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
     );
 }
 

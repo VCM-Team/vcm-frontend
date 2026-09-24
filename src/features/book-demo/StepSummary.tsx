@@ -7,7 +7,6 @@ const SUMMARY = {
     title: "You look like a strong fit.",
     heading: "Your Profile Summary",
     cta: "Schedule Strategy Call",
-    calendarHref: "https://go.workninjas.com/",
 };
 
 const REVENUE_LABELS: Record<string, string> = {
@@ -36,9 +35,13 @@ const SUPPORT_LABELS: Record<string, string> = {
 export default function StepSummary({
                                         data,
                                         onSubmit,
+                                        sending = false,
+                                        error = false,
                                     }: {
     data: BookDemoData;
     onSubmit: () => void;
+    sending?: boolean;
+    error?: boolean;
 }) {
     const rows: { label: string; value: string }[] = [
         { label: "Company Stage", value: data.revenue ? REVENUE_LABELS[data.revenue] : "—" },
@@ -66,7 +69,7 @@ export default function StepSummary({
                 {SUMMARY.title}
             </h1>
 
-            <p className="mx-auto mt-4 max-w-xl text-base text-white lg:text-lg">
+            <p className="mx-auto mt-4 max-w-xl text-base text-white/60 lg:text-lg">
                 Based on your responses, {data.company || "your company"} is perfectly
                 positioned for our scaling system. Let&apos;s schedule your strategy call.
             </p>
@@ -84,10 +87,37 @@ export default function StepSummary({
                 </dl>
             </div>
 
+            {error && (
+                <div
+                    role="alert"
+                    className="mt-8 flex items-start gap-3 rounded-2xl border border-danger/40 bg-danger/10 p-4 text-left"
+                >
+                    <AlertIcon className="mt-0.5 size-5 shrink-0 text-danger" />
+                    <div>
+                        <p className="text-sm font-semibold text-danger">
+                            Ups, algo salió mal
+                        </p>
+                        <p className="mt-1 text-xs leading-relaxed text-white/60">
+                            No pudimos enviar tu información. Revisa tu conexión e inténtalo
+                            de nuevo.
+                        </p>
+                    </div>
+                </div>
+            )}
+
             <div className="mt-10">
-                <StepButton onClick={onSubmit}>
-                    {SUMMARY.cta}
-                    <ArrowRightIcon className="size-4" />
+                <StepButton onClick={onSubmit} disabled={sending}>
+                    {sending ? (
+                        <>
+                            <SpinnerIcon className="size-4 animate-spin" />
+                            Sending…
+                        </>
+                    ) : (
+                        <>
+                            {SUMMARY.cta}
+                            <ArrowRightIcon className="size-4" />
+                        </>
+                    )}
                 </StepButton>
             </div>
         </div>
@@ -109,6 +139,25 @@ function ArrowRightIcon({ className }: { className?: string }) {
     return (
         <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
             <path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    );
+}
+
+function AlertIcon({ className }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+            <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+            <path d="M12 7.5v5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <circle cx="12" cy="16.5" r="1" fill="currentColor" />
+        </svg>
+    );
+}
+
+function SpinnerIcon({ className }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+            <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="3" opacity="0.25" />
+            <path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
         </svg>
     );
 }
