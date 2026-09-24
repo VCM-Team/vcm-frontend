@@ -18,7 +18,7 @@ const HERO = {
 export default function Hero() {
     return (
         <section className="mx-3 mt-20 lg:mx-3 lg:mt-3">
-            <div className="relative isolate flex h-[calc(100svh-1.5rem)] items-end overflow-hidden rounded-3xl lg:h-[calc(100svh-2rem)]">
+            <div className="relative isolate flex h-[calc(100svh-1.5rem)] items-end pb-10 md:pb-20 overflow-hidden rounded-3xl lg:h-[calc(100svh-2rem)]">
                 <Image
                     src={HERO.image.src}
                     alt={HERO.image.alt}
