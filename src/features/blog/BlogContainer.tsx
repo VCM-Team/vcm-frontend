@@ -8,9 +8,9 @@ import { cn } from "@/src/lib/utils";
 
 const HEADING = {
     badge: "Blog",
-    title: "Título de la sección",
-    titleAccent: "palabra resaltada",
-    titleRest: "cierre del título",
+    title: "Ideas to Help Your",
+    titleAccent: "Construction Business",
+    titleRest: "Grow",
 };
 
 // Encabezado visible al cargar: basta con @starting-style (variante starting:)

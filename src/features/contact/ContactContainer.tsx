@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaLinkedinIn } from "react-icons/fa6";
 import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
 import RevealSection from "@/src/shared/components/ui/RevealSection";
@@ -8,10 +9,18 @@ import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 import ContactForm from "./ContactForm";
 
+// Pendiente de confirmar: VCM no publica su correo en la web
+const CONTACT_EMAIL = "email@dominio.com";
+
 const INFO = [
-    { label: "Remote Time Zone", value: "Aligned with U.S", Icon: PinIcon },
-    { label: "Our Phone", value: "(000) 000-0000", href: "tel:+10000000000", Icon: PhoneIcon },
-    { label: "Our Email", value: "email@dominio.com", href: "mailto:email@dominio.com", Icon: MailIcon },
+    { label: "Our Offices", value: "Lima, Peru", Icon: PinIcon },
+    {
+        label: "LinkedIn",
+        value: "discovervcm",
+        href: "https://www.linkedin.com/company/discovervcm",
+        Icon: LinkedInIcon,
+    },
+    { label: "Our Email", value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}`, Icon: MailIcon },
 ];
 
 const FORM_IMAGE = "https://workninjas.com/wp-content/uploads/2025/03/Mask-group-4.jpg";
@@ -37,40 +46,45 @@ export default function ContactContainer() {
                         </div>
 
                         <h1 className={cn("mt-7 text-3xl font-bold text-fg sm:text-4xl lg:text-5xl", ENTER_UP, "delay-100")}>
-                            Título <span className="text-brand-400">resaltado</span>
+                            Let’s Talk About <span className="text-brand-400">Your Growth</span>
                         </h1>
 
                         <p className={cn("mx-auto mt-5 max-w-[46ch] text-base text-fg-muted", ENTER_FADE, "delay-200")}>
-                            Subtítulo de la página — reemplázalo.
+                            Tell us about your business and where you want to take it. We’ll start with a free strategy session.
                         </p>
 
                         <ul className="mt-14 grid gap-8 text-left sm:grid-cols-3">
-                            {INFO.map(({ label, value, href, Icon }, i) => (
-                                <li
-                                    key={label}
-                                    className={cn("flex items-center justify-center gap-4", ENTER_BLUR_UP)}
-                                    style={{ transitionDelay: `${350 + i * 120}ms` }}
-                                >
-                                    <span className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-400 text-black">
-                                        <Icon />
-                                    </span>
-                                    <span>
-                                        <span className="block text-sm font-semibold text-fg">
-                                            {label}
+                            {INFO.map(({ label, value, href, Icon }, i) => {
+                                const external = href?.startsWith("http");
+
+                                return (
+                                    <li
+                                        key={label}
+                                        className={cn("flex items-center justify-center gap-4", ENTER_BLUR_UP)}
+                                        style={{ transitionDelay: `${350 + i * 120}ms` }}
+                                    >
+                                        <span className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-400 text-black">
+                                            <Icon />
                                         </span>
-                                        {href ? (
-                                            <Link
-                                                href={href}
-                                                className="text-sm text-fg-muted transition-colors hover:text-brand-500"
-                                            >
-                                                {value}
-                                            </Link>
-                                        ) : (
-                                            <span className="text-sm text-fg-muted">{value}</span>
-                                        )}
-                                    </span>
-                                </li>
-                            ))}
+                                        <span>
+                                            <span className="block text-sm font-semibold text-fg">
+                                                {label}
+                                            </span>
+                                            {href ? (
+                                                <Link
+                                                    href={href}
+                                                    {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+                                                    className="text-sm text-fg-muted transition-colors hover:text-brand-500"
+                                                >
+                                                    {value}
+                                                </Link>
+                                            ) : (
+                                                <span className="text-sm text-fg-muted">{value}</span>
+                                            )}
+                                        </span>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </Container>
                 </div>
@@ -80,7 +94,7 @@ export default function ContactContainer() {
             <RevealSection className="overflow-x-clip">
                 <Container className="py-16 lg:py-20">
                     <div className={REVEAL.left}>
-                        <Badge>Contact Us</Badge>
+                        <Badge>Get in Touch</Badge>
                     </div>
 
                     <h2
@@ -90,7 +104,7 @@ export default function ContactContainer() {
                             "delay-100"
                         )}
                     >
-                        Título del formulario
+                        Tell Us About Your Business
                     </h2>
 
                     {/* items-stretch para igualar la altura de las 2 columnas */}
@@ -122,10 +136,10 @@ export default function ContactContainer() {
                                 )}
                             >
                                 <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-400 text-black">
-                                    <PhoneIcon />
+                                    <PinIcon />
                                 </span>
                                 <span className="text-sm leading-snug text-black">
-                                    Texto del aviso flotante — reemplázalo.
+                                    Our team works from Lima, Peru, in time zones close to the U.S.
                                 </span>
                             </figcaption>
                         </figure>
@@ -156,7 +170,7 @@ export default function ContactContainer() {
                             <div className="flex items-start justify-between gap-4">
                                 <div className={cn(REVEAL.fade, "delay-[400ms]")}>
                                     <Badge className="border-black bg-transparent text-black">
-                                        Free Consultation
+                                        Free Strategy Session
                                     </Badge>
                                 </div>
 
@@ -179,7 +193,7 @@ export default function ContactContainer() {
                                     "delay-500"
                                 )}
                             >
-                                Título de la tarjeta
+                                Not Sure Where to Start?
                             </h2>
 
                             <p
@@ -189,19 +203,19 @@ export default function ContactContainer() {
                                     "delay-[600ms]"
                                 )}
                             >
-                                Texto de apoyo — reemplázalo.
+                                Take our 2-minute growth assessment and get a clear picture of what is holding your business back.
                             </p>
 
                             <div className={cn("group mt-10 flex w-fit items-center gap-2", REVEAL.up, "delay-[700ms]")}>
                                 <Link
-                                    href="/contact-us"
+                                    href="/book-demo"
                                     className="inline-flex items-center rounded-full bg-black px-7 py-3.5 text-[15px] font-semibold leading-none text-white transition-colors duration-300 group-hover:bg-white group-hover:text-black"
                                 >
-                                    Free Consultation
+                                    Start Assessment
                                 </Link>
 
                                 <Link
-                                    href="/contact-us"
+                                    href="/book-demo"
                                     aria-hidden
                                     tabIndex={-1}
                                     className="relative grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-black text-white transition-colors duration-300 group-hover:bg-white group-hover:text-black"
@@ -232,15 +246,8 @@ function PinIcon() {
     );
 }
 
-function PhoneIcon() {
-    return (
-        <svg width="16" height="16" viewBox="0 0 41 41" fill="none" aria-hidden>
-            <path
-                d="M33.4865 35.2495C29.9896 35.2495 26.5346 34.4872 23.1215 32.9625C19.7085 31.4378 16.6032 29.2767 13.8056 26.4791C11.008 23.6815 8.84686 20.5762 7.32218 17.1632C5.7975 13.7501 5.03516 10.2951 5.03516 6.79812C5.03516 6.29456 5.20301 5.87492 5.53872 5.53921C5.87443 5.2035 6.29407 5.03564 6.79763 5.03564H13.5958C13.9874 5.03564 14.3371 5.16853 14.6448 5.4343C14.9526 5.70007 15.1344 6.0148 15.1904 6.37848L16.2814 12.2534C16.3374 12.701 16.3234 13.0787 16.2395 13.3864C16.1555 13.6942 16.0017 13.9599 15.7779 14.1837L11.7074 18.2962C12.2669 19.3313 12.9313 20.3314 13.7007 21.2966C14.47 22.2617 15.3163 23.1919 16.2395 24.0872C17.1067 24.9544 18.0159 25.7587 18.9671 26.5001C19.9183 27.2414 20.9254 27.9199 21.9885 28.5353L25.9331 24.5907C26.1849 24.3389 26.5136 24.1501 26.9192 24.0242C27.3249 23.8983 27.7235 23.8634 28.1152 23.9193L33.9062 25.0943C34.2978 25.2062 34.6196 25.409 34.8713 25.7028C35.1231 25.9965 35.249 26.3252 35.249 26.6889V33.487C35.249 33.9906 35.0812 34.4102 34.7455 34.7459C34.4098 35.0817 33.9901 35.2495 33.4865 35.2495Z"
-                fill="currentColor"
-            />
-        </svg>
-    );
+function LinkedInIcon() {
+    return <FaLinkedinIn className="size-4" aria-hidden />;
 }
 
 function MailIcon() {

@@ -3,17 +3,21 @@ import OurPeople from "./OurPeople";
 import StickyCardSection from "@/src/shared/components/ui/StickyCardSection";
 
 const HERO = {
-    badge: "Team",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada del titular",
+    badge: "Our Team",
+    title: "The People Behind",
+    titleAccent: "VCM",
+    description:
+        "A team based in Lima, Peru, combining business growth consulting and talent solutions to support U.S. construction and roofing companies.",
     image: "https://workninjas.com/wp-content/uploads/2025/06/Foto-2.jpg",
 };
+
 const WHY_US = {
-    badge: "Why us?",
-    title: "We focus on solutions",
-    titleTyped: "not problems",
-    description: "We are Transparent Like that. No Gimmicks.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "Why VCM?",
+    title: "One team,",
+    titleTyped: "working as part of yours",
+    description:
+        "Our people integrate into your processes and tools, with the support of a leadership team focused on your growth.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/Group-3898-scaled.jpg",
 };
 
@@ -24,10 +28,12 @@ export default function TeamContainer() {
                 badge={HERO.badge}
                 title={HERO.title}
                 titleAccent={HERO.titleAccent}
+                description={HERO.description}
                 image={HERO.image}
             />
 
             <OurPeople />
+
             <StickyCardSection
                 badge={WHY_US.badge}
                 title={WHY_US.title}
