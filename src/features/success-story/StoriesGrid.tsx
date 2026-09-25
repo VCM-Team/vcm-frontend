@@ -7,10 +7,11 @@ import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 const HEADING = {
-    badge: "Success story",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
-    description: "Párrafo de apoyo de la sección — reemplázalo con el texto propio.",
+    badge: "Case Studies",
+    title: "Real Companies,",
+    titleAccent: "Real Growth",
+    description:
+        "See how construction and roofing companies build the systems and the teams they need to scale, with strategy, processes and dedicated nearshore talent.",
 };
 
 // Encabezado visible al cargar: basta con @starting-style (variante starting:)

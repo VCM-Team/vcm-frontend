@@ -1,6 +1,8 @@
+import Link from "next/link";
 import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
 import RevealSection from "@/src/shared/components/ui/RevealSection";
+import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
 import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
@@ -8,13 +10,32 @@ const CONTENT = {
     badge: "Open Positions",
     title: "Join the",
     titleAccent: "VCM Team",
-    description: "We’re always looking for sharp, reliable people who want to do real work and grow with a team that moves fast and supports each other. Below are our current open roles, each one is a chance to build something meaningful, learn new skills, and be part of a crew that actually has your back. Take a look. If one fits, we’d love to hear from you.",
+    description:
+        "We’re always looking for sharp, reliable people who want to do real work and grow with a team that supports each other. Our roles are full-time and in person at our offices in Lima, working every day with U.S. construction and roofing companies. Take a look, and if one fits, we’d love to hear from you.",
 };
 
+const LINKEDIN_JOBS = "https://www.linkedin.com/company/discovervcm/jobs";
+
+// Puestos publicados por VCM; las vacantes caducan, revisar periódicamente
 const POSITIONS = [
-    { key: "puesto-1", title: "Nombre del puesto", href: "#" },
-    { key: "puesto-2", title: "Nombre del puesto", href: "#" },
-    { key: "puesto-3", title: "Nombre del puesto", href: "#" },
+    {
+        key: "junior-estimator",
+        title: "Junior Estimator",
+        meta: "Santiago de Surco, Lima · Full-time",
+        href: "https://pe.linkedin.com/jobs/view/junior-estimator-at-vcm-4466912839",
+    },
+    {
+        key: "back-end-developer",
+        title: "Back End Developer",
+        meta: "Santiago de Surco, Lima · Full-time",
+        href: LINKEDIN_JOBS,
+    },
+    {
+        key: "junior-executive-assistant",
+        title: "Junior Executive Assistant",
+        meta: "Santiago de Surco, Lima · Full-time",
+        href: LINKEDIN_JOBS,
+    },
 ];
 
 const POSITION_STAGGER_MS = 120;
@@ -58,7 +79,7 @@ export default function OpenPositions() {
                         </p>
                     </div>
 
-                    {/* listado: la animación va en el li, el div conserva su transition del hover */}
+                    {/* listado: la animación va en el li, el Link conserva su transition del hover */}
                     <ul className="flex flex-col gap-4 lg:justify-center">
                         {POSITIONS.map((p, i) => (
                             <li
@@ -66,14 +87,19 @@ export default function OpenPositions() {
                                 className={REVEAL.right}
                                 style={{ transitionDelay: `${300 + i * POSITION_STAGGER_MS}ms` }}
                             >
-                                <div className="rounded-card border border-white/15 px-6 py-5 transition-colors duration-300 hover:border-white/35 hover:bg-white/[0.04]">
-                                    <h3 className="text-lg font-semibold text-white">
-                                        {p.title}
-                                    </h3>
-                                    <span className="mt-2 block text-xs font-semibold uppercase tracking-[0.08em] text-white/80">
-                                        Read more »
+                                <Link
+                                    href={p.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group block rounded-card border border-white/15 px-6 py-5 transition-colors duration-300 hover:border-white/35 hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
+                                >
+                                    <h3 className="text-lg font-semibold text-white">{p.title}</h3>
+                                    <p className="mt-1 text-sm text-white/60">{p.meta}</p>
+                                    <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-white/80 transition-colors duration-300 group-hover:text-brand-400">
+                                        View position
+                                        <ArrowUpRight className="size-3.5 transition-[translate] duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                                     </span>
-                                </div>
+                                </Link>
                             </li>
                         ))}
                     </ul>

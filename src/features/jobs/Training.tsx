@@ -8,10 +8,11 @@ import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 const CONTENT = {
-    badge: "Join the team",
-    title: "Titular de la sección",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Free Consultation", href: "#open-positions" },
+    badge: "Training & Growth",
+    title: "Training That Prepares You for Real Work",
+    description:
+        "Every new team member is trained with our own SOPs and onboarded into the processes and tools of the U.S. companies we support, with ongoing guidance as you take on more responsibility.",
+    cta: { label: "See Open Positions", href: "#open-positions" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/Mask-group-2.jpg",
 };
 

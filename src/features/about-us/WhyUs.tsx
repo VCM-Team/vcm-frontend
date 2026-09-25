@@ -12,16 +12,17 @@ import { cn } from "@/src/lib/utils";
 
 const CONTENT = {
     badge: "Why Us",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
-    description: "We help roofing companies get back to what they do best by handling the work that gets in the way. From answering inbound calls to organizing CRMs, following up with leads, managing supplements, and keeping schedules on track, we cover the backend so you can focus on selling, building, and leading your team. Think of us as the crew behind your crew, ready to take on the day to day and help your business run smoother, faster, and with fewer dropped balls.",
+    title: "More Than a Staffing Partner,",
+    titleAccent: "A Growth Partner",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
+    description:
+        "Most companies don’t need more people first, they need a clearer way of working. We start by understanding what is holding your business back, then design the processes, accountability and systems it needs, and only then add dedicated talent from our offices in Lima to execute. The result is a team that works inside your tools, follows your standards and helps your business grow without losing control.",
     features: [
-        "Primer atributo",
-        "Segundo atributo",
-        "Tercer atributo",
-        "Cuarto atributo",
-        "Quinto atributo",
+        "Strategy First",
+        "Systems That Scale",
+        "Dedicated Talent",
+        "Nearshore from Lima",
+        "Ongoing Support",
     ],
 };
 
@@ -31,19 +32,20 @@ const VIDEO = {
     title: "This is VCM",
 };
 
+// PLACEHOLDER: cita de ejemplo, confirmar el texto con Victor Alvarado antes de publicar
 const QUOTE: QuoteCardData = {
-    quote: "“Our goal is to feel like an extension of your team from day one. We align with your tools and systems fast; usually within 14 days.”",
-    authorName: "Nombre de la persona",
-    authorRole: "Cargo",
+    quote: "“We don’t start by adding people. We start by understanding your business, fixing what slows it down and then building the team that helps it grow.”",
+    authorName: "Victor Alvarado",
+    authorRole: "CEO",
     authorImage: "https://workninjas.com/wp-content/uploads/2025/06/Mask-group-1.jpg",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const TEAM_IMAGE = "https://workninjas.com/wp-content/uploads/2025/06/Mask-group.jpg";
 
 const JOIN_CARD = {
-    title: "Título de la tarjeta de reclutamiento",
-    year: "2025",
+    title: "Join a team in Lima helping U.S. construction companies grow.",
+    year: "2026",
 };
 
 export default function WhyUs() {

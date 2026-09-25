@@ -5,9 +5,10 @@ import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 const HEADING = {
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada del titular",
-    description: "Párrafo de apoyo de la sección — reemplázalo con el texto propio.",
+    title: "Partners Who Help",
+    titleAccent: "Construction Companies Grow",
+    description:
+        "We work alongside software providers, coaches and service partners who share our focus on construction and roofing. Together, we help our clients build better systems, stronger teams and more predictable growth.",
 };
 
 type Offer = {
@@ -17,30 +18,33 @@ type Offer = {
     offer: string;
 };
 
+// PLACEHOLDER: socios y ofertas ficticios. Reemplazar por alianzas reales antes de publicar.
+const PLACEHOLDER_LOGO = "/assets/brand/vcm_black_logo.webp";
+
 const OFFERS: readonly Offer[] = [
     {
-        key: "socio-1",
-        logo: "https://workninjas.com/wp-content/uploads/2025/06/acculynxs-2048x314.png",
-        logoAlt: "Nombre del socio",
-        offer: "Descripción de la oferta del socio.",
+        key: "buildflow-crm",
+        logo: PLACEHOLDER_LOGO,
+        logoAlt: "BuildFlow CRM",
+        offer: "VCM clients get a free CRM setup review and a discounted first year.",
     },
     {
-        key: "socio-2",
-        logo: "https://workninjas.com/wp-content/uploads/2025/07/leap.png",
-        logoAlt: "Nombre del socio",
-        offer: "Descripción de la oferta del socio.",
+        key: "takeoffpro",
+        logo: PLACEHOLDER_LOGO,
+        logoAlt: "TakeoffPro",
+        offer: "Extended free trial of estimating software for teams working with a VCM estimator.",
     },
     {
-        key: "socio-3",
-        logo: "https://workninjas.com/wp-content/uploads/2025/07/sumoquote.png",
-        logoAlt: "Nombre del socio",
-        offer: "Descripción de la oferta del socio.",
+        key: "crew-coach-network",
+        logo: PLACEHOLDER_LOGO,
+        logoAlt: "Crew Coach Network",
+        offer: "A complimentary leadership workshop for owners and managers of VCM client companies.",
     },
     {
-        key: "socio-4",
-        logo: "https://workninjas.com/wp-content/uploads/2025/07/the-catch.svg",
-        logoAlt: "Nombre del socio",
-        offer: "Descripción de la oferta del socio.",
+        key: "summit-marketing",
+        logo: PLACEHOLDER_LOGO,
+        logoAlt: "Summit Marketing Co.",
+        offer: "A free marketing audit for construction and roofing companies starting a growth roadmap with VCM.",
     },
 ];
 

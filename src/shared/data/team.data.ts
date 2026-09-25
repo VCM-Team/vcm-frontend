@@ -10,63 +10,37 @@ export type TeamMember = {
 
 const PLACEHOLDER_AVATAR = "/team/placeholder.jpg";
 
+// Nombres y cargos: publicados por VCM.
+// PLACEHOLDER: las bios describen el rol de forma general; confirmar con cada persona antes de publicar.
 export const LEADERSHIP: readonly TeamMember[] = [
     {
-        slug: "persona-uno",
-        name: "Nombre Apellido",
+        slug: "victor-alvarado",
+        name: "Victor Alvarado",
         role: "CEO",
         image: PLACEHOLDER_AVATAR,
-        email: "correo@dominio.com",
-        linkedin: "https://linkedin.com/in/usuario",
-        bio: "Texto de presentación — reemplázalo.",
+        bio: "Victor leads VCM’s vision and strategy, helping U.S. construction and roofing companies grow through better systems and dedicated nearshore talent.",
     },
     {
-        slug: "persona-dos",
-        name: "Nombre Apellido",
-        role: "CFO",
-        image: PLACEHOLDER_AVATAR,
-        email: "correo@dominio.com",
-        linkedin: "https://linkedin.com/in/usuario",
-        bio: "Texto de presentación — reemplázalo.",
-    },
-    {
-        slug: "persona-tres",
-        name: "Nombre Apellido",
+        slug: "roberto-cordova",
+        name: "Roberto Cordova",
         role: "COO",
         image: PLACEHOLDER_AVATAR,
-        email: "correo@dominio.com",
-        linkedin: "https://linkedin.com/in/usuario",
-        bio: "Texto de presentación — reemplázalo.",
+        bio: "Roberto oversees VCM’s operations, making sure every team is set up to deliver consistent work inside each client’s processes.",
     },
     {
-        slug: "persona-cuatro",
-        name: "Nombre Apellido",
-        role: "CMO",
+        slug: "yuriko-shiomura",
+        name: "Yuriko Shiomura",
+        role: "General Manager",
         image: PLACEHOLDER_AVATAR,
-        email: "correo@dominio.com",
-        linkedin: "https://linkedin.com/in/usuario",
-        bio: "Texto de presentación — reemplázalo.",
-    },
-    {
-        slug: "persona-cinco",
-        name: "Nombre Apellido",
-        role: "CTO",
-        image: PLACEHOLDER_AVATAR,
-        email: "correo@dominio.com",
-        linkedin: "https://linkedin.com/in/usuario",
-        bio: "Texto de presentación — reemplázalo.",
+        bio: "Yuriko manages VCM’s day-to-day business, keeping teams, clients and priorities aligned as the company grows.",
     },
 ];
 
 export const TEAM_MEMBERS: readonly TeamMember[] = [
-    { slug: "miembro-1", name: "Nombre Apellido", role: "Account Manager", image: PLACEHOLDER_AVATAR },
-    { slug: "miembro-2", name: "Nombre Apellido", role: "Account Manager", image: PLACEHOLDER_AVATAR },
-    { slug: "miembro-3", name: "Nombre Apellido", role: "Account Manager", image: PLACEHOLDER_AVATAR },
-    { slug: "miembro-4", name: "Nombre Apellido", role: "Account Manager", image: PLACEHOLDER_AVATAR },
-    { slug: "miembro-5", name: "Nombre Apellido", role: "Account Manager", image: PLACEHOLDER_AVATAR },
-    { slug: "miembro-6", name: "Nombre Apellido", role: "Account Manager", image: PLACEHOLDER_AVATAR },
-    { slug: "miembro-7", name: "Nombre Apellido", role: "Account Manager", image: PLACEHOLDER_AVATAR },
-    { slug: "miembro-8", name: "Nombre Apellido", role: "Account Manager", image: PLACEHOLDER_AVATAR },
+    { slug: "alejandra-martel", name: "Alejandra Martel", role: "Executive Assistant", image: PLACEHOLDER_AVATAR },
+    { slug: "samantha-rios", name: "Samantha Rios", role: "HR Analyst", image: PLACEHOLDER_AVATAR },
+    { slug: "angel-passini", name: "Angel Passini", role: "Key Account Manager", image: PLACEHOLDER_AVATAR },
+    { slug: "alessandro-passini", name: "Alessandro Passini", role: "Logistic Assistant", image: PLACEHOLDER_AVATAR },
 ];
 
 export const getLeaderBySlug = (slug: string) =>

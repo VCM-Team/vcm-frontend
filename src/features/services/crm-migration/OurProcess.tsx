@@ -3,31 +3,35 @@ import type { NumberedCardItem } from "@/src/shared/components/ui/NumberedCard";
 
 const HEADING = {
     badge: "Our Process",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada del titular",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    title: "How We Help",
+    titleAccent: "Your Business Grow",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const STEPS: readonly NumberedCardItem[] = [
     {
         number: "01",
-        title: "Título del primer paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Business Assessment",
+        description:
+            "We evaluate your operations, leadership, sales and systems to identify what is holding your growth back.",
     },
     {
         number: "02",
-        title: "Título del segundo paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Strategic Growth Roadmap",
+        description:
+            "We turn the findings into a prioritized plan, with clear objectives, the right sequence and an owner for every initiative.",
     },
     {
         number: "03",
-        title: "Título del tercer paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Guided Implementation",
+        description:
+            "We work alongside your leadership team to put the plan in motion, following up and adjusting as the business responds.",
     },
     {
         number: "04",
-        title: "Título del cuarto paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Scale with Confidence",
+        description:
+            "Once your operation is ready, we recruit, onboard and integrate the talent you need to keep growing.",
     },
 ];
 

@@ -6,35 +6,39 @@ import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 const HEADING = {
-    badge: "Etiqueta de la sección",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
-    titleRest: "cierre del titular",
+    badge: "Who We Look For",
+    title: "People Who Take",
+    titleAccent: "Ownership",
+    titleRest: "of Their Work",
 };
 
 const ITEMS: readonly IconCardItem[] = [
     {
-        key: "problem-solvers",
-        title: "Título del primer atributo",
-        description: "Descripción del atributo — reemplázala con el texto propio.",
+        key: "experience",
+        title: "Hands-On Experience",
+        description:
+            "At least a year of experience in your field, and the judgment to solve problems on your own.",
         Icon: BrainIcon,
     },
     {
-        key: "fast-learner",
-        title: "Título del segundo atributo",
-        description: "Descripción del atributo — reemplázala con el texto propio.",
+        key: "learning",
+        title: "Eager to Learn",
+        description:
+            "Comfort with new tools and software, from industry platforms to AI productivity tools.",
         Icon: BookIcon,
     },
     {
         key: "english",
-        title: "Título del tercer atributo",
-        description: "Descripción del atributo — reemplázala con el texto propio.",
+        title: "Advanced English",
+        description:
+            "You communicate clearly with U.S. clients every day, in writing and on calls.",
         Icon: ChatIcon,
     },
     {
-        key: "customer-focused",
-        title: "Título del cuarto atributo",
-        description: "Descripción del atributo — reemplázala con el texto propio.",
+        key: "commitment",
+        title: "Committed to the Team",
+        description:
+            "You work full-time, in person at our offices in Lima, and care about the people you support.",
         Icon: HandIcon,
     },
 ];

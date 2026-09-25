@@ -10,8 +10,8 @@ import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 const HEADING = {
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada del titular",
+    title: "From a Small Nearshore Team to a",
+    titleAccent: "Growth Partner",
 };
 
 type Milestone = {
@@ -23,27 +23,35 @@ type Milestone = {
 
 const MILESTONES: readonly Milestone[] = [
     {
-        year: "2019",
-        title: "Título del hito",
-        description: "Descripción del hito — reemplázala con el texto propio.",
+        // PLACEHOLDER: hito de ejemplo, confirmar
+        year: "2022",
+        title: "The First Nearshore Team",
+        description:
+            "VCM starts with a simple idea: U.S. construction companies need reliable back-office support, and Lima has the talent to provide it.",
         image: "https://workninjas.com/wp-content/uploads/2025/06/Group-3894-scaled.jpg",
     },
     {
-        year: "2021",
-        title: "Título del hito",
-        description: "Descripción del hito — reemplázala con el texto propio.",
-        image: "https://workninjas.com/wp-content/uploads/2025/06/Group-3895-scaled.jpg",
-    },
-    {
+        // Dato del dossier
         year: "2023",
-        title: "Título del hito",
-        description: "Descripción del hito — reemplázala con el texto propio.",
+        title: "Four Virtual Assistants",
+        description:
+            "The first four virtual assistants join, supporting daily operations for a U.S. roofing company and proving the nearshore model works.",
         image: "https://workninjas.com/wp-content/uploads/2025/06/Group-3895-scaled.jpg",
     },
     {
+        // PLACEHOLDER: hito de ejemplo, confirmar
         year: "2025",
-        title: "Título del hito",
-        description: "Descripción del hito — reemplázala con el texto propio.",
+        title: "Beyond Staffing",
+        description:
+            "VCM adds business growth consulting to its talent solutions, helping companies fix their systems before adding people.",
+        image: "https://workninjas.com/wp-content/uploads/2025/06/Group-3895-scaled.jpg",
+    },
+    {
+        // Dato del dossier
+        year: "2026",
+        title: "50+ Virtual Positions",
+        description:
+            "More than 50 virtual positions across sales, customer service, estimating, finance and more, working from our offices in Lima, Peru.",
         image: "https://workninjas.com/wp-content/uploads/2025/06/Group-3895-scaled.jpg",
     },
 ];

@@ -4,14 +4,17 @@ import RevealSection from "@/src/shared/components/ui/RevealSection";
 import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
+// Hechos del dossier: equipo presencial en Lima (Surco), clientes de construcción en EE. UU.,
+// inglés en el día a día, trabajo basado en procesos y crecimiento a 50+ posiciones.
+// PLACEHOLDER: el tono sobre colaboración y aprendizaje es de ejemplo, confirmar.
 const CONTENT = {
     badge: "Culture & Community",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada del titular",
+    title: "A Team That Grows",
+    titleAccent: "Together",
     paragraphs: [
-        "Primer párrafo de la sección — reemplázalo con el texto propio.",
-        "Segundo párrafo de la sección — reemplázalo con el texto propio.",
-        "Tercer párrafo de la sección — reemplázalo con el texto propio.",
+        "Our team works side by side from our offices in Lima, Peru, supporting U.S. construction and roofing companies every day. Working in person means we learn from each other, solve problems faster and build real relationships across the team.",
+        "We believe good work starts with clear processes. Everyone knows what they own, how it gets done and who to ask, which gives each person the confidence to take on more responsibility over time.",
+        "In a few years we have grown from a small group into a team of more than 50 positions. As VCM grows, so do the opportunities for our people to develop new skills, improve their English and move into new roles.",
     ],
 };
 
