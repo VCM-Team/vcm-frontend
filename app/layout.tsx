@@ -22,6 +22,13 @@ export const metadata: Metadata = {
         template: "%s | VCM",
     },
     description: "Descripción del sitio — reemplázala con la tuya.",
+    icons: {
+        icon: [
+            { url: "/icon-yellow.png" }, // respaldo sin condición: siempre hay un icono
+            { url: "/icon-yellow.png", media: "(prefers-color-scheme: light)" },
+            { url: "/icon-yellow.png", media: "(prefers-color-scheme: dark)" },
+        ],
+    },
     openGraph: {
         type: "website",
         locale: "en_US",
