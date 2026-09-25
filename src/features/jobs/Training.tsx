@@ -2,23 +2,32 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
+import { REVEAL } from "@/src/lib/reveal";
+import { cn } from "@/src/lib/utils";
 
 const CONTENT = {
     badge: "Join the team",
     title: "Titular de la sección",
     description: "Párrafo de apoyo — reemplázalo con el texto propio.",
     cta: { label: "Free Consultation", href: "#open-positions" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Mask-group-2.jpg"
+    image: "https://workninjas.com/wp-content/uploads/2025/06/Mask-group-2.jpg",
 };
 
 export default function Training() {
     return (
-        <section className="pb-16 lg:pb-24">
+        <RevealSection className="overflow-x-clip pb-16 lg:pb-24">
             <Container>
                 <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
-                    {/* imagen */}
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] lg:aspect-auto lg:min-h-[34rem]">
+                    {/* imagen: el panel crece hasta su tamaño */}
+                    <div
+                        className={cn(
+                            "relative aspect-[4/3] overflow-hidden rounded-[2rem] lg:aspect-auto lg:min-h-[34rem]",
+                            REVEAL.zoomIn,
+                            "duration-1000"
+                        )}
+                    >
                         <Image
                             src={CONTENT.image}
                             alt=""
@@ -29,29 +38,47 @@ export default function Training() {
                     </div>
 
                     {/* tarjeta */}
-                    <div className="flex flex-col rounded-[2rem] bg-brand-400 p-7 lg:p-9">
+                    <div className={cn("flex flex-col rounded-[2rem] bg-brand-400 p-7 lg:p-9", REVEAL.right, "delay-200")}>
                         <div className="flex items-start justify-between gap-4">
-                            <Badge className="border-black bg-transparent text-black">
-                                {CONTENT.badge}
-                            </Badge>
+                            <div className={cn(REVEAL.down, "delay-[400ms]")}>
+                                <Badge className="border-black bg-transparent text-black">
+                                    {CONTENT.badge}
+                                </Badge>
+                            </div>
 
                             <span
                                 aria-hidden
-                                className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-black"
+                                className={cn(
+                                    "grid size-11 shrink-0 place-items-center rounded-full bg-accent text-black",
+                                    REVEAL.zoomIn,
+                                    "delay-500"
+                                )}
                             >
                                 <ChartIcon className="size-5" />
                             </span>
                         </div>
 
-                        <h2 className="mt-8 max-w-[14ch] text-3xl font-bold leading-tight text-black lg:text-[2.25rem]">
+                        <h2
+                            className={cn(
+                                "mt-8 max-w-[14ch] text-3xl font-bold leading-tight text-black lg:text-[2.25rem]",
+                                REVEAL.up,
+                                "delay-500"
+                            )}
+                        >
                             {CONTENT.title}
                         </h2>
 
-                        <p className="mt-8 max-w-[38ch] text-[15px] leading-relaxed text-black/80 lg:mt-auto lg:pt-12">
+                        <p
+                            className={cn(
+                                "mt-8 max-w-[38ch] text-[15px] leading-relaxed text-black/80 lg:mt-auto lg:pt-12",
+                                REVEAL.fade,
+                                "delay-[600ms]"
+                            )}
+                        >
                             {CONTENT.description}
                         </p>
 
-                        <div className="group mt-8 flex w-fit items-center gap-2">
+                        <div className={cn("group mt-8 flex w-fit items-center gap-2", REVEAL.up, "delay-[700ms]")}>
                             <Link
                                 href={CONTENT.cta.href}
                                 className="inline-flex items-center rounded-full bg-black px-7 py-3.5 text-[15px] font-semibold leading-none text-white transition-colors duration-300 group-hover:bg-white group-hover:text-black"
@@ -75,7 +102,7 @@ export default function Training() {
                     </div>
                 </div>
             </Container>
-        </section>
+        </RevealSection>
     );
 }
 

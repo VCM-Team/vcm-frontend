@@ -1,5 +1,8 @@
 import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
+import { REVEAL } from "@/src/lib/reveal";
+import { cn } from "@/src/lib/utils";
 
 const CONTENT = {
     badge: "Open Positions",
@@ -14,48 +17,68 @@ const POSITIONS = [
     { key: "puesto-3", title: "Nombre del puesto", href: "#" },
 ];
 
+const POSITION_STAGGER_MS = 120;
+
 export default function OpenPositions() {
     return (
-        <section
+        <RevealSection
             id="open-positions"
-            className="relative isolate mb-15 mx-3 overflow-hidden rounded-panel bg-navy-800 lg:mx-4"
+            className="relative isolate mx-3 mb-15 overflow-hidden rounded-panel bg-navy-800 lg:mx-4"
         >
-
             <Container className="py-14 lg:py-20">
                 <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
                     {/* texto */}
                     <div>
-                        <Badge className="border-white/30 bg-transparent text-white">
-                            {CONTENT.badge}
-                        </Badge>
+                        <div className={REVEAL.left}>
+                            <Badge className="border-white/30 bg-transparent text-white">
+                                {CONTENT.badge}
+                            </Badge>
+                        </div>
 
-                        <h2 className="mt-8 max-w-[14ch] text-3xl font-semibold leading-[1.15] text-white sm:text-4xl lg:text-[2.75rem]">
-                            {CONTENT.title}{" "}<br/>
-                            <span className="text-accent">{CONTENT.titleAccent}</span>{" "}
+                        <h2
+                            className={cn(
+                                "mt-8 max-w-[14ch] text-3xl font-semibold leading-[1.15] text-white sm:text-4xl lg:text-[2.75rem]",
+                                REVEAL.blur,
+                                "delay-100"
+                            )}
+                        >
+                            {CONTENT.title}
+                            <br />
+                            <span className="text-accent">{CONTENT.titleAccent}</span>
                         </h2>
 
-                        <p className="mt-8 max-w-[52ch] text-[15px] leading-relaxed text-white/85">
+                        <p
+                            className={cn(
+                                "mt-8 max-w-[52ch] text-[15px] leading-relaxed text-white/85",
+                                REVEAL.fade,
+                                "delay-200"
+                            )}
+                        >
                             {CONTENT.description}
                         </p>
                     </div>
 
-                    {/* listado */}
+                    {/* listado: la animación va en el li, el div conserva su transition del hover */}
                     <ul className="flex flex-col gap-4 lg:justify-center">
-                        {POSITIONS.map((p) => (
-                            <li key={p.key}>
+                        {POSITIONS.map((p, i) => (
+                            <li
+                                key={p.key}
+                                className={REVEAL.right}
+                                style={{ transitionDelay: `${300 + i * POSITION_STAGGER_MS}ms` }}
+                            >
                                 <div className="rounded-card border border-white/15 px-6 py-5 transition-colors duration-300 hover:border-white/35 hover:bg-white/[0.04]">
                                     <h3 className="text-lg font-semibold text-white">
                                         {p.title}
                                     </h3>
                                     <span className="mt-2 block text-xs font-semibold uppercase tracking-[0.08em] text-white/80">
-                    Read more »
-                  </span>
+                                        Read more »
+                                    </span>
                                 </div>
                             </li>
                         ))}
                     </ul>
                 </div>
             </Container>
-        </section>
+        </RevealSection>
     );
 }

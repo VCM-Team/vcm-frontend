@@ -4,8 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import Container from "@/src/shared/components/ui/Container";
 import YearTabs from "@/src/shared/components/ui/YearTabs";
-import { cn } from "@/src/lib/utils";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
 import Badge from "@/src/shared/components/ui/Badge";
+import { REVEAL } from "@/src/lib/reveal";
+import { cn } from "@/src/lib/utils";
 
 const HEADING = {
     title: "Primera parte del titular",
@@ -53,31 +55,41 @@ export default function OurStory() {
     const current = MILESTONES.find((m) => m.year === active) ?? MILESTONES[0];
 
     return (
-        <section>
+        <RevealSection>
             <Container className="pb-12 text-center lg:pb-16">
-                <Badge>Our Story</Badge>
-                <h2 className="mx-auto max-w-[22ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-5xl mt-8">
+                <div className={cn("mx-auto w-fit", REVEAL.zoomIn)}>
+                    <Badge>Our Story</Badge>
+                </div>
+                <h2
+                    className={cn(
+                        "mx-auto mt-8 max-w-[22ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-5xl",
+                        REVEAL.up,
+                        "delay-100"
+                    )}
+                >
                     {HEADING.title}{" "}
                     <span className="text-accent">{HEADING.titleAccent}</span>
                 </h2>
             </Container>
 
             <div className="relative isolate min-h-[34rem] overflow-hidden lg:min-h-[40rem]">
-                {/* fondo con crossfade */}
-                {MILESTONES.map((m) => (
-                    <Image
-                        key={m.year}
-                        src={m.image}
-                        alt=""
-                        fill
-                        sizes="100vw"
-                        priority={m.year === MILESTONES[0].year}
-                        className={cn(
-                            "-z-10 object-cover object-center transition-opacity duration-500",
-                            m.year === active ? "opacity-100" : "opacity-0"
-                        )}
-                    />
-                ))}
+                {/* El zoom va en este wrapper; cada imagen conserva su propio crossfade de opacity */}
+                <div className={cn("absolute inset-0 -z-10", REVEAL.zoomOut, "duration-[1400ms] delay-200")}>
+                    {MILESTONES.map((m) => (
+                        <Image
+                            key={m.year}
+                            src={m.image}
+                            alt=""
+                            fill
+                            sizes="100vw"
+                            priority={m.year === MILESTONES[0].year}
+                            className={cn(
+                                "object-cover object-center transition-opacity duration-500",
+                                m.year === active ? "opacity-100" : "opacity-0"
+                            )}
+                        />
+                    ))}
+                </div>
 
                 <div aria-hidden className="absolute inset-0 -z-10 bg-black/35" />
 
@@ -86,29 +98,41 @@ export default function OurStory() {
                         role="tabpanel"
                         id={`year-panel-${current.year}`}
                         aria-labelledby={`year-tab-${current.year}`}
-                        className="max-w-md rounded-card bg-white/85 p-7 backdrop-blur-md lg:p-8"
+                        className={cn(
+                            "max-w-md rounded-card bg-white/85 p-7 backdrop-blur-md lg:p-8",
+                            REVEAL.left,
+                            "delay-300"
+                        )}
                     >
-            <span className="inline-flex items-center rounded-full border border-border bg-bg px-4 py-1.5 text-xs font-medium text-fg">
-              {current.year}
-            </span>
+                        {/* key por año: al cambiar de pestaña el contenido se remonta y hace un fade corto */}
+                        <div
+                            key={current.year}
+                            className="transition-[opacity,translate] duration-300 ease-out starting:translate-y-2 starting:opacity-0 motion-reduce:transition-none"
+                        >
+                            <span className="inline-flex items-center rounded-full border border-border bg-bg px-4 py-1.5 text-xs font-medium text-fg">
+                                {current.year}
+                            </span>
 
-                        <h3 className="mt-6 text-xl font-semibold leading-snug text-fg lg:text-2xl">
-                            {current.title}
-                        </h3>
+                            <h3 className="mt-6 text-xl font-semibold leading-snug text-fg lg:text-2xl">
+                                {current.title}
+                            </h3>
 
-                        <p className="mt-6 text-[15px] leading-relaxed text-fg-muted">
-                            {current.description}
-                        </p>
+                            <p className="mt-6 text-[15px] leading-relaxed text-fg-muted">
+                                {current.description}
+                            </p>
+                        </div>
                     </div>
 
-                    <YearTabs
-                        years={YEARS}
-                        active={active}
-                        onChange={setActive}
-                        className="justify-center lg:justify-end lg:pb-2"
-                    />
+                    <div className={cn(REVEAL.right, "delay-[400ms]")}>
+                        <YearTabs
+                            years={YEARS}
+                            active={active}
+                            onChange={setActive}
+                            className="justify-center lg:justify-end lg:pb-2"
+                        />
+                    </div>
                 </Container>
             </div>
-        </section>
+        </RevealSection>
     );
 }

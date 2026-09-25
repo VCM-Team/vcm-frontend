@@ -1,5 +1,8 @@
 import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
+import { REVEAL } from "@/src/lib/reveal";
+import { cn } from "@/src/lib/utils";
 
 const CONTENT = {
     badge: "Culture & Community",
@@ -12,27 +15,41 @@ const CONTENT = {
     ],
 };
 
+const PARAGRAPH_STAGGER_MS = 120;
+
 export default function Culture() {
     return (
-        <section className="py-16 lg:py-24">
+        <RevealSection className="overflow-x-clip py-16 lg:py-24">
             <Container>
-                <Badge>{CONTENT.badge}</Badge>
+                <div className={REVEAL.down}>
+                    <Badge>{CONTENT.badge}</Badge>
+                </div>
 
                 <div className="mt-8 grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
-                    <h2 className="max-w-[16ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]">
+                    <h2
+                        className={cn(
+                            "max-w-[16ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]",
+                            REVEAL.up,
+                            "delay-100"
+                        )}
+                    >
                         {CONTENT.title}{" "}
                         <span className="text-accent">{CONTENT.titleAccent}</span>
                     </h2>
 
                     <div className="space-y-5 lg:pt-2">
                         {CONTENT.paragraphs.map((p, i) => (
-                            <p key={i} className="text-[15px] leading-relaxed text-fg-muted">
+                            <p
+                                key={i}
+                                className={cn("text-[15px] leading-relaxed text-fg-muted", REVEAL.right)}
+                                style={{ transitionDelay: `${250 + i * PARAGRAPH_STAGGER_MS}ms` }}
+                            >
                                 {p}
                             </p>
                         ))}
                     </div>
                 </div>
             </Container>
-        </section>
+        </RevealSection>
     );
 }

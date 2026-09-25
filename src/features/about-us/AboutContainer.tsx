@@ -5,6 +5,9 @@ import OurValues from "./OurValues";
 import OurStory from "./OurStory";
 import WhyUs from "./WhyUs";
 import OurProcess from "@/src/features/services/crm-migration/OurProcess";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
+import { REVEAL } from "@/src/lib/reveal";
+import { cn } from "@/src/lib/utils";
 
 const HERO = {
     badge: "Who we are",
@@ -31,9 +34,13 @@ export default function AboutContainer() {
                 image={HERO.image}
             />
 
-            <Container>
-                <Stats items={ABOUT_STATS} />
-            </Container>
+            <RevealSection>
+                <Container>
+                    <div className={cn(REVEAL.blur, "translate-y-8")}>
+                        <Stats items={ABOUT_STATS} />
+                    </div>
+                </Container>
+            </RevealSection>
 
             <OurProcess />
             <OurStory />

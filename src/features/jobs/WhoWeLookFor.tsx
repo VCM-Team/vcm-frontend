@@ -1,6 +1,9 @@
 import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
 import IconCard, { type IconCardItem } from "@/src/shared/components/ui/IconCard";
+import { REVEAL } from "@/src/lib/reveal";
+import { cn } from "@/src/lib/utils";
 
 const HEADING = {
     badge: "Etiqueta de la sección",
@@ -36,14 +39,26 @@ const ITEMS: readonly IconCardItem[] = [
     },
 ];
 
+// Zigzag: las tarjetas alternan bajar y subir
+const CARD_VARIANTS = [REVEAL.down, REVEAL.up] as const;
+const CARD_STAGGER_MS = 120;
+
 export default function WhoWeLookFor() {
     return (
-        <section className="py-16 lg:py-24">
+        <RevealSection className="py-16 lg:py-24">
             <Container>
                 <div className="flex flex-col items-center text-center">
-                    <Badge>{HEADING.badge}</Badge>
+                    <div className={REVEAL.blur}>
+                        <Badge>{HEADING.badge}</Badge>
+                    </div>
 
-                    <h2 className="mt-8 max-w-[20ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]">
+                    <h2
+                        className={cn(
+                            "mt-8 max-w-[20ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]",
+                            REVEAL.zoomIn,
+                            "delay-100"
+                        )}
+                    >
                         {HEADING.title}{" "}
                         <span className="text-accent">{HEADING.titleAccent}</span>{" "}
                         {HEADING.titleRest}
@@ -51,12 +66,18 @@ export default function WhoWeLookFor() {
                 </div>
 
                 <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
-                    {ITEMS.map((item) => (
-                        <IconCard key={item.key} item={item} />
+                    {ITEMS.map((item, i) => (
+                        <div
+                            key={item.key}
+                            className={cn("h-full", CARD_VARIANTS[i % CARD_VARIANTS.length])}
+                            style={{ transitionDelay: `${250 + i * CARD_STAGGER_MS}ms` }}
+                        >
+                            <IconCard item={item} />
+                        </div>
                     ))}
                 </div>
             </Container>
-        </section>
+        </RevealSection>
     );
 }
 

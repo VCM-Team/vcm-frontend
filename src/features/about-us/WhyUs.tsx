@@ -3,9 +3,12 @@ import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
 import Button from "@/src/shared/components/ui/Button";
 import Pill from "@/src/shared/components/ui/Pill";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
 import VideoEmbed from "@/src/shared/components/ui/VideoEmbed";
 import QuoteCard, { type QuoteCardData } from "@/src/shared/components/ui/QuoteCard";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
+import { REVEAL } from "@/src/lib/reveal";
+import { cn } from "@/src/lib/utils";
 
 const CONTENT = {
     badge: "Why Us",
@@ -45,73 +48,121 @@ const JOIN_CARD = {
 
 export default function WhyUs() {
     return (
-        <section className="py-16 lg:py-24">
+        <section className="overflow-x-clip py-16 lg:py-24">
             <Container>
-                <Badge>{CONTENT.badge}</Badge>
+                {/* ── Bloque 1: encabezado, columnas y píldoras ── */}
+                <RevealSection>
+                    <div className={REVEAL.fade}>
+                        <Badge>{CONTENT.badge}</Badge>
+                    </div>
 
-                <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-16">
-                    {/* columna izquierda */}
-                    <div>
-                        <h2 className="max-w-[16ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]">
-                            {CONTENT.title}{" "}
-                            <span className="text-accent">{CONTENT.titleAccent}</span>
-                        </h2>
+                    <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-16">
+                        {/* columna izquierda */}
+                        <div>
+                            <h2
+                                className={cn(
+                                    "max-w-[16ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]",
+                                    REVEAL.left,
+                                    "delay-100"
+                                )}
+                            >
+                                {CONTENT.title}{" "}
+                                <span className="text-accent">{CONTENT.titleAccent}</span>
+                            </h2>
 
-                        <div className="mt-8 flex items-center gap-2">
-                            <Button href={CONTENT.cta.href} size="sm" variant={"accent"}>
-                                {CONTENT.cta.label}
-                            </Button>
+                            <div className={cn("mt-8 flex items-center gap-2", REVEAL.up, "delay-200")}>
+                                <Button href={CONTENT.cta.href} size="sm" variant="accent">
+                                    {CONTENT.cta.label}
+                                </Button>
+                                <span
+                                    aria-hidden
+                                    className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-400 text-black"
+                                >
+                                    <ArrowUpRight className="size-4" />
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* columna derecha */}
+                        <div>
                             <span
                                 aria-hidden
-                                className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-400 text-black"
+                                className={cn(
+                                    "grid size-12 place-items-center rounded-full bg-brand-400 text-navy-800",
+                                    REVEAL.zoomIn,
+                                    "delay-200"
+                                )}
                             >
-                <ArrowUpRight className="size-4" />
-              </span>
+                                <StarIcon />
+                            </span>
+
+                            <p
+                                className={cn(
+                                    "mt-7 text-[15px] leading-relaxed text-fg-muted",
+                                    REVEAL.blur,
+                                    "delay-300"
+                                )}
+                            >
+                                {CONTENT.description}
+                            </p>
                         </div>
                     </div>
 
-                    {/* columna derecha */}
-                    <div>
-            <span
-                aria-hidden
-                className="grid size-12 place-items-center rounded-full bg-brand-400 text-navy-800"
-            >
-              <StarIcon />
-            </span>
-
-                        <p className="mt-7 text-[15px] leading-relaxed text-fg-muted">
-                            {CONTENT.description}
-                        </p>
+                    {/* píldoras */}
+                    <div className="my-12 border-t border-border pt-10 lg:mt-16 lg:pt-12">
+                        <ul
+                            className={cn(
+                                "mx-auto flex max-w-5xl flex-wrap justify-center gap-3",
+                                REVEAL.up,
+                                "delay-[400ms]"
+                            )}
+                        >
+                            {CONTENT.features.map((f) => (
+                                <Pill key={f}>{f}</Pill>
+                            ))}
+                        </ul>
                     </div>
-                </div>
+                </RevealSection>
 
-                {/* píldoras */}
-                <div className="my-12  border-t border-border pt-10 lg:mt-16 lg:pt-12">
-                    <ul className="mx-auto flex max-w-5xl flex-wrap justify-center gap-3">
-                        {CONTENT.features.map((f) => (
-                            <Pill key={f}>{f}</Pill>
-                        ))}
-                    </ul>
-                </div>
+                {/* ── Bloque 2: video ── */}
+                <RevealSection>
+                    <VideoEmbed
+                        src={VIDEO.src}
+                        poster={VIDEO.poster}
+                        title={VIDEO.title}
+                        className={cn(REVEAL.zoomIn, "duration-1000")}
+                    />
+                </RevealSection>
 
-                {/* video */}
-                <VideoEmbed src={VIDEO.src} poster={VIDEO.poster} title={VIDEO.title} />
+                {/* ── Bloque 3: tarjetas ── */}
+                <RevealSection className="mt-24 grid gap-6 md:grid-cols-3">
+                    <div className={cn("[&>*]:h-full", REVEAL.left)}>
+                        <QuoteCard data={QUOTE} />
+                    </div>
 
-                {/* tarjetas */}
-                <div className="mt-24 grid gap-6 md:grid-cols-3">
-                    <QuoteCard data={QUOTE} />
-
-                    <div className="relative aspect-[3/4] overflow-hidden rounded-bl-[2rem] rounded-br-[2rem] rounded-tl-[2rem] rounded-tr-none md:aspect-auto">
+                    <div
+                        className={cn(
+                            "relative aspect-[3/4] overflow-hidden rounded-bl-[2rem] rounded-br-[2rem] rounded-tl-[2rem] rounded-tr-none md:aspect-auto",
+                            REVEAL.up,
+                            "delay-150"
+                        )}
+                    >
                         <Image
                             src={TEAM_IMAGE}
                             alt=""
                             fill
                             sizes="(min-width: 768px) 33vw, 100vw"
-                            className="object-cover"
+                            className={cn("object-cover", REVEAL.zoomOut, "duration-[1200ms] delay-150")}
                         />
                     </div>
 
-                    <div className="relative isolate flex min-h-[26rem] flex-col justify-between overflow-hidden rounded-bl-[2rem] rounded-br-[2rem] rounded-tl-[2rem] rounded-tr-none bg-accent p-7 lg:p-8">
+                    <div
+                        className={cn(
+                            "relative isolate flex min-h-[26rem] flex-col justify-between overflow-hidden rounded-bl-[2rem] rounded-br-[2rem] rounded-tl-[2rem] rounded-tr-none bg-accent p-7 lg:p-8",
+                            REVEAL.right,
+                            "delay-300"
+                        )}
+                    >
                         <JoinShape />
 
                         <h3 className="max-w-[20ch] text-xl font-bold leading-snug text-black lg:text-[1.375rem]">
@@ -122,7 +173,7 @@ export default function WhyUs() {
                             {JOIN_CARD.year}
                         </span>
                     </div>
-                </div>
+                </RevealSection>
             </Container>
         </section>
     );
