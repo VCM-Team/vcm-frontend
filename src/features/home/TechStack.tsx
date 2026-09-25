@@ -1,5 +1,8 @@
 import Image from "next/image";
 import Badge from "@/src/shared/components/ui/Badge";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
+import { REVEAL } from "@/src/lib/reveal";
+import { cn } from "@/src/lib/utils";
 
 type TechLogo = {
     key: string;
@@ -23,24 +26,44 @@ const TECH_LOGOS: readonly TechLogo[] = [
     { key: "salesforce", name: "Salesforce", src: "https://workninjas.com/wp-content/uploads/2025/06/Salesforce.com_logo.svg" },
 ];
 
+// Líneas que se dibujan desde el badge hacia fuera (solo escala horizontal)
+const LINE_DRAW =
+    "scale-x-0 transition-[scale] duration-700 ease-out group-data-[inview=true]/reveal:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none";
+
+// Los logos alternan entre tres entradas
+const LOGO_VARIANTS = [REVEAL.up, REVEAL.blur, REVEAL.down] as const;
+const LOGO_STAGGER_MS = 70;
+
 export default function TechStack() {
     return (
-        <section className="bg-ink-900 py-20 lg:py-28">
+        <RevealSection className="bg-ink-900 py-20 lg:py-28">
             {/* 14/16 del ancho total, en vez del Container de página */}
             <div className="mx-auto w-[87.5%]">
                 <div className="flex items-center gap-4 lg:gap-8">
-                    <span className="h-px flex-1 bg-white/15" aria-hidden />
-                    <Badge className="border-brand-400 bg-transparent text-brand-400">
-                        {TECH_STACK.badge}
-                    </Badge>
-                    <span className="h-px flex-1 bg-white/15" aria-hidden />
+                    <span
+                        aria-hidden
+                        className={cn("h-px flex-1 origin-right bg-white/15", LINE_DRAW, "delay-200")}
+                    />
+                    <div className={REVEAL.zoomIn}>
+                        <Badge className="border-brand-400 bg-transparent text-brand-400">
+                            {TECH_STACK.badge}
+                        </Badge>
+                    </div>
+                    <span
+                        aria-hidden
+                        className={cn("h-px flex-1 origin-left bg-white/15", LINE_DRAW, "delay-200")}
+                    />
                 </div>
 
                 <ul className="mt-16 grid grid-cols-3 items-center gap-x-6 gap-y-12 lg:mt-20 lg:flex lg:flex-nowrap lg:justify-between lg:gap-10">
-                    {TECH_LOGOS.map((logo) => (
+                    {TECH_LOGOS.map((logo, i) => (
                         <li
                             key={logo.key}
-                            className="flex items-center justify-center lg:flex-1"
+                            className={cn(
+                                "flex items-center justify-center lg:flex-1",
+                                LOGO_VARIANTS[i % LOGO_VARIANTS.length]
+                            )}
+                            style={{ transitionDelay: `${400 + i * LOGO_STAGGER_MS}ms` }}
                         >
                             <Image
                                 src={logo.src}
@@ -53,6 +76,6 @@ export default function TechStack() {
                     ))}
                 </ul>
             </div>
-        </section>
+        </RevealSection>
     );
 }

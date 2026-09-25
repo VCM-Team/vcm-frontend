@@ -16,6 +16,7 @@ import { VIDEO_TESTIMONIALS } from "@/src/shared/data/video-testimonials.data";
 import Insights from "@/src/features/home/Insights";
 import TechStack from "@/src/features/home/TechStack";
 import DiscoveryCall from "@/src/features/home/DiscoveryCall";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
 
 
 const HOME_STATS: readonly StatItem[] = [
@@ -225,11 +226,16 @@ export default function HomeContainer() {
                 variant="dark"
             />
             {/* video */}
-            <section className="bg-ink-900 py-16 lg:py-20">
+            <RevealSection className="bg-ink-900 py-16 lg:py-20">
                 <Container>
-                    <VideoEmbed src={VIDEO.src} poster={VIDEO.poster} title={VIDEO.title} />
+                    <VideoEmbed
+                        src={VIDEO.src}
+                        poster={VIDEO.poster}
+                        title={VIDEO.title}
+                        className="scale-90 opacity-0 transition-[opacity,scale] duration-1000 ease-out group-data-[inview=true]/reveal:scale-100 group-data-[inview=true]/reveal:opacity-100 motion-reduce:scale-100 motion-reduce:opacity-100 motion-reduce:transition-none"
+                    />
                 </Container>
-            </section>
+            </RevealSection>
             <BubbleFeatures
                 badge={EXPERTISE.badge}
                 title={EXPERTISE.title}

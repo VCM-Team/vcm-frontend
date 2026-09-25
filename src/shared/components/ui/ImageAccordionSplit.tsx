@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Container from "./Container";
 import Badge from "./Badge";
+import RevealSection from "./RevealSection";
 import Accordion, { type AccordionItem } from "./Accordion";
+import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 type Props = {
@@ -25,11 +27,19 @@ export default function ImageAccordionSplit({
                                                 className,
                                             }: Props) {
     return (
-        <section className={cn("py-16 lg:py-24", className)}>
+        <RevealSection className={cn("py-16 lg:py-24", className)}>
             <Container>
-                <Badge>{badge}</Badge>
+                <div className={REVEAL.fade}>
+                    <Badge>{badge}</Badge>
+                </div>
 
-                <h2 className="mt-8 max-w-[26ch] text-3xl font-bold leading-[1.15] tracking-tight text-fg sm:text-4xl lg:text-[2.75rem]">
+                <h2
+                    className={cn(
+                        "mt-8 max-w-[26ch] text-3xl font-bold leading-[1.15] tracking-tight text-fg sm:text-4xl lg:text-[2.75rem]",
+                        REVEAL.blur,
+                        "delay-100"
+                    )}
+                >
                     {title}
                     {titleRest && (
                         <>
@@ -47,7 +57,13 @@ export default function ImageAccordionSplit({
 
                 <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-16">
                     {/* imagen */}
-                    <div className="relative aspect-square self-center">
+                    <div
+                        className={cn(
+                            "relative aspect-square self-center",
+                            REVEAL.zoomIn,
+                            "delay-200"
+                        )}
+                    >
                         <Image
                             src={image}
                             alt=""
@@ -58,9 +74,11 @@ export default function ImageAccordionSplit({
                     </div>
 
                     {/* acordeón */}
-                    <Accordion items={items} className="self-center" />
+                    <div className={cn("self-center", REVEAL.right, "delay-300")}>
+                        <Accordion items={items} />
+                    </div>
                 </div>
             </Container>
-        </section>
+        </RevealSection>
     );
 }

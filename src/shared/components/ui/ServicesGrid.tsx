@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Container from "./Container";
 import Badge from "./Badge";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
 import ServiceCard, { type ServiceCardItem } from "./ServiceCard";
 import { cn } from "@/src/lib/utils";
 
@@ -15,6 +16,10 @@ type Props = {
     className?: string;
 };
 
+// Entrada al hacer scroll: RevealSection pone data-inview y group/reveal
+const REVEAL =
+    "opacity-0 translate-y-8 transition-[opacity,translate] duration-700 ease-out group-data-[inview=true]/reveal:translate-y-0 group-data-[inview=true]/reveal:opacity-100 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none";
+
 export default function ServicesGrid({
                                          badge,
                                          title,
@@ -27,7 +32,7 @@ export default function ServicesGrid({
     const isLight = variant === "light";
 
     return (
-        <section
+        <RevealSection
             className={cn(
                 "py-20 lg:py-28",
                 isLight ? "bg-[#F0F0F0]" : "bg-ink-900",
@@ -35,7 +40,7 @@ export default function ServicesGrid({
             )}
         >
             <Container>
-                <div className="flex flex-col items-center text-center">
+                <div className={cn("flex flex-col items-center text-center", REVEAL)}>
                     <Badge
                         className={cn(
                             "bg-transparent",
@@ -64,13 +69,19 @@ export default function ServicesGrid({
                 </div>
 
                 <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
-                    {items.map((item) => (
-                        <ServiceCard key={item.key} item={item} />
+                    {items.map((item, i) => (
+                        <div
+                            key={item.key}
+                            className={cn("h-full", REVEAL)}
+                            style={{ transitionDelay: `${150 + i * 100}ms` }}
+                        >
+                            <ServiceCard item={item} />
+                        </div>
                     ))}
                 </div>
 
                 {cta && (
-                    <div className="mt-14 flex justify-center">
+                    <div className={cn("mt-14 flex justify-center", REVEAL, "delay-500")}>
                         <Link
                             href={cta.href}
                             className="rounded-full bg-brand-400 px-7 py-3 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white"
@@ -80,6 +91,6 @@ export default function ServicesGrid({
                     </div>
                 )}
             </Container>
-        </section>
+        </RevealSection>
     );
 }

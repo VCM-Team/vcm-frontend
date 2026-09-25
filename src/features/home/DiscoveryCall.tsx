@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
+import { REVEAL } from "@/src/lib/reveal";
+import { cn } from "@/src/lib/utils";
 
 const DISCOVERY_CALL = {
     badge: "Contact Us",
@@ -13,36 +16,59 @@ const DISCOVERY_CALL = {
 
 export default function DiscoveryCall() {
     return (
-        <section className="bg-ink-900 py-20 lg:py-28">
+        <RevealSection className="overflow-x-clip bg-ink-900 py-20 lg:py-28">
             <Container>
                 <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col items-start">
-                        <Badge className="border-brand-400 bg-transparent text-brand-400">
-                            {DISCOVERY_CALL.badge}
-                        </Badge>
+                        <div className={REVEAL.down}>
+                            <Badge className="border-brand-400 bg-transparent text-brand-400">
+                                {DISCOVERY_CALL.badge}
+                            </Badge>
+                        </div>
 
-                        <h2 className="mt-8 max-w-[14ch] text-3xl font-normal leading-[1.15] text-white sm:text-4xl lg:text-[2.75rem]">
+                        <h2
+                            className={cn(
+                                "mt-8 max-w-[14ch] text-3xl font-normal leading-[1.15] text-white sm:text-4xl lg:text-[2.75rem]",
+                                REVEAL.left,
+                                "delay-100"
+                            )}
+                        >
                             {DISCOVERY_CALL.title}
                         </h2>
 
-                        <Link
-                            href={DISCOVERY_CALL.cta.href}
-                            className="mt-8 inline-flex rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:mt-10"
-                        >
-                            {DISCOVERY_CALL.cta.label}
-                        </Link>
+                        <div className={cn("mt-8 lg:mt-10", REVEAL.up, "delay-200")}>
+                            <Link
+                                href={DISCOVERY_CALL.cta.href}
+                                className="inline-flex rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
+                            >
+                                {DISCOVERY_CALL.cta.label}
+                            </Link>
+                        </div>
                     </div>
 
-                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl sm:aspect-[3/2] lg:aspect-[5/6] lg:rounded-[2rem]">
+                    <div
+                        className={cn(
+                            "relative aspect-[4/3] w-full overflow-hidden rounded-3xl sm:aspect-[3/2] lg:aspect-[5/6] lg:rounded-[2rem]",
+                            REVEAL.right,
+                            "delay-200"
+                        )}
+                    >
+                        {/* zoom out lento dentro del marco redondeado */}
                         <Image
                             src={DISCOVERY_CALL.image}
                             alt=""
                             fill
                             sizes="(min-width: 1024px) 45vw, 100vw"
-                            className="object-cover"
+                            className={cn("object-cover", REVEAL.zoomOut, "duration-[1200ms] delay-200")}
                         />
 
-                        <div className="absolute inset-x-4 bottom-4 flex items-center gap-4 rounded-2xl bg-white/90 p-4 backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:p-5">
+                        <div
+                            className={cn(
+                                "absolute inset-x-4 bottom-4 flex items-center gap-4 rounded-2xl bg-white/90 p-4 backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:p-5",
+                                REVEAL.up,
+                                "delay-[600ms]"
+                            )}
+                        >
                             <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-400 text-black sm:size-12">
                                 <PhoneIcon className="size-5" />
                             </span>
@@ -53,7 +79,7 @@ export default function DiscoveryCall() {
                     </div>
                 </div>
             </Container>
-        </section>
+        </RevealSection>
     );
 }
 

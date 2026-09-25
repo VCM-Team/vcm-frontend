@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import Container from "./Container";
+import RevealSection from "./RevealSection";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
+import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 type Props = {
@@ -22,10 +24,17 @@ export default function ImageCta({
                                      className,
                                  }: Props) {
     return (
-        <section className={cn("pb-16 lg:pb-24", className)}>
+        <RevealSection className={cn("pb-16 lg:pb-24", className)}>
             <Container>
                 <div className="relative isolate overflow-hidden rounded-card">
-                    <div className="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[16/8]">
+                    {/* zoom out lento: el overflow-hidden de la tarjeta lo recorta */}
+                    <div
+                        className={cn(
+                            "relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[16/8]",
+                            REVEAL.zoomOut,
+                            "duration-[1200ms]"
+                        )}
+                    >
                         <Image
                             src={image}
                             alt=""
@@ -43,14 +52,24 @@ export default function ImageCta({
                     {Icon && (
                         <span
                             aria-hidden
-                            className="absolute left-6 top-6 grid size-11 place-items-center rounded-full bg-white text-black"
+                            className={cn(
+                                "absolute left-6 top-6 grid size-11 place-items-center rounded-full bg-white text-black",
+                                REVEAL.zoomIn,
+                                "delay-200"
+                            )}
                         >
                             <Icon className="size-5" />
                         </span>
                     )}
 
                     <div className="absolute inset-x-6 bottom-6 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:inset-x-9 lg:bottom-9">
-                        <h2 className="max-w-[24ch] text-xl font-light leading-snug text-white lg:text-3xl">
+                        <h2
+                            className={cn(
+                                "max-w-[24ch] text-xl font-light leading-snug text-white lg:text-3xl",
+                                REVEAL.left,
+                                "delay-300"
+                            )}
+                        >
                             {title}
                             {titleRest && (
                                 <>
@@ -60,7 +79,13 @@ export default function ImageCta({
                             )}
                         </h2>
 
-                        <div className="group flex w-fit shrink-0 items-center gap-2">
+                        <div
+                            className={cn(
+                                "group flex w-fit shrink-0 items-center gap-2",
+                                REVEAL.right,
+                                "delay-[400ms]"
+                            )}
+                        >
                             <Link
                                 href={cta.href}
                                 className="inline-flex items-center rounded-full bg-brand-400 px-7 py-4 text-[15px] font-semibold leading-none text-black transition-colors duration-300 group-hover:bg-brand-500 group-hover:text-white"
@@ -84,6 +109,6 @@ export default function ImageCta({
                     </div>
                 </div>
             </Container>
-        </section>
+        </RevealSection>
     );
 }

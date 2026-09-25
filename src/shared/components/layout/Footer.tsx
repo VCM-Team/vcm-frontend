@@ -5,6 +5,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
+import { useInView } from "@/src/shared/hooks/useInView";
+import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 const CTA = {
@@ -44,34 +46,50 @@ const SOCIAL = [
     { label: "Facebook", href: "https://facebook.com/", Icon: FaFacebookF },
 ];
 
+const NAV_STAGGER_MS = 60;
+
 export default function Footer() {
     const pathname = usePathname();
+    const { ref, inView } = useInView<HTMLElement>();
+
     const isActive = (href: string) =>
         href === "/" ? pathname === "/" : pathname.startsWith(href);
 
     return (
-        <footer className="bg-ink-900 text-white">
+        <footer
+            ref={ref}
+            data-inview={inView}
+            className="group/reveal overflow-x-clip bg-ink-900 text-white"
+        >
             <div className="mx-auto max-w-7xl px-5 pt-20 lg:px-8 lg:pt-24">
                 <Image
                     src="/assets/brand/vcm_logo.webp"
                     alt="VCM"
                     width={200}
                     height={42}
-                    className="mx-auto h-10 w-auto lg:mx-0"
+                    className={cn("mx-auto h-10 w-auto lg:mx-0", REVEAL.zoomIn)}
                 />
 
                 <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16">
                     {/* Izquierda: titular, subtítulo y botón */}
                     <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-                        <h2 className="max-w-[19ch] text-3xl font-semibold leading-[1.2] sm:text-4xl lg:text-[2.5rem]">
+                        <h2
+                            className={cn(
+                                "max-w-[19ch] text-3xl font-semibold leading-[1.2] sm:text-4xl lg:text-[2.5rem]",
+                                REVEAL.left,
+                                "delay-100"
+                            )}
+                        >
                             {CTA.title}{" "}
                             <span className="text-brand-400">{CTA.titleAccent}</span>{" "}
                             {CTA.titleRest}
                         </h2>
 
-                        <p className="mt-8 text-[15px] text-white/80">{CTA.subtitle}</p>
+                        <p className={cn("mt-8 text-[15px] text-white/80", REVEAL.fade, "delay-200")}>
+                            {CTA.subtitle}
+                        </p>
 
-                        <div className="group mt-14 flex w-fit items-center gap-2">
+                        <div className={cn("group mt-14 flex w-fit items-center gap-2", REVEAL.up, "delay-300")}>
                             <Link
                                 href={CTA.button.href}
                                 className="inline-flex items-center rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 group-hover:bg-brand-500 group-hover:text-white"
@@ -95,7 +113,7 @@ export default function Footer() {
                     </div>
 
                     {/* Derecha: contacto */}
-                    <div className="text-center lg:pt-24 lg:text-left">
+                    <div className={cn("text-center lg:pt-24 lg:text-left", REVEAL.right, "delay-200")}>
                         <p className="text-[15px] uppercase tracking-[0.04em] text-white">
                             {CONTACT.label}
                         </p>
@@ -139,8 +157,12 @@ export default function Footer() {
                 {/* ── Navegación ──────────────────────────────── */}
                 <nav className="mt-20 lg:mt-24">
                     <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 lg:justify-between lg:gap-x-4">
-                        {FOOTER_NAV.map((item) => (
-                            <li key={item.href}>
+                        {FOOTER_NAV.map((item, i) => (
+                            <li
+                                key={item.href}
+                                className={REVEAL.blur}
+                                style={{ transitionDelay: `${400 + i * NAV_STAGGER_MS}ms` }}
+                            >
                                 <Link
                                     href={item.href}
                                     className={cn(
@@ -156,7 +178,7 @@ export default function Footer() {
                 </nav>
 
                 {/* ── Barra inferior ──────────────────────────── */}
-                <div className="mt-8 border-t border-brand-400/50 py-8 lg:py-10">
+                <div className={cn("mt-8 border-t border-brand-400/50 py-8 lg:py-10", REVEAL.up, "delay-[800ms]")}>
                     <div className="flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:gap-4 lg:text-left">
                         <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-3">
                             <p className="text-[13px] text-white/85">
@@ -174,8 +196,12 @@ export default function Footer() {
                         </div>
 
                         <ul className="flex items-center justify-center gap-6">
-                            {SOCIAL.map(({ label, href, Icon }) => (
-                                <li key={label}>
+                            {SOCIAL.map(({ label, href, Icon }, i) => (
+                                <li
+                                    key={label}
+                                    className={REVEAL.zoomIn}
+                                    style={{ transitionDelay: `${1000 + i * 80}ms` }}
+                                >
                                     <Link
                                         href={href}
                                         target="_blank"

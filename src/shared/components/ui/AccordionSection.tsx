@@ -1,8 +1,11 @@
+"use client";
+
 import Container from "./Container";
 import Badge from "./Badge";
 import Pill from "./Pill";
 import Accordion, { type AccordionItem } from "./Accordion";
 import Link from "next/link";
+import { useInView } from "@/src/shared/hooks/useInView";
 import { cn } from "@/src/lib/utils";
 
 type Props = {
@@ -18,6 +21,12 @@ type Props = {
     className?: string;
 };
 
+// Entrada al hacer scroll: el <section> lleva data-inview y group/reveal
+const REVEAL_BASE =
+    "opacity-0 transition-[opacity,translate] duration-700 ease-out group-data-[inview=true]/reveal:translate-x-0 group-data-[inview=true]/reveal:translate-y-0 group-data-[inview=true]/reveal:opacity-100 motion-reduce:translate-x-0 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none";
+const REVEAL_LEFT = cn(REVEAL_BASE, "-translate-x-10");
+const REVEAL_UP = cn(REVEAL_BASE, "translate-y-10");
+
 export default function AccordionSection({
                                              badge,
                                              title,
@@ -29,14 +38,27 @@ export default function AccordionSection({
                                              features,
                                              className,
                                          }: Props) {
+    const { ref, inView } = useInView<HTMLElement>();
     const withFeatures = Boolean(features?.length);
 
     return (
-        <section className={cn("py-16 lg:py-24 bg--color--bg", className)}>
+        <section
+            ref={ref}
+            data-inview={inView}
+            className={cn("group/reveal bg-bg py-16 lg:py-24", className)}
+        >
             <Container>
-                <Badge>{badge}</Badge>
+                <div className={REVEAL_LEFT}>
+                    <Badge>{badge}</Badge>
+                </div>
 
-                <h2 className="mt-7 max-w-[16ch] text-4xl font-bold leading-[1.1] tracking-tight text-fg sm:text-5xl lg:text-[3.25rem]">
+                <h2
+                    className={cn(
+                        "mt-7 max-w-[16ch] text-4xl font-bold leading-[1.1] tracking-tight text-fg sm:text-5xl lg:text-[3.25rem]",
+                        REVEAL_LEFT,
+                        "delay-100"
+                    )}
+                >
                     {title}
                     {titleAccent && (
                         <>
@@ -50,29 +72,41 @@ export default function AccordionSection({
                 <div className="mt-7 grid items-start gap-12 lg:mt-7 lg:grid-cols-2 lg:gap-20">
                     {/* columna izquierda */}
                     <div>
-                        <p className="max-w-[48ch] text-base leading-[1.75] text-fg-muted">
+                        <p
+                            className={cn(
+                                "max-w-[48ch] text-base leading-[1.75] text-fg-muted",
+                                REVEAL_LEFT,
+                                "delay-200"
+                            )}
+                        >
                             {description}
                         </p>
 
                         {cta && (
-                            <Link
-                                href={cta.href}
-                                className="mt-9 inline-flex items-center rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300  hover:text-white"
-                            >
-                                {cta.label}
-                            </Link>
+                            <div className={cn("mt-9", REVEAL_LEFT, "delay-300")}>
+                                <Link
+                                    href={cta.href}
+                                    className="inline-flex items-center rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:text-white"
+                                >
+                                    {cta.label}
+                                </Link>
+                            </div>
                         )}
                     </div>
 
                     {/* columna derecha */}
-                    <Accordion items={items} />
+                    <div className={cn(REVEAL_UP, "delay-300")}>
+                        <Accordion items={items} />
+                    </div>
                 </div>
 
                 {withFeatures && features && (
                     <div
                         className={cn(
                             "mt-12 lg:mt-16",
-                            cta && "border-t border-black/30 pt-10 lg:pt-12"
+                            cta && "border-t border-black/30 pt-10 lg:pt-12",
+                            REVEAL_UP,
+                            "delay-500"
                         )}
                     >
                         <ul className="mx-auto flex max-w-5xl flex-wrap justify-center gap-8">

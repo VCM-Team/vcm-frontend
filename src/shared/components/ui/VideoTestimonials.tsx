@@ -6,9 +6,10 @@ import Link from "next/link";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Container from "./Container";
 import Badge from "./Badge";
-import Button from "./Button";
+import RevealSection from "./RevealSection";
 import VideoPlayer from "./VideoPlayer";
 import type { VideoTestimonial } from "@/src/shared/data/video-testimonials.data";
+import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 type Props = {
@@ -55,7 +56,7 @@ export default function VideoTestimonials({ items, className }: Props) {
     const isLast = active === items.length - 1;
 
     return (
-        <section className={cn("py-16 lg:py-24", className)}>
+        <RevealSection className={cn("py-16 lg:py-24", className)}>
             <Container>
                 <div className="relative">
                     <div
@@ -67,42 +68,55 @@ export default function VideoTestimonials({ items, className }: Props) {
                         {items.map((item) => (
                             <div key={item.key} className="w-full shrink-0 snap-start">
                                 <div className="grid gap-6 lg:grid-cols-2">
-                                    <VideoPlayer
-                                        src={item.video.src}
-                                        poster={item.video.poster}
-                                        title={item.video.title}
-                                    />
+                                    {/* Sin entradas laterales: no alteran el scrollWidth del track */}
+                                    <div className={REVEAL.zoomIn}>
+                                        <VideoPlayer
+                                            src={item.video.src}
+                                            poster={item.video.poster}
+                                            title={item.video.title}
+                                        />
+                                    </div>
 
-                                    {item.variant === "story" ? (
-                                        <StoryCard item={item} />
-                                    ) : (
-                                        <QuoteCard item={item} />
-                                    )}
+                                    <div className={cn("flex [&>*]:flex-1", REVEAL.up, "delay-200")}>
+                                        {item.variant === "story" ? (
+                                            <StoryCard item={item} />
+                                        ) : (
+                                            <QuoteCard item={item} />
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         ))}
                     </div>
 
                     {hasMany && (
-                        <>
+                        /* Cubre el mismo área que el carrusel: el translate de REVEAL lo vuelve
+                           el contenedor de las flechas, así que debe medir igual que el padre */
+                        <div
+                            className={cn(
+                                "pointer-events-none absolute inset-0",
+                                REVEAL.fade,
+                                "delay-[400ms]"
+                            )}
+                        >
                             <ArrowButton
                                 direction="prev"
                                 disabled={isFirst}
                                 onClick={() => goTo(active - 1)}
-                                className="left-0 cursor-pointer -translate-x-[calc(100%+1rem)]"
+                                className="pointer-events-auto left-0 cursor-pointer -translate-x-[calc(100%+1rem)]"
                             />
                             <ArrowButton
                                 direction="next"
                                 disabled={isLast}
                                 onClick={() => goTo(active + 1)}
-                                className="right-0 cursor-pointer translate-x-[calc(100%+1rem)]"
+                                className="pointer-events-auto right-0 cursor-pointer translate-x-[calc(100%+1rem)]"
                             />
-                        </>
+                        </div>
                     )}
                 </div>
 
                 {hasMany && (
-                    <div className="mt-8 flex justify-center gap-2">
+                    <div className={cn("mt-8 flex justify-center gap-2", REVEAL.up, "delay-500")}>
                         {items.map((item, i) => (
                             <button
                                 key={item.key}
@@ -119,7 +133,7 @@ export default function VideoTestimonials({ items, className }: Props) {
                     </div>
                 )}
             </Container>
-        </section>
+        </RevealSection>
     );
 }
 
