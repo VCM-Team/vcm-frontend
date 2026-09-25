@@ -6,6 +6,8 @@ import Container from "./Container";
 import Badge from "./Badge";
 import Button from "./Button";
 import { useTypewriter } from "@/src/shared/hooks/useTypewriter";
+import { useInView } from "@/src/shared/hooks/useInView";
+import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 type Props = {
@@ -31,6 +33,7 @@ export default function StickyCardSection({
     const sectionRef = useRef<HTMLElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
     const typed = useTypewriter(titleTyped);
+    const { ref: revealRef, inView } = useInView<HTMLDivElement>();
 
     useEffect(() => {
         const section = sectionRef.current;
@@ -94,44 +97,73 @@ export default function StickyCardSection({
     }, [bottomGap]);
 
     return (
-        <section ref={sectionRef} className={cn("relative isolate", height, className)}>
+        <section
+            ref={sectionRef}
+            data-inview={inView}
+            className={cn("group/reveal relative isolate overflow-clip", height, className)}
+        >
+            {/* zoom out lento; overflow-clip evita que la imagen ampliada se salga */}
             <Image
                 src={image}
                 alt=""
                 fill
                 sizes="100vw"
-                className="-z-10 object-cover object-center"
+                className={cn("-z-10 object-cover object-center", REVEAL.zoomOut, "duration-[1400ms]")}
             />
 
-            <div className="pt-16 lg:pt-20">
+            <div ref={revealRef} className="pt-16 lg:pt-20">
                 <Container>
+                    {/* La tarjeta solo hace fade: un translate/scale alteraría la medición del efecto sticky */}
                     <div
                         ref={cardRef}
-                        className="flex min-h-[19rem] max-w-xl flex-col rounded-panel bg-white/85 p-7 backdrop-blur-md will-change-transform [backface-visibility:hidden] lg:min-h-[21rem] lg:p-9"
+                        className={cn(
+                            "flex min-h-[19rem] max-w-xl flex-col rounded-panel bg-white/85 p-7 backdrop-blur-md will-change-transform [backface-visibility:hidden] lg:min-h-[21rem] lg:p-9",
+                            REVEAL.fade,
+                            "delay-200"
+                        )}
                     >
                         <div className="flex items-start justify-between gap-4">
-                            <Badge>{badge}</Badge>
+                            <div className={cn(REVEAL.left, "delay-300")}>
+                                <Badge>{badge}</Badge>
+                            </div>
                             {mark && (
-                                <Image src={mark} alt="" width={72} height={72}
-                                       className="size-14 object-contain lg:size-16" />
+                                <Image
+                                    src={mark}
+                                    alt=""
+                                    width={72}
+                                    height={72}
+                                    className={cn("size-14 object-contain lg:size-16", REVEAL.zoomIn, "delay-[400ms]")}
+                                />
                             )}
                         </div>
 
-                        <h2 className="mt-8 text-2xl font-semibold leading-tight text-fg lg:text-3xl">
+                        <h2
+                            className={cn(
+                                "mt-8 text-2xl font-semibold leading-tight text-fg lg:text-3xl",
+                                REVEAL.blur,
+                                "delay-[400ms]"
+                            )}
+                        >
                             {title}
                             <br />
                             <span className="inline-grid">
-                <span aria-hidden className="invisible col-start-1 row-start-1 justify-self-start px-1">
-                  {titleTyped}
-                </span>
-                <span className="col-start-1 row-start-1 inline-flex items-center justify-self-start rounded bg-accent/25 px-1">
-                  {typed}
-                    <span aria-hidden className="ml-0.5 inline-block h-[1.1em] w-[2px] animate-caret bg-fg" />
-                </span>
-              </span>
+                                <span aria-hidden className="invisible col-start-1 row-start-1 justify-self-start px-1">
+                                    {titleTyped}
+                                </span>
+                                <span className="col-start-1 row-start-1 inline-flex items-center justify-self-start rounded bg-accent/25 px-1">
+                                    {typed}
+                                    <span aria-hidden className="ml-0.5 inline-block h-[1.1em] w-[2px] animate-caret bg-fg" />
+                                </span>
+                            </span>
                         </h2>
 
-                        <div className="mt-auto flex flex-col gap-7 pt-7 sm:flex-row sm:items-end sm:justify-between">
+                        <div
+                            className={cn(
+                                "mt-auto flex flex-col gap-7 pt-7 sm:flex-row sm:items-end sm:justify-between",
+                                REVEAL.up,
+                                "delay-500"
+                            )}
+                        >
                             <p className="max-w-[34ch] text-[15px] leading-relaxed text-fg-muted">
                                 {description}
                             </p>

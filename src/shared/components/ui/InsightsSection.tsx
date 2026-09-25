@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "./Container";
 import Badge from "./Badge";
+import RevealSection from "./RevealSection";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
+import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 export type InsightItem = {
@@ -23,6 +25,9 @@ type Props = {
     className?: string;
 };
 
+// Distintas a las del Insights de la home: subida y zoom out
+const CARD_VARIANTS = [REVEAL.up, REVEAL.zoomOut] as const;
+
 export default function InsightsSection({
                                             badge,
                                             title,
@@ -33,14 +38,22 @@ export default function InsightsSection({
                                             className,
                                         }: Props) {
     return (
-        <section className={cn("bg-ink-900 py-20 lg:py-28", className)}>
+        <RevealSection className={cn("bg-ink-900 py-20 lg:py-28", className)}>
             <Container>
                 <div className="flex flex-col items-center text-center">
-                    <Badge className="border-brand-400 bg-transparent text-brand-400">
-                        {badge}
-                    </Badge>
+                    <div className={REVEAL.fade}>
+                        <Badge className="border-brand-400 bg-transparent text-brand-400">
+                            {badge}
+                        </Badge>
+                    </div>
 
-                    <h2 className="mt-7 max-w-[22ch] text-3xl font-normal leading-[1.15] text-white sm:text-4xl lg:text-[2.75rem]">
+                    <h2
+                        className={cn(
+                            "mt-7 max-w-[22ch] text-3xl font-normal leading-[1.15] text-white sm:text-4xl lg:text-[2.75rem]",
+                            REVEAL.zoomIn,
+                            "delay-100"
+                        )}
+                    >
                         {title}
                         {titleAccent && (
                             <>
@@ -51,20 +64,32 @@ export default function InsightsSection({
                     </h2>
 
                     {description && (
-                        <p className="mt-5 max-w-[48ch] text-[15px] leading-relaxed text-white/70">
+                        <p
+                            className={cn(
+                                "mt-5 max-w-[48ch] text-[15px] leading-relaxed text-white/70",
+                                REVEAL.blur,
+                                "delay-200"
+                            )}
+                        >
                             {description}
                         </p>
                     )}
                 </div>
 
                 <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
-                    {items.map((item) => (
-                        <InsightCard key={item.key} item={item} />
+                    {items.map((item, i) => (
+                        <div
+                            key={item.key}
+                            className={CARD_VARIANTS[i % CARD_VARIANTS.length]}
+                            style={{ transitionDelay: `${300 + i * 150}ms` }}
+                        >
+                            <InsightCard item={item} />
+                        </div>
                     ))}
                 </div>
 
                 {cta && (
-                    <div className="mt-12 flex justify-center lg:mt-14">
+                    <div className={cn("mt-12 flex justify-center lg:mt-14", REVEAL.zoomIn, "delay-[600ms]")}>
                         <Link
                             href={cta.href}
                             className="rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white"
@@ -74,7 +99,7 @@ export default function InsightsSection({
                     </div>
                 )}
             </Container>
-        </section>
+        </RevealSection>
     );
 }
 
@@ -82,18 +107,18 @@ function InsightCard({ item }: { item: InsightItem }) {
     return (
         <article
             className={cn(
-                "group relative isolate flex flex-col gap-5 overflow-hidden rounded-[2rem] bg-[#0F0F0F] p-4",
+                "group relative isolate flex h-full flex-col gap-5 overflow-hidden rounded-[2rem] bg-[#0F0F0F] p-4",
                 "transition-colors duration-300 hover:bg-brand-400 focus-within:bg-brand-400",
                 "has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-brand-400",
                 "sm:min-h-[20rem] sm:flex-row sm:gap-6 sm:p-5 lg:min-h-[22rem]"
             )}
         >
-            {/* Franja superior fija; la parte inferior es el bg del article y cambia en hover */}
+            {/* Franja superior fija; hereda el radio para no asomar por las esquinas */}
             <svg
                 aria-hidden
                 viewBox="0 0 100 100"
                 preserveAspectRatio="none"
-                className="absolute inset-0 -z-10 size-full"
+                className="absolute inset-0 -z-10 size-full rounded-[inherit]"
             >
                 <path d="M0 0 L100 0 L100 12 L0 48 Z" fill="#252525" />
             </svg>

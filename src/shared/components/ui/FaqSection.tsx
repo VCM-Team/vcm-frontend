@@ -1,6 +1,8 @@
 import Container from "./Container";
 import Badge from "./Badge";
+import RevealSection from "./RevealSection";
 import Accordion, { type AccordionItem } from "./Accordion";
+import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 type Props = {
@@ -24,22 +26,22 @@ export default function FaqSection({
     const isDark = variant === "dark";
 
     return (
-        <section className={cn("py-16 lg:py-24", isDark && "bg-ink-900", className)}>
+        <RevealSection className={cn("py-16 lg:py-24", isDark && "bg-ink-900", className)}>
             <Container>
                 <div className="mx-auto max-w-3xl">
                     <div className="flex flex-col items-center text-center">
-                        <Badge
-                            className={cn(
-                                isDark && "border-brand-400 bg-transparent text-brand-400"
-                            )}
-                        >
-                            {badge}
-                        </Badge>
+                        <div className={REVEAL.fade}>
+                            <Badge className={cn(isDark && "border-brand-400 bg-transparent text-brand-400")}>
+                                {badge}
+                            </Badge>
+                        </div>
 
                         <h2
                             className={cn(
                                 "mt-8 text-3xl font-semibold leading-[1.15] sm:text-4xl lg:text-[2.75rem]",
-                                isDark ? "text-white" : "text-fg"
+                                isDark ? "text-white" : "text-fg",
+                                REVEAL.zoomIn,
+                                "delay-100"
                             )}
                         >
                             {title}
@@ -54,13 +56,12 @@ export default function FaqSection({
                         </h2>
                     </div>
 
-                    <Accordion
-                        items={items}
-                        variant={variant}
-                        className="mt-12 lg:mt-14"
-                    />
+                    {/* El margen pasa al wrapper, que es quien anima */}
+                    <div className={cn("mt-12 lg:mt-14", REVEAL.blur, "translate-y-6 delay-200")}>
+                        <Accordion items={items} variant={variant} />
+                    </div>
                 </div>
             </Container>
-        </section>
+        </RevealSection>
     );
 }

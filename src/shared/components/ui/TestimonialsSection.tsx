@@ -5,8 +5,10 @@ import Link from "next/link";
 import Container from "./Container";
 import Badge from "./Badge";
 import Button from "./Button";
+import RevealSection from "./RevealSection";
 import TestimonialCard from "./TestimonialCard";
 import type { Testimonial } from "@/src/shared/data/testimonials.data";
+import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 type Props = {
@@ -68,24 +70,23 @@ export default function TestimonialsSection({
     };
 
     return (
-        <section className={cn("py-16 lg:py-24", isDark && "bg-ink-900", className)}>
+        <RevealSection className={cn("overflow-x-clip py-16 lg:py-24", isDark && "bg-ink-900", className)}>
             <Container>
                 <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
                     {/* encabezado */}
                     <div className="flex flex-col">
-                        <Badge
-                            className={cn(
-                                "self-start",
-                                isDark && "border-brand-400 bg-transparent text-brand-400"
-                            )}
-                        >
-                            {badge}
-                        </Badge>
+                        <div className={cn("self-start", REVEAL.down)}>
+                            <Badge className={cn(isDark && "border-brand-400 bg-transparent text-brand-400")}>
+                                {badge}
+                            </Badge>
+                        </div>
 
                         <h2
                             className={cn(
                                 "mt-8 max-w-[18ch] text-3xl font-semibold leading-[1.15] sm:text-4xl lg:text-[2.75rem]",
-                                isDark ? "text-white" : "text-fg"
+                                isDark ? "text-white" : "text-fg",
+                                REVEAL.left,
+                                "delay-100"
                             )}
                         >
                             {title}
@@ -100,28 +101,27 @@ export default function TestimonialsSection({
                             {titleRest && <> {titleRest}</>}
                         </h2>
 
-                        {cta &&
-                            (isDark ? (
-                                <Link
-                                    href={cta.href}
-                                    className="mt-8 inline-flex self-start rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white lg:mt-auto"
-                                >
-                                    {cta.label}
-                                </Link>
-                            ) : (
-                                <Button
-                                    href={cta.href}
-                                    variant="dark"
-                                    size="sm"
-                                    className="mt-8 self-start lg:mt-auto"
-                                >
-                                    {cta.label}
-                                </Button>
-                            ))}
+                        {cta && (
+                            /* El wrapper lleva la posición (mt / self-start) y la animación */
+                            <div className={cn("mt-8 self-start lg:mt-auto", REVEAL.up, "delay-300")}>
+                                {isDark ? (
+                                    <Link
+                                        href={cta.href}
+                                        className="inline-flex rounded-full bg-brand-400 px-7 py-3.5 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white"
+                                    >
+                                        {cta.label}
+                                    </Link>
+                                ) : (
+                                    <Button href={cta.href} variant="dark" size="sm">
+                                        {cta.label}
+                                    </Button>
+                                )}
+                            </div>
+                        )}
                     </div>
 
-                    {/* carrusel */}
-                    <div className="relative min-w-0">
+                    {/* carrusel: zoom en bloque; sin entradas laterales dentro del track */}
+                    <div className={cn("relative min-w-0", REVEAL.zoomIn, "delay-200")}>
                         <div
                             ref={trackRef}
                             role="region"
@@ -138,8 +138,14 @@ export default function TestimonialsSection({
                             ))}
                         </div>
 
-                        {/* flechas sobre la tarjeta */}
-                        <div className="pointer-events-none absolute bottom-9 right-9 flex gap-3 lg:bottom-11 lg:right-11">
+                        {/* flechas sobre la tarjeta: ya son absolute, el fade va en su propio contenedor */}
+                        <div
+                            className={cn(
+                                "pointer-events-none absolute bottom-9 right-9 flex gap-3 lg:bottom-11 lg:right-11",
+                                REVEAL.fade,
+                                "delay-[600ms]"
+                            )}
+                        >
                             <button
                                 type="button"
                                 onClick={() => go(-1)}
@@ -173,7 +179,7 @@ export default function TestimonialsSection({
                     </div>
                 </div>
             </Container>
-        </section>
+        </RevealSection>
     );
 }
 
