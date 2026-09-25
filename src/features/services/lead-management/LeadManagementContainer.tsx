@@ -9,96 +9,104 @@ import type { NumberedCardItem } from "@/src/shared/components/ui/NumberedCard";
 import { TESTIMONIALS } from "@/src/shared/data/testimonials.data";
 
 const HERO = {
-    badge: "Services",
-    title: "Lead Management Specialists",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    badge: "Operational Excellence",
+    title: "Processes That Run",
+    titleAccent: "Without You in Every Detail",
+    description:
+        "We map how your operation really works, document it in clear SOPs and remove the manual steps that slow your team down, so the business keeps moving as it grows.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/CSTMER.png",
 };
 
 const INTRO = {
-    badge: "Etiqueta de la sección",
-    title: "Titular de la sección",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "What We Do",
+    title: "Clear Processes, Fewer Fires",
+    description:
+        "When processes live in people’s heads, every absence, new hire or busy season turns into a problem. We turn the way your team works into documented, repeatable processes that everyone can follow.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     features: [
-        "Primer atributo",
-        "Segundo atributo",
-        "Tercer atributo",
-        "Cuarto atributo",
-        "Quinto atributo",
+        "Process Mapping",
+        "SOPs",
+        "Documentation",
+        "Automation",
+        "Team Alignment",
     ],
 };
 
 const INTRO_ITEMS: readonly AccordionItem[] = [
     {
-        key: "item-1",
-        title: "Título del primer punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        key: "mapping",
+        title: "Process Mapping",
+        content:
+            "We map how work actually flows through your company today, to find the handoffs, delays and duplicated steps.",
     },
     {
-        key: "item-2",
-        title: "Título del segundo punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        key: "sops",
+        title: "SOPs & Documentation",
+        content:
+            "We document each key process in clear SOPs, so tasks get done the same way no matter who does them.",
     },
     {
-        key: "item-3",
-        title: "Título del tercer punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        key: "efficiency",
+        title: "Efficiency & Automation",
+        content:
+            "We streamline the workflow and automate repetitive steps, so your team spends its time on work that matters.",
     },
 ];
 
 const WHY_IT_MATTERS = {
-    badge: "Benefit from Proven Expertise",
-    title: "Primera línea del titular",
-    titleRest: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    badge: "Why It Matters",
+    title: "When Everything Depends on You,",
+    titleRest: "Growth Stops",
+    description:
+        "If every decision and every exception goes through the owner, the business can only grow as fast as one person can work. Documented processes and aligned teams give you coordination today and the capacity to scale tomorrow.",
     image: "https://workninjas.com/wp-content/uploads/2025/06/lauistv.png",
 };
 
 const PROCESS = {
     badge: "Our Process",
-    title: "Titular de la sección",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    title: "How We Improve Your Operations",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const PROCESS_STEPS: readonly NumberedCardItem[] = [
     {
         number: "01",
-        title: "Título del primer paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Operations Assessment",
+        description: "We review how work flows through your team and where it gets stuck.",
     },
     {
         number: "02",
-        title: "Título del segundo paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Growth Roadmap",
+        description: "We prioritize the processes to fix first, with clear owners and next steps.",
     },
     {
         number: "03",
-        title: "Título del tercer paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Guided Implementation",
+        description: "We document the SOPs and put the improved workflows in place with your team.",
     },
     {
         number: "04",
-        title: "Título del cuarto paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Scale with Talent",
+        description: "When the processes are ready, we add dedicated support to run them every day.",
     },
 ];
 
 const TESTIMONIALS_HEADING = {
     badge: "Testimonials",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
-    titleRest: "cierre del titular",
-    cta: { label: "Read Success Story", href: "/success-story" },
+    title: "Trusted by Construction",
+    titleAccent: "Companies",
+    titleRest: "Across North America",
+    cta: { label: "See Case Studies", href: "/success-story" },
 };
 
 const WHY_US = {
-    badge: "Why us?",
-    title: "Primera línea del titular",
-    titleTyped: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "Why VCM?",
+    title: "Systems that let",
+    titleTyped: "your business scale",
+    description:
+        "We build the processes first, then add the talent to run them, so growth doesn’t depend on putting out fires.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/07/WNroofingexpert.png",
 };
 
@@ -108,6 +116,7 @@ export default function LeadManagementContainer() {
             <PageHero
                 badge={HERO.badge}
                 title={HERO.title}
+                titleAccent={HERO.titleAccent}
                 description={HERO.description}
                 cta={HERO.cta}
                 image={HERO.image}
@@ -146,7 +155,7 @@ export default function LeadManagementContainer() {
                 titleRest={TESTIMONIALS_HEADING.titleRest}
                 cta={TESTIMONIALS_HEADING.cta}
                 items={TESTIMONIALS}
-                variant={"dark"}
+                variant="dark"
             />
 
             <StickyCardSection

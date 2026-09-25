@@ -9,91 +9,104 @@ import type { NumberedCardItem } from "@/src/shared/components/ui/NumberedCard";
 import { TESTIMONIALS } from "@/src/shared/data/testimonials.data";
 
 const HERO = {
-    badge: "Services",
-    title: "Marketing",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    badge: "Marketing & Customer Acquisition",
+    title: "Attract Better Leads,",
+    titleAccent: "Win More Customers",
+    description:
+        "We help construction and roofing companies sharpen their positioning, build a clear funnel and run campaigns that bring in the right customers, with the analytics to know what is working.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/nicolas-2048x961.png",
 };
 
 const INTRO = {
-    badge: "Etiqueta de la sección",
-    title: "Titular de la sección",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    badge: "What We Do",
+    title: "Marketing That Feeds Your Sales Pipeline",
+    description:
+        "More leads don’t help if they are the wrong ones or if nobody follows up. We connect your positioning, campaigns and follow-up into one funnel, so marketing brings in customers your sales team can actually close.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     features: [
-        "Primer atributo",
-        "Segundo atributo",
-        "Tercer atributo",
-        "Cuarto atributo",
-        "Quinto atributo",
+        "Positioning",
+        "Marketing Funnel",
+        "Campaigns",
+        "Lead Nurturing",
+        "Marketing Analytics",
     ],
 };
 
 const INTRO_ITEMS: readonly AccordionItem[] = [
     {
-        key: "item-1",
-        title: "Título del primer punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        key: "positioning",
+        title: "Positioning & Messaging",
+        content:
+            "We clarify who your ideal customer is and what makes you the right choice for them, so every message speaks to the right audience.",
     },
     {
-        key: "item-2",
-        title: "Título del segundo punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        key: "funnel",
+        title: "Funnel & Campaigns",
+        content:
+            "We design the path from first contact to qualified lead and plan the campaigns that move people through it.",
     },
     {
-        key: "item-3",
-        title: "Título del tercer punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        key: "nurturing",
+        title: "Lead Nurturing & Analytics",
+        content:
+            "We set up the follow-up that keeps leads engaged and the analytics that show which channels bring the best customers.",
     },
 ];
 
 const WHY_IT_MATTERS = {
-    badge: "Benefit from Proven Expertise",
-    title: "Primera línea del titular",
-    titleRest: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    badge: "Why It Matters",
+    title: "Lead Quality",
+    titleRest: "Beats Lead Volume",
+    description:
+        "Chasing leads that never convert costs time, money and morale. A clear position, a defined funnel and consistent nurturing bring in customers who fit your business, and make every marketing dollar easier to measure.",
     image: "https://workninjas.com/wp-content/uploads/2025/06/DoxJorg.png",
 };
 
 const PROCESS = {
     badge: "Our Process",
-    title: "Titular de la sección",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    title: "How We Improve Your Customer Acquisition",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const PROCESS_STEPS: readonly NumberedCardItem[] = [
     {
         number: "01",
-        title: "Título del primer paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Marketing Assessment",
+        description: "We review your positioning, channels, funnel and how leads are followed up today.",
     },
     {
         number: "02",
-        title: "Título del segundo paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Growth Roadmap",
+        description: "We prioritize the campaigns and funnel improvements with the biggest impact.",
     },
     {
         number: "03",
-        title: "Título del tercer paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Guided Implementation",
+        description: "We launch the campaigns, nurturing and analytics alongside your team.",
+    },
+    {
+        number: "04",
+        title: "Scale with Talent",
+        description: "When the funnel is ready, we add dedicated marketing support to keep it running.",
     },
 ];
 
 const TESTIMONIALS_HEADING = {
     badge: "Testimonials",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
-    titleRest: "cierre del titular",
-    cta: { label: "Read Success Story", href: "/success-story" },
+    title: "Trusted by Construction",
+    titleAccent: "Companies",
+    titleRest: "Across North America",
+    cta: { label: "See Case Studies", href: "/success-story" },
 };
 
 const WHY_US = {
-    badge: "Why us?",
-    title: "Primera línea del titular",
-    titleTyped: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "Why VCM?",
+    title: "Marketing connected",
+    titleTyped: "to your sales process",
+    description:
+        "We align marketing with sales and follow-up first, then add the marketing talent to execute it every day.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/MKTteam-scaled.png",
 };
 
@@ -103,6 +116,7 @@ export default function MarketingContainer() {
             <PageHero
                 badge={HERO.badge}
                 title={HERO.title}
+                titleAccent={HERO.titleAccent}
                 description={HERO.description}
                 cta={HERO.cta}
                 image={HERO.image}
@@ -141,7 +155,7 @@ export default function MarketingContainer() {
                 titleRest={TESTIMONIALS_HEADING.titleRest}
                 cta={TESTIMONIALS_HEADING.cta}
                 items={TESTIMONIALS}
-                variant={"dark"}
+                variant="dark"
             />
 
             <StickyCardSection

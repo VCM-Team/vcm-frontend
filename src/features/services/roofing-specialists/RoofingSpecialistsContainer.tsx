@@ -10,85 +10,148 @@ import type { NumberedCardItem } from "@/src/shared/components/ui/NumberedCard";
 import { TESTIMONIALS } from "@/src/shared/data/testimonials.data";
 
 const HERO = {
-    badge: "Services",
-    title: "Nombre del servicio",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    badge: "Sales Performance",
+    title: "Build a Sales Engine",
+    titleAccent: "You Can Predict",
+    description:
+        "We help construction and roofing companies turn scattered leads and inconsistent follow-up into a clear sales process, a clean CRM and a pipeline you can actually see.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/teamRoofing-2048x961.png",
 };
 
 const INTRO = {
-    badge: "Etiqueta de la sección",
-    title: "Titular de la sección",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "What We Do",
+    title: "A Sales Process Built for Consistent Growth",
+    description:
+        "Most sales problems aren’t about effort. They come from leads without a clear owner, a CRM nobody trusts and follow-up that depends on memory. We fix the process first, so every opportunity moves forward the same way.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     features: [
-        "Primer atributo",
-        "Segundo atributo",
-        "Tercer atributo",
-        "Cuarto atributo",
-        "Quinto atributo",
+        "Lead Generation",
+        "Sales Process",
+        "CRM Management",
+        "Pipeline Visibility",
+        "Sales Reporting",
     ],
 };
 
 const INTRO_ITEMS: readonly AccordionItem[] = [
-    { key: "item-1", title: "Título del primer punto", content: "Descripción del punto — reemplázala." },
-    { key: "item-2", title: "Título del segundo punto", content: "Descripción del punto — reemplázala." },
-    { key: "item-3", title: "Título del tercer punto", content: "Descripción del punto — reemplázala." },
+    {
+        key: "leads",
+        title: "Lead Generation & Follow-Up",
+        content:
+            "We review where your leads come from and set up the follow-up cadences that keep every inquiry moving toward a conversation.",
+    },
+    {
+        key: "crm",
+        title: "CRM & Pipeline Management",
+        content:
+            "We organize your CRM and pipeline stages so your team works from the same information and nothing falls through the cracks.",
+    },
+    {
+        key: "conversion",
+        title: "Conversion & Reporting",
+        content:
+            "We define the sales KPIs that matter and build the reporting to track them, so you know what is working and where deals are lost.",
+    },
 ];
 
 const WHY_IT_MATTERS = {
-    badge: "Benefit from Proven Expertise",
-    title: "Primera línea del titular",
-    titleRest: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    badge: "Why It Matters",
+    title: "Visibility Today,",
+    titleRest: "Predictability Tomorrow",
+    description:
+        "When sales depend on individual effort, growth is hard to plan. A defined process, a reliable CRM and regular reporting give you the visibility to make decisions and the predictability to plan your next stage.",
     image: "https://workninjas.com/wp-content/uploads/2025/06/roofing.png",
 };
 
 const HANDLES = {
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
+    title: "What We Help You",
+    titleAccent: "Improve",
 };
 
 const HANDLES_ITEMS: readonly FeatureGridItem[] = [
-    { key: "item-1", title: "Título del primer punto", description: "Descripción — reemplázala.", Icon: CalculatorIcon },
-    { key: "item-2", title: "Título del segundo punto", description: "Descripción — reemplázala.", Icon: CartIcon },
-    { key: "item-3", title: "Título del tercer punto", description: "Descripción — reemplázala.", Icon: HandHeartIcon },
-    { key: "item-4", title: "Título del cuarto punto", description: "Descripción — reemplázala.", Icon: BadgeHandIcon },
-    { key: "item-5", title: "Título del quinto punto", description: "Descripción — reemplázala.", Icon: CoinsIcon },
-    { key: "item-6", title: "Título del sexto punto", description: "Descripción — reemplázala.", Icon: CalendarIcon },
-    { key: "item-7", title: "Título del séptimo punto", description: "Descripción — reemplázala.", Icon: CashIcon },
-    { key: "item-8", title: "Título del octavo punto", description: "Descripción — reemplázala.", Icon: ShieldHomeIcon },
-    { key: "item-9", title: "Título del noveno punto", description: "Descripción — reemplázala.", Icon: AwardIcon },
+    {
+        key: "lead-generation",
+        title: "Lead Generation",
+        description: "Channels and processes that bring qualified leads into your pipeline.",
+        Icon: BadgeHandIcon,
+    },
+    {
+        key: "sales-process",
+        title: "Sales Process",
+        description: "A defined path from first contact to signed contract, so every rep sells the same way.",
+        Icon: GearsIcon,
+    },
+    {
+        key: "crm",
+        title: "CRM Organization",
+        description: "A clean, well-structured CRM your team actually uses and trusts.",
+        Icon: LayersIcon,
+    },
+    {
+        key: "follow-up",
+        title: "Follow-Up Discipline",
+        description: "Consistent follow-up cadences so no lead or estimate goes cold.",
+        Icon: CalendarIcon,
+    },
+    {
+        key: "pipeline",
+        title: "Pipeline Visibility",
+        description: "A clear view of every opportunity, its stage and its value.",
+        Icon: CalculatorIcon,
+    },
+    {
+        key: "reporting",
+        title: "Sales KPIs & Reporting",
+        description: "The numbers that matter, reported regularly, so decisions are based on data.",
+        Icon: CoinsIcon,
+    },
 ];
 
 const PROCESS = {
     badge: "Our Process",
-    title: "Titular de la sección",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    title: "How We Improve Your Sales",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const PROCESS_STEPS: readonly NumberedCardItem[] = [
-    { number: "01", title: "Título del primer paso", description: "Descripción del paso — reemplázala." },
-    { number: "02", title: "Título del segundo paso", description: "Descripción del paso — reemplázala." },
-    { number: "03", title: "Título del tercer paso", description: "Descripción del paso — reemplázala." },
-    { number: "04", title: "Título del cuarto paso", description: "Descripción del paso — reemplázala." },
+    {
+        number: "01",
+        title: "Sales Assessment",
+        description: "We review your lead sources, sales process, CRM and pipeline to find where opportunities are lost.",
+    },
+    {
+        number: "02",
+        title: "Growth Roadmap",
+        description: "We prioritize the changes with the biggest impact and assign clear owners and next steps.",
+    },
+    {
+        number: "03",
+        title: "Guided Implementation",
+        description: "We work with your team to put the new process, CRM structure and reporting in place.",
+    },
+    {
+        number: "04",
+        title: "Scale with Talent",
+        description: "When the system is ready, we add dedicated sales support to execute it every day.",
+    },
 ];
 
 const TESTIMONIALS_HEADING = {
     badge: "Testimonials",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
-    titleRest: "cierre del titular",
-    cta: { label: "Read Success Story", href: "/success-story" },
+    title: "Trusted by Construction",
+    titleAccent: "Companies",
+    titleRest: "Across North America",
+    cta: { label: "See Case Studies", href: "/success-story" },
 };
 
 const WHY_US = {
-    badge: "Why us?",
-    title: "Primera línea del titular",
-    titleTyped: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "Why VCM?",
+    title: "Better sales start",
+    titleTyped: "with better systems",
+    description:
+        "We fix the process, the CRM and the follow-up first. Then, if you need it, we add dedicated sales talent to execute.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/weknowroofing-scaled.png",
 };
 
@@ -98,6 +161,7 @@ export default function RoofingSpecialistsContainer() {
             <PageHero
                 badge={HERO.badge}
                 title={HERO.title}
+                titleAccent={HERO.titleAccent}
                 description={HERO.description}
                 cta={HERO.cta}
                 image={HERO.image}
@@ -142,7 +206,7 @@ export default function RoofingSpecialistsContainer() {
                 titleRest={TESTIMONIALS_HEADING.titleRest}
                 cta={TESTIMONIALS_HEADING.cta}
                 items={TESTIMONIALS}
-                variant={"dark"}
+                variant="dark"
             />
 
             <StickyCardSection
@@ -167,15 +231,8 @@ function CalculatorIcon({ className }: { className?: string }) {
     );
 }
 
-function CartIcon({ className }: { className?: string }) {
-    return (
-        <svg viewBox="0 0 32 32" fill="none" className={className} aria-hidden>
-            <path d="M9.73301 28C8.88856 28 8.16634 27.6944 7.56634 27.0833C6.96634 26.4722 6.66634 25.7444 6.66634 24.9V12.5333L4.23301 6.66667H1.33301V4H6.03301L8.23301 9.33333H27.933C28.4441 9.33333 28.833 9.54444 29.0997 9.96667C29.3663 10.3889 29.3775 10.8222 29.133 11.2667L25.333 18.7C26.4663 18.8778 27.4163 19.4 28.183 20.2667C28.9497 21.1333 29.333 22.1556 29.333 23.3333C29.333 24.6222 28.883 25.7222 27.983 26.6333C27.083 27.5444 25.9886 28 24.6997 28C23.3886 28 22.283 27.5444 21.383 26.6333C20.483 25.7222 20.033 24.6222 20.033 23.3333C20.033 22.8889 20.0886 22.4778 20.1997 22.1C20.3108 21.7222 20.4663 21.3556 20.6663 21L16.2997 20.6L12.2997 26.6C12.0108 27.0444 11.6386 27.3889 11.183 27.6333C10.7275 27.8778 10.2441 28 9.73301 28ZM9.76634 25.3C9.81079 25.3 9.91079 25.2444 10.0663 25.1333L13.2997 20.3333C12.2108 20.2222 11.3552 19.9611 10.733 19.55C10.1108 19.1389 9.64412 18.7111 9.33301 18.2667V24.9333C9.33301 25.0444 9.37745 25.1333 9.46634 25.2C9.55523 25.2667 9.65523 25.3 9.76634 25.3ZM24.6663 25.3333C25.2441 25.3333 25.7219 25.1389 26.0997 24.75C26.4775 24.3611 26.6663 23.8889 26.6663 23.3333C26.6663 22.7556 26.4775 22.2778 26.0997 21.9C25.7219 21.5222 25.2441 21.3333 24.6663 21.3333C24.1108 21.3333 23.6386 21.5222 23.2497 21.9C22.8608 22.2778 22.6663 22.7556 22.6663 23.3333C22.6663 23.8889 22.8608 24.3611 23.2497 24.75C23.6386 25.1389 24.1108 25.3333 24.6663 25.3333Z" fill="currentColor" />
-        </svg>
-    );
-}
-
-function HandHeartIcon({ className }: { className?: string }) {
+/* Engranajes (antes HandHeartIcon: el nombre no describía el dibujo) */
+function GearsIcon({ className }: { className?: string }) {
     return (
         <svg viewBox="0 0 32 32" fill="none" className={className} aria-hidden>
             <path d="M7.80033 16L7.40033 14C7.13366 13.8889 6.88366 13.7722 6.65033 13.65C6.41699 13.5278 6.1781 13.3778 5.93366 13.2L4.00033 13.8L2.66699 11.5334L4.20033 10.2C4.15588 9.91113 4.13366 9.62224 4.13366 9.33335C4.13366 9.04447 4.15588 8.75558 4.20033 8.46669L2.66699 7.13335L4.00033 4.86669L5.93366 5.46669C6.1781 5.28891 6.41699 5.13891 6.65033 5.01669C6.88366 4.89446 7.13366 4.7778 7.40033 4.66669L7.80033 2.66669H10.467L10.867 4.66669C11.1337 4.7778 11.3837 4.89446 11.617 5.01669C11.8503 5.13891 12.0892 5.28891 12.3337 5.46669L14.267 4.86669L15.6003 7.13335L14.067 8.46669C14.1114 8.75558 14.1337 9.04447 14.1337 9.33335C14.1337 9.62224 14.1114 9.91113 14.067 10.2L15.6003 11.5334L14.267 13.8L12.3337 13.2C12.0892 13.3778 11.8503 13.5278 11.617 13.65C11.3837 13.7722 11.1337 13.8889 10.867 14L10.467 16H7.80033ZM11.017 11.2167C11.5392 10.6945 11.8003 10.0667 11.8003 9.33335C11.8003 8.60002 11.5392 7.97224 11.017 7.45002C10.4948 6.9278 9.86699 6.66669 9.13366 6.66669C8.40033 6.66669 7.77255 6.9278 7.25033 7.45002C6.7281 7.97224 6.46699 8.60002 6.46699 9.33335C6.46699 10.0667 6.7281 10.6945 7.25033 11.2167C7.77255 11.7389 8.40033 12 9.13366 12C9.86699 12 10.4948 11.7389 11.017 11.2167ZM19.7337 30.6667L19.1337 27.8667C18.7559 27.7334 18.4059 27.5722 18.0837 27.3834C17.7614 27.1945 17.4448 26.9778 17.1337 26.7334L14.467 27.6L12.6003 24.4L14.7337 22.5334C14.6892 22.1334 14.667 21.7334 14.667 21.3334C14.667 20.9334 14.6892 20.5334 14.7337 20.1334L12.6003 18.2667L14.467 15.0667L17.1337 15.9334C17.4448 15.6889 17.7614 15.4722 18.0837 15.2834C18.4059 15.0945 18.7559 14.9334 19.1337 14.8L19.7337 12H23.467L24.067 14.8C24.4448 14.9334 24.7948 15.0945 25.117 15.2834C25.4392 15.4722 25.7559 15.6889 26.067 15.9334L28.7337 15.0667L30.6003 18.2667L28.467 20.1334C28.5114 20.5334 28.5337 20.9334 28.5337 21.3334C28.5337 21.7334 28.5114 22.1334 28.467 22.5334L30.6003 24.4L28.7337 27.6L26.067 26.7334C25.7559 26.9778 25.4392 27.1945 25.117 27.3834C24.7948 27.5722 24.4448 27.7334 24.067 27.8667L23.467 30.6667H19.7337ZM21.6003 25.3334C22.7114 25.3334 23.6559 24.9445 24.4337 24.1667C25.2114 23.3889 25.6003 22.4445 25.6003 21.3334C25.6003 20.2222 25.2114 19.2778 24.4337 18.5C23.6559 17.7222 22.7114 17.3334 21.6003 17.3334C20.4892 17.3334 19.5448 17.7222 18.767 18.5C17.9892 19.2778 17.6003 20.2222 17.6003 21.3334C17.6003 22.4445 17.9892 23.3889 18.767 24.1667C19.5448 24.9445 20.4892 25.3334 21.6003 25.3334Z" fill="currentColor" />
@@ -207,26 +264,11 @@ function CalendarIcon({ className }: { className?: string }) {
     );
 }
 
-function CashIcon({ className }: { className?: string }) {
+/* Capas (antes CashIcon: el nombre no describía el dibujo) */
+function LayersIcon({ className }: { className?: string }) {
     return (
         <svg viewBox="0 0 32 32" fill="none" className={className} aria-hidden>
             <path d="M15.9997 18.6667L1.33301 10.6667L15.9997 2.66667L30.6663 10.6667L15.9997 18.6667ZM15.9997 24L2.09967 16.4333L4.89967 14.9L15.9997 20.9667L27.0997 14.9L29.8997 16.4333L15.9997 24ZM15.9997 29.3333L2.09967 21.7667L4.89967 20.2333L15.9997 26.3L27.0997 20.2333L29.8997 21.7667L15.9997 29.3333Z" fill="currentColor" />
-        </svg>
-    );
-}
-
-function ShieldHomeIcon({ className }: { className?: string }) {
-    return (
-        <svg viewBox="0 0 32 32" fill="none" className={className} aria-hidden>
-            <path d="M15.9997 21.3333C17.6663 21.3333 19.083 20.75 20.2497 19.5833C21.4163 18.4167 21.9997 17 21.9997 15.3333C21.9997 13.6667 21.4163 12.25 20.2497 11.0833C19.083 9.91667 17.6663 9.33334 15.9997 9.33334V11.3333C17.1108 11.3333 18.0552 11.7222 18.833 12.5C19.6108 13.2778 19.9997 14.2222 19.9997 15.3333C19.9997 16.4444 19.6108 17.3889 18.833 18.1667C18.0552 18.9444 17.1108 19.3333 15.9997 19.3333C15.2663 19.3333 14.583 19.1444 13.9497 18.7667C13.3163 18.3889 12.8219 17.8778 12.4663 17.2333L10.733 18.2C11.2663 19.1778 11.9997 19.9444 12.933 20.5C13.8663 21.0556 14.8886 21.3333 15.9997 21.3333ZM10.9997 16.4667C11.2886 16.4667 11.5275 16.3722 11.7163 16.1833C11.9052 15.9944 11.9997 15.7556 11.9997 15.4667C11.9997 15.1778 11.9052 14.9389 11.7163 14.75C11.5275 14.5611 11.2886 14.4667 10.9997 14.4667C10.7108 14.4667 10.4719 14.5611 10.283 14.75C10.0941 14.9389 9.99967 15.1778 9.99967 15.4667C9.99967 15.7556 10.0941 15.9944 10.283 16.1833C10.4719 16.3722 10.7108 16.4667 10.9997 16.4667ZM12.4497 13.3833C12.6386 13.1944 12.733 12.9556 12.733 12.6667C12.733 12.3778 12.6386 12.1389 12.4497 11.95C12.2608 11.7611 12.0219 11.6667 11.733 11.6667C11.4441 11.6667 11.2052 11.7611 11.0163 11.95C10.8275 12.1389 10.733 12.3778 10.733 12.6667C10.733 12.9556 10.8275 13.1944 11.0163 13.3833C11.2052 13.5722 11.4441 13.6667 11.733 13.6667C12.0219 13.6667 12.2608 13.5722 12.4497 13.3833ZM13.6663 11.8333C13.9552 11.8333 14.1941 11.7389 14.383 11.55C14.5719 11.3611 14.6663 11.1222 14.6663 10.8333C14.6663 10.5444 14.5719 10.3056 14.383 10.1167C14.1941 9.92778 13.9552 9.83334 13.6663 9.83334C13.3775 9.83334 13.1386 9.92778 12.9497 10.1167C12.7608 10.3056 12.6663 10.5444 12.6663 10.8333C12.6663 11.1222 12.7608 11.3611 12.9497 11.55C13.1386 11.7389 13.3775 11.8333 13.6663 11.8333ZM15.9997 29.3333C12.9108 28.5556 10.3608 26.7833 8.34967 24.0167C6.33856 21.25 5.33301 18.1778 5.33301 14.8V6.66667L15.9997 2.66667L26.6663 6.66667V14.8C26.6663 18.1778 25.6608 21.25 23.6497 24.0167C21.6386 26.7833 19.0886 28.5556 15.9997 29.3333Z" fill="currentColor" />
-        </svg>
-    );
-}
-
-function AwardIcon({ className }: { className?: string }) {
-    return (
-        <svg viewBox="0 0 32 32" fill="none" className={className} aria-hidden>
-            <path d="M13.1663 16.1667C12.3886 15.3889 11.9997 14.4444 11.9997 13.3333C11.9997 12.2222 12.3886 11.2778 13.1663 10.5C13.9441 9.72223 14.8886 9.33334 15.9997 9.33334C17.1108 9.33334 18.0552 9.72223 18.833 10.5C19.6108 11.2778 19.9997 12.2222 19.9997 13.3333C19.9997 14.4444 19.6108 15.3889 18.833 16.1667C18.0552 16.9445 17.1108 17.3333 15.9997 17.3333C14.8886 17.3333 13.9441 16.9445 13.1663 16.1667ZM7.99967 30.6667V20.3667C7.15523 19.4333 6.49967 18.3667 6.03301 17.1667C5.56634 15.9667 5.33301 14.6889 5.33301 13.3333C5.33301 10.3556 6.36634 7.83334 8.43301 5.76667C10.4997 3.70001 13.0219 2.66667 15.9997 2.66667C18.9775 2.66667 21.4997 3.70001 23.5663 5.76667C25.633 7.83334 26.6663 10.3556 26.6663 13.3333C26.6663 14.6889 26.433 15.9667 25.9663 17.1667C25.4997 18.3667 24.8441 19.4333 23.9997 20.3667V30.6667L15.9997 28L7.99967 30.6667ZM21.6663 19C23.2219 17.4444 23.9997 15.5556 23.9997 13.3333C23.9997 11.1111 23.2219 9.22223 21.6663 7.66667C20.1108 6.11112 18.2219 5.33334 15.9997 5.33334C13.7775 5.33334 11.8886 6.11112 10.333 7.66667C8.77745 9.22223 7.99967 11.1111 7.99967 13.3333C7.99967 15.5556 8.77745 17.4444 10.333 19C11.8886 20.5556 13.7775 21.3333 15.9997 21.3333C18.2219 21.3333 20.1108 20.5556 21.6663 19Z" fill="currentColor" />
         </svg>
     );
 }

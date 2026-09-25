@@ -8,69 +8,105 @@ import TestimonialsSection from "@/src/shared/components/ui/TestimonialsSection"
 import { TESTIMONIALS } from "@/src/shared/data/testimonials.data";
 import StickyCardSection from "@/src/shared/components/ui/StickyCardSection";
 
-
 const HERO = {
-    badge: "Services",
-    title: "Titular de la página",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    badge: "AI & Business Automation",
+    title: "Less Manual Work,",
+    titleAccent: "Smarter Operations",
+    description:
+        "We help construction and roofing companies put AI and automation to work: connected systems, automated workflows and dashboards that give you answers without chasing spreadsheets.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/07/juanbook-2048x960.png",
 };
 
 const INTRO = {
-    badge: "Etiqueta de la sección",
-    title: "Titular de la sección",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "What We Do",
+    title: "Technology That Works for Your Team",
+    description:
+        "Most companies already pay for tools that don’t talk to each other, so people fill the gaps by hand. We connect your systems, automate the repetitive steps and bring AI into the workflows where it actually saves time.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     features: [
-        "Primer atributo",
-        "Segundo atributo",
-        "Tercer atributo",
-        "Cuarto atributo",
+        "AI Implementation",
+        "Workflow Automation",
+        "CRM Integrations",
+        "Dashboards & BI",
+        "Productivity",
     ],
 };
 
 const INTRO_ITEMS: readonly AccordionItem[] = [
-    { key: "item-1", title: "Título del primer punto", content: "Descripción del punto — reemplázala." },
-    { key: "item-2", title: "Título del segundo punto", content: "Descripción del punto — reemplázala." },
-    { key: "item-3", title: "Título del tercer punto", content: "Descripción del punto — reemplázala." },
+    {
+        key: "automation",
+        title: "Workflow & Process Automation",
+        content:
+            "We identify the repetitive, manual steps in your operation and automate them, so your team spends its time on work that needs a person.",
+    },
+    {
+        key: "integrations",
+        title: "CRM & System Integrations",
+        content:
+            "We connect your CRM with the rest of your tools, so information flows between them instead of being copied by hand.",
+    },
+    {
+        key: "dashboards",
+        title: "Dashboards & Business Intelligence",
+        content:
+            "We build dashboards that turn your data into a clear, regular view of the business, so reports are ready when you need them.",
+    },
 ];
 
 const WHY_IT_MATTERS = {
-    badge: "Why it matters",
-    title: "Primera línea del titular",
-    titleRest: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    badge: "Why It Matters",
+    title: "Time Spent on Manual Work",
+    titleRest: "Is Time Not Spent Growing",
+    description:
+        "Every hour your team spends copying data, building reports or chasing updates is an hour away from customers and projects. Connected systems and automated workflows give that time back and reduce the errors that come with manual work.",
     image: "https://workninjas.com/wp-content/uploads/2025/06/davidbook.png",
 };
 
 const PROCESS = {
     badge: "Our Process",
-    title: "Titular de la sección",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    title: "How We Automate Your Operation",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const PROCESS_STEPS: readonly NumberedCardItem[] = [
-    { number: "01", title: "Título del primer paso", description: "Descripción del paso — reemplázala." },
-    { number: "02", title: "Título del segundo paso", description: "Descripción del paso — reemplázala." },
-    { number: "03", title: "Título del tercer paso", description: "Descripción del paso — reemplázala." },
-    { number: "04", title: "Título del cuarto paso", description: "Descripción del paso — reemplázala." },
+    {
+        number: "01",
+        title: "Systems Assessment",
+        description: "We review your tools, data and the manual work your team does every day.",
+    },
+    {
+        number: "02",
+        title: "Automation Roadmap",
+        description: "We prioritize the automations and integrations with the biggest time savings.",
+    },
+    {
+        number: "03",
+        title: "Guided Implementation",
+        description: "We build the integrations, workflows and dashboards with your team.",
+    },
+    {
+        number: "04",
+        title: "Scale with Talent",
+        description: "We add dedicated support to keep your systems running and improving over time.",
+    },
 ];
 
 const TESTIMONIALS_HEADING = {
     badge: "Testimonials",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
-    titleRest: "cierre del titular",
-    cta: { label: "Read Success Story", href: "/success-story" },
+    title: "Trusted by Construction",
+    titleAccent: "Companies",
+    titleRest: "Across North America",
+    cta: { label: "See Case Studies", href: "/success-story" },
 };
 
 const WHY_US = {
-    badge: "Why us?",
-    title: "Primera línea del titular",
-    titleTyped: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "Why VCM?",
+    title: "Automation built",
+    titleTyped: "around your process",
+    description:
+        "We fix the process first and automate it second, so technology speeds up work that already makes sense.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/prefooterbook.png",
 };
 
@@ -80,6 +116,7 @@ export default function BookkeepingContainer() {
             <PageHero
                 badge={HERO.badge}
                 title={HERO.title}
+                titleAccent={HERO.titleAccent}
                 description={HERO.description}
                 cta={HERO.cta}
                 image={HERO.image}
@@ -118,7 +155,7 @@ export default function BookkeepingContainer() {
                 titleRest={TESTIMONIALS_HEADING.titleRest}
                 cta={TESTIMONIALS_HEADING.cta}
                 items={TESTIMONIALS}
-                variant={"dark"}
+                variant="dark"
             />
 
             <StickyCardSection
@@ -132,5 +169,3 @@ export default function BookkeepingContainer() {
         </div>
     );
 }
-
-

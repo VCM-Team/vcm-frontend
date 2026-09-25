@@ -1,11 +1,11 @@
 import Hero from "./Hero";
-import Stats, {StatItem} from "../../shared/components/ui/Stats";
-import type {AccordionItem} from "@/src/shared/components/ui/Accordion";
+import type { StatItem } from "@/src/shared/components/ui/Stats";
+import type { AccordionItem } from "@/src/shared/components/ui/Accordion";
 import AccordionSection from "@/src/shared/components/ui/AccordionSection";
 import PromoCardsGrid from "@/src/shared/components/ui/PromoCardsGrid";
 import type { PromoCardItem } from "@/src/shared/components/ui/PromoCard";
 import ServicesGrid from "@/src/shared/components/ui/ServicesGrid";
-import type {ServiceCardItem} from "@/src/shared/components/ui/ServiceCard";
+import type { ServiceCardItem } from "@/src/shared/components/ui/ServiceCard";
 import VideoEmbed from "@/src/shared/components/ui/VideoEmbed";
 import Container from "@/src/shared/components/ui/Container";
 import BubbleFeatures, { type BubbleFeatureItem } from "@/src/shared/components/ui/BubbleFeatures";
@@ -18,44 +18,53 @@ import TechStack from "@/src/features/home/TechStack";
 import DiscoveryCall from "@/src/features/home/DiscoveryCall";
 import RevealSection from "@/src/shared/components/ui/RevealSection";
 
-
 const HOME_STATS: readonly StatItem[] = [
-    { value: "14", suffix: " Days", label: "To fully integrate your Ninja team" },
-    { prefix: "$", value: "10M", label: "Supplements client overage last year" },
-    { value: "12", suffix: "K+", label: "To fully integrate your Ninja team" },
-    { prefix: ">", value: "90", label: "Repeat clients or referrals" },
+    { value: "4", suffix: " Years", label: "Building nearshore teams for U.S. companies" },
+    { value: "50", suffix: "+", label: "Virtual positions built and integrated" },
+    { value: "6", suffix: " Areas", label: "Of business growth consulting" },
+    { value: "8", suffix: " Roles", label: "Covered by our talent solutions" },
 ];
 
 const INTRO = {
     badge: "WHO WE ARE",
-    title: "More Than Staffing a Strategic",
-    titleAccent:"Growth Partner",
-    description: "We know what it takes to run and grow a roofing business because we've experienced it ourselves. The long days, constant calls, missed moments, and pressure of keeping every part of the business moving. That's why we built a team that takes the weight off your shoulders, so you can spend less time chasing details and more time leading your team, closing jobs, and growing your business.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    title: "Beyond Staffing.",
+    titleAccent: "Built for Growth.",
+    description:
+        "VCM is a growth partner for U.S. construction and roofing companies. We start by finding what is holding your business back, then design the systems and accountability it needs, and only then add the talent to execute, with dedicated professionals working from our offices in Lima, Peru.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     features: [
-        "Roofing Experts Support",
-        "Supplement Maximization",
-        "Opportunity Conversion",
-        "Business Growth",
-        "Operational Relief",
+        "Strategy",
+        "Systems",
+        "Talent",
+        "Nearshore Teams",
+        "Construction & Roofing Focus",
     ],
 };
 
 const INTRO_ITEMS: readonly AccordionItem[] = [
     {
-        key: "item-1",
-        title: "Take Control with Roofing Experts",
-        content: "Partner with industry specialists who understand the day-to-day operations of your business and provide dedicated support to streamline your workflow.",
+        key: "assessment",
+        title: "Business Assessment",
+        content:
+            "We evaluate your operations, leadership, sales and systems to identify the obstacles standing between you and your next stage of growth.",
     },
     {
-        key: "item-2",
-        title: "Maximize Every Claim with Supplements",
-        content: "Ensure no money is left on the table by letting our expert team handle insurance supplements with precision and thorough documentation.",
+        key: "roadmap",
+        title: "Strategic Growth Roadmap",
+        content:
+            "We turn the assessment into a prioritized plan, with clear objectives, the right sequence and an owner for every initiative.",
     },
     {
-        key: "item-3",
-        title: "Turn More Leads into Real Opportunities",
-        content: "Optimize your sales pipeline with strategic lead follow-ups and management that convert inquiries into profitable roofing projects.",
+        key: "implementation",
+        title: "Guided Implementation",
+        content:
+            "We work alongside your leadership team to put the plan in motion, following up on progress and adjusting as the business responds.",
+    },
+    {
+        key: "scale",
+        title: "Scale with Confidence",
+        content:
+            "Once your operation is ready, we recruit, hire, onboard and train the talent you need to keep growing.",
     },
 ];
 
@@ -63,26 +72,25 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
     {
         key: "about",
         badge: "About Us",
-        title: "Built by roofers. Driven by hard work. Made to make roofing easier.",
+        title: "Growth consulting and nearshore talent for U.S. construction companies.",
         href: "/about-us",
         image: "/assets/images/shared/card_roofers.webp",
     },
     {
         key: "careers",
         badge: "Careers",
-        title: "Join a driven team working to change the way roofing support gets done.",
+        title: "Join our team in Lima and help U.S. construction companies grow.",
         href: "/about-us/jobs",
         image: "/assets/images/shared/card_v.webp",
         variant: "accent",
         imagePosition: "top",
     },
     {
-        key: "partnerships",
-        badge: "Partnerships",
-        title: "We work alongside CRMs, vendors, and coaches to help roofing businesses grow.",
-        href: "/partnerships",
-        image:
-            "/assets/images/shared/card_workers.webp",
+        key: "case-study",
+        badge: "Case Studies",
+        title: "See how we help construction companies build teams that scale.",
+        href: "/success-story",
+        image: "/assets/images/shared/card_workers.webp",
     },
 ];
 
@@ -90,118 +98,152 @@ const CARD_IMAGE =
     "https://workninjas.com/wp-content/uploads/2025/06/doxjuan-1024x950.png";
 
 const SERVICES_HEADING = {
-    badge: "Services",
-    title: "We Handle the Chaos,",
-    titleRest: "So You Can Close More Deals",
-    cta: { label: "More Insights", href: "/services" },
+    badge: "Business Growth Consulting",
+    title: "Six Areas Where We Help",
+    titleRest: "Your Business Grow",
+    cta: { label: "Explore Services", href: "/services" },
 };
-
-const EXPERTISE = {
-    badge: "Proven Expertise",
-    title: "Freedom to Build, Power to Grow;",
-    titleRest: "We Carry the Load Behind the Scenes",
-};
-
-const EXPERTISE_ITEMS: readonly BubbleFeatureItem[] = [
-    {
-        key: "item-1",
-        title: "Built by Roofers",
-        description: "We understand your challenges firsthand. That’s why our support makes a real difference.",
-        Icon: PeopleIcon,
-    },
-    {
-        key: "item-2",
-        title: "Plug & Play Pros",
-        description: "We get inside your tools, your systems, and your day to day… fast.",
-        Icon: LayersIcon,
-    },
-    {
-        key: "item-3",
-        title: "Real-World Impact",
-        description: "No fluff. Just real wins where they matter: leads, jobs, and cash flow.",
-        Icon: SparkIcon,
-    },
-    {
-        key: "item-4",
-        title: "Stress-Free Scaling",
-        description: "We slot into your day to day and clear your to do list without you needing to train a thing.",
-        Icon: LinkIcon,
-    },
-];
-
-const IMAGE_CTA = {
-    title: "Helping Roofing Teams Expand ",
-    titleRest: "Smoothly and Sustainably",
-    cta: { label: "Set an Appointment", href: "/contact-us" },
-    image: "https://workninjas.com/wp-content/uploads/2025/09/image-48-1.avif",
-};
-
 
 const SERVICES: readonly ServiceCardItem[] = [
     {
-        key: "roofing-specialists",
-        title: "Roofing Specialists",
-        href: "/services/roofing-specialists",
+        key: "sales-performance",
+        title: "Sales Performance",
+        href: "/services/sales-performance",
         image: CARD_IMAGE,
-        Icon: RoofIcon,
+        Icon: ChartIcon,
     },
     {
-        key: "lead-management",
-        title: "Lead Management Specialist",
-        href: "/services/lead-management-specialists",
+        key: "operational-excellence",
+        title: "Operational Excellence",
+        href: "/services/operational-excellence",
         image: CARD_IMAGE,
-        Icon: HeadsetIcon,
+        Icon: LayersIcon,
     },
     {
-        key: "supplements",
-        title: "Supplements & Xactimates",
-        href: "/services/supplements-xactimates-billing",
+        key: "leadership",
+        title: "Leadership & Organizational Development",
+        href: "/services/leadership-organizational-development",
         image: CARD_IMAGE,
-        Icon: ShieldIcon,
+        Icon: PeopleIcon,
     },
     {
-        key: "measurements",
-        title: "Measurements & Take Offs",
-        href: "/services/measurements-take-offs",
+        key: "financial-performance",
+        title: "Financial Performance",
+        href: "/services/financial-performance",
         image: CARD_IMAGE,
-        Icon: RulerIcon,
+        Icon: DollarIcon,
     },
     {
         key: "marketing",
-        title: "Marketing & Lead Generation",
-        href: "/services/marketing",
+        title: "Marketing & Customer Acquisition",
+        href: "/services/marketing-customer-acquisition",
         image: CARD_IMAGE,
         Icon: MegaphoneIcon,
     },
     {
-        key: "bookkeeping",
-        title: "BookKeeping",
-        href: "/services/bookkeeping",
+        key: "ai-automation",
+        title: "AI & Business Automation",
+        href: "/services/ai-business-automation",
         image: CARD_IMAGE,
-        Icon: DollarIcon,
+        Icon: SparkIcon,
     },
 ];
+
 const VIDEO = {
     src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1789757625/Work_Ninjas_Scalable_Back_Office_Solutions_for_Roofing_Contractors_Beyond_vnduhs.mp4",
     poster: "/assets/images/video/thumbnail.webp",
     title: "This is VCM",
 };
 
-const INDUSTRIES = {
-    badge: "Industries",
-    title: "Helping Roofing Companies",
-    titleRest: "Run Smoother,",
-    titleAccent: "Faster, Smarter",
+const EXPERTISE = {
+    badge: "Our Approach",
+    title: "Strategy, Systems, Talent;",
+    titleRest: "In That Order",
+};
+
+const EXPERTISE_ITEMS: readonly BubbleFeatureItem[] = [
+    {
+        key: "strategy",
+        title: "Strategy First",
+        description: "We diagnose the real cause of the bottleneck before recommending anything.",
+        Icon: SparkIcon,
+    },
+    {
+        key: "systems",
+        title: "Systems That Scale",
+        description: "Clear processes, SOPs and accountability, so growth doesn’t depend on putting out fires.",
+        Icon: LayersIcon,
+    },
+    {
+        key: "talent",
+        title: "Talent That Executes",
+        description: "Dedicated professionals, evaluated for skills and English, who work inside your tools and systems.",
+        Icon: PeopleIcon,
+    },
+    {
+        key: "nearshore",
+        title: "Nearshore from Lima",
+        description: "A team in time zones close to the U.S., integrated into your day-to-day operations.",
+        Icon: LinkIcon,
+    },
+];
+
+const IMAGE_CTA = {
+    title: "Build the Team",
+    titleRest: "Your Growth Needs",
+    cta: { label: "Build Your Team", href: "/book-demo" },
+    image: "https://workninjas.com/wp-content/uploads/2025/09/image-48-1.avif",
+};
+
+const TALENT = {
+    badge: "Talent Solutions",
+    title: "Dedicated Talent",
+    titleRest: "for Every Part of",
+    titleAccent: "Your Business",
     image: "/assets/images/shared/chart.webp",
 };
 
-const INDUSTRIES_ITEMS: readonly AccordionItem[] = [
-    { key: "ind-1", title: "Scheduling and Admin Chaos", content: "Descripción — reemplázala con el texto propio." },
-    { key: "ind-2", title: "CRM Overload", content: "Descripción — reemplázala con el texto propio." },
-    { key: "ind-3", title: "Lead Follow Up Gaps", content: "Descripción — reemplázala con el texto propio." },
-    { key: "ind-4", title: "Insurance Supplement Delays", content: "Descripción — reemplázala con el texto propio." },
-    { key: "ind-5", title: "Brand Inconsistency", content: "Descripción — reemplázala con el texto propio." },
-    { key: "ind-6", title: "Messy Books and Missing Receipts", content: "Descripción — reemplázala con el texto propio." },
+const TALENT_ITEMS: readonly AccordionItem[] = [
+    {
+        key: "customer-service",
+        title: "Customer Service",
+        content: "Professionals who answer, route and follow up with your customers, so every call and message gets a timely response.",
+    },
+    {
+        key: "sales",
+        title: "Sales",
+        content: "Sales support that keeps leads moving, your CRM up to date and your pipeline visible.",
+    },
+    {
+        key: "marketing",
+        title: "Marketing",
+        content: "Support for campaigns, content and lead nurturing that keeps your brand consistent.",
+    },
+    {
+        key: "estimating",
+        title: "Estimating",
+        content: "Estimators who work on takeoffs, plan reading and cost estimates for residential and commercial projects.",
+    },
+    {
+        key: "accounting",
+        title: "Accounting & Finance",
+        content: "Support for bookkeeping, costs, budgets and reporting, so you always know where your numbers stand.",
+    },
+    {
+        key: "executive-assistants",
+        title: "Executive Assistants",
+        content: "Assistants who manage calendars, inboxes and follow-ups, so leadership can focus on what matters most.",
+    },
+    {
+        key: "project-management",
+        title: "Project Management",
+        content: "Coordinators who track schedules, tasks and communication to help keep projects on track.",
+    },
+    {
+        key: "administrative",
+        title: "Administrative Support",
+        content: "Help with documentation, data entry, permitting paperwork and the daily tasks that keep operations moving.",
+    },
 ];
 
 export default function HomeContainer() {
@@ -215,6 +257,7 @@ export default function HomeContainer() {
                 description={INTRO.description}
                 cta={INTRO.cta}
                 items={INTRO_ITEMS}
+                features={INTRO.features}
             />
             <PromoCardsGrid items={PROMO_CARDS} />
             <ServicesGrid
@@ -253,68 +296,23 @@ export default function HomeContainer() {
             />
 
             <ImageAccordionSplit
-                badge={INDUSTRIES.badge}
-                title={INDUSTRIES.title}
-                titleRest={INDUSTRIES.titleRest}
-                titleAccent={INDUSTRIES.titleAccent}
-                image={INDUSTRIES.image}
-                items={INDUSTRIES_ITEMS}
+                badge={TALENT.badge}
+                title={TALENT.title}
+                titleRest={TALENT.titleRest}
+                titleAccent={TALENT.titleAccent}
+                image={TALENT.image}
+                items={TALENT_ITEMS}
             />
 
             <VideoTestimonials items={VIDEO_TESTIMONIALS} />
             <Insights />
             <TechStack />
-            <DiscoveryCall/>
+            <DiscoveryCall />
         </>
     );
 }
 
-
 /* ── Iconos ─────────────────────────────── */
-
-function RoofIcon({ className }: { className?: string }) {
-    return (
-        <svg viewBox="0 0 25 25" fill="none" className={className} aria-hidden>
-            <path
-                d="M15.2355 22.4584L10.9225 18.1198L12.3516 16.6651L15.2355 19.549L21.0287 13.7813L22.4579 15.236L15.2355 22.4584ZM4.08288 20.4167V10.8464L2.24538 12.25L1.0459 10.6422L12.2495 2.04169L23.4787 10.6167L22.2537 12.25L20.748 11.1271L15.2355 16.6651L12.3516 13.7813L7.98757 18.1709L10.2079 20.4167H4.08288Z"
-                fill="currentColor"
-            />
-        </svg>
-    );
-}
-
-function HeadsetIcon({ className }: { className?: string }) {
-    return (
-        <svg viewBox="0 0 25 25" fill="none" className={className} aria-hidden>
-            <path
-                d="M9.1875 21.4375H5.10417C4.54271 21.4375 4.06207 21.2376 3.66224 20.8378C3.26241 20.4379 3.0625 19.9573 3.0625 19.3958V12.25C3.0625 10.974 3.30495 9.77873 3.78984 8.66432C4.27474 7.54991 4.92977 6.58012 5.75495 5.75495C6.58012 4.92977 7.54991 4.27474 8.66432 3.78984C9.77873 3.30495 10.974 3.0625 12.25 3.0625C13.526 3.0625 14.7213 3.30495 15.8357 3.78984C16.9501 4.27474 17.9199 4.92977 18.7451 5.75495C19.5702 6.58012 20.2253 7.54991 20.7102 8.66432C21.1951 9.77873 21.4375 10.974 21.4375 12.25V19.3958C21.4375 19.9573 21.2376 20.4379 20.8378 20.8378C20.4379 21.2376 19.9573 21.4375 19.3958 21.4375H15.3125V13.2708H19.3958V12.25C19.3958 10.2594 18.7025 8.57075 17.3159 7.18411C15.9293 5.79748 14.2406 5.10417 12.25 5.10417C10.2594 5.10417 8.57075 5.79748 7.18411 7.18411C5.79748 8.57075 5.10417 10.2594 5.10417 12.25V13.2708H9.1875V21.4375Z"
-                fill="currentColor"
-            />
-        </svg>
-    );
-}
-
-function ShieldIcon({ className }: { className?: string }) {
-    return (
-        <svg viewBox="0 0 25 25" fill="none" className={className} aria-hidden>
-            <path
-                d="M17.3538 22.4584C15.9417 22.4584 14.738 21.9607 13.7426 20.9654C12.7473 19.9701 12.2497 18.7663 12.2497 17.3542C12.2497 15.942 12.7473 14.7383 13.7426 13.743C14.738 12.7477 15.9417 12.25 17.3538 12.25C18.766 12.25 19.9697 12.7477 20.965 13.743C21.9604 14.7383 22.458 15.942 22.458 17.3542C22.458 18.7663 21.9604 19.9701 20.965 20.9654C19.9697 21.9607 18.766 22.4584 17.3538 22.4584ZM12.2497 22.4584C9.88474 21.8629 7.9324 20.506 6.39264 18.3878C4.85289 16.2696 4.08301 13.9174 4.08301 11.3313V5.10419L12.2497 2.04169L20.4163 5.10419V10.8974C19.974 10.6762 19.4763 10.5061 18.9234 10.387C18.3704 10.2679 17.8472 10.2084 17.3538 10.2084C15.3802 10.2084 13.6959 10.9059 12.3007 12.3011C10.9056 13.6962 10.208 15.3806 10.208 17.3542C10.208 18.409 10.4079 19.3618 10.8077 20.2125C11.2076 21.0632 11.7137 21.8033 12.3262 22.4328C12.3092 22.4328 12.2965 22.4371 12.288 22.4456C12.2794 22.4541 12.2667 22.4584 12.2497 22.4584ZM16.8434 20.4167H17.8643V17.8646H20.4163V16.8438H17.8643V14.2917H16.8434V16.8438H14.2913V17.8646H16.8434V20.4167Z"
-                fill="currentColor"
-            />
-        </svg>
-    );
-}
-
-function RulerIcon({ className }: { className?: string }) {
-    return (
-        <svg viewBox="0 0 25 25" fill="none" className={className} aria-hidden>
-            <path
-                d="M6.125 18.375H10.6422V14.9807H13.2708V11.5865H15.8995V8.16667H18.375V6.125H13.8578V9.51927H11.2292V12.9135H8.60052V16.3333H6.125V18.375ZM5.10417 21.4375C4.54271 21.4375 4.06207 21.2376 3.66224 20.8378C3.26241 20.4379 3.0625 19.9573 3.0625 19.3958V5.10417C3.0625 4.54271 3.26241 4.06207 3.66224 3.66224C4.06207 3.26241 4.54271 3.0625 5.10417 3.0625H19.3958C19.9573 3.0625 20.4379 3.26241 20.8378 3.66224C21.2376 4.06207 21.4375 4.54271 21.4375 5.10417V19.3958C21.4375 19.9573 21.2376 20.4379 20.8378 20.8378C20.4379 21.2376 19.9573 21.4375 19.3958 21.4375H5.10417Z"
-                fill="currentColor"
-            />
-        </svg>
-    );
-}
 
 function MegaphoneIcon({ className }: { className?: string }) {
     return (

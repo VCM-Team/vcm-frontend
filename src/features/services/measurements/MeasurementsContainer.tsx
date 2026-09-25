@@ -10,89 +10,126 @@ import type { NumberedCardItem } from "@/src/shared/components/ui/NumberedCard";
 import { TESTIMONIALS } from "@/src/shared/data/testimonials.data";
 
 const HERO = {
-    badge: "Services",
-    title: "Measurements & Takeoffs",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    badge: "Estimating",
+    title: "Estimating & Takeoffs",
+    titleAccent: "for Construction and Roofing",
+    description:
+        "Dedicated estimators who handle takeoffs, plan reading and cost estimates, so your team can keep bidding without slowing down the rest of the operation.",
+    cta: { label: "Build Your Team", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/Measutements-2048x1366.jpg",
 };
 
 const INTRO = {
-    badge: "Etiqueta de la sección",
-    title: "Titular de la sección",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "What We Do",
+    title: "Accurate Estimates, Without Overloading Your Team",
+    description:
+        "When estimating depends on the same few people, bids pile up and response times suffer. We add dedicated estimators who work within your process, so every project gets a careful takeoff and a clear cost estimate.",
+    cta: { label: "Build Your Team", href: "/book-demo" },
     features: [
-        "Primer atributo",
-        "Segundo atributo",
-        "Tercer atributo",
-        "Cuarto atributo",
-        "Quinto atributo",
+        "Takeoffs",
+        "Plan Reading",
+        "Cost Estimates",
+        "Residential Projects",
+        "Commercial Projects",
     ],
 };
 
 const INTRO_ITEMS: readonly AccordionItem[] = [
-    { key: "item-1", title: "Título del primer punto", content: "Descripción del punto — reemplázala." },
-    { key: "item-2", title: "Título del segundo punto", content: "Descripción del punto — reemplázala." },
-    { key: "item-3", title: "Título del tercer punto", content: "Descripción del punto — reemplázala." },
+    {
+        key: "takeoffs",
+        title: "Takeoffs & Plan Reading",
+        content:
+            "Estimators who read plans and prepare detailed takeoffs, so every bid starts from accurate quantities.",
+    },
+    {
+        key: "estimates",
+        title: "Cost Estimates & Budgets",
+        content:
+            "Support preparing cost estimates and budgets that help you price each project with its profitability in mind.",
+    },
+    {
+        key: "workflow",
+        title: "Built Into Your Workflow",
+        content:
+            "Your estimators work inside your process and tools, following the standards your team already uses.",
+    },
 ];
 
 const WHY_IT_MATTERS = {
-    badge: "Benefit from Proven Expertise",
-    title: "Primera línea del titular",
-    titleRest: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    badge: "Why It Matters",
+    title: "Every Estimate",
+    titleRest: "Shapes Your Margin",
+    description:
+        "An estimate that misses quantities or costs puts the margin of the whole project at risk. Dedicated estimating support gives your team the capacity to review every bid with the attention it needs.",
     image: "https://workninjas.com/wp-content/uploads/2025/06/DSC01347-Editada-2.png",
 };
 
 const PROCESS = {
     badge: "Our Process",
-    title: "Titular de la sección",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    title: "How We Build Your Estimating Team",
+    cta: { label: "Build Your Team", href: "/book-demo" },
 };
 
 const PROCESS_STEPS: readonly NumberedCardItem[] = [
-    { number: "01", title: "Título del primer paso", description: "Descripción del paso — reemplázala." },
-    { number: "02", title: "Título del segundo paso", description: "Descripción del paso — reemplázala." },
-    { number: "03", title: "Título del tercer paso", description: "Descripción del paso — reemplázala." },
-    { number: "04", title: "Título del cuarto paso", description: "Descripción del paso — reemplázala." },
+    {
+        number: "01",
+        title: "Define Your Needs",
+        description: "We review your project types, bid volume and the way your team estimates today.",
+    },
+    {
+        number: "02",
+        title: "Evaluate Estimators",
+        description: "We assess candidates on plan reading, takeoffs, cost estimating and English.",
+    },
+    {
+        number: "03",
+        title: "Onboard to Your Process",
+        description: "We prepare each estimator to work with your standards, tools and review steps.",
+    },
+    {
+        number: "04",
+        title: "Ongoing Support",
+        description: "We keep supporting the team as your volume and project mix change.",
+    },
 ];
 
 const SCALE = {
-    title: "Titular de la sección",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    title: "Residential and Commercial Projects",
+    description:
+        "Our estimators support both residential and commercial work, adapting to the scope and requirements of each type of project.",
     image: "https://workninjas.com/wp-content/uploads/2025/07/measurements-scaled-e1752185952231.png",
 };
 
 const SCALE_ITEMS: readonly IconListItem[] = [
     {
         key: "residential",
-        title: "Título del primer punto",
-        description: "Descripción del punto — reemplázala con el texto propio.",
+        title: "Residential Roofing",
+        description: "Takeoffs and estimates for residential projects, from plans to a ready-to-send number.",
         Icon: HouseIcon,
     },
     {
         key: "commercial",
-        title: "Título del segundo punto",
-        description: "Descripción del punto — reemplázala con el texto propio.",
+        title: "Commercial Roofing",
+        description: "Support for commercial projects, where larger scopes need careful quantities and cost control.",
         Icon: BuildingIcon,
     },
 ];
 
 const TESTIMONIALS_HEADING = {
     badge: "Testimonials",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
-    titleRest: "cierre del titular",
-    cta: { label: "Read Success Story", href: "/success-story" },
+    title: "Trusted by Construction",
+    titleAccent: "Companies",
+    titleRest: "Across North America",
+    cta: { label: "See Case Studies", href: "/success-story" },
 };
 
 const WHY_US = {
-    badge: "Why us?",
-    title: "Primera línea del titular",
-    titleTyped: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "Why VCM?",
+    title: "Your estimators,",
+    titleTyped: "part of your team",
+    description:
+        "Dedicated professionals evaluated for estimating skills and English, integrated into your process with ongoing support.",
+    cta: { label: "Build Your Team", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/Dani-scaled.jpg",
 };
 
@@ -102,6 +139,7 @@ export default function MeasurementsContainer() {
             <PageHero
                 badge={HERO.badge}
                 title={HERO.title}
+                titleAccent={HERO.titleAccent}
                 description={HERO.description}
                 cta={HERO.cta}
                 image={HERO.image}
@@ -147,7 +185,7 @@ export default function MeasurementsContainer() {
                 titleRest={TESTIMONIALS_HEADING.titleRest}
                 cta={TESTIMONIALS_HEADING.cta}
                 items={TESTIMONIALS}
-                variant={"dark"}
+                variant="dark"
             />
 
             <StickyCardSection

@@ -9,96 +9,104 @@ import type { NumberedCardItem } from "@/src/shared/components/ui/NumberedCard";
 import { TESTIMONIALS } from "@/src/shared/data/testimonials.data";
 
 const HERO = {
-    badge: "Services",
-    title: "Supplements & Xactimates",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    badge: "Financial Performance",
+    title: "Know Your Numbers,",
+    titleAccent: "Protect Your Margins",
+    description:
+        "We help construction and roofing companies get clear visibility into profitability, pricing, costs and cash flow, so every decision is based on real numbers.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/supplementsninja.png",
 };
 
 const INTRO = {
-    badge: "Etiqueta de la sección",
-    title: "Titular de la sección",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "What We Do",
+    title: "Financial Clarity to Make Better Decisions",
+    description:
+        "Many growing companies sell more every year without knowing which jobs actually make money. We organize your financial information and build the reporting you need to see where profit is made, where it is lost and what to do next.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     features: [
-        "Primer atributo",
-        "Segundo atributo",
-        "Tercer atributo",
-        "Cuarto atributo",
-        "Quinto atributo",
+        "Profitability",
+        "Pricing",
+        "Cost Control",
+        "Cash Flow",
+        "Forecasting",
     ],
 };
 
 const INTRO_ITEMS: readonly AccordionItem[] = [
     {
-        key: "item-1",
-        title: "Título del primer punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        key: "profitability",
+        title: "Profitability & Pricing",
+        content:
+            "We review how you price your work and how profitable each type of job really is, so your prices protect your margin.",
     },
     {
-        key: "item-2",
-        title: "Título del segundo punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        key: "costs",
+        title: "Costs, Budgets & Cash Flow",
+        content:
+            "We help you track costs against budget and keep an eye on cash flow, so growth doesn’t put pressure on your operation.",
     },
     {
-        key: "item-3",
-        title: "Título del tercer punto",
-        content: "Descripción del punto — reemplázala con el texto propio.",
+        key: "forecasting",
+        title: "Forecasting & Dashboards",
+        content:
+            "We set up forecasts and financial dashboards that give leadership a clear, regular view of the numbers that matter.",
     },
 ];
 
 const WHY_IT_MATTERS = {
-    badge: "Benefit from Proven Expertise",
-    title: "Primera línea del titular",
-    titleRest: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
+    badge: "Why It Matters",
+    title: "Growth Without Visibility",
+    titleRest: "Is a Risk",
+    description:
+        "When the numbers arrive late or incomplete, problems show up only when they are expensive to fix. Clear, timely financial information lets you protect margins and plan your growth with confidence.",
     image: "https://workninjas.com/wp-content/uploads/2025/06/chelsSupplements-scaled.jpg",
 };
 
 const PROCESS = {
     badge: "Our Process",
-    title: "Titular de la sección",
-    cta: { label: "Free Consultation", href: "/contact-us" },
+    title: "How We Improve Your Financial Performance",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const PROCESS_STEPS: readonly NumberedCardItem[] = [
     {
         number: "01",
-        title: "Título del primer paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Financial Assessment",
+        description: "We review your pricing, costs, cash flow and the reporting you use today.",
     },
     {
         number: "02",
-        title: "Título del segundo paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Growth Roadmap",
+        description: "We prioritize the changes that most improve visibility and margins, with clear owners.",
     },
     {
         number: "03",
-        title: "Título del tercer paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Guided Implementation",
+        description: "We put budgets, forecasts and dashboards in place alongside your team.",
     },
     {
         number: "04",
-        title: "Título del cuarto paso",
-        description: "Descripción del paso — reemplázala con el texto propio.",
+        title: "Scale with Talent",
+        description: "When the system is ready, we add dedicated accounting and finance support to run it.",
     },
 ];
 
 const TESTIMONIALS_HEADING = {
     badge: "Testimonials",
-    title: "Primera parte del titular",
-    titleAccent: "parte resaltada",
-    titleRest: "cierre del titular",
-    cta: { label: "Read Success Story", href: "/success-story" },
+    title: "Trusted by Construction",
+    titleAccent: "Companies",
+    titleRest: "Across North America",
+    cta: { label: "See Case Studies", href: "/success-story" },
 };
 
 const WHY_US = {
-    badge: "Why us?",
-    title: "Primera línea del titular",
-    titleTyped: "segunda línea",
-    description: "Párrafo de apoyo — reemplázalo con el texto propio.",
-    cta: { label: "Schedule a Call", href: "/contact-us" },
+    badge: "Why VCM?",
+    title: "Decisions based on",
+    titleTyped: "real numbers",
+    description:
+        "We bring structure to your financial information first, then add the finance talent to keep it running every day.",
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/supplementsprefooter.png",
 };
 
@@ -108,6 +116,7 @@ export default function SupplementsContainer() {
             <PageHero
                 badge={HERO.badge}
                 title={HERO.title}
+                titleAccent={HERO.titleAccent}
                 description={HERO.description}
                 cta={HERO.cta}
                 image={HERO.image}
@@ -146,7 +155,7 @@ export default function SupplementsContainer() {
                 titleRest={TESTIMONIALS_HEADING.titleRest}
                 cta={TESTIMONIALS_HEADING.cta}
                 items={TESTIMONIALS}
-                variant={"dark"}
+                variant="dark"
             />
 
             <StickyCardSection
