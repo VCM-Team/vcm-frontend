@@ -2,7 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
+import RevealSection from "@/src/shared/components/ui/RevealSection";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
+import { REVEAL } from "@/src/lib/reveal";
+import { cn } from "@/src/lib/utils";
 import ContactForm from "./ContactForm";
 
 const INFO = [
@@ -14,6 +17,14 @@ const INFO = [
 const FORM_IMAGE = "https://workninjas.com/wp-content/uploads/2025/03/Mask-group-4.jpg";
 const BOTTOM_IMAGE = "https://workninjas.com/wp-content/uploads/2025/06/Scene-25-scaled.jpg";
 
+// Hero visible al cargar: basta con @starting-style (variante starting:)
+const ENTER =
+    "transition-[opacity,translate,scale,filter] duration-700 ease-out motion-reduce:transition-none";
+const ENTER_ZOOM = `${ENTER} starting:scale-90 starting:opacity-0`;
+const ENTER_UP = `${ENTER} starting:translate-y-6 starting:opacity-0`;
+const ENTER_FADE = `${ENTER} starting:opacity-0`;
+const ENTER_BLUR_UP = `${ENTER} starting:translate-y-4 starting:opacity-0 starting:blur-sm`;
+
 export default function ContactContainer() {
     return (
         <div>
@@ -21,19 +32,25 @@ export default function ContactContainer() {
             <section className="mx-3 mt-24 lg:mt-28">
                 <div className="overflow-hidden rounded-panel bg-gradient-to-b from-brand-400/12 to-bg">
                     <Container className="py-16 text-center lg:py-20">
-                        <Badge>Contact Us</Badge>
+                        <div className={cn("mx-auto w-fit", ENTER_ZOOM)}>
+                            <Badge>Contact Us</Badge>
+                        </div>
 
-                        <h1 className="mt-7 text-3xl font-bold text-fg sm:text-4xl lg:text-5xl">
+                        <h1 className={cn("mt-7 text-3xl font-bold text-fg sm:text-4xl lg:text-5xl", ENTER_UP, "delay-100")}>
                             Título <span className="text-brand-400">resaltado</span>
                         </h1>
 
-                        <p className="mx-auto mt-5 max-w-[46ch] text-base text-fg-muted">
+                        <p className={cn("mx-auto mt-5 max-w-[46ch] text-base text-fg-muted", ENTER_FADE, "delay-200")}>
                             Subtítulo de la página — reemplázalo.
                         </p>
 
                         <ul className="mt-14 grid gap-8 text-left sm:grid-cols-3">
-                            {INFO.map(({ label, value, href, Icon }) => (
-                                <li key={label} className="flex items-center justify-center gap-4">
+                            {INFO.map(({ label, value, href, Icon }, i) => (
+                                <li
+                                    key={label}
+                                    className={cn("flex items-center justify-center gap-4", ENTER_BLUR_UP)}
+                                    style={{ transitionDelay: `${350 + i * 120}ms` }}
+                                >
                                     <span className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-400 text-black">
                                         <Icon />
                                     </span>
@@ -60,30 +77,50 @@ export default function ContactContainer() {
             </section>
 
             {/* ── Formulario ───────────────────────── */}
-            <section>
+            <RevealSection className="overflow-x-clip">
                 <Container className="py-16 lg:py-20">
-                    <Badge>Contact Us</Badge>
+                    <div className={REVEAL.left}>
+                        <Badge>Contact Us</Badge>
+                    </div>
 
-                    <h2 className="mt-6 max-w-[16ch] text-2xl font-bold leading-tight text-fg sm:text-3xl lg:text-4xl">
+                    <h2
+                        className={cn(
+                            "mt-6 max-w-[16ch] text-2xl font-bold leading-tight text-fg sm:text-3xl lg:text-4xl",
+                            REVEAL.blur,
+                            "delay-100"
+                        )}
+                    >
                         Título del formulario
                     </h2>
 
                     {/* items-stretch para igualar la altura de las 2 columnas */}
                     <div className="mt-10 grid items-stretch gap-6 lg:grid-cols-2">
-                        <div className="rounded-panel bg-[#E3E3E3] p-6 lg:p-10">
+                        <div className={cn("rounded-panel bg-[#E3E3E3] p-6 lg:p-10", REVEAL.left, "delay-200")}>
                             <ContactForm />
                         </div>
 
                         {/* h-full para forzar al figure a llenar toda la altura del grid */}
-                        <figure className="relative aspect-[4/3] h-full overflow-hidden rounded-panel lg:aspect-auto lg:min-h-[32rem]">
+                        <figure
+                            className={cn(
+                                "relative aspect-[4/3] h-full overflow-hidden rounded-panel lg:aspect-auto lg:min-h-[32rem]",
+                                REVEAL.right,
+                                "delay-300"
+                            )}
+                        >
                             <Image
                                 src={FORM_IMAGE}
                                 alt=""
                                 fill
                                 sizes="(min-width: 1024px) 50vw, 100vw"
-                                className="object-cover"
+                                className={cn("object-cover", REVEAL.zoomOut, "duration-[1200ms] delay-300")}
                             />
-                            <figcaption className="absolute inset-x-5 bottom-5 flex items-center gap-4 rounded-full bg-white/90 p-3 pr-6 backdrop-blur-sm">
+                            <figcaption
+                                className={cn(
+                                    "absolute inset-x-5 bottom-5 flex items-center gap-4 rounded-full bg-white/90 p-3 pr-6 backdrop-blur-sm",
+                                    REVEAL.up,
+                                    "delay-[700ms]"
+                                )}
+                            >
                                 <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-400 text-black">
                                     <PhoneIcon />
                                 </span>
@@ -94,45 +131,68 @@ export default function ContactContainer() {
                         </figure>
                     </div>
                 </Container>
-            </section>
+            </RevealSection>
 
             {/* ── CTA final ────────────────────────── */}
-            <section>
+            <RevealSection className="overflow-x-clip">
                 <Container className="pb-16 lg:pb-24">
                     <div className="grid gap-6 lg:grid-cols-[1.35fr_1fr]">
-                        <div className="relative aspect-[4/3] overflow-hidden rounded-panel lg:aspect-auto lg:min-h-[28rem]">
+                        <div
+                            className={cn(
+                                "relative aspect-[4/3] overflow-hidden rounded-panel lg:aspect-auto lg:min-h-[28rem]",
+                                REVEAL.left
+                            )}
+                        >
                             <Image
                                 src={BOTTOM_IMAGE}
                                 alt=""
                                 fill
                                 sizes="(min-width: 1024px) 58vw, 100vw"
-                                className="object-cover"
+                                className={cn("object-cover", REVEAL.zoomOut, "duration-[1200ms]")}
                             />
                         </div>
 
-                        <div className="flex flex-col rounded-panel bg-brand-400 p-8 lg:p-10">
+                        <div className={cn("flex flex-col rounded-panel bg-brand-400 p-8 lg:p-10", REVEAL.zoomIn, "delay-200")}>
                             <div className="flex items-start justify-between gap-4">
-                                <Badge className="border-black bg-transparent text-black">
-                                    Free Consultation
-                                </Badge>
+                                <div className={cn(REVEAL.fade, "delay-[400ms]")}>
+                                    <Badge className="border-black bg-transparent text-black">
+                                        Free Consultation
+                                    </Badge>
+                                </div>
 
                                 <span
                                     aria-hidden
-                                    className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-black"
+                                    className={cn(
+                                        "grid size-11 shrink-0 place-items-center rounded-full bg-accent text-black",
+                                        REVEAL.zoomIn,
+                                        "delay-500"
+                                    )}
                                 >
                                     <ChartIcon className="size-5" />
                                 </span>
                             </div>
 
-                            <h2 className="mt-8 max-w-[14ch] text-2xl font-bold leading-tight text-black lg:text-[2rem]">
+                            <h2
+                                className={cn(
+                                    "mt-8 max-w-[14ch] text-2xl font-bold leading-tight text-black lg:text-[2rem]",
+                                    REVEAL.up,
+                                    "delay-500"
+                                )}
+                            >
                                 Título de la tarjeta
                             </h2>
 
-                            <p className="mt-8 max-w-[38ch] text-[15px] leading-relaxed text-black/80 lg:mt-auto lg:pt-12">
+                            <p
+                                className={cn(
+                                    "mt-8 max-w-[38ch] text-[15px] leading-relaxed text-black/80 lg:mt-auto lg:pt-12",
+                                    REVEAL.fade,
+                                    "delay-[600ms]"
+                                )}
+                            >
                                 Texto de apoyo — reemplázalo.
                             </p>
 
-                            <div className="group mt-10 flex w-fit items-center gap-2">
+                            <div className={cn("group mt-10 flex w-fit items-center gap-2", REVEAL.up, "delay-[700ms]")}>
                                 <Link
                                     href="/contact-us"
                                     className="inline-flex items-center rounded-full bg-black px-7 py-3.5 text-[15px] font-semibold leading-none text-white transition-colors duration-300 group-hover:bg-white group-hover:text-black"
@@ -156,7 +216,7 @@ export default function ContactContainer() {
                         </div>
                     </div>
                 </Container>
-            </section>
+            </RevealSection>
         </div>
     );
 }
