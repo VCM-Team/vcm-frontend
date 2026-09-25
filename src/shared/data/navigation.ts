@@ -26,7 +26,7 @@ export const NAV_ITEMS: NavItem[] = [
             type: "mega",
             groupLabel: "ROOFING",
             promo: {
-                title: "Título del panel promocional",
+                title: "Where Roofing Meets Operational Excellence.",
                 ctaLabel: "View All",
                 ctaHref: "/services",
             },
