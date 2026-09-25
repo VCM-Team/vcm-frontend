@@ -23,8 +23,8 @@ export default function Stats({ items, className }: Props) {
                 className
             )}
         >
-            {items.map((item) => (
-                <div key={item.label} className="border-l border-black pl-5">
+            {items.map((item, i) => (
+                <div key={`${item.label}-${i}`} className="border-l border-black pl-5">
                     <dt className="inline-block rounded-xl bg-[#E5E5E5] px-4 py-2 text-2xl font-semibold text-black lg:text-[1.75rem]">
                         {item.prefix && (
                             <span className="text-accent">{item.prefix}</span>

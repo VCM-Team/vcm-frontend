@@ -15,17 +15,21 @@ const HERO = {
     },
 } as const;
 
+// Fade in al primer render con @starting-style (variante starting: de Tailwind v4)
+const FADE_UP =
+    "transition-[opacity,translate] duration-700 ease-out starting:translate-y-4 starting:opacity-0 motion-reduce:transition-none";
+
 export default function Hero() {
     return (
         <section className="mx-3 mt-20 lg:mx-3 lg:mt-3">
-            <div className="relative isolate flex h-[calc(100svh-1.5rem)] items-end pb-10 md:pb-20 overflow-hidden rounded-3xl lg:h-[calc(100svh-2rem)]">
+            <div className="relative isolate flex h-[calc(100svh-1.5rem)] items-end overflow-hidden rounded-3xl pb-10 md:pb-20 lg:h-[calc(100svh-2rem)]">
                 <Image
                     src={HERO.image.src}
                     alt={HERO.image.alt}
                     fill
                     priority
                     sizes="100vw"
-                    className="-z-10 object-cover object-top"
+                    className="-z-10 object-cover object-top transition-[opacity,scale] duration-[1200ms] ease-out starting:scale-105 starting:opacity-0 motion-reduce:transition-none"
                 />
 
                 <div
@@ -34,7 +38,13 @@ export default function Hero() {
                 />
 
                 <div className="mx-auto w-full max-w-7xl px-5 pb-8 lg:px-8 lg:pb-10">
-                    <h1 className="text-4xl font-semibold leading-[1.1] text-white sm:text-5xl lg:text-[3.2rem]">
+                    <h1
+                        className={cn(
+                            "text-4xl font-semibold leading-[1.1] text-white sm:text-5xl lg:text-[3.2rem]",
+                            FADE_UP,
+                            "delay-100"
+                        )}
+                    >
                         {HERO.titleLines.map((line, i) => (
                             <span key={line} className="lg:block">
                                 {line}
@@ -43,14 +53,20 @@ export default function Hero() {
                         ))}
                     </h1>
 
-                    <HeroRule description={HERO.description} />
+                    <HeroRule description={HERO.description} className={cn(FADE_UP, "delay-200")} />
 
                     {/* En móvil la descripción va como párrafo bajo la línea */}
-                    <p className="mt-6 max-w-[42ch] text-sm leading-relaxed text-white/80 lg:hidden">
+                    <p
+                        className={cn(
+                            "mt-6 max-w-[42ch] text-sm leading-relaxed text-white/80 lg:hidden",
+                            FADE_UP,
+                            "delay-300"
+                        )}
+                    >
                         {HERO.description}
                     </p>
 
-                    <div className="group mt-9 flex w-fit items-center gap-2">
+                    <div className={cn("group mt-9 flex w-fit items-center gap-2", FADE_UP, "delay-300")}>
                         <Link
                             href={HERO.cta.href}
                             className="inline-flex items-center rounded-full bg-accent px-8 py-3 text-lg font-semibold leading-none text-black transition-colors duration-300 group-hover:bg-brand-800 group-hover:text-white"
@@ -72,7 +88,13 @@ export default function Hero() {
                         </Link>
                     </div>
 
-                    <ul className="mt-14 flex flex-wrap items-center gap-4 text-xs text-white/90 lg:mt-16 lg:text-sm">
+                    <ul
+                        className={cn(
+                            "mt-14 flex flex-wrap items-center gap-4 text-xs text-white/90 lg:mt-16 lg:text-sm",
+                            FADE_UP,
+                            "delay-[400ms]"
+                        )}
+                    >
                         {HERO.pillars.map((pillar, i) => (
                             <li key={pillar} className="flex items-center gap-4">
                                 {i > 0 && (
