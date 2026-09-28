@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import BookkeepingContainer from "@/src/features/services/bookkeeping/BookkeepingContainer";
+import SupplementsContainer from "@/src/features/services/supplements/SupplementsContainer";
 
 export const metadata: Metadata = {
-    title: "Bookkeeping",
+    title: "Financial Performance",
     description: "Descripción de la página — reemplázala.",
 };
 
 export default function Page() {
-    return <BookkeepingContainer />;
+    return <SupplementsContainer />;
 }

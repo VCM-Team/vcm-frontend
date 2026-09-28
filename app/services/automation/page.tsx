@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import SupplementsContainer from "@/src/features/services/supplements/SupplementsContainer";
+import BookkeepingContainer from "@/src/features/services/automation/BookkeepingContainer";
 
 export const metadata: Metadata = {
-    title: "Supplements & Xactimates",
+    title: "IA Automation",
     description: "Descripción de la página — reemplázala.",
 };
 
 export default function Page() {
-    return <SupplementsContainer />;
+    return <BookkeepingContainer />;
 }

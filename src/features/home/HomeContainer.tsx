@@ -227,7 +227,7 @@ const TALENT_ITEMS: readonly AccordionItem[] = [
     {
         key: "accounting",
         title: "Accounting & Finance",
-        content: "Support for bookkeeping, costs, budgets and reporting, so you always know where your numbers stand.",
+        content: "Support for automation, costs, budgets and reporting, so you always know where your numbers stand.",
     },
     {
         key: "executive-assistants",
