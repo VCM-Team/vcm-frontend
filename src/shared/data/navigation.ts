@@ -32,7 +32,7 @@ export const NAV_ITEMS: NavItem[] = [
             },
             links: [
                 { label: "Roofing Specialists", href: "/services/roofing-specialists" },
-                { label: "NinjaRecruit", href: "/services/ninjarecruit" },
+                { label: "Recruitment", href: "/services/recruitment" },
                 { label: "Measurements & Takeoffs", href: "/services/measurements-take-offs" },
                 { label: "Supplements & Xactimates", href: "/services/supplements-xactimates-billing" },
                 { label: "Lead Management Specialists", href: "/services/lead-management-specialists" },

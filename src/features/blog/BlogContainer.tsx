@@ -19,8 +19,8 @@ const ENTER =
 const ENTER_FADE = `${ENTER} starting:opacity-0`;
 const ENTER_ZOOM = `${ENTER} starting:scale-95 starting:opacity-0`;
 
-// Grid: tres entradas que rotan; el retraso va por columna (3 en desktop)
-const CARD_VARIANTS = [REVEAL.blur, REVEAL.up, REVEAL.zoomOut] as const;
+// Cada tarjeta alterna su entrada; el retraso va por columna (3 en desktop)
+const CARD_VARIANTS = [REVEAL.blur, REVEAL.up, REVEAL.fade] as const;
 const CARD_COLUMNS = 3;
 
 export default function BlogContainer() {
@@ -44,18 +44,19 @@ export default function BlogContainer() {
                         {HEADING.titleRest}
                     </h1>
 
-                    {/* El grid anima al hacer scroll hasta él */}
-                    <RevealSection className="mt-14 grid gap-6 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
+                    <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
                         {BLOG_POSTS.map((post, i) => (
-                            <div
-                                key={post.slug}
-                                className={cn("h-full", CARD_VARIANTS[i % CARD_VARIANTS.length])}
-                                style={{ transitionDelay: `${(i % CARD_COLUMNS) * 120}ms` }}
-                            >
-                                <BlogCard post={post} />
-                            </div>
+                            /* Un RevealSection por tarjeta: cada fila anima al llegar a ella */
+                            <RevealSection key={post.slug} className="h-full">
+                                <div
+                                    className={cn("h-full", CARD_VARIANTS[i % CARD_VARIANTS.length])}
+                                    style={{ transitionDelay: `${(i % CARD_COLUMNS) * 120}ms` }}
+                                >
+                                    <BlogCard post={post} reveal />
+                                </div>
+                            </RevealSection>
                         ))}
-                    </RevealSection>
+                    </div>
                 </Container>
             </div>
         </section>

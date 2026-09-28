@@ -1,9 +1,8 @@
 import Container from "@/src/shared/components/ui/Container";
 import Badge from "@/src/shared/components/ui/Badge";
-import Carousel from "@/src/shared/components/ui/Carousel";
 import PersonCard from "@/src/shared/components/ui/PersonCard";
 import RevealSection from "@/src/shared/components/ui/RevealSection";
-import { LEADERSHIP, TEAM_MEMBERS } from "@/src/shared/data/team.data";
+import { LEADERSHIP } from "@/src/shared/data/team.data";
 import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
@@ -15,21 +14,22 @@ const HEADING = {
 };
 
 const GROUPS = {
-    leadership: "Leadership",
-    team: "Team",
+    leadership: "VCM Team",
+    team: "Marketing Area",
 };
 
 // Línea divisoria que se dibuja de izquierda a derecha
 const LINE_DRAW =
     "origin-left scale-x-0 transition-[scale] duration-700 ease-out group-data-[inview=true]/reveal:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none";
 
-// Las tarjetas del equipo alternan entrada; el retraso va por columna (4 en desktop)
-const TEAM_VARIANTS = [REVEAL.up, REVEAL.zoomIn] as const;
-const TEAM_COLUMNS = 4;
+// Los dos grids usan 4 columnas en desktop; el retraso va por columna
+const GRID_COLUMNS = 4;
+const VCM_TEAM_VARIANTS = [REVEAL.blur, REVEAL.up] as const;
+const MARKETING_VARIANTS = [REVEAL.up, REVEAL.zoomIn] as const;
 
 export default function OurPeople() {
     return (
-        <section className="overflow-x-clip py-16 lg:py-24">
+        <section className="overflow-x-clip py-16 lg:py-24 bg-[#F0F0F0]">
             {/* ── Encabezado ── */}
             <RevealSection>
                 <Container>
@@ -63,35 +63,28 @@ export default function OurPeople() {
                 </Container>
             </RevealSection>
 
-            <div className="mt-14 bg-surface/40 py-14 lg:mt-20 lg:py-16">
+            <div className="mt-14  py-14 bg-[#F0F0F0] lg:mt-20 lg:py-16">
                 <Container>
-                    {/* ── Leadership: carrusel ── */}
+                    {/* ── VCM Team: grid con enlace a cada perfil ── */}
                     <RevealSection>
                         <div className={cn("w-fit", REVEAL.zoomIn)}>
                             <Badge>{GROUPS.leadership}</Badge>
                         </div>
 
-                        {/* El carrusel sube en bloque: sin entradas laterales dentro de su track */}
-                        <div className={cn("mt-6", REVEAL.up, "delay-150")}>
-                            <Carousel itemCount={LEADERSHIP.length} label={GROUPS.leadership}>
-                                {LEADERSHIP.map((member) => (
-                                    <div
-                                        key={member.slug}
-                                        className="w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[calc((100%-3.75rem)/4)]"
-                                    >
-                                        <PersonCard
-                                            member={member}
-                                            href={`/about-us/team/${member.slug}`}
-                                        />
-                                    </div>
-                                ))}
-                            </Carousel>
+                        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                            {LEADERSHIP.map((member, i) => (
+                                <div
+                                    key={member.slug}
+                                    className={cn("h-full", VCM_TEAM_VARIANTS[i % VCM_TEAM_VARIANTS.length])}
+                                    style={{ transitionDelay: `${150 + (i % GRID_COLUMNS) * 100}ms` }}
+                                >
+                                    <PersonCard member={member} href={`/about-us/team/${member.slug}`} />
+                                </div>
+                            ))}
                         </div>
-
-                        <hr className={cn("my-12 border-border lg:my-16", LINE_DRAW, "delay-500")} />
                     </RevealSection>
 
-                    {/* ── Team: grid ── */}
+                    {/* ── Marketing Area: grid ──
                     <RevealSection>
                         <div className={cn("w-fit", REVEAL.zoomIn)}>
                             <Badge>{GROUPS.team}</Badge>
@@ -101,14 +94,14 @@ export default function OurPeople() {
                             {TEAM_MEMBERS.map((member, i) => (
                                 <div
                                     key={member.slug}
-                                    className={cn("h-full", TEAM_VARIANTS[i % TEAM_VARIANTS.length])}
-                                    style={{ transitionDelay: `${150 + (i % TEAM_COLUMNS) * 100}ms` }}
+                                    className={cn("h-full", MARKETING_VARIANTS[i % MARKETING_VARIANTS.length])}
+                                    style={{ transitionDelay: `${150 + (i % GRID_COLUMNS) * 100}ms` }}
                                 >
                                     <PersonCard member={member} />
                                 </div>
                             ))}
                         </div>
-                    </RevealSection>
+                    </RevealSection>*/}
                 </Container>
             </div>
         </section>
