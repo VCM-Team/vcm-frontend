@@ -24,7 +24,7 @@ export default function MemberDetailContainer({ member }: { member: TeamMember }
                         <div className={cn("order-first mx-auto w-full max-w-sm lg:order-last", ENTER_ZOOM)}>
                             <div className="overflow-hidden rounded-card bg-transparent">
                                 <div className="flex items-center justify-center p-8">
-                                    <span className="relative aspect-square w-full max-w-[18rem] overflow-hidden rounded-full bg-surface">
+                                    <span className="relative aspect-square w-full max-w-[24rem] overflow-hidden rounded-full bg-surface">
                                         {/* Zoom out dentro del círculo */}
                                         <Image
                                             src={member.image}
