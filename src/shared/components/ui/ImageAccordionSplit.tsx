@@ -27,7 +27,7 @@ export default function ImageAccordionSplit({
                                                 className,
                                             }: Props) {
     return (
-        <RevealSection className={cn("py-16 lg:py-24", className)}>
+        <RevealSection className={cn("overflow-x-clip py-16 lg:py-24", className)}>
             <Container>
                 <div className={REVEAL.fade}>
                     <Badge>{badge}</Badge>
