@@ -52,7 +52,7 @@ export default function BlogContainer() {
                                     className={cn("h-full", CARD_VARIANTS[i % CARD_VARIANTS.length])}
                                     style={{ transitionDelay: `${(i % CARD_COLUMNS) * 120}ms` }}
                                 >
-                                    <BlogCard post={post} reveal />
+                                    <BlogCard post={post} />
                                 </div>
                             </RevealSection>
                         ))}

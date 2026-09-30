@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Field from "@/src/shared/components/ui/Field";
@@ -46,9 +47,9 @@ export default function ContactForm() {
     if (status === "sent") {
         return (
             <div className="rounded-card bg-bg p-10 text-center">
-                <p className="text-lg font-semibold text-fg">Mensaje enviado</p>
+                <p className="text-lg font-semibold text-fg">Message sent</p>
                 <p className="mt-2 text-sm text-fg-muted">
-                    Texto de confirmación — reemplázalo.
+                    Thanks for reaching out. Someone from our team will contact you within one business day.
                 </p>
 
                 <button
@@ -56,7 +57,7 @@ export default function ContactForm() {
                     onClick={() => setStatus("idle")}
                     className="mt-6 cursor-pointer text-sm font-semibold text-brand-500 underline underline-offset-4"
                 >
-                    Enviar otro mensaje
+                    Send another message
                 </button>
             </div>
         );
@@ -130,18 +131,38 @@ export default function ContactForm() {
                 className="absolute -left-[9999px] size-px opacity-0"
             />
 
+            {/* Consentimiento SMS: debe ser opcional (TCPA: no puede ser condición para enviar el formulario) */}
             <div className="flex gap-3">
                 <input
                     id="consent"
                     type="checkbox"
                     {...register("consent")}
-                    className="mt-0.5 size-4 shrink-0 rounded border-field-border accent-accent"
+                    className="mt-0.5 size-4 shrink-0 rounded border-field-border cursor-pointer accent-accent"
                 />
                 <label htmlFor="consent" className="text-xs leading-relaxed text-fg-muted">
-                    Texto de consentimiento SMS — redáctalo tú.
+                    I agree to receive text messages from VCM about my inquiry and our services at the phone
+                    number provided. Message frequency varies. Message and data rates may apply. Reply STOP to
+                    opt out or HELP for help. Consent is not a condition of purchase. See our{" "}
+                    <Link href="/privacy-policy" className="font-semibold text-fg underline underline-offset-2 hover:text-brand-500">
+                        Privacy Policy
+                    </Link>{" "}
+                    and{" "}
+                    <Link href="/terms-of-service" className="font-semibold text-fg underline underline-offset-2 hover:text-brand-500">
+                        Terms of Service
+                    </Link>
+                    .
                 </label>
             </div>
             {errors.consent && <p className="-mt-3 text-xs text-danger">{errors.consent.message}</p>}
+
+            {/* Aviso general: al enviar se acepta la política (independiente del SMS) */}
+            <p className="mt-2 text-xs leading-relaxed text-fg-muted">
+                By submitting this form, you agree to be contacted by VCM and accept our{" "}
+                <Link href="/privacy-policy" className="font-semibold text-fg underline underline-offset-2 hover:text-brand-500">
+                    Privacy Policy
+                </Link>
+                .
+            </p>
 
             {status === "error" && (
                 <div
@@ -150,12 +171,10 @@ export default function ContactForm() {
                 >
                     <AlertIcon className="mt-0.5 size-5 shrink-0 text-danger" />
                     <div>
-                        <p className="text-sm font-semibold text-danger">
-                            Ups, algo salió mal
-                        </p>
+                        <p className="text-sm font-semibold text-danger">Something went wrong</p>
                         <p className="mt-1 text-xs leading-relaxed text-fg-muted">
-                            No pudimos enviar tu mensaje. Revisa tu conexión e inténtalo de
-                            nuevo, o escríbenos directamente por correo.
+                            We couldn’t send your message. Please check your connection and try again, or contact
+                            us directly by email.
                         </p>
                     </div>
                 </div>
@@ -167,7 +186,7 @@ export default function ContactForm() {
                 className="inline-flex cursor-pointer items-center gap-2 self-end rounded-full bg-brand-400 px-7 py-3 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white disabled:cursor-not-allowed disabled:bg-black/10 disabled:text-black/40 disabled:hover:bg-black/10 disabled:hover:text-black/40"
             >
                 {isSending && <SpinnerIcon className="size-4 animate-spin" />}
-                {isSending ? "Sending…" : "OK →"}
+                {isSending ? "Sending…" : "Send Message"}
             </button>
         </form>
     );

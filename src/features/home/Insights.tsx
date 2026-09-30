@@ -29,7 +29,7 @@ const INSIGHTS_ITEMS: readonly InsightItem[] = [
         category: "Business Development",
         title:
             "International Roofing Expo (IRE): What It Is, When It Happens, and Why Roofers Take It Seriously",
-        href: "/blog/international-roofing-expo-ire",
+        href: "/blog/international-roofing-expo",
         image:
             "https://workninjas.com/wp-content/uploads/2025/06/DSC01065-Editada-1024x693.jpg",
     },
@@ -37,7 +37,7 @@ const INSIGHTS_ITEMS: readonly InsightItem[] = [
         key: "subcontractors",
         category: "Business Development",
         title: "Communication with Subcontractors and Manufacturers",
-        href: "/blog/communication-with-subcontractors-and-manufacturers",
+        href: "/blog/communication-subcontractors",
         image: "https://workninjas.com/wp-content/uploads/2025/06/NH-1024x601.png",
     },
 ];
