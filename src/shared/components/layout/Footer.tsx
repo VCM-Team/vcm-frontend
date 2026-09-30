@@ -20,7 +20,7 @@ const CTA = {
 const CONTACT = {
     label: "CONTACT US",
     phone: { label: "Our Phone", value: "(866) 969-5155", href: "tel:+18669695155" },
-    email: { label: "Our Email", value: "support@vcm.com", href: "mailto:support@vcm.com" },
+    email: { label: "Our Email", value: "consulting@discovervcm.com", href: "mailto:consulting@discovervcm.com" },
     note: "Remote, Time Zone Aligned with U.S.",
 };
 
