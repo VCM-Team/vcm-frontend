@@ -15,26 +15,48 @@ const montserrat = Montserrat({
     display: "swap",
 });
 
+const SITE_URL = "https://discovervcm.com";
+const SITE_NAME = "VCM";
+const SITE_DESCRIPTION =
+    "VCM helps U.S. construction and roofing companies grow with business growth consulting and dedicated nearshore talent from Lima, Peru.";
+
 export const metadata: Metadata = {
-    metadataBase: new URL("https://vcm-frontend.vercel.app"),
+    metadataBase: new URL(SITE_URL),
     title: {
-        default: "VCM",
+        default: "Business Growth Consulting & Talent Solutions | VCM",
         template: "%s | VCM",
     },
-    description: "Descripción del sitio — reemplázala con la tuya.",
+    description: SITE_DESCRIPTION,
+    applicationName: SITE_NAME,
     icons: {
-        icon: [
-            { url: "/icon-yellow.png" }, // respaldo sin condición: siempre hay un icono
-            { url: "/icon-yellow.png", media: "(prefers-color-scheme: light)" },
-            { url: "/icon-yellow.png", media: "(prefers-color-scheme: dark)" },
-        ],
+        icon: "/icon-yellow.png",
     },
     openGraph: {
         type: "website",
         locale: "en_US",
-        siteName: "VCM",
+        siteName: SITE_NAME,
+    },
+    twitter: {
+        card: "summary_large_image",
     },
     robots: { index: true, follow: true },
+};
+
+// Datos estructurados: identifica a VCM como organización para Google
+const ORGANIZATION_JSON_LD = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    alternateName: "Virtual Construction Management",
+    url: SITE_URL,
+    logo: `${SITE_URL}/assets/brand/vcm_dark_logo.webp`,
+    description: SITE_DESCRIPTION,
+    sameAs: ["https://www.linkedin.com/company/discovervcm"],
+    address: {
+        "@type": "PostalAddress",
+        addressLocality: "Lima",
+        addressCountry: "PE",
+    },
 };
 
 export default function RootLayout({
@@ -42,10 +64,15 @@ export default function RootLayout({
                                    }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en" className={`${urbanist.variable} ${montserrat.variable}`}>
-        <body className="min-h-dvh bg-bg font-sans text-ink-900 antialiased">
+        <body className="min-h-dvh overflow-x-clip bg-bg font-sans text-ink-900 antialiased">
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
+        />
+
         <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-navy-800 focus:px-5 focus:py-2.5 focus:text-sm focus:text-white"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink-900 focus:px-5 focus:py-2.5 focus:text-sm focus:text-white"
         >
             Skip to content
         </a>

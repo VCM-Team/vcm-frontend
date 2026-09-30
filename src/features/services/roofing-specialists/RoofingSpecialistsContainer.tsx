@@ -10,130 +10,130 @@ import type { NumberedCardItem } from "@/src/shared/components/ui/NumberedCard";
 import { TESTIMONIALS } from "@/src/shared/data/testimonials.data";
 
 const HERO = {
-    badge: "Sales Performance",
-    title: "Build a Sales Engine",
-    titleAccent: "You Can Predict",
+    badge: "Roofing Specialists",
+    title: "Specialists Who",
+    titleAccent: "Understand Roofing",
     description:
-        "We help construction and roofing companies turn scattered leads and inconsistent follow-up into a clear sales process, a clean CRM and a pipeline you can actually see.",
-    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
+        "Dedicated nearshore professionals who know how a roofing business works, from sales and estimating to customer service and admin, integrated into your tools and your processes.",
+    cta: { label: "Build Your Team", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/teamRoofing-2048x961.png",
 };
 
 const INTRO = {
     badge: "What We Do",
-    title: "A Sales Process Built for Consistent Growth",
+    title: "Support That Speaks the Language of Roofing",
     description:
-        "Most sales problems aren’t about effort. They come from leads without a clear owner, a CRM nobody trusts and follow-up that depends on memory. We fix the process first, so every opportunity moves forward the same way.",
-    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
+        "Generic assistants need months to understand job lifecycles, estimates, crews and customer expectations. Our specialists are trained for the roofing and construction industry, so they add capacity from the start instead of adding work for your team.",
+    cta: { label: "Build Your Team", href: "/book-demo" },
     features: [
-        "Lead Generation",
-        "Sales Process",
-        "CRM Management",
-        "Pipeline Visibility",
-        "Sales Reporting",
+        "Sales Support",
+        "Estimating",
+        "Customer Service",
+        "Project Coordination",
+        "Admin & Finance",
     ],
 };
 
 const INTRO_ITEMS: readonly AccordionItem[] = [
     {
-        key: "leads",
-        title: "Lead Generation & Follow-Up",
+        key: "industry",
+        title: "Built for the Roofing Industry",
         content:
-            "We review where your leads come from and set up the follow-up cadences that keep every inquiry moving toward a conversation.",
+            "Our specialists understand roofing terminology, job stages and the day-to-day of a construction company, so they work with context from day one.",
     },
     {
-        key: "crm",
-        title: "CRM & Pipeline Management",
+        key: "evaluation",
+        title: "Evaluated for Skills and English",
         content:
-            "We organize your CRM and pipeline stages so your team works from the same information and nothing falls through the cracks.",
+            "Every specialist is assessed on the technical skills of the role, communication and English before joining your team.",
     },
     {
-        key: "conversion",
-        title: "Conversion & Reporting",
+        key: "integration",
+        title: "Integrated Into Your Tools",
         content:
-            "We define the sales KPIs that matter and build the reporting to track them, so you know what is working and where deals are lost.",
+            "We onboard each specialist into your CRM, processes and standards, and keep supporting the team after they start.",
     },
 ];
 
 const WHY_IT_MATTERS = {
     badge: "Why It Matters",
-    title: "Visibility Today,",
-    titleRest: "Predictability Tomorrow",
+    title: "Industry Knowledge",
+    titleRest: "Saves Time and Mistakes",
     description:
-        "When sales depend on individual effort, growth is hard to plan. A defined process, a reliable CRM and regular reporting give you the visibility to make decisions and the predictability to plan your next stage.",
+        "Roofing has its own language, workflows and priorities. When your support team already understands them, you spend less time training and correcting, and more time running and growing your business.",
     image: "https://workninjas.com/wp-content/uploads/2025/06/roofing.png",
 };
 
 const HANDLES = {
-    title: "What We Help You",
-    titleAccent: "Improve",
+    title: "Roles Our",
+    titleAccent: "Specialists Cover",
 };
 
 const HANDLES_ITEMS: readonly FeatureGridItem[] = [
     {
-        key: "lead-generation",
-        title: "Lead Generation",
-        description: "Channels and processes that bring qualified leads into your pipeline.",
+        key: "sales-support",
+        title: "Sales Support",
+        description: "Lead follow-up, appointment setting and CRM updates that keep your pipeline moving.",
         Icon: BadgeHandIcon,
     },
     {
-        key: "sales-process",
-        title: "Sales Process",
-        description: "A defined path from first contact to signed contract, so every rep sells the same way.",
-        Icon: GearsIcon,
-    },
-    {
-        key: "crm",
-        title: "CRM Organization",
-        description: "A clean, well-structured CRM your team actually uses and trusts.",
-        Icon: LayersIcon,
-    },
-    {
-        key: "follow-up",
-        title: "Follow-Up Discipline",
-        description: "Consistent follow-up cadences so no lead or estimate goes cold.",
-        Icon: CalendarIcon,
-    },
-    {
-        key: "pipeline",
-        title: "Pipeline Visibility",
-        description: "A clear view of every opportunity, its stage and its value.",
+        key: "estimating",
+        title: "Estimating & Takeoffs",
+        description: "Takeoffs, plan reading and cost estimates for residential and commercial projects.",
         Icon: CalculatorIcon,
     },
     {
-        key: "reporting",
-        title: "Sales KPIs & Reporting",
-        description: "The numbers that matter, reported regularly, so decisions are based on data.",
+        key: "customer-service",
+        title: "Customer Service & Scheduling",
+        description: "Timely answers for homeowners and customers, and schedules that stay organized.",
+        Icon: CalendarIcon,
+    },
+    {
+        key: "project-coordination",
+        title: "Project Coordination",
+        description: "Follow-up with crews, subcontractors and suppliers to keep each job on track.",
+        Icon: GearsIcon,
+    },
+    {
+        key: "admin",
+        title: "CRM & Administrative Support",
+        description: "Documentation, data entry and the daily tasks that keep your office running.",
+        Icon: LayersIcon,
+    },
+    {
+        key: "finance",
+        title: "Accounting & Finance",
+        description: "Support for bookkeeping, invoicing, costs and reporting, so your numbers stay clear.",
         Icon: CoinsIcon,
     },
 ];
 
 const PROCESS = {
     badge: "Our Process",
-    title: "How We Improve Your Sales",
-    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
+    title: "How We Build Your Roofing Team",
+    cta: { label: "Build Your Team", href: "/book-demo" },
 };
 
 const PROCESS_STEPS: readonly NumberedCardItem[] = [
     {
         number: "01",
-        title: "Sales Assessment",
-        description: "We review your lead sources, sales process, CRM and pipeline to find where opportunities are lost.",
+        title: "Role Strategy",
+        description: "We define the responsibilities, tools and expectations of each role in your company.",
     },
     {
         number: "02",
-        title: "Growth Roadmap",
-        description: "We prioritize the changes with the biggest impact and assign clear owners and next steps.",
+        title: "Sourcing & Evaluation",
+        description: "We find candidates and assess their industry skills, communication and English.",
     },
     {
         number: "03",
-        title: "Guided Implementation",
-        description: "We work with your team to put the new process, CRM structure and reporting in place.",
+        title: "Onboarding",
+        description: "We train each specialist in your processes, standards and systems.",
     },
     {
         number: "04",
-        title: "Scale with Talent",
-        description: "When the system is ready, we add dedicated sales support to execute it every day.",
+        title: "Integration & Support",
+        description: "Your specialists join your daily operation, with ongoing support from our team.",
     },
 ];
 
@@ -147,11 +147,11 @@ const TESTIMONIALS_HEADING = {
 
 const WHY_US = {
     badge: "Why VCM?",
-    title: "Better sales start",
-    titleTyped: "with better systems",
+    title: "Specialists who know",
+    titleTyped: "the roofing business",
     description:
-        "We fix the process, the CRM and the follow-up first. Then, if you need it, we add dedicated sales talent to execute.",
-    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
+        "Dedicated professionals from our team in Lima, trained for the construction industry and integrated into your daily operation.",
+    cta: { label: "Build Your Team", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/weknowroofing-scaled.png",
 };
 

@@ -7,88 +7,87 @@ import StickyCardSection from "@/src/shared/components/ui/StickyCardSection";
 import type { AccordionItem } from "@/src/shared/components/ui/Accordion";
 import type { NumberedCardItem } from "@/src/shared/components/ui/NumberedCard";
 import { TESTIMONIALS } from "@/src/shared/data/testimonials.data";
-
 const HERO = {
-    badge: "Operational Excellence",
-    title: "Processes That Run",
-    titleAccent: "Without You in Every Detail",
+    badge: "Lead Management",
+    title: "Every Lead Answered,",
+    titleAccent: "Every Opportunity Followed Up",
     description:
-        "We map how your operation really works, document it in clear SOPs and remove the manual steps that slow your team down, so the business keeps moving as it grows.",
-    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
+        "Dedicated lead management specialists who respond to inquiries, qualify prospects, schedule appointments and keep your CRM up to date, so your sales team spends its time closing.",
+    cta: { label: "Build Your Team", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/CSTMER.png",
 };
 
 const INTRO = {
     badge: "What We Do",
-    title: "Clear Processes, Fewer Fires",
+    title: "Turn More Inquiries Into Real Projects",
     description:
-        "When processes live in people’s heads, every absence, new hire or busy season turns into a problem. We turn the way your team works into documented, repeatable processes that everyone can follow.",
-    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
+        "Leads don’t wait. When calls go unanswered, forms sit in an inbox or follow-ups depend on memory, opportunities go to the next contractor. Our specialists make sure every lead gets a fast response and a clear next step.",
+    cta: { label: "Build Your Team", href: "/book-demo" },
     features: [
-        "Process Mapping",
-        "SOPs",
-        "Documentation",
-        "Automation",
-        "Team Alignment",
+        "Lead Intake",
+        "Qualification",
+        "Follow-Up",
+        "Appointment Setting",
+        "CRM Updates",
     ],
 };
 
 const INTRO_ITEMS: readonly AccordionItem[] = [
     {
-        key: "mapping",
-        title: "Process Mapping",
+        key: "response",
+        title: "Fast Lead Response",
         content:
-            "We map how work actually flows through your company today, to find the handoffs, delays and duplicated steps.",
+            "Our specialists respond to new inquiries from your website, calls and campaigns quickly and professionally, so no lead is left waiting.",
     },
     {
-        key: "sops",
-        title: "SOPs & Documentation",
+        key: "qualification",
+        title: "Qualification & Appointment Setting",
         content:
-            "We document each key process in clear SOPs, so tasks get done the same way no matter who does them.",
+            "We qualify each lead with your criteria and book appointments directly on your team’s calendar, so your sales reps only meet with real opportunities.",
     },
     {
-        key: "efficiency",
-        title: "Efficiency & Automation",
+        key: "crm",
+        title: "Follow-Up & CRM Updates",
         content:
-            "We streamline the workflow and automate repetitive steps, so your team spends its time on work that matters.",
+            "We run consistent follow-up cadences and keep every contact, note and stage updated in your CRM, so your pipeline always reflects reality.",
     },
 ];
 
 const WHY_IT_MATTERS = {
     badge: "Why It Matters",
-    title: "When Everything Depends on You,",
-    titleRest: "Growth Stops",
+    title: "Leads Go Cold",
+    titleRest: "Faster Than You Think",
     description:
-        "If every decision and every exception goes through the owner, the business can only grow as fast as one person can work. Documented processes and aligned teams give you coordination today and the capacity to scale tomorrow.",
+        "Every lead you pay for is an opportunity with an expiration date. When response times slip and follow-up is inconsistent, marketing spend turns into missed projects. A dedicated team keeps every lead moving while your sales team focuses on closing.",
     image: "https://workninjas.com/wp-content/uploads/2025/06/lauistv.png",
 };
 
 const PROCESS = {
     badge: "Our Process",
-    title: "How We Improve Your Operations",
-    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
+    title: "How We Build Your Lead Management Team",
+    cta: { label: "Build Your Team", href: "/book-demo" },
 };
 
 const PROCESS_STEPS: readonly NumberedCardItem[] = [
     {
         number: "01",
-        title: "Operations Assessment",
-        description: "We review how work flows through your team and where it gets stuck.",
+        title: "Review Your Lead Flow",
+        description: "We look at where your leads come from, how they are handled today and where they get lost.",
     },
     {
         number: "02",
-        title: "Growth Roadmap",
-        description: "We prioritize the processes to fix first, with clear owners and next steps.",
+        title: "Define the Process",
+        description: "We set qualification criteria, follow-up cadences and scripts that match your sales process.",
     },
     {
         number: "03",
-        title: "Guided Implementation",
-        description: "We document the SOPs and put the improved workflows in place with your team.",
+        title: "Onboard Your Specialists",
+        description: "We select specialists evaluated for communication and English, and train them in your CRM and tools.",
     },
     {
         number: "04",
-        title: "Scale with Talent",
-        description: "When the processes are ready, we add dedicated support to run them every day.",
+        title: "Ongoing Support",
+        description: "We keep supporting the team and adjust the process as your lead volume and goals change.",
     },
 ];
 
@@ -102,11 +101,11 @@ const TESTIMONIALS_HEADING = {
 
 const WHY_US = {
     badge: "Why VCM?",
-    title: "Systems that let",
-    titleTyped: "your business scale",
+    title: "Specialists who work",
+    titleTyped: "inside your CRM",
     description:
-        "We build the processes first, then add the talent to run them, so growth doesn’t depend on putting out fires.",
-    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
+        "Dedicated professionals from our team in Lima, integrated into your tools and sales process, with ongoing support from day one.",
+    cta: { label: "Build Your Team", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/07/WNroofingexpert.png",
 };
 
