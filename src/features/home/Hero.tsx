@@ -8,7 +8,7 @@ const HERO = {
     description:
         "Your next stage of growth doesn’t come from working harder—it comes from building a business that can scale.",
     cta: { label: "Free Consultation", href: "/contact-us" },
-    pillars: ["Strategy", "Systems", "Talent"],
+    pillars: ["Clarity", "Systems", "Results"],
     image: {
         src: "/assets/images/hero/background.webp",
         alt: "",
