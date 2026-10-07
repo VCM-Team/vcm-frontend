@@ -27,7 +27,7 @@ const MILESTONES: readonly Milestone[] = [
         year: "2022",
         title: "The First Nearshore Team",
         description:
-            "VCM starts with a simple idea: U.S. construction companies need reliable back-office support, and Lima has the talent to provide it.",
+            "VCM starts with a simple idea: U.S. construction companies need reliable back-office support, and LATAM has the talent to provide it.",
         image: "https://workninjas.com/wp-content/uploads/2025/06/Group-3894-scaled.jpg",
     },
     {
@@ -51,7 +51,7 @@ const MILESTONES: readonly Milestone[] = [
         year: "2026",
         title: "50+ Virtual Positions",
         description:
-            "More than 50 virtual positions across sales, customer service, estimating, finance and more, working from our offices in Lima, Peru.",
+            "More than 50 virtual positions across sales, customer service, estimating, finance and more, with a dedicated team based in LATAM.",
         image: "https://workninjas.com/wp-content/uploads/2025/06/Group-3895-scaled.jpg",
     },
 ];

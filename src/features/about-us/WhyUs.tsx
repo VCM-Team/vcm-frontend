@@ -16,12 +16,12 @@ const CONTENT = {
     titleAccent: "A Growth Partner",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     description:
-        "Most companies don’t need more people first, they need a clearer way of working. We start by understanding what is holding your business back, then design the processes, accountability and systems it needs, and only then add dedicated talent from our offices in Lima to execute. The result is a team that works inside your tools, follows your standards and helps your business grow without losing control.",
+        "Most companies don’t need more people first, they need a clearer way of working. We start by understanding what is holding your business back, then design the processes, accountability and systems it needs, and only then add dedicated talent from LATAM to execute. The result is a team that works inside your tools, follows your standards and helps your business grow without losing control.",
     features: [
         "Strategy First",
         "Systems That Scale",
         "Dedicated Talent",
-        "Nearshore from Lima",
+        "Nearshore from LATAM",
         "Ongoing Support",
     ],
 };
@@ -44,7 +44,7 @@ const QUOTE: QuoteCardData = {
 const TEAM_IMAGE = "https://workninjas.com/wp-content/uploads/2025/06/Mask-group.jpg";
 
 const JOIN_CARD = {
-    title: "Join a team in Lima helping U.S. construction companies grow.",
+    title: "Join a LATAM team helping U.S. construction companies grow.",
     year: "2026",
 };
 

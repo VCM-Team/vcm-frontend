@@ -150,7 +150,7 @@ const WHY_US = {
     title: "Specialists who know",
     titleTyped: "the roofing business",
     description:
-        "Dedicated professionals from our team in Lima, trained for the construction industry and integrated into your daily operation.",
+        "Dedicated professionals from our LATAM team, trained for the construction industry and integrated into your daily operation.",
     cta: { label: "Build Your Team", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/06/weknowroofing-scaled.png",
 };

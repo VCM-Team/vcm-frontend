@@ -5,7 +5,7 @@ import { pageMetadata } from "@/src/lib/seo";
 export const metadata: Metadata = pageMetadata({
     title: "Nearshore Talent Solutions",
     description:
-        "Dedicated nearshore professionals from Lima, recruited, evaluated and integrated into your tools and processes. Talent solutions for U.S. construction companies.",
+        "Dedicated nearshore professionals from LATAM, recruited, evaluated and integrated into your tools and processes. Talent solutions for U.S. construction companies.",
     path: "/services/talent",
 });
 

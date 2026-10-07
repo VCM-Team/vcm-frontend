@@ -13,7 +13,7 @@ import ContactForm from "./ContactForm";
 const CONTACT_EMAIL = "email@dominio.com";
 
 const INFO = [
-    { label: "Our Offices", value: "Lima, Peru", Icon: PinIcon },
+    { label: "Our Team", value: "Based in LATAM", Icon: PinIcon },
     {
         label: "LinkedIn",
         value: "discovervcm",
@@ -138,8 +138,8 @@ export default function ContactContainer() {
                                 <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-400 text-black">
                                     <PinIcon />
                                 </span>
-                                <span className="text-sm leading-snug text-black">
-                                    Our team works from Lima, Peru, in time zones close to the U.S.
+                                                            <span className="text-sm leading-snug text-black">
+                                    Our team works from LATAM, in time zones close to the U.S.
                                 </span>
                             </figcaption>
                         </figure>

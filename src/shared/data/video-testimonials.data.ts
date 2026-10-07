@@ -49,7 +49,7 @@ export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
             title: "A Team That Works Like Part of Ours",
         },
         quote:
-            "Before VCM, every call, estimate and follow-up went through me. They helped us organize our processes first and then built a team in Lima that works inside our tools like they’ve been here for years. I finally spend my time growing the business instead of running it.",
+            "Before VCM, every call, estimate and follow-up went through me. They helped us organize our processes first and then built a team in LATAM that works inside our tools like they’ve been here for years. I finally spend my time growing the business instead of running it.",
         authorName: "Michael Turner",
         authorRole: "Owner",
         company: "Northline Roofing & Exteriors",

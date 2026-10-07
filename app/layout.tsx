@@ -18,7 +18,7 @@ const montserrat = Montserrat({
 const SITE_URL = "https://discovervcm.com";
 const SITE_NAME = "VCM";
 const SITE_DESCRIPTION =
-    "VCM helps U.S. construction and roofing companies grow with business growth consulting and dedicated nearshore talent from Lima, Peru.";
+    "VCM helps U.S. construction and roofing companies grow with business growth consulting and dedicated nearshore talent from LATAM.";
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),

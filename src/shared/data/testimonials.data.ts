@@ -41,7 +41,7 @@ export const TESTIMONIALS: readonly Testimonial[] = [
     },
     {
         key: "testimonio-5",
-        quote: "The team in Lima works in our tools and on our schedule. They felt like part of the company from the first weeks, and the support didn’t stop after onboarding.",
+        quote: "The team in LATAM works in our tools and on our schedule. They felt like part of the company from the first weeks, and the support didn’t stop after onboarding.",
         authorName: "Chris Walker",
         authorRole: "President",
         company: "Summit Line Builders",

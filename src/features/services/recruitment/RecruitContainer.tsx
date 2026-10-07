@@ -14,7 +14,7 @@ const HERO = {
     title: "Dedicated Nearshore Talent",
     titleAccent: "Built Around Your Business",
     description:
-        "We recruit, evaluate, onboard and integrate professionals who work from our offices in Lima, Peru, as part of your team, inside your tools and your processes.",
+        "We recruit, evaluate, onboard and integrate professionals from our LATAM team as part of your team, inside your tools and your processes.",
     cta: { label: "Build Your Team", href: "/book-demo" },
     image:
         "https://workninjas.com/wp-content/uploads/2025/08/GettyImages-1887449071-1-2-2048x900.jpg-2048x960.webp",
@@ -113,7 +113,7 @@ const FAQ_ITEMS: readonly AccordionItem[] = [
         key: "location",
         title: "Where does the team work from?",
         content:
-            "Our professionals work from our offices in Lima, Peru, supporting U.S. companies as part of their day-to-day operations.",
+            "Our professionals work as part of our LATAM team, supporting U.S. companies in their day-to-day operations.",
     },
     {
         key: "evaluation",

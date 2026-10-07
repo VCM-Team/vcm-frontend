@@ -11,7 +11,7 @@ const CONTENT = {
     title: "Join the",
     titleAccent: "VCM Team",
     description:
-        "We’re always looking for sharp, reliable people who want to do real work and grow with a team that supports each other. Our roles are full-time and in person at our offices in Lima, working every day with U.S. construction and roofing companies. Take a look, and if one fits, we’d love to hear from you.",
+        "We’re always looking for sharp, reliable people who want to do real work and grow with a team that supports each other. Our roles are full-time and in person with our LATAM team, working every day with U.S. construction and roofing companies. Take a look, and if one fits, we’d love to hear from you.",
 };
 
 const LINKEDIN_JOBS = "https://www.linkedin.com/company/discovervcm/jobs";
@@ -21,19 +21,19 @@ const POSITIONS = [
     {
         key: "junior-estimator",
         title: "Junior Estimator",
-        meta: "Santiago de Surco, Lima · Full-time",
+        meta: "LATAM · Full-time",
         href: "https://pe.linkedin.com/jobs/view/junior-estimator-at-vcm-4466912839",
     },
     {
         key: "back-end-developer",
         title: "Back End Developer",
-        meta: "Santiago de Surco, Lima · Full-time",
+        meta: "LATAM · Full-time",
         href: LINKEDIN_JOBS,
     },
     {
         key: "junior-executive-assistant",
         title: "Junior Executive Assistant",
-        meta: "Santiago de Surco, Lima · Full-time",
+        meta: "LATAM · Full-time",
         href: LINKEDIN_JOBS,
     },
 ];

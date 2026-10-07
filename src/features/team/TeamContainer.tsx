@@ -7,7 +7,7 @@ const HERO = {
     title: "The People Behind",
     titleAccent: "VCM",
     description:
-        "A team based in Lima, Peru, combining business growth consulting and talent solutions to support U.S. construction and roofing companies.",
+        "A team based in LATAM, combining business growth consulting and talent solutions to support U.S. construction and roofing companies.",
     image: "https://workninjas.com/wp-content/uploads/2025/06/Foto-2.jpg",
 };
 

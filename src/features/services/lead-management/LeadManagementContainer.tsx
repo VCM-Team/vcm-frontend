@@ -104,7 +104,7 @@ const WHY_US = {
     title: "Specialists who work",
     titleTyped: "inside your CRM",
     description:
-        "Dedicated professionals from our team in Lima, integrated into your tools and sales process, with ongoing support from day one.",
+        "Dedicated professionals from our LATAM team, integrated into your tools and sales process, with ongoing support from day one.",
     cta: { label: "Build Your Team", href: "/book-demo" },
     image: "https://workninjas.com/wp-content/uploads/2025/07/WNroofingexpert.png",
 };

@@ -14,7 +14,7 @@ const HERO = {
     titleAccent: "Nearshore Talent",
     titleRest: "for U.S. Construction",
     description:
-        "Our mission is to help U.S. construction companies recruit, hire, train and scale through reliable nearshore talent, working from our offices in Lima, Peru.",
+        "Our mission is to help U.S. construction companies recruit, hire, train and scale through reliable nearshore talent, with a dedicated team based in LATAM.",
     image: "https://workninjas.com/wp-content/uploads/2025/06/NH.png",
 };
 

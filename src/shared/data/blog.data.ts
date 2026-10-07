@@ -81,7 +81,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>These are not roofing problems. <strong>They are operational problems.</strong></p>
 
       <h2>How VCM Helps</h2>
-      <p><strong>We fix the system before adding people.</strong> VCM starts by understanding what is holding your business back, then designs the processes and accountability it needs, and only then adds dedicated nearshore talent from our offices in Lima to execute. We help with:</p>
+      <p><strong>We fix the system before adding people.</strong> VCM starts by understanding what is holding your business back, then designs the processes and accountability it needs, and only then adds dedicated nearshore talent from LATAM to execute. We help with:</p>
       <ul>
         <li>Sales process, CRM and pipeline visibility</li>
         <li>Documented processes and SOPs</li>

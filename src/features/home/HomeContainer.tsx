@@ -29,8 +29,7 @@ const INTRO = {
     badge: "WHO WE ARE",
     title: "Beyond Staffing.",
     titleAccent: "Built for Growth.",
-    description:
-        "VCM is a growth partner for U.S. construction and roofing companies. We start by finding what is holding your business back, then design the systems and accountability it needs, and only then add the talent to execute, with dedicated professionals working from our offices in Lima, Peru.",
+    description: "VCM helps U.S. construction and roofing companies grow with business growth consulting and dedicated nearshore talent from LATAM.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     features: [
         "Strategy",
@@ -79,7 +78,7 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
     {
         key: "careers",
         badge: "Careers",
-        title: "Join our team in Lima and help U.S. construction companies grow.",
+        title: "Join our LATAM team and help U.S. construction companies grow.",
         href: "/about-us/jobs",
         image: "/assets/images/shared/card_v.webp",
         variant: "accent",
@@ -182,7 +181,7 @@ const EXPERTISE_ITEMS: readonly BubbleFeatureItem[] = [
     },
     {
         key: "nearshore",
-        title: "Nearshore from Lima",
+        title: "Nearshore from LATAM",
         description: "A team in time zones close to the U.S., integrated into your day-to-day operations.",
         Icon: LinkIcon,
     },
