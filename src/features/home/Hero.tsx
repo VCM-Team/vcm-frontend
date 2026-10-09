@@ -147,32 +147,30 @@ function HeroRule({ description }: { description: string }) {
                 style={enterAt(T.ruleLow)}
             />
 
-            {/* Rampa móvil: se traza como un lápiz */}
-            <svg aria-hidden width="44" height="28" viewBox="0 0 44 28" fill="none" className="shrink-0 lg:hidden">
-                <path
-                    d="M0 26h10l24-24h10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    strokeLinecap="square"
-                    pathLength={1}
-                    strokeDasharray="1"
-                    className={ENTER.stroke}
-                    style={enterAt(T.ruleRamp)}
-                />
+            {/* Rampa móvil: se revela de izquierda a derecha */}
+            <svg
+                aria-hidden
+                width="44"
+                height="28"
+                viewBox="0 0 44 28"
+                fill="none"
+                className={cn("shrink-0 lg:hidden", ENTER.clipX)}
+                style={enterAt(T.ruleRamp, T.ruleHigh - T.ruleRamp)}
+            >
+                <path d="M0 26h10l24-24h10" stroke="currentColor" strokeWidth="4" strokeLinecap="square" />
             </svg>
 
-            {/* Rampa desktop: se traza como un lápiz */}
-            <svg aria-hidden width="72" height="72" viewBox="0 0 72 72" fill="none" className="hidden shrink-0 lg:block">
-                <path
-                    d="M0 70h4L70 2h2"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    strokeLinecap="square"
-                    pathLength={1}
-                    strokeDasharray="1"
-                    className={ENTER.stroke}
-                    style={enterAt(T.ruleRamp)}
-                />
+            {/* Rampa desktop: se revela de izquierda a derecha */}
+            <svg
+                aria-hidden
+                width="72"
+                height="72"
+                viewBox="0 0 72 72"
+                fill="none"
+                className={cn("hidden shrink-0 lg:block", ENTER.clipX)}
+                style={enterAt(T.ruleRamp, T.ruleHigh - T.ruleRamp)}
+            >
+                <path d="M0 70h4L70 2h2" stroke="currentColor" strokeWidth="4" strokeLinecap="square" />
             </svg>
 
             <div className="relative mb-auto h-1 flex-1">

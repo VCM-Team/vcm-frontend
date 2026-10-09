@@ -17,6 +17,7 @@ import Insights from "@/src/features/home/Insights";
 import TechStack from "@/src/features/home/TechStack";
 import DiscoveryCall from "@/src/features/home/DiscoveryCall";
 import RevealSection from "@/src/shared/components/ui/RevealSection";
+import ScrollPath from "@/src/shared/components/ui/ScrollPath";
 
 const HOME_STATS: readonly StatItem[] = [
     { value: "4", suffix: " Years", label: "Building nearshore teams for U.S. companies" },
@@ -248,64 +249,67 @@ export default function HomeContainer() {
     return (
         <>
             <Hero />
-            <AccordionSection
-                badge={INTRO.badge}
-                title={INTRO.title}
-                titleAccent={INTRO.titleAccent}
-                description={INTRO.description}
-                cta={INTRO.cta}
-                items={INTRO_ITEMS}
-                features={INTRO.features}
-            />
-            <PromoCardsGrid items={PROMO_CARDS} />
-            <ServicesGrid
-                badge={SERVICES_HEADING.badge}
-                title={SERVICES_HEADING.title}
-                titleRest={SERVICES_HEADING.titleRest}
-                items={SERVICES}
-                cta={SERVICES_HEADING.cta}
-                variant="dark"
-            />
-            {/* video */}
-            <RevealSection className="bg-ink-900 py-16 lg:py-20">
-                <Container>
-                    <VideoEmbed
-                        src={VIDEO.src}
-                        poster={VIDEO.poster}
-                        title={VIDEO.title}
-                        className="scale-90 opacity-0 transition-[opacity,scale] duration-1000 ease-out group-data-[inview=true]/reveal:scale-100 group-data-[inview=true]/reveal:opacity-100 motion-reduce:scale-100 motion-reduce:opacity-100 motion-reduce:transition-none"
-                    />
-                </Container>
-            </RevealSection>
-            <BubbleFeatures
-                badge={EXPERTISE.badge}
-                title={EXPERTISE.title}
-                titleRest={EXPERTISE.titleRest}
-                items={EXPERTISE_ITEMS}
-                stats={HOME_STATS}
-            />
+            <ScrollPath>
+                <AccordionSection
+                    badge={INTRO.badge}
+                    title={INTRO.title}
+                    titleAccent={INTRO.titleAccent}
+                    description={INTRO.description}
+                    cta={INTRO.cta}
+                    items={INTRO_ITEMS}
+                    features={INTRO.features}
+                />
+                <PromoCardsGrid items={PROMO_CARDS} />
+                <ServicesGrid
+                    badge={SERVICES_HEADING.badge}
+                    title={SERVICES_HEADING.title}
+                    titleRest={SERVICES_HEADING.titleRest}
+                    items={SERVICES}
+                    cta={SERVICES_HEADING.cta}
+                    variant="dark"
+                />
+                {/* video */}
+                <RevealSection className="bg-ink-900 py-16 lg:py-20">
+                    <Container>
+                        <VideoEmbed
+                            src={VIDEO.src}
+                            poster={VIDEO.poster}
+                            title={VIDEO.title}
+                            className="scale-90 opacity-0 transition-[opacity,scale] duration-1000 ease-out group-data-[inview=true]/reveal:scale-100 group-data-[inview=true]/reveal:opacity-100 motion-reduce:scale-100 motion-reduce:opacity-100 motion-reduce:transition-none"
+                        />
+                    </Container>
+                </RevealSection>
+                <BubbleFeatures
+                    badge={EXPERTISE.badge}
+                    title={EXPERTISE.title}
+                    titleRest={EXPERTISE.titleRest}
+                    items={EXPERTISE_ITEMS}
+                    stats={HOME_STATS}
+                />
 
-            <ImageCta
-                title={IMAGE_CTA.title}
-                titleRest={IMAGE_CTA.titleRest}
-                cta={IMAGE_CTA.cta}
-                image={IMAGE_CTA.image}
-                Icon={ChartIcon}
-            />
+                <ImageCta
+                    title={IMAGE_CTA.title}
+                    titleRest={IMAGE_CTA.titleRest}
+                    cta={IMAGE_CTA.cta}
+                    image={IMAGE_CTA.image}
+                    Icon={ChartIcon}
+                />
 
-            <ImageAccordionSplit
-                badge={TALENT.badge}
-                title={TALENT.title}
-                titleRest={TALENT.titleRest}
-                titleAccent={TALENT.titleAccent}
-                image={TALENT.image}
-                items={TALENT_ITEMS}
-            />
+                <ImageAccordionSplit
+                    badge={TALENT.badge}
+                    title={TALENT.title}
+                    titleRest={TALENT.titleRest}
+                    titleAccent={TALENT.titleAccent}
+                    image={TALENT.image}
+                    items={TALENT_ITEMS}
+                />
 
-            <VideoTestimonials items={VIDEO_TESTIMONIALS} />
-            <Insights />
-            <TechStack />
-            <DiscoveryCall />
+                <VideoTestimonials items={VIDEO_TESTIMONIALS} />
+                <Insights />
+                <TechStack />
+                <DiscoveryCall />
+            </ScrollPath>
+
         </>
     );
 }

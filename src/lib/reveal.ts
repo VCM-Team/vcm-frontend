@@ -35,6 +35,7 @@ export const ENTER = {
     stroke: "animate-enter-stroke motion-reduce:animate-none",
     kenBurns: "animate-enter-ken-burns motion-reduce:animate-none",
     down: "animate-enter-down motion-reduce:animate-none",
+    clipX: "animate-enter-clip-x motion-reduce:animate-none",
 } as const;
 
 /** Retraso (y duración opcional) de una animación ENTER, en ms. Se pasa como `style`. */
