@@ -39,6 +39,11 @@
   --animate-enter-draw-x: enter-draw-x 0.7s cubic-bezier(0.65, 0, 0.35, 1) both;
   --animate-enter-stroke: enter-stroke 0.5s cubic-bezier(0.65, 0, 0.35, 1) both;
   --animate-enter-ken-burns: enter-ken-burns 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-enter-down: enter-down 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes enter-down {
+  from { opacity: 0; translate: 0 -0.75rem; }
 }
 
 /* Urbanist para texto corrido; Montserrat para títulos, botones y navegación */
