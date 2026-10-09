@@ -29,6 +29,16 @@
   --spacing-header-sm: 4.5rem;
   --animate-marquee: marquee 40s linear infinite;
 
+  /* Entradas al cargar la página (ENTER en src/lib/reveal.ts) */
+  --animate-enter-fade: enter-fade 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-enter-up: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-enter-right: enter-right 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-enter-line: enter-line 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-enter-zoom: enter-zoom 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-enter-pop: enter-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-enter-draw-x: enter-draw-x 0.7s cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-enter-stroke: enter-stroke 0.5s cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-enter-ken-burns: enter-ken-burns 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* Urbanist para texto corrido; Montserrat para títulos, botones y navegación */
@@ -78,6 +88,48 @@
 
 .animate-caret {
   animation: caret 0.8s infinite;
+}
+
+/* ── Entradas al cargar la página (ENTER) ─────────────── */
+
+@keyframes enter-fade {
+  from { opacity: 0; }
+}
+
+@keyframes enter-up {
+  from { opacity: 0; translate: 0 1rem; }
+}
+
+@keyframes enter-right {
+  from { opacity: 0; translate: 1.5rem 0; }
+}
+
+/* Línea de texto que sube desde detrás de su máscara (overflow-hidden) */
+@keyframes enter-line {
+  from { translate: 0 105%; }
+}
+
+@keyframes enter-zoom {
+  from { opacity: 0; scale: 0.9; }
+}
+
+@keyframes enter-pop {
+  from { opacity: 0; scale: 0; }
+}
+
+/* Trazo horizontal que se dibuja (el origen lo pone la clase origin-left) */
+@keyframes enter-draw-x {
+  from { scale: 0 1; }
+}
+
+/* Trazo SVG que se dibuja: requiere pathLength="1" y stroke-dasharray="1" */
+@keyframes enter-stroke {
+  from { stroke-dashoffset: 1; }
+}
+
+/* Zoom lento de cámara para imágenes de fondo */
+@keyframes enter-ken-burns {
+  from { opacity: 0; scale: 1.08; }
 }
 
 html {
