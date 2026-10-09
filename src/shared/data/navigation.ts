@@ -17,7 +17,6 @@ export type NavItem = {
 };
 
 export const NAV_ITEMS: NavItem[] = [
-    { key: "home", label: "Home", href: "/" },
     {
         key: "services",
         label: "Services",
@@ -58,5 +57,4 @@ export const NAV_ITEMS: NavItem[] = [
         },
     },
     { key: "blog", label: "Blog", href: "/blog" },
-    { key: "contact", label: "Contact", href: "/contact-us" },
 ];

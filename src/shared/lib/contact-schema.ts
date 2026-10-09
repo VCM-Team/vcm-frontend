@@ -5,8 +5,8 @@ export const contactSchema = z.object({
     lastName: z.string().min(1, "Required").max(80),
     phone: z.string().min(7, "Enter a valid phone").max(25),
     email: z.email("Enter a valid email"),
-    company: z.string().min(1, "Required").max(120),
-    consent: z.literal(true, "Required"),
+    // Opcional: el consentimiento SMS no puede ser condición para enviar el formulario (TCPA)
+    consent: z.boolean().optional(),
     website: z.string().max(0).optional(),
 });
 

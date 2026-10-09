@@ -1,22 +1,41 @@
 import { NextResponse } from "next/server";
-import { Resend } from 'resend';
+import { Resend } from "resend";
+import { contactSchema } from "@/src/shared/lib/contact-schema";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Escapa los datos del usuario antes de meterlos en el HTML del correo
+const escapeHtml = (value: string) =>
+    value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+
 export async function POST(req: Request) {
     try {
-        const body = await req.json();
+        const parsed = contactSchema.safeParse(await req.json());
 
-        const { firstName, lastName, phone, email, company, website } = body;
+        if (!parsed.success) {
+            return NextResponse.json({ error: "Invalid data" }, { status: 400 });
+        }
+
+        const { firstName, lastName, phone, email, consent, website } = parsed.data;
 
         // honeypot: si viene relleno, es un bot
         if (website) {
             return NextResponse.json({ success: true }, { status: 201 });
         }
 
+        const name = escapeHtml(`${firstName} ${lastName}`);
+        const safeEmail = escapeHtml(email);
+        const safePhone = escapeHtml(phone);
+
         await resend.emails.send({
-            from: 'Advanced Leads <info@contact.advancedteamelite.com>',
-            to: process.env.NOTIFICATION_EMAIL || 'dtalledo@advancedteamelite.com',
+            from: "Advanced Leads <info@contact.advancedteamelite.com>",
+            to: process.env.NOTIFICATION_EMAIL || "dtalledo@advancedteamelite.com",
+            replyTo: email,
             subject: `New Contact Request: ${firstName} ${lastName}`,
             html: `
                 <div style="background:#F0F0F0; padding:24px 0; font-family:Helvetica, Arial, sans-serif;">
@@ -37,19 +56,19 @@ export async function POST(req: Request) {
                                 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="font-size:14px; color:#171717;">
                                     <tr>
                                         <td style="padding:10px 0; border-bottom:1px solid #E7E2D8; width:120px; color:#6B6355;">Name</td>
-                                        <td style="padding:10px 0; border-bottom:1px solid #E7E2D8; font-weight:bold;">${firstName} ${lastName}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding:10px 0; border-bottom:1px solid #E7E2D8; color:#6B6355;">Company</td>
-                                        <td style="padding:10px 0; border-bottom:1px solid #E7E2D8;">${company}</td>
+                                        <td style="padding:10px 0; border-bottom:1px solid #E7E2D8; font-weight:bold;">${name}</td>
                                     </tr>
                                     <tr>
                                         <td style="padding:10px 0; border-bottom:1px solid #E7E2D8; color:#6B6355;">Email</td>
-                                        <td style="padding:10px 0; border-bottom:1px solid #E7E2D8;"><a href="mailto:${email}" style="color:#171717; text-decoration:none;">${email}</a></td>
+                                        <td style="padding:10px 0; border-bottom:1px solid #E7E2D8;"><a href="mailto:${safeEmail}" style="color:#171717; text-decoration:none;">${safeEmail}</a></td>
                                     </tr>
                                     <tr>
                                         <td style="padding:10px 0; border-bottom:1px solid #E7E2D8; color:#6B6355;">Phone</td>
-                                        <td style="padding:10px 0; border-bottom:1px solid #E7E2D8;"><a href="tel:${phone}" style="color:#171717; text-decoration:none;">${phone}</a></td>
+                                        <td style="padding:10px 0; border-bottom:1px solid #E7E2D8;"><a href="tel:${safePhone}" style="color:#171717; text-decoration:none;">${safePhone}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px 0; border-bottom:1px solid #E7E2D8; color:#6B6355;">SMS consent</td>
+                                        <td style="padding:10px 0; border-bottom:1px solid #E7E2D8;">${consent ? "Yes" : "No"}</td>
                                     </tr>
                                 </table>
                             </td>
