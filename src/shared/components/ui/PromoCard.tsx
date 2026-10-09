@@ -12,8 +12,6 @@ export type PromoCardItem = {
     image: string;
     /** "soft" (fondo negro) o "accent" (fondo amarillo) */
     variant?: "soft" | "accent";
-    /** "bottom" (imagen abajo) o "top" (imagen arriba) */
-    imagePosition?: "bottom" | "top";
 };
 
 type Props = {
@@ -22,17 +20,8 @@ type Props = {
 };
 
 export default function PromoCard({ item, className }: Props) {
-    const {
-        badge,
-        title,
-        href,
-        image,
-        variant = "soft",
-        imagePosition = "bottom",
-    } = item;
-
+    const { badge, title, href, image, variant = "soft" } = item;
     const isAccent = variant === "accent";
-    const imageFirst = imagePosition === "top";
 
     return (
         <article
@@ -44,28 +33,28 @@ export default function PromoCard({ item, className }: Props) {
                 className
             )}
         >
-            {/* bloque de texto */}
-            <div
-                className={cn(
-                    "flex items-start justify-between gap-4 p-7 lg:p-8",
-                    imageFirst ? "mt-auto" : "pt-12 lg:pt-16"
-                )}
-            >
+            {/* Imagen arriba: anclada al borde superior; el espacio sobrante queda abajo */}
+            <div className="relative min-h-0 w-full flex-1">
+                <Image
+                    src={image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 33vw, 100vw"
+                    className="object-contain object-top"
+                />
+            </div>
+
+            {/* Bloque de texto abajo */}
+            <div className="flex items-start justify-between gap-4 p-7 lg:p-8">
                 <div className="min-w-0">
-                    <Badge
-                        className={cn(
-                            isAccent
-                                ? "border-black/70 text-black"
-                                : "border-white/50 text-white"
-                        )}
-                    >
+                    <Badge className={isAccent ? "border-black/70 text-black" : "border-white/50 text-white"}>
                         {badge}
                     </Badge>
 
                     <h3
                         className={cn(
-                            "mt-6 text-lg font-medium leading-snug lg:text-xl",
-                            isAccent ? "text-black font-semibold" : "text-white"
+                            "mt-6 text-lg leading-snug lg:text-xl",
+                            isAccent ? "font-semibold text-black" : "font-medium text-white"
                         )}
                     >
                         <Link
@@ -89,27 +78,6 @@ export default function PromoCard({ item, className }: Props) {
                 >
                     <ArrowUpRight className="size-5" />
                 </span>
-            </div>
-
-            {/* imagen */}
-            <div
-                className={cn(
-                    "relative",
-                    imageFirst
-                        ? "order-first min-h-0 flex-1 w-full"
-                        : "mx-7 mt-auto aspect-[4/3] overflow-hidden rounded-tl-[2rem] rounded-tr-none rounded-bl-lg rounded-br-lg lg:mx-8"
-                )}
-            >
-                <Image
-                    src={image}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className={cn(
-                        // Imagen arriba: anclada al borde superior; el espacio sobrante queda abajo
-                        imageFirst ? "object-contain object-top" : "object-cover object-center"
-                    )}
-                />
             </div>
         </article>
     );

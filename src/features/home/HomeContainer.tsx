@@ -73,23 +73,22 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
         badge: "About Us",
         title: "Growth consulting and nearshore talent for U.S. construction companies.",
         href: "/about-us",
-        image: "/assets/images/shared/card_roofers.webp",
+        image: "/assets/images/shared/card_v.png",
     },
     {
         key: "careers",
         badge: "Careers",
         title: "Join our LATAM team and help U.S. construction companies grow.",
         href: "/about-us/jobs",
-        image: "/assets/images/shared/card_v.webp",
+        image: "/assets/images/shared/card_c.png",
         variant: "accent",
-        imagePosition: "top",
     },
     {
         key: "case-study",
         badge: "Case Studies",
         title: "See how we help construction companies build teams that scale.",
         href: "/success-story",
-        image: "/assets/images/shared/card_workers.webp",
+        image: "/assets/images/shared/card_m.png",
     },
 ];
 
