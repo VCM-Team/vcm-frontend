@@ -11,11 +11,8 @@ const HERO = {
     description:
         "We diagnose what is holding your business back, prioritize what matters most, implement the systems your team needs and scale with dedicated talent, so growth becomes predictable instead of chaotic.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Hero1.png",
+    image: "/assets/images/shared/team/team.jpeg",
 };
-
-const CARD_IMAGE =
-    "https://workninjas.com/wp-content/uploads/2025/06/doxjuan-1024x950.png";
 
 const SERVICES_HEADING = {
     badge: "Business Growth Consulting",
@@ -28,42 +25,42 @@ const SERVICES: readonly ServiceCardItem[] = [
         key: "sales-performance",
         title: "Sales Performance",
         href: "/services/sales-performance",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/sales.jpg",
         Icon: ChartIcon,
     },
     {
         key: "operational-excellence",
         title: "Operational Excellence",
         href: "/services/operational-excellence",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/operational.jpeg",
         Icon: LayersIcon,
     },
     {
         key: "leadership",
         title: "Leadership & Organizational Development",
         href: "/services/leadership-organizational-development",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/leadership.jpeg",
         Icon: PeopleIcon,
     },
     {
         key: "financial-performance",
         title: "Financial Performance",
         href: "/services/financial-performance",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/financial.jpeg",
         Icon: DollarIcon,
     },
     {
         key: "marketing",
         title: "Marketing & Customer Acquisition",
         href: "/services/marketing-customer-acquisition",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/IMG_277825.jpg",
         Icon: MegaphoneIcon,
     },
     {
         key: "ai-automation",
         title: "AI & Business Automation",
         href: "/services/ai-business-automation",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/automation.jpg",
         Icon: SparkIcon,
     },
 ];
@@ -92,14 +89,14 @@ const INSIGHTS: readonly InsightItem[] = [
         label: "Business Development",
         title: "International Roofing Expo (IRE): What It Is, When It Happens, and Why Roofers Take It Seriously",
         href: "/blog/international-roofing-expo",
-        image: "https://workninjas.com/wp-content/uploads/2025/06/DSC01065-Editada-1024x693.jpg",
+        image: "/assets/images/shared/insights/IMG_2818.jpeg",
     },
     {
         key: "communication-subcontractors",
         label: "Business Development",
         title: "Communication with Subcontractors and Manufacturers",
         href: "/blog/communication-subcontractors",
-        image: "https://workninjas.com/wp-content/uploads/2025/06/NH-1024x601.png",
+        image: "/assets/images/shared/insights/building_vcm.png",
     },
 ];
 

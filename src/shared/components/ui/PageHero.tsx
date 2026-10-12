@@ -121,7 +121,7 @@ export default function PageHero({
                             fill
                             priority
                             sizes="(min-width: 1024px) 80rem, 100vw"
-                            className="object-cover object-center transition-[opacity,scale] duration-[1200ms] ease-out delay-200 starting:scale-105 starting:opacity-0 motion-reduce:transition-none"
+                            className="object-cover object-top transition-[opacity,scale] duration-[1200ms] ease-out delay-200 starting:scale-105 starting:opacity-0 motion-reduce:transition-none"
                         />
                     </div>
                 </Container>

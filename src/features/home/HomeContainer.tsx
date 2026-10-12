@@ -93,9 +93,6 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
     },
 ];
 
-const CARD_IMAGE =
-    "https://workninjas.com/wp-content/uploads/2025/06/doxjuan-1024x950.png";
-
 const SERVICES_HEADING = {
     badge: "Business Growth Consulting",
     title: "Six Areas Where We Help",
@@ -108,49 +105,49 @@ const SERVICES: readonly ServiceCardItem[] = [
         key: "sales-performance",
         title: "Sales Performance",
         href: "/services/sales-performance",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/sales.jpg",
         Icon: ChartIcon,
     },
     {
         key: "operational-excellence",
         title: "Operational Excellence",
         href: "/services/operational-excellence",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/operational.jpeg",
         Icon: LayersIcon,
     },
     {
         key: "leadership",
         title: "Leadership & Organizational Development",
         href: "/services/leadership-organizational-development",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/leadership.jpeg",
         Icon: PeopleIcon,
     },
     {
         key: "financial-performance",
         title: "Financial Performance",
         href: "/services/financial-performance",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/financial.jpeg",
         Icon: DollarIcon,
     },
     {
         key: "marketing",
         title: "Marketing & Customer Acquisition",
         href: "/services/marketing-customer-acquisition",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/IMG_277825.jpg",
         Icon: MegaphoneIcon,
     },
     {
         key: "ai-automation",
         title: "AI & Business Automation",
         href: "/services/ai-business-automation",
-        image: CARD_IMAGE,
+        image: "/assets/images/shared/services/automation.jpg",
         Icon: SparkIcon,
     },
 ];
 
 const VIDEO = {
     src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1789757625/Work_Ninjas_Scalable_Back_Office_Solutions_for_Roofing_Contractors_Beyond_vnduhs.mp4",
-    poster: "/assets/images/video/thumbnail.webp",
+    poster: "/assets/images/shared/team/team_2.jpeg",
     title: "This is VCM",
 };
 
@@ -191,7 +188,7 @@ const IMAGE_CTA = {
     title: "Build the Team",
     titleRest: "Your Growth Needs",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/09/image-48-1.avif",
+    image: "/assets/images/shared/team/sunset_tower.jfif",
 };
 
 const TALENT = {
@@ -199,7 +196,7 @@ const TALENT = {
     title: "Dedicated Talent",
     titleRest: "for Every Part of",
     titleAccent: "Your Business",
-    image: "/assets/images/shared/chart.webp",
+    image: "/assets/images/shared/chart.png",
 };
 
 const TALENT_ITEMS: readonly AccordionItem[] = [

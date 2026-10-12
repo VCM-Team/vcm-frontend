@@ -10,11 +10,11 @@ const DISCOVERY_CALL = {
     badge: "Contact Us",
     title: "Book your Discovery Call",
     cta: { label: "Book a Demo Now!", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/03/Mask-group-4.jpg",
+    image: "/assets/images/shared/contact/IMG_27391.jpeg",
     note: "Call us at (866) 969-5155 or fill out our form, and we’ll contact you within one business day.",
 };
 
-export default function DiscoveryCall() {
+export default function  DiscoveryCall() {
     return (
         <RevealSection className="overflow-x-clip bg-ink-900 py-20 lg:py-28">
             <Container>
@@ -64,7 +64,7 @@ export default function DiscoveryCall() {
 
                         <div
                             className={cn(
-                                "absolute inset-x-4 bottom-4 flex items-center gap-4 rounded-2xl bg-white/90 p-4 backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:p-5",
+                                "absolute inset-x-4 bottom-4 flex items-center gap-4 rounded-2xl bg-white/65 p-4 backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:p-5",
                                 REVEAL.up,
                                 "delay-[600ms]"
                             )}
