@@ -103,12 +103,23 @@ export default function StickyCardSection({
             className={cn("group/reveal relative isolate overflow-clip", height, className)}
         >
             {/* zoom out lento; overflow-clip evita que la imagen ampliada se salga */}
+            {/* zoom out lento; overflow-clip evita que la imagen ampliada se salga */}
             <Image
                 src={image}
                 alt=""
                 fill
                 sizes="100vw"
                 className={cn("-z-10 object-cover object-center", REVEAL.zoomOut, "duration-[1400ms]")}
+            />
+
+            {/* Backdrop: oscurece el fondo para que la tarjeta destaque; más denso donde está la tarjeta */}
+            <div
+                aria-hidden
+                className={cn(
+                    "pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-black/60 via-black/35 to-black/10",
+                    REVEAL.fade,
+                    "duration-1000"
+                )}
             />
 
             <div ref={revealRef} className="pt-16 lg:pt-20">
