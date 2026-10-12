@@ -72,7 +72,7 @@ const WHY_US = {
     description:
         "Most staffing firms just fill seats. We find the bottleneck, design the process and then add the talent to execute it.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Group-3898-scaled.jpg",
+    image: "/assets/images/shared/stickyCard/IMG_31819.jpg",
 };
 
 const INSIGHTS_HEADING = {
