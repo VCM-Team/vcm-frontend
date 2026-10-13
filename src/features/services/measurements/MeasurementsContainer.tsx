@@ -97,7 +97,7 @@ const SCALE = {
     title: "Residential and Commercial Projects",
     description:
         "Our estimators support both residential and commercial work, adapting to the scope and requirements of each type of project.",
-    image: "https://workninjas.com/wp-content/uploads/2025/07/measurements-scaled-e1752185952231.png",
+    image: "/assets/images/shared/insights/takeoff.png",
 };
 
 const SCALE_ITEMS: readonly IconListItem[] = [

@@ -139,7 +139,7 @@ const SERVICES: readonly ServiceCardItem[] = [
     {
         key: "ai-automation",
         title: "AI & Business Automation",
-        href: "/services/ai-business-automation",
+        href: "/services/automation",
         image: "/assets/images/shared/services/automation.jpg",
         Icon: SparkIcon,
     },
