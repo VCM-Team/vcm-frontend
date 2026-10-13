@@ -107,7 +107,7 @@ const WHY_US = {
     description:
         "We align marketing with sales and follow-up first, then add the marketing talent to execute it every day.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/MKTteam-scaled.png",
+    image: "/assets/images/shared/team/woman_laptop.png",
 };
 
 export default function MarketingContainer() {

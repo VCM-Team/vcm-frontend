@@ -143,7 +143,7 @@ const WHY_US = {
     description:
         "Every role starts with a clear strategy and ends with a professional integrated into your operation, with ongoing support.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/08/DoxJeorge.webp",
+    image: "/assets/images/shared/team/IMG_2694.jpg",
 };
 
 export default function RecruitContainer() {
