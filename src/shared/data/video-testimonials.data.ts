@@ -29,8 +29,7 @@ export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
         variant: "story",
         video: {
             src: "https://workninjas.com/wp-content/uploads/2025/07/Testimonial-–-Boss-Hogg-Roofing_1.mp4",
-            poster:
-                "https://workninjas.com/wp-content/uploads/2025/06/Captura-de-pantalla-2025-06-09-a-las-3.53.14%E2%80%AFp.-m.-2.png",
+            poster: "/assets/images/shared/testimonials/IMG_2832.jpeg",
             title: "From Scattered Leads to a Predictable Pipeline",
         },
         badge: "Case Study",
@@ -45,7 +44,7 @@ export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
         variant: "quote",
         video: {
             src: "https://workninjas.com/wp-content/uploads/2025/07/Non-Stop-Roofing.mp4",
-            poster: "https://workninjas.com/wp-content/uploads/2025/07/Erick.jpg",
+            poster: "/assets/images/shared/testimonials/IMG_27647.jpg",
             title: "A Team That Works Like Part of Ours",
         },
         quote:
