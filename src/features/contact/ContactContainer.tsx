@@ -23,8 +23,8 @@ const INFO = [
     { label: "Our Email", value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}`, Icon: MailIcon },
 ];
 
-const FORM_IMAGE = "https://workninjas.com/wp-content/uploads/2025/03/Mask-group-4.jpg";
-const BOTTOM_IMAGE = "https://workninjas.com/wp-content/uploads/2025/06/Scene-25-scaled.jpg";
+const FORM_IMAGE = "/assets/images/shared/team/IMG_2816.jpeg";
+const BOTTOM_IMAGE = "/assets/images/shared/team/IMG_3164.jpeg";
 
 // Hero visible al cargar: basta con @starting-style (variante starting:)
 const ENTER =
