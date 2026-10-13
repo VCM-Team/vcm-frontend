@@ -16,7 +16,7 @@ export const BLOG_POSTS: BlogPost[] = [
         title:
             "International Roofing Expo (IRE): What It Is, When It Happens, and Why Roofers Take It Seriously",
         date: "2024-08-08",
-        image: "https://workninjas.com/wp-content/uploads/2025/06/DSC01065-Editada-1024x693.jpg",
+        image: "/assets/images/shared/insights/IMG_2818.jpeg",
         excerpt:
             "A clear, honest look at what the International Roofing Expo is, when it happens, how to attend, and why so many roofing companies treat it as a must-attend event.",
         tags: ["Roofing Contractors", "Subcontractors"],
@@ -110,7 +110,7 @@ export const BLOG_POSTS: BlogPost[] = [
         category: "Business Development",
         title: "Communication with Subcontractors and Manufacturers",
         date: "2024-08-15",
-        image: "https://workninjas.com/wp-content/uploads/2025/06/NH-1024x601.png",
+        image: "/assets/images/shared/blog/IMG_1597.jpeg",
         excerpt:
             "Effective communication with subcontractors and manufacturers is crucial for the smooth execution of roofing projects.",
         content: `
@@ -137,7 +137,7 @@ export const BLOG_POSTS: BlogPost[] = [
         category: "Marketing",
         title: "Marketing and Lead Generation",
         date: "2024-08-08",
-        image: "https://workninjas.com/wp-content/uploads/2024/08/Blog-4_Marketing-scaled.jpg",
+        image: "/assets/images/shared/blog/IMG_2930.jpeg",
         excerpt:
             "In the competitive roofing industry, attracting the right customers matters more than attracting more of them.",
         content: `
@@ -167,7 +167,7 @@ export const BLOG_POSTS: BlogPost[] = [
         category: "Materials",
         title: "Material Ordering",
         date: "2024-08-08",
-        image: "https://workninjas.com/wp-content/uploads/2024/08/Blog-4_Marketing-scaled.jpg",
+        image: "/assets/images/shared/blog/material.jpg",
         excerpt:
             "Efficient material ordering is essential for keeping your roofing projects on track and within budget.",
         content: `
@@ -194,7 +194,7 @@ export const BLOG_POSTS: BlogPost[] = [
         category: "Insurance",
         title: "How to Start Doing Insurance Jobs",
         date: "2024-08-08",
-        image: "https://workninjas.com/wp-content/uploads/2024/08/Blog-4_Marketing-scaled.jpg",
+        image: "/assets/images/shared/blog/roofer.jpg",
         excerpt:
             "Jumping into the insurance market can be a game-changer for your roofing business.",
         content: `
@@ -224,7 +224,7 @@ export const BLOG_POSTS: BlogPost[] = [
         category: "Supplements",
         title: "Supplemental Process for Insurance Jobs",
         date: "2024-08-08",
-        image: "https://workninjas.com/wp-content/uploads/2024/08/Blog-4_Marketing-scaled.jpg",
+        image: "/assets/images/shared/blog/IMG_1441.jpeg",
         excerpt:
             "Supplements are a normal part of insurance work, and a clear process makes the difference between a smooth claim and a slow one.",
         content: `
