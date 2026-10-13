@@ -112,11 +112,11 @@ export default function StickyCardSection({
                 className={cn("-z-10 object-cover object-center", REVEAL.zoomOut, "duration-[1400ms]")}
             />
 
-            {/* Backdrop: oscurece el fondo para que la tarjeta destaque; más denso donde está la tarjeta */}
+            {/* Backdrop: oscurece y desenfoca el fondo para que la tarjeta destaque; más denso donde está la tarjeta */}
             <div
                 aria-hidden
                 className={cn(
-                    "pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-black/60 via-black/35 to-black/10",
+                    "pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-black/60 via-black/35 to-black/10 backdrop-blur-[1.5px]",
                     REVEAL.fade,
                     "duration-1000"
                 )}

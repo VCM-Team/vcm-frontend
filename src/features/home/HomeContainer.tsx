@@ -188,7 +188,7 @@ const IMAGE_CTA = {
     title: "Build the Team",
     titleRest: "Your Growth Needs",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/sunset_tower.jfif",
+    image: "/assets/images/shared/team/sunset_tower.jpg",
 };
 
 const TALENT = {
