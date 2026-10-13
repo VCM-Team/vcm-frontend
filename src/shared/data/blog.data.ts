@@ -194,7 +194,7 @@ export const BLOG_POSTS: BlogPost[] = [
         category: "Insurance",
         title: "How to Start Doing Insurance Jobs",
         date: "2024-08-08",
-        image: "/assets/images/shared/blog/roofer.jpg",
+        image: "/assets/images/shared/blog/roofer2.jpg",
         excerpt:
             "Jumping into the insurance market can be a game-changer for your roofing business.",
         content: `
