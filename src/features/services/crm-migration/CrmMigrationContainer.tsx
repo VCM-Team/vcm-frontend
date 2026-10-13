@@ -14,7 +14,7 @@ const HERO = {
     description:
         "We help construction and roofing companies design the right structure, define clear responsibilities and build the leadership habits that let the business grow beyond its owner.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/08/DoxJeorge-2048x970.webp",
+    image: "/assets/images/shared/team/IMG_1610.jpeg"
 };
 
 const INTRO = {
@@ -59,7 +59,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Its Leadership",
     description:
         "When every decision goes through one person, growth slows to the speed of that person’s calendar. Clear roles, defined decision rights and consistent accountability let your team move faster without losing control.",
-    image: "https://workninjas.com/wp-content/uploads/2026/02/Scene-24-scaled.jpg",
+    image: "/assets/images/shared/team/IMG_1937.jpeg"
 };
 
 const FOCUS = {
@@ -143,7 +143,7 @@ const WHY_US = {
     description:
         "We define the structure and ownership first, then add the talent to fill each role, so the business can grow beyond its founder.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2026/02/Photo-2-2-scaled.jpg",
+    image: "/assets/images/shared/team/IMG_14291.jpg"
 };
 
 export default function CrmMigrationContainer() {
