@@ -37,7 +37,7 @@ const INSIGHTS_ITEMS: readonly InsightItem[] = [
         category: "Business Development",
         title: "Communication with Subcontractors and Manufacturers",
         href: "/blog/communication-subcontractors",
-        image: "/assets/images/shared/insights/building_vcm.png",
+        image: "/assets/images/shared/insights/building_vcm_2.jpg",
     },
 ];
 
