@@ -16,8 +16,7 @@ const HERO = {
     description:
         "We recruit, evaluate, onboard and integrate professionals from our LATAM team as part of your team, inside your tools and your processes.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image:
-        "https://workninjas.com/wp-content/uploads/2025/08/GettyImages-1887449071-1-2-2048x900.jpg-2048x960.webp",
+    image: "/assets/images/shared/team/IMG_2601.jpeg",
 };
 
 const INTRO = {
@@ -65,7 +64,7 @@ const WHY_IT_MATTERS = {
     titleRest: "When the System Is Ready",
     description:
         "Adding people to a broken process only multiplies the problem. That’s why we work in order: strategy, then systems, then talent. When the process is clear, every new hire can deliver from day one.",
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Mask-group-2.jpg",
+    image: "/assets/images/shared/team/IMG_2064.jpeg",
 };
 
 const PROCESS = {

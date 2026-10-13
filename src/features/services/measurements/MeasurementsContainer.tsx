@@ -16,7 +16,7 @@ const HERO = {
     description:
         "Dedicated estimators who handle takeoffs, plan reading and cost estimates, so your team can keep bidding without slowing down the rest of the operation.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Measutements-2048x1366.jpg",
+    image: "/assets/images/shared/team/IMG_2824.jpeg",
 };
 
 const INTRO = {
@@ -61,7 +61,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Shapes Your Margin",
     description:
         "An estimate that misses quantities or costs puts the margin of the whole project at risk. Dedicated estimating support gives your team the capacity to review every bid with the attention it needs.",
-    image: "https://workninjas.com/wp-content/uploads/2025/06/DSC01347-Editada-2.png",
+    image: "/assets/images/shared/team/IMG_2830.jpeg",
 };
 
 const PROCESS = {
@@ -130,7 +130,7 @@ const WHY_US = {
     description:
         "Dedicated professionals evaluated for estimating skills and English, integrated into your process with ongoing support.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Dani-scaled.jpg",
+    image: "/assets/images/shared/team/IMG_3164.jpeg",
 };
 
 export default function MeasurementsContainer() {

@@ -16,7 +16,7 @@ const HERO = {
     description:
         "Dedicated nearshore professionals who know how a roofing business works, from sales and estimating to customer service and admin, integrated into your tools and your processes.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/teamRoofing-2048x961.png",
+    image: "/assets/images/shared/team/IMG_28357.jpeg",
 };
 
 const INTRO = {
@@ -61,7 +61,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Saves Time and Mistakes",
     description:
         "Roofing has its own language, workflows and priorities. When your support team already understands them, you spend less time training and correcting, and more time running and growing your business.",
-    image: "https://workninjas.com/wp-content/uploads/2025/06/roofing.png",
+    image: "/assets/images/shared/team/IMG_2673.jpeg",
 };
 
 const HANDLES = {

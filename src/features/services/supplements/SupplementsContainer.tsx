@@ -15,7 +15,7 @@ const HERO = {
     description:
         "We help construction and roofing companies get clear visibility into profitability, pricing, costs and cash flow, so every decision is based on real numbers.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/supplementsninja.png",
+    image: "/assets/images/shared/team/team_4.jpg",
 };
 
 const INTRO = {
@@ -60,7 +60,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Is a Risk",
     description:
         "When the numbers arrive late or incomplete, problems show up only when they are expensive to fix. Clear, timely financial information lets you protect margins and plan your growth with confidence.",
-    image: "https://workninjas.com/wp-content/uploads/2025/06/chelsSupplements-scaled.jpg",
+    image: "/assets/images/shared/team/IMG_2705.jpeg",
 };
 
 const PROCESS = {
