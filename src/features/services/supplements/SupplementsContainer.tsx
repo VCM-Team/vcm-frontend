@@ -107,7 +107,7 @@ const WHY_US = {
     description:
         "We bring structure to your financial information first, then add the finance talent to keep it running every day.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/supplementsprefooter.png",
+    image: "/assets/images/shared/team/woman_laptop.png",
 };
 
 export default function SupplementsContainer() {
