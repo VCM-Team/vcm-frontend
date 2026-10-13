@@ -8,7 +8,7 @@ const HERO = {
     titleAccent: "VCM",
     description:
         "A team based in LATAM, combining business growth consulting and talent solutions to support U.S. construction and roofing companies.",
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Foto-2.jpg",
+    image: "/assets/images/shared/team/IMG_14938.jpeg",
 };
 
 const WHY_US = {
@@ -18,7 +18,7 @@ const WHY_US = {
     description:
         "Our people integrate into your processes and tools, with the support of a leadership team focused on your growth.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Group-3898-scaled.jpg",
+    image: "/assets/images/shared/team/IMG_3164.jpeg",
 };
 
 export default function TeamContainer() {

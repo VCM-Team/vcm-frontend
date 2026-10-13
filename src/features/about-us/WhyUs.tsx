@@ -28,7 +28,7 @@ const CONTENT = {
 
 const VIDEO = {
     src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1789757625/Work_Ninjas_Scalable_Back_Office_Solutions_for_Roofing_Contractors_Beyond_vnduhs.mp4",
-    poster: "/assets/images/video/thumbnail.webp",
+    poster: "/assets/images/shared/team/team_2.jpeg",
     title: "This is VCM",
 };
 
@@ -37,11 +37,11 @@ const QUOTE: QuoteCardData = {
     quote: "“We don’t start by adding people. We start by understanding your business, fixing what slows it down and then building the team that helps it grow.”",
     authorName: "Victor Alvarado",
     authorRole: "CEO",
-    authorImage: "https://workninjas.com/wp-content/uploads/2025/06/Mask-group-1.jpg",
+    authorImage: "/assets/images/shared/testimonials/victor.webp",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
-const TEAM_IMAGE = "https://workninjas.com/wp-content/uploads/2025/06/Mask-group.jpg";
+const TEAM_IMAGE = "/assets/images/shared/team/IMG_30021.jpeg";
 
 const JOIN_CARD = {
     title: "Join a LATAM team helping U.S. construction companies grow.",

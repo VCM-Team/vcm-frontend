@@ -13,7 +13,7 @@ const CONTENT = {
     description:
         "Every new team member is trained with our own SOPs and onboarded into the processes and tools of the U.S. companies we support, with ongoing guidance as you take on more responsibility.",
     cta: { label: "See Open Positions", href: "#open-positions" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Mask-group-2.jpg",
+    image: "/assets/images/shared/team/IMG_2720.jpeg",
 };
 
 export default function Training() {

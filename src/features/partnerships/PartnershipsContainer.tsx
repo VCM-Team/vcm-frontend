@@ -7,7 +7,7 @@ const FEATURE = {
     titleRest: "Ready for Growth",
     description:
         "Our main focus is U.S. construction and roofing companies with annual revenue from $3M to $20M+. We also support technology and professional services companies that need to scale with the right systems and talent.",
-    image: "https://workninjas.com/wp-content/uploads/2025/07/ninjapc.jpg",
+    image: "/assets/images/shared/team/IMG_3150.jpeg",
 };
 
 export default function PartnershipsContainer() {
