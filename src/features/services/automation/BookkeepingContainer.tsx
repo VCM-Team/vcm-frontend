@@ -15,7 +15,7 @@ const HERO = {
     description:
         "We help construction and roofing companies put AI and automation to work: connected systems, automated workflows and dashboards that give you answers without chasing spreadsheets.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_271312.png"
+    image: "/assets/images/shared/team/IMG_271313.jpg"
 };
 
 const INTRO = {
