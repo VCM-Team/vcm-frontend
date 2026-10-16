@@ -22,7 +22,7 @@ const INTRO = {
     badge: "What We Do",
     title: "Financial Clarity to Make Better Decisions",
     description:
-        "Many growing companies sell more every year without knowing which jobs actually make money. We organize your financial information and build the reporting you need to see where profit is made, where it is lost and what to do next.",
+        "Many growing companies sell more every year without knowing which join-us actually make money. We organize your financial information and build the reporting you need to see where profit is made, where it is lost and what to do next.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     features: [
         "Profitability",
@@ -97,7 +97,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/success-story" },
+    cta: { label: "See Case Studies", href: "/about-us" },
 };
 
 const WHY_US = {

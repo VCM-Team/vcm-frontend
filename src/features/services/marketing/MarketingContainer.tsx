@@ -60,7 +60,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Beats Lead Volume",
     description:
         "Chasing leads that never convert costs time, money and morale. A clear position, a defined funnel and consistent nurturing bring in customers who fit your business, and make every marketing dollar easier to measure.",
-    image: "/assets/images/shared/team/IMG_2776.jpeg"
+    image: "/assets/images/shared/team/IMG_27734.jpeg"
 };
 
 const PROCESS = {
@@ -97,7 +97,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/success-story" },
+    cta: { label: "See Case Studies", href: "/about-us" },
 };
 
 const WHY_US = {

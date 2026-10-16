@@ -61,7 +61,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Shapes Your Margin",
     description:
         "An estimate that misses quantities or costs puts the margin of the whole project at risk. Dedicated estimating support gives your team the capacity to review every bid with the attention it needs.",
-    image: "/assets/images/shared/team/IMG_2830.jpeg",
+    image: "/assets/images/shared/team/IMG_2831.jpg",
 };
 
 const PROCESS = {
@@ -120,7 +120,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/success-story" },
+    cta: { label: "See Case Studies", href: "/about-us" },
 };
 
 const WHY_US = {

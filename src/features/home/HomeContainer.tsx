@@ -80,7 +80,7 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
         key: "careers",
         badge: "Careers",
         title: "Join our LATAM team and help U.S. construction companies grow.",
-        href: "/about-us/jobs",
+        href: "/about-us/join-us",
         image: "/assets/images/shared/c.webp",
         variant: "accent",
     },
@@ -88,7 +88,7 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
         key: "case-study",
         badge: "Case Studies",
         title: "See how we help construction companies build teams that scale.",
-        href: "/success-story",
+        href: "/partnerships",
         image: "/assets/images/shared/m.webp",
     },
 ];
@@ -106,42 +106,36 @@ const SERVICES: readonly ServiceCardItem[] = [
         title: "Sales Performance",
         href: "/services/sales-performance",
         image: "/assets/images/shared/services/sales.jpg",
-        Icon: ChartIcon,
     },
     {
         key: "operational-excellence",
         title: "Operational Excellence",
         href: "/services/operational-excellence",
         image: "/assets/images/shared/services/operational.jpeg",
-        Icon: LayersIcon,
     },
     {
         key: "leadership",
         title: "Leadership & Organizational Development",
         href: "/services/leadership-organizational-development",
         image: "/assets/images/shared/services/leadership.jpeg",
-        Icon: PeopleIcon,
     },
     {
         key: "financial-performance",
         title: "Financial Performance",
         href: "/services/financial-performance",
         image: "/assets/images/shared/services/financial.jpeg",
-        Icon: DollarIcon,
     },
     {
         key: "marketing",
         title: "Marketing & Customer Acquisition",
         href: "/services/marketing-customer-acquisition",
         image: "/assets/images/shared/services/IMG_277825.jpg",
-        Icon: MegaphoneIcon,
     },
     {
         key: "ai-automation",
         title: "AI & Business Automation",
         href: "/services/automation",
         image: "/assets/images/shared/services/automation.jpg",
-        Icon: SparkIcon,
     },
 ];
 
@@ -310,28 +304,6 @@ export default function HomeContainer() {
 }
 
 /* ── Iconos ─────────────────────────────── */
-
-function MegaphoneIcon({ className }: { className?: string }) {
-    return (
-        <svg viewBox="0 0 25 25" fill="none" className={className} aria-hidden>
-            <path
-                d="M18.3753 13.2708V11.2292H22.4587V13.2708H18.3753ZM19.6003 20.4167L16.3337 17.9667L17.5587 16.3333L20.8253 18.7833L19.6003 20.4167ZM17.5587 8.16666L16.3337 6.53333L19.6003 4.08333L20.8253 5.71666L17.5587 8.16666ZM5.10449 19.3958V15.3125H4.08366C3.5222 15.3125 3.04156 15.1126 2.64173 14.7128C2.24191 14.3129 2.04199 13.8323 2.04199 13.2708V11.2292C2.04199 10.6677 2.24191 10.1871 2.64173 9.78723C3.04156 9.38741 3.5222 9.1875 4.08366 9.1875H8.16699L13.2712 6.12499V18.375L8.16699 15.3125H7.14616V19.3958H5.10449ZM14.292 15.6698V8.8302C14.7514 9.23854 15.1214 9.73619 15.4021 10.3232C15.6829 10.9102 15.8232 11.5524 15.8232 12.25C15.8232 12.9476 15.6829 13.5898 15.4021 14.1768C15.1214 14.7638 14.7514 15.2615 14.292 15.6698Z"
-                fill="currentColor"
-            />
-        </svg>
-    );
-}
-
-function DollarIcon({ className }: { className?: string }) {
-    return (
-        <svg viewBox="0 0 25 25" fill="none" className={className} aria-hidden>
-            <path
-                d="M11.3316 19.3958H13.118V18.1198C13.9687 17.9667 14.7003 17.6349 15.3128 17.1245C15.9253 16.6141 16.2316 15.8569 16.2316 14.8531C16.2316 14.1385 16.0274 13.4835 15.6191 12.888C15.2107 12.2925 14.3941 11.7736 13.1691 11.3313C12.1482 10.991 11.4422 10.6932 11.0508 10.438C10.6595 10.1828 10.4639 9.83403 10.4639 9.39167C10.4639 8.94931 10.6212 8.60053 10.936 8.34532C11.2508 8.09011 11.7059 7.9625 12.3014 7.9625C12.8458 7.9625 13.2712 8.09436 13.5774 8.35808C13.8837 8.62179 14.1048 8.94931 14.2409 9.34063L15.8743 8.67709C15.6871 8.0816 15.3426 7.56268 14.8407 7.12032C14.3388 6.67796 13.7816 6.43125 13.1691 6.38021V5.10417H11.3826V6.38021C10.5319 6.56737 9.86838 6.94167 9.39199 7.50313C8.9156 8.06459 8.67741 8.6941 8.67741 9.39167C8.67741 10.1913 8.91135 10.8379 9.37923 11.3313C9.84711 11.8247 10.583 12.25 11.5868 12.6073C12.6587 12.9986 13.403 13.3474 13.8199 13.6537C14.2367 13.9599 14.4451 14.3597 14.4451 14.8531C14.4451 15.4146 14.2452 15.8272 13.8454 16.0909C13.4455 16.3546 12.9649 16.4865 12.4035 16.4865C11.842 16.4865 11.3443 16.3121 10.9105 15.9633C10.4766 15.6145 10.1576 15.0913 9.95345 14.3938L8.26907 15.0573C8.50727 15.874 8.87732 16.5333 9.37923 17.0352C9.88114 17.5371 10.5319 17.8816 11.3316 18.0688V19.3958ZM12.2503 22.4583C10.8382 22.4583 9.51109 22.1904 8.26907 21.6544C7.02706 21.1185 5.94668 20.3911 5.02793 19.4724C4.10918 18.5536 3.38184 17.4733 2.8459 16.2313C2.30996 14.9892 2.04199 13.6622 2.04199 12.25C2.04199 10.8379 2.30996 9.51077 2.8459 8.26875C3.38184 7.02674 4.10918 5.94636 5.02793 5.02761C5.94668 4.10886 7.02706 3.38152 8.26907 2.84558C9.51109 2.30964 10.8382 2.04167 12.2503 2.04167C13.6625 2.04167 14.9896 2.30964 16.2316 2.84558C17.4736 3.38152 18.554 4.10886 19.4727 5.02761C20.3915 5.94636 21.1188 7.02674 21.6548 8.26875C22.1907 9.51077 22.4587 10.8379 22.4587 12.25C22.4587 13.6622 22.1907 14.9892 21.6548 16.2313C21.1188 17.4733 20.3915 18.5536 19.4727 19.4724C18.554 20.3911 17.4736 21.1185 16.2316 21.6544C14.9896 22.1904 13.6625 22.4583 12.2503 22.4583Z"
-                fill="currentColor"
-            />
-        </svg>
-    );
-}
 
 function PeopleIcon({ className }: { className?: string }) {
     return (

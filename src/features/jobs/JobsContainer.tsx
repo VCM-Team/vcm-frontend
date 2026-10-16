@@ -5,7 +5,7 @@ import WhoWeLookFor from "./WhoWeLookFor";
 import OpenPositions from "./OpenPositions";
 
 const HERO = {
-    badge: "Careers",
+    badge: "Join Us",
     title: "Grow Your Career",
     titleAccent: "with VCM",
     description:

@@ -190,7 +190,7 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
     },
     {
-        slug: "how-to-start-doing-insurance-jobs",
+        slug: "how-to-start-doing-insurance-join-us",
         category: "Insurance",
         title: "How to Start Doing Insurance Jobs",
         date: "2024-08-08",
@@ -220,7 +220,7 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
     },
     {
-        slug: "supplemental-process-for-insurance-jobs",
+        slug: "supplemental-process-for-insurance-join-us",
         category: "Supplements",
         title: "Supplemental Process for Insurance Jobs",
         date: "2024-08-08",

@@ -50,8 +50,7 @@ export const NAV_ITEMS: NavItem[] = [
             links: [
                 { label: "Who we are", href: "/about-us" },
                 { label: "Team", href: "/about-us/team" },
-                { label: "Careers", href: "/about-us/jobs" },
-                { label: "Success story", href: "/success-story" },
+                { label: "Join us", href: "/about-us/join-us" },
                 { label: "Partnerships", href: "/partnerships" },
             ],
         },

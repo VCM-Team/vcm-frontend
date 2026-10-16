@@ -8,7 +8,6 @@ export type ServiceCardItem = {
     title: string;
     href: string;
     image: string;
-    Icon: React.ComponentType<{ className?: string }>;
 };
 
 type Props = {
@@ -17,8 +16,6 @@ type Props = {
 };
 
 export default function ServiceCard({ item, className }: Props) {
-    const { Icon } = item;
-
     return (
         <article
             className={cn(
@@ -35,13 +32,6 @@ export default function ServiceCard({ item, className }: Props) {
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="object-cover transition-[scale] duration-500 group-hover:scale-[1.04]"
                 />
-
-                <span
-                    aria-hidden
-                    className="absolute left-7 top-9 grid size-11 place-items-center rounded-full bg-brand-400 text-black"
-                >
-                    <Icon className="size-6" />
-                </span>
             </div>
 
             <div className="flex flex-1 items-center justify-between gap-4 px-6 py-6">

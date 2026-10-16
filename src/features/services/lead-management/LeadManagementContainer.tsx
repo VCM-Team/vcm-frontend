@@ -59,7 +59,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Faster Than You Think",
     description:
         "Every lead you pay for is an opportunity with an expiration date. When response times slip and follow-up is inconsistent, marketing spend turns into missed projects. A dedicated team keeps every lead moving while your sales team focuses on closing.",
-    image: "/assets/images/shared/team/IMG_2769.jpeg",
+    image: "/assets/images/shared/team/IMG_27735.jpg",
 };
 
 const PROCESS = {
@@ -96,7 +96,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/success-story" },
+    cta: { label: "See Case Studies", href: "/about-us" },
 };
 
 const WHY_US = {

@@ -6,20 +6,9 @@ import { useState } from "react";
 import { INITIAL_DATA, type BookDemoData } from "./book-demo.types";
 import StepIntro from "./StepIntro";
 import StepContact from "./StepContact";
-import StepRevenue from "./StepRevenue";
-import StepTerritories from "./StepTerritories";
-import StepTenure from "./StepTenure";
-import StepSupport from "./StepSupport";
-import StepCrm from "./StepCrm";
-import StepTimeline from "./StepTimeline";
-import StepSource from "./StepSource";
-import StepSummary from "./StepSummary";
 import { cn } from "@/src/lib/utils";
 
 const LOGO = "/assets/brand/vcm_text_logo.webp";
-
-/** El índice 0 es la portada: sin barra de progreso. */
-const TOTAL_STEPS = 10;
 
 // Cada pantalla se monta al llegar a ella: basta con @starting-style (variante starting:)
 const ENTER =
@@ -32,7 +21,8 @@ const ENTER_ZOOM = `${ENTER} duration-700 starting:scale-50 starting:opacity-0`;
 const ENTER_FADE = `${ENTER} duration-700 starting:opacity-0`;
 
 export default function BookDemoContainer() {
-    const [step, setStep] = useState(0);
+    // 0 = portada, 1 = datos de contacto
+    const [step, setStep] = useState<0 | 1>(0);
     // Dirección del último cambio de paso: decide desde qué lado entra la pantalla nueva
     const [dir, setDir] = useState<1 | -1>(1);
     const [data, setData] = useState<BookDemoData>(INITIAL_DATA);
@@ -43,37 +33,48 @@ export default function BookDemoContainer() {
     const update = (patch: Partial<BookDemoData>) =>
         setData((prev) => ({ ...prev, ...patch }));
 
-    const next = () => {
+    const goToContact = () => {
         setDir(1);
-        setStep((s) => Math.min(s + 1, TOTAL_STEPS - 1));
-    };
-    const back = () => {
-        setDir(-1);
-        setStep((s) => Math.max(s - 1, 0));
+        setStep(1);
     };
 
+    const back = () => {
+        if (sending) return;
+        setDir(-1);
+        setStep(0);
+    };
+
+    // Envía solo los campos que espera /api/contact (el mismo esquema que el formulario de contacto)
     const submit = async () => {
+        if (sending) return;
         setSending(true);
         setSendError(false);
+
         try {
-            const res = await fetch("/api/book-demo", {
+            const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
+                body: JSON.stringify({
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    phone: data.phone,
+                    email: data.email,
+                    // Las dos casillas: la API exige privacy: true
+                    consent: data.smsConsent,
+                    privacy: data.privacy,
+                    website: "",
+                }),
             });
             if (!res.ok) throw new Error();
-            setSending(false);
             setDone(true);
         } catch {
-            setSending(false);
             setSendError(true);
+        } finally {
+            setSending(false);
         }
     };
 
-    const progress = step * 10;
-    const stepProps = { data, update, next };
-
-    /* ── Pantalla final: sin header ni barra de progreso ── */
+    /* ── Pantalla final: sin header ── */
     if (done) {
         return (
             <div className="flex min-h-dvh flex-col items-center justify-center bg-ink-900 px-5 py-16 text-center">
@@ -86,7 +87,7 @@ export default function BookDemoContainer() {
                 </h1>
 
                 <p className={cn("mt-4 max-w-xl text-base text-white/60 lg:text-lg", ENTER_FADE, "delay-300")}>
-                    We received your assessment. Someone from our team will reach out
+                    We received your information. Someone from our team will reach out
                     within one business day to schedule your strategy call.
                 </p>
 
@@ -104,58 +105,51 @@ export default function BookDemoContainer() {
 
     return (
         <div className="min-h-dvh overflow-x-clip bg-ink-900">
-            {step > 0 && (
-                <>
-                    <div
-                        className="fixed inset-x-0 top-0 z-50 h-1 bg-brand-400 transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                        style={{ width: `${progress}%` }}
-                    />
+            {step === 1 && (
+                <header className={cn("sticky top-0 z-40 border-b border-white/10 bg-ink-900/95 backdrop-blur", ENTER_DOWN)}>
+                    <div className="mx-auto flex max-w-5xl items-center gap-6 px-5 py-4">
+                        <Image src={LOGO} alt="VCM" width={200} height={42} className="h-8 w-auto" />
 
-                    <header className={cn("sticky top-0 z-40 border-b border-white/10 bg-ink-900/95 backdrop-blur", ENTER_DOWN)}>
-                        <div className="mx-auto flex max-w-5xl items-center gap-6 px-5 py-4">
-                            <Image
-                                src={LOGO}
-                                alt="VCM"
-                                width={200}
-                                height={42}
-                                className="h-8 w-auto"
-                            />
-
-                            <button
-                                type="button"
-                                onClick={back}
-                                className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-white transition-colors duration-200 hover:text-brand-400"
-                            >
-                                <ArrowLeftIcon className="size-4" />
-                                Back
-                            </button>
-
-                            <span className="ml-auto text-sm font-medium text-white/60">
-                                {progress}% Completed
-                            </span>
-                        </div>
-                    </header>
-                </>
+                        <button
+                            type="button"
+                            onClick={back}
+                            disabled={sending}
+                            className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-white transition-colors duration-200 hover:text-brand-400 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-white"
+                        >
+                            <ArrowLeftIcon className="size-4" />
+                            Back
+                        </button>
+                    </div>
+                </header>
             )}
 
             {/* key por paso: al cambiar, la pantalla se remonta y entra desde el lado de la dirección */}
             <div key={step} className={dir === 1 ? ENTER_FORWARD : ENTER_BACK}>
-                {step === 0 && <StepIntro next={next} />}
-                {step === 1 && <StepContact {...stepProps} />}
-                {step === 2 && <StepRevenue {...stepProps} />}
-                {step === 3 && <StepTerritories {...stepProps} />}
-                {step === 4 && <StepTenure {...stepProps} />}
-                {step === 5 && <StepSupport {...stepProps} />}
-                {step === 6 && <StepCrm {...stepProps} />}
-                {step === 7 && <StepTimeline {...stepProps} />}
-                {step === 8 && <StepSource {...stepProps} />}
-                {step === 9 && (
-                    <StepSummary
-                        data={data}
-                        onSubmit={submit}
-                        sending={sending}
-                        error={sendError}
-                    />
+                {step === 0 && <StepIntro next={goToContact} />}
+
+                {step === 1 && (
+                    <>
+                        {/* El botón de StepContact envía, muestra el spinner y se bloquea durante el envío */}
+                        <StepContact data={data} update={update} next={submit} sending={sending} />
+
+                        {/* Error del envío: mismo ancho que el formulario */}
+                        {sendError && (
+                            <div className="mx-auto max-w-[40rem] px-5 pb-12">
+                                <div
+                                    role="alert"
+                                    className="flex items-start gap-3 rounded-2xl border border-danger/30 bg-danger/10 p-4"
+                                >
+                                    <AlertIcon className="mt-0.5 size-5 shrink-0 text-danger" />
+                                    <div>
+                                        <p className="text-sm font-semibold text-danger">Something went wrong</p>
+                                        <p className="mt-1 text-xs leading-relaxed text-white/60">
+                                            We couldn’t send your information. Please check your connection and try again.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </>
                 )}
             </div>
         </div>
@@ -177,6 +171,16 @@ function CheckIcon({ className }: { className?: string }) {
         <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
             <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
             <path d="m8.5 12 2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    );
+}
+
+function AlertIcon({ className }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+            <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+            <path d="M12 7.5v5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <circle cx="12" cy="16.5" r="1" fill="currentColor" />
         </svg>
     );
 }

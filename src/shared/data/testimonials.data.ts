@@ -34,7 +34,7 @@ export const TESTIMONIALS: readonly Testimonial[] = [
     },
     {
         key: "testimonio-4",
-        quote: "We were growing but didn’t know which jobs were actually profitable. The budgets and dashboards they set up changed how we price our work.",
+        quote: "We were growing but didn’t know which join-us were actually profitable. The budgets and dashboards they set up changed how we price our work.",
         authorName: "Rachel Coleman",
         authorRole: "CFO",
         company: "Pioneer Roofing & Restoration",

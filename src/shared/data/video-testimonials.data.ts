@@ -29,7 +29,7 @@ export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
         variant: "story",
         video: {
             src: "https://workninjas.com/wp-content/uploads/2025/07/Testimonial-–-Boss-Hogg-Roofing_1.mp4",
-            poster: "/assets/images/shared/testimonials/IMG_2832.jpeg",
+            poster: "/assets/images/shared/testimonials/IMG_2831.jpg",
             title: "From Scattered Leads to a Predictable Pipeline",
         },
         badge: "Case Study",
@@ -37,7 +37,7 @@ export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
         statValue: "2x",
         statLabel:
             "more leads followed up every week after rebuilding the sales process and CRM, with a dedicated sales assistant keeping it running.",
-        cta: { label: "Read Full Story", href: "/success-story" },
+        cta: { label: "Read Full Story", href: "/about-us" },
     },
     {
         key: "slide-2",

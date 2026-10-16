@@ -133,7 +133,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/success-story" },
+    cta: { label: "See Case Studies", href: "/about-us" },
 };
 
 const WHY_US = {
