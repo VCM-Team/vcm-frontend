@@ -74,7 +74,7 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
         badge: "About Us",
         title: "Growth consulting and nearshore talent for U.S. construction companies.",
         href: "/about-us",
-        image: "/assets/images/shared/v.webp",
+        image: "/assets/images/shared/v_.webp",
     },
     {
         key: "careers",
@@ -94,41 +94,41 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
 ];
 
 const SERVICES_HEADING = {
-    badge: "Business Growth Consulting",
-    title: "Six Areas Where We Help",
-    titleRest: "Your Business Grow",
+    badge: "Our Services",
+    title: "How We Help Your",
+    titleRest: "Business Grow",
     cta: { label: "Explore Services", href: "/services" },
 };
 
 const SERVICES: readonly ServiceCardItem[] = [
     {
-        key: "sales-performance",
-        title: "Sales Performance",
-        href: "/services/sales-performance",
+        key: "roofing-specialists",
+        title: "Roofing Specialists",
+        href: "/services/roofing-specialists",
         image: "/assets/images/shared/services/sales.jpg",
     },
     {
-        key: "operational-excellence",
-        title: "Operational Excellence",
-        href: "/services/operational-excellence",
+        key: "lead-management",
+        title: "Lead Management Specialists",
+        href: "/services/lead-management-specialists",
         image: "/assets/images/shared/services/operational.jpeg",
     },
     {
         key: "leadership",
         title: "Leadership & Organizational Development",
-        href: "/services/leadership-organizational-development",
+        href: "/services/leadership",
         image: "/assets/images/shared/services/leadership.jpeg",
     },
     {
         key: "financial-performance",
         title: "Financial Performance",
-        href: "/services/financial-performance",
-        image: "/assets/images/shared/services/financial.jpeg",
+        href: "/services/finance",
+        image: "/assets/images/shared/services/financial.png",
     },
     {
         key: "marketing",
         title: "Marketing & Customer Acquisition",
-        href: "/services/marketing-customer-acquisition",
+        href: "/services/marketing",
         image: "/assets/images/shared/services/IMG_277825.jpg",
     },
     {
