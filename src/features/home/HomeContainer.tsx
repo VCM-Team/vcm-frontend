@@ -18,6 +18,7 @@ import TechStack from "@/src/features/home/TechStack";
 import DiscoveryCall from "@/src/features/home/DiscoveryCall";
 import RevealSection from "@/src/shared/components/ui/RevealSection";
 import ScrollPath from "@/src/shared/components/ui/ScrollPath";
+import TalentPerformance from "@/src/features/home/TalentPerformance";
 
 const HOME_STATS: readonly StatItem[] = [
     { value: "4", suffix: " Years", label: "Building nearshore teams for U.S. companies" },
@@ -285,13 +286,11 @@ export default function HomeContainer() {
                 Icon={ChartIcon}
             />
 
-            <ImageAccordionSplit
+            <TalentPerformance
                 badge={TALENT.badge}
                 title={TALENT.title}
                 titleRest={TALENT.titleRest}
                 titleAccent={TALENT.titleAccent}
-                image={TALENT.image}
-                items={TALENT_ITEMS}
             />
 
             <VideoTestimonials items={VIDEO_TESTIMONIALS} />
