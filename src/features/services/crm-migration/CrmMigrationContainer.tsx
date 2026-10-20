@@ -59,7 +59,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Its Leadership",
     description:
         "When every decision goes through one person, growth slows to the speed of that person’s calendar. Clear roles, defined decision rights and consistent accountability let your team move faster without losing control.",
-    image: "/assets/images/shared/team/IMG_1937.jpeg"
+    image: "/assets/images/shared/team/ea.jpeg"
 };
 
 const FOCUS = {

@@ -61,7 +61,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Shapes Your Margin",
     description:
         "An estimate that misses quantities or costs puts the margin of the whole project at risk. Dedicated estimating support gives your team the capacity to review every bid with the attention it needs.",
-    image: "/assets/images/shared/team/IMG_2831.jpg",
+    image: "/assets/images/shared/team/sales_rep_2.jpeg",
 };
 
 const PROCESS = {
@@ -120,7 +120,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/about-us" },
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const WHY_US = {
@@ -130,7 +130,7 @@ const WHY_US = {
     description:
         "Dedicated professionals evaluated for estimating skills and English, integrated into your process with ongoing support.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_3164.jpeg",
+    image: "/assets/images/shared/stickyCard/IMG_17202.png",
 };
 
 export default function MeasurementsContainer() {

@@ -14,7 +14,7 @@ const HERO = {
     description:
         "Dedicated lead management specialists who respond to inquiries, qualify prospects, schedule appointments and keep your CRM up to date, so your sales team spends its time closing.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_29311.jpeg",
+    image: "/assets/images/shared/team/IMG_2808.jpeg",
 };
 
 const INTRO = {
@@ -59,7 +59,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Faster Than You Think",
     description:
         "Every lead you pay for is an opportunity with an expiration date. When response times slip and follow-up is inconsistent, marketing spend turns into missed projects. A dedicated team keeps every lead moving while your sales team focuses on closing.",
-    image: "/assets/images/shared/team/IMG_27735.jpg",
+    image: "/assets/images/shared/team/IMG_2649.jpeg",
 };
 
 const PROCESS = {
@@ -96,7 +96,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/about-us" },
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const WHY_US = {

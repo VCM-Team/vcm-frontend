@@ -137,7 +137,7 @@ export const BLOG_POSTS: BlogPost[] = [
         category: "Marketing",
         title: "Marketing and Lead Generation",
         date: "2024-08-08",
-        image: "/assets/images/shared/blog/IMG_2930.jpeg",
+        image: "/assets/images/shared/blog/IMG_2808.jpeg",
         excerpt:
             "In the competitive roofing industry, attracting the right customers matters more than attracting more of them.",
         content: `
@@ -194,7 +194,7 @@ export const BLOG_POSTS: BlogPost[] = [
         category: "Insurance",
         title: "How to Start Doing Insurance Jobs",
         date: "2024-08-08",
-        image: "/assets/images/shared/blog/roofer2.jpg",
+        image: "/assets/images/shared/blog/roofer3.jpg",
         excerpt:
             "Jumping into the insurance market can be a game-changer for your roofing business.",
         content: `

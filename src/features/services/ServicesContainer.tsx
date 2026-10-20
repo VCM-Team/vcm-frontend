@@ -66,7 +66,7 @@ const WHY_US = {
     description:
         "Most staffing firms just fill seats. We find the bottleneck, design the process and then add the talent to execute it.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "/assets/images/shared/stickyCard/IMG_31819.jpg",
+    image: "/assets/images/shared/stickyCard/woman_in_board.png",
 };
 
 const INSIGHTS_HEADING = {
@@ -83,7 +83,7 @@ const INSIGHTS: readonly InsightItem[] = [
         label: "Business Development",
         title: "International Roofing Expo (IRE): What It Is, When It Happens, and Why Roofers Take It Seriously",
         href: "/blog/international-roofing-expo",
-        image: "/assets/images/shared/insights/IMG_2818.jpeg",
+        image: "/assets/images/shared/insights/IMG_2816.jpeg",
     },
     {
         key: "communication-subcontractors",

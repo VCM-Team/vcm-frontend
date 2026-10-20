@@ -41,7 +41,7 @@ const QUOTE: QuoteCardData = {
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
-const TEAM_IMAGE = "/assets/images/shared/team/IMG_30021.jpeg";
+const TEAM_IMAGE = "/assets/images/shared/team/IMG_17033.jpeg";
 
 const JOIN_CARD = {
     title: "Join a LATAM team helping U.S. construction companies grow.",

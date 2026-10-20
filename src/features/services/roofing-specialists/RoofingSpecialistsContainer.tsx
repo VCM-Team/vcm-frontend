@@ -16,7 +16,7 @@ const HERO = {
     description:
         "Dedicated nearshore professionals who know how a roofing business works, from sales and estimating to customer service and admin, integrated into your tools and your processes.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_28357.jpeg",
+    image: "/assets/images/shared/team/estimators.jpg",
 };
 
 const INTRO = {
@@ -142,7 +142,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/about-us" },
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const WHY_US = {
@@ -152,7 +152,7 @@ const WHY_US = {
     description:
         "Dedicated professionals from our LATAM team, trained for the construction industry and integrated into your daily operation.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_2849.png",
+    image: "/assets/images/shared/team/office_meeting_2.jpg",
 };
 
 export default function RoofingSpecialistsContainer() {

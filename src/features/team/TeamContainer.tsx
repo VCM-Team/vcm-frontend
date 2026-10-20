@@ -18,7 +18,7 @@ const WHY_US = {
     description:
         "Our people integrate into your processes and tools, with the support of a leadership team focused on your growth.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_3164.jpeg",
+    image: "/assets/images/shared/stickyCard/welcome.png",
 };
 
 export default function TeamContainer() {
