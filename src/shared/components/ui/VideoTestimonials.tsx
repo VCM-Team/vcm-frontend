@@ -7,7 +7,6 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Container from "./Container";
 import Badge from "./Badge";
 import RevealSection from "./RevealSection";
-import VideoPlayer from "./VideoPlayer";
 import type { VideoTestimonial } from "@/src/shared/data/video-testimonials.data";
 import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
@@ -65,19 +64,22 @@ export default function VideoTestimonials({ items, className }: Props) {
                         aria-label="Testimonials"
                         className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                     >
-                        {items.map((item) => (
+                        {items.map((item, i) => (
                             <div key={item.key} className="w-full shrink-0 snap-start">
                                 <div className="grid gap-6 lg:grid-cols-2">
-                                    {/* Sin entradas laterales: no alteran el scrollWidth del track */}
-                                    <div className={REVEAL.zoomIn}>
-                                        <VideoPlayer
-                                            src={item.video.src}
-                                            poster={item.video.poster}
-                                            title={item.video.title}
+                                    {/* Imagen del testimonio (antes vídeo). Sin entradas laterales: no alteran el scrollWidth del track */}
+                                    <div className={cn("relative aspect-square overflow-hidden rounded-card bg-black", REVEAL.zoomIn)}>
+                                        <Image
+                                            src={item.video.poster}
+                                            alt={item.video.title}
+                                            fill
+                                            priority={i === 0}
+                                            sizes="(min-width: 1024px) 50vw, 100vw"
+                                            className="object-cover"
                                         />
                                     </div>
 
-                                    <div className={cn("flex [&>*]:flex-1", REVEAL.up, "delay-200")}>
+                                    <div className={cn("flex sm:aspect-square [&>*]:flex-1", REVEAL.up, "delay-200")}>
                                         {item.variant === "story" ? (
                                             <StoryCard item={item} />
                                         ) : (
