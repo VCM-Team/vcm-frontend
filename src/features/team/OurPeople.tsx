@@ -22,8 +22,8 @@ const GROUPS = {
 const LINE_DRAW =
     "origin-left scale-x-0 transition-[scale] duration-700 ease-out group-data-[inview=true]/reveal:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none";
 
-// Los dos grids usan 4 columnas en desktop; el retraso va por columna
-const GRID_COLUMNS = 4;
+// Los dos grids usan 3 columnas en desktop; el retraso va por columna
+const GRID_COLUMNS = 3;
 const VCM_TEAM_VARIANTS = [REVEAL.blur, REVEAL.up] as const;
 const MARKETING_VARIANTS = [REVEAL.up, REVEAL.zoomIn] as const;
 
@@ -71,7 +71,7 @@ export default function OurPeople() {
                             <Badge>{GROUPS.leadership}</Badge>
                         </div>
 
-                        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center [&>*]:lg:w-[calc((100%-2.5rem)/3)]">
                             {LEADERSHIP.map((member, i) => (
                                 <div
                                     key={member.slug}
