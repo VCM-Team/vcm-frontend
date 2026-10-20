@@ -27,7 +27,7 @@ const CONTENT = {
 };
 
 const VIDEO = {
-    src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1789757625/Work_Ninjas_Scalable_Back_Office_Solutions_for_Roofing_Contractors_Beyond_vnduhs.mp4",
+    src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1792531551/Premier_Group-Vcm_omyrjn.mp4",
     poster: "/assets/images/shared/team/team_2.jpeg",
     title: "This is VCM",
 };
@@ -37,7 +37,7 @@ const QUOTE: QuoteCardData = {
     quote: "“We don’t start by adding people. We start by understanding your business, fixing what slows it down and then building the team that helps it grow.”",
     authorName: "Victor Alvarado",
     authorRole: "CEO",
-    authorImage: "/assets/images/shared/testimonials/victor.webp",
+    authorImage: "/assets/images/shared/testimonials/victor_thumbnail.webp",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 

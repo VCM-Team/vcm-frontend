@@ -2,7 +2,7 @@ import PageHero from "@/src/shared/components/ui/PageHero";
 import AccordionSection from "@/src/shared/components/ui/AccordionSection";
 import FeatureSplit from "@/src/shared/components/ui/FeatureSplit";
 import ProcessSection from "@/src/shared/components/ui/ProcessSection";
-import IconListSplit, { type IconListItem } from "@/src/shared/components/ui/IconListSplit";
+import IconListSplit, { type ProjectScopeItem } from "@/src/shared/components/ui/IconListSplit";
 import TestimonialsSection from "@/src/shared/components/ui/TestimonialsSection";
 import StickyCardSection from "@/src/shared/components/ui/StickyCardSection";
 import type { AccordionItem } from "@/src/shared/components/ui/Accordion";
@@ -94,24 +94,25 @@ const PROCESS_STEPS: readonly NumberedCardItem[] = [
 ];
 
 const SCALE = {
-    title: "Residential and Commercial Projects",
+    title: "Residential and",
+    titleAccent: "Commercial Projects",
     description:
         "Our estimators support both residential and commercial work, adapting to the scope and requirements of each type of project.",
-    image: "/assets/images/shared/insights/takeoff.png",
+    image: "/assets/images/shared/insights/takeoff_page_2.png",
 };
 
-const SCALE_ITEMS: readonly IconListItem[] = [
+const SCALE_ITEMS: readonly ProjectScopeItem[] = [
     {
         key: "residential",
         title: "Residential Roofing",
         description: "Takeoffs and estimates for residential projects, from plans to a ready-to-send number.",
-        Icon: HouseIcon,
+        tags: ["Single-family homes", "Re-roofs", "Plan & aerial takeoffs"],
     },
     {
         key: "commercial",
         title: "Commercial Roofing",
         description: "Support for commercial projects, where larger scopes need careful quantities and cost control.",
-        Icon: BuildingIcon,
+        tags: ["Low-slope roofs", "Multi-building sites", "Bid packages"],
     },
 ];
 
