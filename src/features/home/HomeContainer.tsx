@@ -86,9 +86,9 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
         variant: "accent",
     },
     {
-        key: "case-study",
-        badge: "Case Studies",
-        title: "See how we help construction companies build teams that scale.",
+        key: "partnerships",
+        badge: "Partnerships",
+        title: "Meet the construction and roofing companies growing with VCM.",
         href: "/partnerships",
         image: "/assets/images/shared/m.webp",
     },
@@ -141,7 +141,7 @@ const SERVICES: readonly ServiceCardItem[] = [
 ];
 
 const VIDEO = {
-    src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1789757625/Work_Ninjas_Scalable_Back_Office_Solutions_for_Roofing_Contractors_Beyond_vnduhs.mp4",
+    src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1792531551/Premier_Group-Vcm_omyrjn.mp4",
     poster: "/assets/images/shared/team/team_2.jpeg",
     title: "This is VCM",
 };
