@@ -29,7 +29,7 @@ export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
         variant: "story",
         video: {
             src: "https://workninjas.com/wp-content/uploads/2025/07/Testimonial-–-Boss-Hogg-Roofing_1.mp4",
-            poster: "/assets/images/shared/testimonials/IMG_2831.jpg",
+            poster: "/assets/images/shared/testimonials/IMG_28311.jpg",
             title: "From Scattered Leads to a Predictable Pipeline",
         },
         badge: "Case Study",

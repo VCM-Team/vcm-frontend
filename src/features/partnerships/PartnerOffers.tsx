@@ -5,47 +5,36 @@ import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 const HEADING = {
-    title: "Partners Who Help",
-    titleAccent: "Construction Companies Grow",
+    title: "Construction Companies",
+    titleAccent: "Growing With VCM",
     description:
-        "We work alongside software providers, coaches and service partners who share our focus on construction and roofing. Together, we help our clients build better systems, stronger teams and more predictable growth.",
+        "We work side by side with construction and roofing companies across the U.S., helping them build the systems, processes and teams they need to grow.",
 };
 
-type Offer = {
+type ClientLogo = {
     key: string;
-    logo: string;
-    logoAlt: string;
-    offer: string;
+    name: string;
+    src: string;
+    width: number;
+    height: number;
 };
 
-// PLACEHOLDER: socios y ofertas ficticios. Reemplazar por alianzas reales antes de publicar.
-const PLACEHOLDER_LOGO = "/assets/brand/vcm_black_logo.webp";
+// Misma carpeta que usan los logos de TechStack
+const LOGO_DIR = "/assets/logos";
 
-const OFFERS: readonly Offer[] = [
-    {
-        key: "buildflow-crm",
-        logo: PLACEHOLDER_LOGO,
-        logoAlt: "BuildFlow CRM",
-        offer: "VCM clients get a free CRM setup review and a discounted first year.",
-    },
-    {
-        key: "takeoffpro",
-        logo: PLACEHOLDER_LOGO,
-        logoAlt: "TakeoffPro",
-        offer: "Extended free trial of estimating software for teams working with a VCM estimator.",
-    },
-    {
-        key: "crew-coach-network",
-        logo: PLACEHOLDER_LOGO,
-        logoAlt: "Crew Coach Network",
-        offer: "A complimentary leadership workshop for owners and managers of VCM client companies.",
-    },
-    {
-        key: "summit-marketing",
-        logo: PLACEHOLDER_LOGO,
-        logoAlt: "Summit Marketing Co.",
-        offer: "A free marketing audit for construction and roofing companies starting a growth roadmap with VCM.",
-    },
+const LOGOS: readonly ClientLogo[] = [
+    { key: "r-and-d", name: "R&D", src: `${LOGO_DIR}/r-and-d.svg`, width: 147, height: 91 },
+    { key: "309-technology", name: "309 Technology", src: `${LOGO_DIR}/309-technology.svg`, width: 150, height: 61 },
+    { key: "new-beginnings", name: "New Beginnings Construction", src: `${LOGO_DIR}/new-beginnings.svg`, width: 141, height: 87 },
+    { key: "advanced-roofing", name: "Advanced Roofing Team Construction", src: `${LOGO_DIR}/advanced-roofing.svg`, width: 155, height: 81 },
+    { key: "kondrat", name: "Kondrat & Associates", src: `${LOGO_DIR}/kondrat.svg`, width: 214, height: 54 },
+    { key: "mast", name: "Mast Roofing & Construction", src: `${LOGO_DIR}/mast.svg`, width: 171, height: 75 },
+    { key: "premier", name: "Premier Construction", src: `${LOGO_DIR}/premier.svg`, width: 214, height: 54 },
+    { key: "new-edge", name: "New Edge Improvement Co.", src: `${LOGO_DIR}/new-edge.svg`, width: 183, height: 68 },
+    { key: "coast-mountain", name: "Coast Mountain Roof", src: `${LOGO_DIR}/coast-mountain.svg`, width: 143, height: 101 },
+    { key: "nitro", name: "Nitro Roofing & Construction", src: `${LOGO_DIR}/nitro.svg`, width: 174, height: 48 },
+    { key: "do-it-right", name: "Do It Right Roofing", src: `${LOGO_DIR}/do-it-right.svg`, width: 134, height: 62 },
+    { key: "innovative", name: "Innovative Roofing Pros", src: `${LOGO_DIR}/innovative.svg`, width: 253, height: 52 },
 ];
 
 // Encabezado visible al cargar: basta con @starting-style (variante starting:)
@@ -53,6 +42,10 @@ const ENTER =
     "transition-[opacity,translate] duration-700 ease-out motion-reduce:transition-none";
 const ENTER_UP = `${ENTER} starting:translate-y-6 starting:opacity-0`;
 const ENTER_FADE = `${ENTER} starting:opacity-0`;
+
+// Los logos alternan entrada; el retraso va por columna (4 en desktop)
+const LOGO_VARIANTS = [REVEAL.zoomIn, REVEAL.up] as const;
+const LOGO_COLUMNS = 3;
 
 export default function PartnerOffers() {
     return (
@@ -81,35 +74,35 @@ export default function PartnerOffers() {
 
             <div className="mx-3 mt-12 rounded-panel bg-gradient-to-b from-brand-400/12 to-bg lg:mx-4 lg:mt-16">
                 <Container className="py-14 lg:py-20">
-                    <ul className="flex flex-col items-center gap-16 lg:gap-20">
-                        {OFFERS.map((o) => (
-                            <li key={o.key}>
-                                {/* Cada oferta tiene su propio reveal: anima al llegar a ella */}
-                                <RevealSection className="flex flex-col items-center text-center">
-                                    <span
+                    <ul className="grid grid-cols-2 gap-x-6 gap-y-14 sm:grid-cols-3 lg:gap-y-16">
+                        {LOGOS.map((logo, i) => (
+                            <li key={logo.key}>
+                                {/* Cada logo tiene su propio reveal: anima al llegar a él */}
+                                <RevealSection>
+                                    <figure
                                         className={cn(
-                                            "relative block h-12 w-64 lg:h-[3.25rem] lg:w-72",
-                                            REVEAL.zoomIn
+                                            "group flex flex-col items-center gap-4",
+                                            LOGO_VARIANTS[i % LOGO_VARIANTS.length]
                                         )}
+                                        style={{ transitionDelay: `${(i % LOGO_COLUMNS) * 100}ms` }}
                                     >
-                                        <Image
-                                            src={o.logo}
-                                            alt={o.logoAlt}
-                                            fill
-                                            sizes="18rem"
-                                            className="object-contain"
-                                        />
-                                    </span>
+                                        {/* Alto fijo: logos de proporciones distintas quedan alineados */}
+                                        <div className="flex h-16 w-full items-center justify-center">
+                                            <Image
+                                                src={logo.src}
+                                                alt={logo.name}
+                                                width={logo.width}
+                                                height={logo.height}
+                                                unoptimized
+                                                // brightness-0: convierte el SVG blanco en negro
+                                                className="max-h-full w-auto max-w-full object-contain brightness-0 opacity-80 transition-opacity duration-300 group-hover:opacity-100"
+                                            />
+                                        </div>
 
-                                    <p
-                                        className={cn(
-                                            "mt-7 max-w-[48ch] text-2xl text-fg lg:text-[1.625rem]",
-                                            REVEAL.blur,
-                                            "delay-150"
-                                        )}
-                                    >
-                                        {o.offer}
-                                    </p>
+                                        <figcaption className="text-center text-xs font-medium leading-snug text-fg-muted">
+                                            {logo.name}
+                                        </figcaption>
+                                    </figure>
                                 </RevealSection>
                             </li>
                         ))}
