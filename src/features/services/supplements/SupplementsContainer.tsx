@@ -15,14 +15,14 @@ const HERO = {
     description:
         "We help construction and roofing companies get clear visibility into profitability, pricing, costs and cash flow, so every decision is based on real numbers.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/supplementsninja.png",
+    image: "/assets/images/shared/team/team_4.jpg",
 };
 
 const INTRO = {
     badge: "What We Do",
     title: "Financial Clarity to Make Better Decisions",
     description:
-        "Many growing companies sell more every year without knowing which jobs actually make money. We organize your financial information and build the reporting you need to see where profit is made, where it is lost and what to do next.",
+        "Many growing companies sell more every year without knowing which join-us actually make money. We organize your financial information and build the reporting you need to see where profit is made, where it is lost and what to do next.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     features: [
         "Profitability",
@@ -60,7 +60,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Is a Risk",
     description:
         "When the numbers arrive late or incomplete, problems show up only when they are expensive to fix. Clear, timely financial information lets you protect margins and plan your growth with confidence.",
-    image: "https://workninjas.com/wp-content/uploads/2025/06/chelsSupplements-scaled.jpg",
+    image: "/assets/images/shared/team/IMG_2705.jpeg",
 };
 
 const PROCESS = {
@@ -97,7 +97,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/success-story" },
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const WHY_US = {
@@ -107,7 +107,7 @@ const WHY_US = {
     description:
         "We bring structure to your financial information first, then add the finance talent to keep it running every day.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/supplementsprefooter.png",
+    image: "/assets/images/shared/team/IMG_3084.jpeg",
 };
 
 export default function SupplementsContainer() {

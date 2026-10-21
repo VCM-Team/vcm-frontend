@@ -15,7 +15,7 @@ const HERO = {
     description:
         "We help construction and roofing companies sharpen their positioning, build a clear funnel and run campaigns that bring in the right customers, with the analytics to know what is working.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/nicolas-2048x961.png",
+    image: "/assets/images/shared/team/marketing_3.jpg"
 };
 
 const INTRO = {
@@ -60,7 +60,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Beats Lead Volume",
     description:
         "Chasing leads that never convert costs time, money and morale. A clear position, a defined funnel and consistent nurturing bring in customers who fit your business, and make every marketing dollar easier to measure.",
-    image: "https://workninjas.com/wp-content/uploads/2025/06/DoxJorg.png",
+    image: "/assets/images/shared/team/IMG_27734.jpeg"
 };
 
 const PROCESS = {
@@ -97,7 +97,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/success-story" },
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const WHY_US = {
@@ -107,7 +107,7 @@ const WHY_US = {
     description:
         "We align marketing with sales and follow-up first, then add the marketing talent to execute it every day.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/MKTteam-scaled.png",
+    image: "/assets/images/shared/team/woman_laptop.png",
 };
 
 export default function MarketingContainer() {

@@ -10,11 +10,11 @@ const DISCOVERY_CALL = {
     badge: "Contact Us",
     title: "Book your Discovery Call",
     cta: { label: "Book a Demo Now!", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/03/Mask-group-4.jpg",
-    note: "Call us at (866) 969-5155 or fill out our form, and we’ll contact you within one business day.",
+    image: "/assets/images/shared/contact/IMG_27391.jpeg",
+    note: "Fill out our form, and we’ll contact you within one business day.",
 };
 
-export default function DiscoveryCall() {
+export default function  DiscoveryCall() {
     return (
         <RevealSection className="overflow-x-clip bg-ink-900 py-20 lg:py-28">
             <Container>
@@ -64,13 +64,13 @@ export default function DiscoveryCall() {
 
                         <div
                             className={cn(
-                                "absolute inset-x-4 bottom-4 flex items-center gap-4 rounded-2xl bg-white/90 p-4 backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:p-5",
+                                "absolute inset-x-4 bottom-4 flex items-center gap-4 rounded-2xl bg-white/65 p-4 backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:p-5",
                                 REVEAL.up,
                                 "delay-[600ms]"
                             )}
                         >
                             <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-400 text-black sm:size-12">
-                                <PhoneIcon className="size-5" />
+                                <FormIcon className="size-5" />
                             </span>
                             <p className="text-sm leading-snug text-black sm:text-base">
                                 {DISCOVERY_CALL.note}
@@ -85,11 +85,13 @@ export default function DiscoveryCall() {
 
 /* ── Iconos ─────────────────────────────── */
 
-function PhoneIcon({ className }: { className?: string }) {
+function FormIcon({ className }: { className?: string }) {
     return (
         <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
             <path
-                d="M7.5 4h-2A1.5 1.5 0 0 0 4 5.6C4 13 11 20 18.4 20a1.5 1.5 0 0 0 1.6-1.5v-2a1 1 0 0 0-.8-1l-3-.6a1 1 0 0 0-1 .4l-.9 1.2a12.6 12.6 0 0 1-5.8-5.8l1.2-.9a1 1 0 0 0 .4-1l-.6-3a1 1 0 0 0-1-.8Z"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M9 2.5h6A1.5 1.5 0 0 1 16.5 4v.5H18A2.5 2.5 0 0 1 20.5 7v12a2.5 2.5 0 0 1-2.5 2.5H6A2.5 2.5 0 0 1 3.5 19V7A2.5 2.5 0 0 1 6 4.5h1.5V4A1.5 1.5 0 0 1 9 2.5ZM9.5 4.5v1h5v-1h-5ZM8 10.25a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2H8Zm0 4a1 1 0 0 0 0 2h5a1 1 0 1 0 0-2H8Z"
                 fill="currentColor"
             />
         </svg>

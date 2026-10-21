@@ -5,13 +5,13 @@ import WhoWeLookFor from "./WhoWeLookFor";
 import OpenPositions from "./OpenPositions";
 
 const HERO = {
-    badge: "Careers",
+    badge: "Join Us",
     title: "Grow Your Career",
     titleAccent: "with VCM",
     description:
-        "Join our team in Lima, Peru, and work side by side with U.S. construction and roofing companies, building real skills in a team that grows with you.",
+        "Join our LATAM team and work side by side with U.S. construction and roofing companies, building real skills in a team that grows with you.",
     cta: { label: "See Open Positions", href: "#open-positions" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Scene-18-2048x1365.jpg",
+    image: "/assets/images/shared/team/IMG_3055.jpeg",
 };
 
 export default function JobsContainer() {

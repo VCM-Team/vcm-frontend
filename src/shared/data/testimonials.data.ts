@@ -34,14 +34,14 @@ export const TESTIMONIALS: readonly Testimonial[] = [
     },
     {
         key: "testimonio-4",
-        quote: "We were growing but didn’t know which jobs were actually profitable. The budgets and dashboards they set up changed how we price our work.",
+        quote: "We were growing but didn’t know which join-us were actually profitable. The budgets and dashboards they set up changed how we price our work.",
         authorName: "Rachel Coleman",
         authorRole: "CFO",
         company: "Pioneer Roofing & Restoration",
     },
     {
         key: "testimonio-5",
-        quote: "The team in Lima works in our tools and on our schedule. They felt like part of the company from the first weeks, and the support didn’t stop after onboarding.",
+        quote: "The team in LATAM works in our tools and on our schedule. They felt like part of the company from the first weeks, and the support didn’t stop after onboarding.",
         authorName: "Chris Walker",
         authorRole: "President",
         company: "Summit Line Builders",

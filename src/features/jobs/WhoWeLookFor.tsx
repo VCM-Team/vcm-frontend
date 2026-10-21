@@ -38,7 +38,7 @@ const ITEMS: readonly IconCardItem[] = [
         key: "commitment",
         title: "Committed to the Team",
         description:
-            "You work full-time, in person at our offices in Lima, and care about the people you support.",
+            "You work full-time, in person with our LATAM team, and care about the people you support.",
         Icon: HandIcon,
     },
 ];

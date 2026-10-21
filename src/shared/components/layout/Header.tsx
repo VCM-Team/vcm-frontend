@@ -10,6 +10,7 @@ import {
     type NavItem,
     type NavMenu,
 } from "@/src/shared/data/navigation";
+import { ENTER, enterAt } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 import ArrowUpRight from "@/src/shared/icons/ArrowUpRight";
 
@@ -17,6 +18,22 @@ const CLOSE_DELAY = 140;
 
 const EASE_IN = "ease-[cubic-bezier(0.22,1,0.36,1)]";
 const EASE_OUT = "ease-[cubic-bezier(0.55,0,1,0.45)]";
+
+// Secuencia de entrada al cargar (ms)
+const T = {
+    logo: 100,
+    nav: 200,
+    navStep: 80,
+    chevronOffset: 250,
+    mobileButton: 250,
+} as const;
+
+// "Book a Demo" entra cuando ya bajaron todos los enlaces
+const CTA_DELAY = T.nav + NAV_ITEMS.length * T.navStep + 100;
+
+// Cascada dentro de los menús al abrirlos (ms)
+const MENU_STEP = 50;
+const DRAWER_STEP = 60;
 
 export default function Header() {
     const pathname = usePathname();
@@ -116,9 +133,9 @@ export default function Header() {
             )}
         >
             <div className="mx-auto flex min-h-header-sm max-w-7xl items-center justify-between gap-4 px-5 pb-4 pt-4 sm:px-6 lg:min-h-header lg:px-8 lg:pb-8 lg:pt-10">
-                <Link href="/" className="shrink-0">
-                    {/* Logo Oscuro: Se muestra en Mobile/Tablet SIEMPRE (donde el fondo es blanco),
-        y en Desktop cuando NO es transparente */}
+                {/* Logo: crece al cargar */}
+                <Link href="/" className={cn("shrink-0", ENTER.zoom)} style={enterAt(T.logo)}>
+                    {/* Logo oscuro: móvil/tablet siempre; desktop cuando NO es transparente */}
                     <Image
                         src="/assets/brand/vcm_dark_logo.webp"
                         alt="VCM"
@@ -128,7 +145,7 @@ export default function Header() {
                         className={cn("h-6 w-auto lg:h-7", isTransparent && "lg:hidden")}
                     />
 
-                    {/* Logo Blanco: Se muestra ÚNICAMENTE en Desktop (lg:) cuando es transparente */}
+                    {/* Logo blanco: solo desktop cuando es transparente */}
                     <Image
                         src="/assets/brand/vcm_logo.webp"
                         alt="VCM"
@@ -143,10 +160,11 @@ export default function Header() {
                     className="relative hidden h-full lg:flex lg:items-center lg:gap-1"
                     onMouseLeave={scheduleClose}
                 >
-                    {NAV_ITEMS.map((item) => (
+                    {NAV_ITEMS.map((item, i) => (
                         <NavEntry
                             key={item.key}
                             item={item}
+                            enterDelay={T.nav + i * T.navStep}
                             isOpen={activeKey === item.key}
                             onOpen={() => open(item.key)}
                             onClose={scheduleClose}
@@ -154,24 +172,34 @@ export default function Header() {
                     ))}
                 </nav>
 
+                {/* Book a Demo: entra desde la derecha al final */}
                 <Link
                     href="/book-demo"
-                    className="hidden rounded-full bg-brand-400 px-7 py-2.5 text-base font-semibold text-black transition-colors duration-200 hover:text-white lg:inline-flex"
+                    className={cn(
+                        "hidden rounded-full bg-brand-400 px-7 py-2.5 text-base font-semibold text-black transition-colors duration-200 hover:text-white lg:inline-flex",
+                        ENTER.right
+                    )}
+                    style={enterAt(CTA_DELAY)}
                 >
                     Book a Demo
                 </Link>
 
+                {/* Botón menú móvil: rebote al cargar */}
                 <button
                     type="button"
                     onClick={() => setMobileOpen((v) => !v)}
                     aria-expanded={mobileOpen}
                     aria-controls="mobile-nav"
                     aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
-                    className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-400 text-black transition-transform duration-200 active:scale-95 sm:size-12 lg:hidden"
+                    className={cn(
+                        "grid size-11 shrink-0 place-items-center rounded-full bg-brand-400 text-black transition-[scale] duration-200 active:scale-95 sm:size-12 lg:hidden",
+                        ENTER.pop
+                    )}
+                    style={enterAt(T.mobileButton)}
                 >
                     <span
                         className={cn(
-                            "transition-transform duration-300",
+                            "transition-[rotate] duration-300",
                             mobileOpen && "rotate-90"
                         )}
                     >
@@ -195,10 +223,11 @@ export default function Header() {
                 <div className="min-h-0 overflow-hidden">
                     <div className="max-h-[calc(100dvh-var(--spacing-header-sm))] overflow-y-auto overscroll-contain border-t border-black/10 bg-white px-2 pb-2">
                         <ul>
-                            {NAV_ITEMS.map((item) => (
+                            {NAV_ITEMS.map((item, i) => (
                                 <MobileEntry
                                     key={item.key}
                                     item={item}
+                                    enterDelay={mobileOpen ? 80 + i * DRAWER_STEP : null}
                                     isOpen={activeSubmenu === item.key}
                                     onToggle={() =>
                                         setMobileSubmenu((k) =>
@@ -210,7 +239,11 @@ export default function Header() {
                             ))}
                         </ul>
 
-                        <div className="px-3 py-5">
+                        {/* Book a Demo del drawer: llega después de las opciones */}
+                        <div
+                            className={cn("px-3 py-5", mobileOpen && ENTER.up)}
+                            style={mobileOpen ? enterAt(80 + NAV_ITEMS.length * DRAWER_STEP) : undefined}
+                        >
                             <Link
                                 href="/book-demo"
                                 onClick={() => setMobileOpen(false)}
@@ -228,6 +261,8 @@ export default function Header() {
 
 type EntryProps = {
     item: NavItem;
+    /** Retraso de su entrada al cargar (ms) */
+    enterDelay: number;
     isOpen: boolean;
     onOpen: () => void;
     onClose: () => void;
@@ -235,6 +270,7 @@ type EntryProps = {
 
 function NavEntry({
                       item,
+                      enterDelay,
                       isOpen,
                       onOpen,
                       onClose,
@@ -258,6 +294,7 @@ function NavEntry({
                 }
             }}
         >
+            {/* Enlace: baja al cargar (la animación va aquí y no en el div, que posiciona el desplegable) */}
             <Link
                 href={item.href}
                 aria-expanded={hasMenu ? isOpen : undefined}
@@ -271,18 +308,23 @@ function NavEntry({
                     "group-data-[transparent=true]:hover:bg-white group-data-[transparent=true]:hover:text-ink-900",
                     // Y se queda fija mientras el menú está abierto
                     isOpen &&
-                    "bg-white text-ink-900 shadow-sm group-data-[transparent=true]:bg-white group-data-[transparent=true]:text-ink-900"
+                    "bg-white text-ink-900 shadow-sm group-data-[transparent=true]:bg-white group-data-[transparent=true]:text-ink-900",
+                    ENTER.down
                 )}
+                style={enterAt(enterDelay)}
             >
                 {item.label}
 
+                {/* Flechita: rebote justo después de su enlace */}
                 {hasMenu && (
-                    <Chevron
-                        className={cn(
-                            "text-brand-400 transition-transform duration-300",
-                            isOpen && "rotate-180"
-                        )}
-                    />
+                    <span className={cn("inline-flex", ENTER.pop)} style={enterAt(enterDelay + T.chevronOffset)}>
+                        <Chevron
+                            className={cn(
+                                "text-brand-400 transition-[rotate] duration-300",
+                                isOpen && "rotate-180"
+                            )}
+                        />
+                    </span>
                 )}
             </Link>
 
@@ -295,6 +337,8 @@ function NavEntry({
 
 type MobileEntryProps = {
     item: NavItem;
+    /** Retraso de su entrada al abrir el drawer (ms); null = drawer cerrado */
+    enterDelay: number | null;
     isOpen: boolean;
     onToggle: () => void;
     onNavigate: () => void;
@@ -302,6 +346,7 @@ type MobileEntryProps = {
 
 function MobileEntry({
                          item,
+                         enterDelay,
                          isOpen,
                          onToggle,
                          onNavigate,
@@ -309,7 +354,10 @@ function MobileEntry({
     const links = item.menu?.links ?? [];
 
     return (
-        <li className="border-b border-black/5 last:border-b-0">
+        <li
+            className={cn("border-b border-black/5 last:border-b-0", enterDelay !== null && ENTER.up)}
+            style={enterDelay !== null ? enterAt(enterDelay) : undefined}
+        >
             <div className="flex items-center">
                 <Link
                     href={item.href}
@@ -329,7 +377,7 @@ function MobileEntry({
                     >
                         <Chevron
                             className={cn(
-                                "text-brand-400 transition-transform duration-300",
+                                "text-brand-400 transition-[rotate] duration-300",
                                 isOpen && "rotate-180"
                             )}
                         />
@@ -351,8 +399,13 @@ function MobileEntry({
                     )}
                 >
                     <ul className="min-h-0 overflow-hidden">
-                        {links.map((l) => (
-                            <li key={l.href}>
+                        {links.map((l, i) => (
+                            // Sublinks: suben en cascada al desplegar
+                            <li
+                                key={l.href}
+                                className={cn(isOpen && ENTER.up)}
+                                style={isOpen ? enterAt(60 + i * MENU_STEP) : undefined}
+                            >
                                 <Link
                                     href={l.href}
                                     onClick={onNavigate}
@@ -396,8 +449,13 @@ function MenuPanel({
         return (
             <div className={wrapper}>
                 <ul className="min-w-[200px] rounded-2xl bg-bg p-3 shadow-xl ring-1 ring-black/5">
-                    {menu.links.map((l) => (
-                        <li key={l.href}>
+                    {menu.links.map((l, i) => (
+                        // Enlaces: suben en cascada al abrir
+                        <li
+                            key={l.href}
+                            className={cn(isOpen && ENTER.up)}
+                            style={isOpen ? enterAt(80 + i * MENU_STEP) : undefined}
+                        >
                             <Link
                                 href={l.href}
                                 className="block rounded-xl px-4 py-2.5 text-[15px] text-ink-900 transition-colors duration-200 hover:bg-brand-400/15"
@@ -421,9 +479,14 @@ function MenuPanel({
             )}
         >
             <div className="grid grid-cols-[300px_1fr] gap-10 rounded-[2.5rem] bg-bg p-5 shadow-xl ring-1 ring-black/5">
+                {/* Tarjeta promo: crece al abrir */}
                 <Link
                     href={menu.promo.ctaHref}
-                    className="group/promo relative isolate flex flex-col justify-between overflow-hidden rounded-[2rem] bg-black p-7"
+                    className={cn(
+                        "group/promo relative isolate flex flex-col justify-between overflow-hidden rounded-[2rem] bg-black p-7",
+                        isOpen && ENTER.zoom
+                    )}
+                    style={isOpen ? enterAt(50) : undefined}
                 >
                     <PromoShape isOpen={isOpen} />
 
@@ -432,28 +495,40 @@ function MenuPanel({
                     </p>
 
                     <span className="mt-16 inline-flex items-center gap-2">
-                    <span className="rounded-full bg-brand-400 px-5 py-2.5 text-sm font-semibold leading-none text-black transition-colors duration-200 group-hover/promo:bg-brand-500 group-hover/promo:text-white">
-                        {menu.promo.ctaLabel}
-                    </span>
+                        <span className="rounded-full bg-brand-400 px-5 py-2.5 text-sm font-semibold leading-none text-black transition-colors duration-200 group-hover/promo:bg-brand-500 group-hover/promo:text-white">
+                            {menu.promo.ctaLabel}
+                        </span>
 
-                    <span className="relative grid size-9 shrink-0 place-items-center overflow-hidden rounded-full bg-brand-400 text-black transition-colors duration-200 group-hover/promo:bg-brand-500 group-hover/promo:text-white">
-                        <ArrowUpRight className="col-start-1 row-start-1 size-3.5 transition-[translate] duration-300 group-hover/promo:-translate-y-9" />
-                        <ArrowUpRight
-                            aria-hidden
-                            className="col-start-1 row-start-1 size-3.5 translate-y-9 transition-[translate] duration-300 group-hover/promo:translate-y-0"
-                        />
+                        <span className="relative grid size-9 shrink-0 place-items-center overflow-hidden rounded-full bg-brand-400 text-black transition-colors duration-200 group-hover/promo:bg-brand-500 group-hover/promo:text-white">
+                            <ArrowUpRight className="col-start-1 row-start-1 size-3.5 transition-[translate] duration-300 group-hover/promo:-translate-y-9" />
+                            <ArrowUpRight
+                                aria-hidden
+                                className="col-start-1 row-start-1 size-3.5 translate-y-9 transition-[translate] duration-300 group-hover/promo:translate-y-0"
+                            />
+                        </span>
                     </span>
-                </span>
                 </Link>
 
                 <div className="py-3 pr-3">
-                    <span className="inline-flex rounded-full border border-ink-900/25 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-900">
+                    {/* Etiqueta del grupo: fade al abrir */}
+                    <span
+                        className={cn(
+                            "inline-flex rounded-full border border-ink-900/25 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-900",
+                            isOpen && ENTER.fade
+                        )}
+                        style={isOpen ? enterAt(100) : undefined}
+                    >
                         {menu.groupLabel}
                     </span>
 
                     <ul className="mt-5 space-y-0.5">
-                        {menu.links.map((l) => (
-                            <li key={l.href}>
+                        {menu.links.map((l, i) => (
+                            // Enlaces: suben en cascada al abrir
+                            <li
+                                key={l.href}
+                                className={cn(isOpen && ENTER.up)}
+                                style={isOpen ? enterAt(150 + i * MENU_STEP) : undefined}
+                            >
                                 <Link
                                     href={l.href}
                                     className="-mx-3 block rounded-xl px-3 py-2 text-[15px] text-ink-900 transition-colors duration-200 hover:bg-brand-400/20"

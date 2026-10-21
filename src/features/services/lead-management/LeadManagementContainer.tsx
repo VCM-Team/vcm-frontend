@@ -14,7 +14,7 @@ const HERO = {
     description:
         "Dedicated lead management specialists who respond to inquiries, qualify prospects, schedule appointments and keep your CRM up to date, so your sales team spends its time closing.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/CSTMER.png",
+    image: "/assets/images/shared/team/IMG_2808.jpeg",
 };
 
 const INTRO = {
@@ -59,7 +59,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Faster Than You Think",
     description:
         "Every lead you pay for is an opportunity with an expiration date. When response times slip and follow-up is inconsistent, marketing spend turns into missed projects. A dedicated team keeps every lead moving while your sales team focuses on closing.",
-    image: "https://workninjas.com/wp-content/uploads/2025/06/lauistv.png",
+    image: "/assets/images/shared/team/IMG_2649.jpeg",
 };
 
 const PROCESS = {
@@ -96,7 +96,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/success-story" },
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const WHY_US = {
@@ -104,9 +104,9 @@ const WHY_US = {
     title: "Specialists who work",
     titleTyped: "inside your CRM",
     description:
-        "Dedicated professionals from our team in Lima, integrated into your tools and sales process, with ongoing support from day one.",
+        "Dedicated professionals from our LATAM team, integrated into your tools and sales process, with ongoing support from day one.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/07/WNroofingexpert.png",
+    image: "/assets/images/shared/team/IMG_2796.jpeg",
 };
 
 export default function LeadManagementContainer() {

@@ -16,19 +16,19 @@ const CONTENT = {
     titleAccent: "A Growth Partner",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
     description:
-        "Most companies don’t need more people first, they need a clearer way of working. We start by understanding what is holding your business back, then design the processes, accountability and systems it needs, and only then add dedicated talent from our offices in Lima to execute. The result is a team that works inside your tools, follows your standards and helps your business grow without losing control.",
+        "Most companies don’t need more people first, they need a clearer way of working. We start by understanding what is holding your business back, then design the processes, accountability and systems it needs, and only then add dedicated talent from LATAM to execute. The result is a team that works inside your tools, follows your standards and helps your business grow without losing control.",
     features: [
         "Strategy First",
         "Systems That Scale",
         "Dedicated Talent",
-        "Nearshore from Lima",
+        "Nearshore from LATAM",
         "Ongoing Support",
     ],
 };
 
 const VIDEO = {
-    src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1789757625/Work_Ninjas_Scalable_Back_Office_Solutions_for_Roofing_Contractors_Beyond_vnduhs.mp4",
-    poster: "/assets/images/video/thumbnail.webp",
+    src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1792613573/Nuevo_2_nuefz7.mp4",
+    poster: "/assets/images/shared/team/team_2.jpeg",
     title: "This is VCM",
 };
 
@@ -37,14 +37,14 @@ const QUOTE: QuoteCardData = {
     quote: "“We don’t start by adding people. We start by understanding your business, fixing what slows it down and then building the team that helps it grow.”",
     authorName: "Victor Alvarado",
     authorRole: "CEO",
-    authorImage: "https://workninjas.com/wp-content/uploads/2025/06/Mask-group-1.jpg",
+    authorImage: "/assets/images/shared/testimonials/victor_thumbnail.webp",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
-const TEAM_IMAGE = "https://workninjas.com/wp-content/uploads/2025/06/Mask-group.jpg";
+const TEAM_IMAGE = "/assets/images/shared/team/IMG_17033.jpeg";
 
 const JOIN_CARD = {
-    title: "Join a team in Lima helping U.S. construction companies grow.",
+    title: "Join a LATAM team helping U.S. construction companies grow.",
     year: "2026",
 };
 

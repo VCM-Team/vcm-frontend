@@ -5,7 +5,7 @@ import { pageMetadata } from "@/src/lib/seo";
 export const metadata: Metadata = pageMetadata({
     title: "Our Team",
     description:
-        "Meet the people behind VCM: a team in Lima, Peru, combining business growth consulting and talent solutions to help U.S. construction companies grow.",
+        "Meet the people behind VCM: a team in LATAM, combining business growth consulting and talent solutions to help U.S. construction companies grow.",
     path: "/about-us/team",
 });
 

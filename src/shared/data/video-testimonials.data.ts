@@ -29,8 +29,7 @@ export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
         variant: "story",
         video: {
             src: "https://workninjas.com/wp-content/uploads/2025/07/Testimonial-–-Boss-Hogg-Roofing_1.mp4",
-            poster:
-                "https://workninjas.com/wp-content/uploads/2025/06/Captura-de-pantalla-2025-06-09-a-las-3.53.14%E2%80%AFp.-m.-2.png",
+            poster: "/assets/images/shared/testimonials/IMG_28311.jpg",
             title: "From Scattered Leads to a Predictable Pipeline",
         },
         badge: "Case Study",
@@ -38,18 +37,18 @@ export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
         statValue: "2x",
         statLabel:
             "more leads followed up every week after rebuilding the sales process and CRM, with a dedicated sales assistant keeping it running.",
-        cta: { label: "Read Full Story", href: "/success-story" },
+        cta: { label: "Read Full Story", href: "/about-us" },
     },
     {
         key: "slide-2",
         variant: "quote",
         video: {
             src: "https://workninjas.com/wp-content/uploads/2025/07/Non-Stop-Roofing.mp4",
-            poster: "https://workninjas.com/wp-content/uploads/2025/07/Erick.jpg",
+            poster: "/assets/images/shared/testimonials/IMG_27647.jpg",
             title: "A Team That Works Like Part of Ours",
         },
         quote:
-            "Before VCM, every call, estimate and follow-up went through me. They helped us organize our processes first and then built a team in Lima that works inside our tools like they’ve been here for years. I finally spend my time growing the business instead of running it.",
+            "Before VCM, every call, estimate and follow-up went through me. They helped us organize our processes first and then built a team in LATAM that works inside our tools like they’ve been here for years. I finally spend my time growing the business instead of running it.",
         authorName: "Michael Turner",
         authorRole: "Owner",
         company: "Northline Roofing & Exteriors",

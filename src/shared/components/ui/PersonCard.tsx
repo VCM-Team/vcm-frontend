@@ -20,14 +20,14 @@ export default function PersonCard({ member, href, className }: Props) {
             )}
         >
             <div className="flex flex-1 items-center justify-center px-2 py-8">
-                {/* Aro: degradado amarillo arriba que se desvanece hacia abajo (1px de grosor) */}
-                <span className="block aspect-square w-full max-w-[13rem] rounded-full bg-gradient-to-b from-brand-400 via-brand-400/30 to-transparent p-px">
+                {/* Aro: 80% del ancho de la tarjeta; degradado amarillo arriba que se desvanece hacia abajo */}
+                <span className="block aspect-square w-[80%] rounded-full bg-gradient-to-b from-brand-400 via-brand-400/30 to-transparent p-px">
                     <span className="relative block size-full overflow-hidden rounded-full bg-[#1C1C1C]">
                         <Image
                             src={member.image}
                             alt=""
                             fill
-                            sizes="(min-width: 1024px) 13rem, 50vw"
+                            sizes="(min-width: 1024px) 26vw, (min-width: 640px) 40vw, 80vw"
                             className="object-cover object-top"
                         />
                     </span>

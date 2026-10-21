@@ -111,16 +111,6 @@ export default function ContactForm() {
                 {...register("email")}
             />
 
-            <Field
-                id="company"
-                label="Company"
-                placeholder="Acme Corporation"
-                required
-                autoComplete="organization"
-                error={errors.company?.message}
-                {...register("company")}
-            />
-
             {/* honeypot */}
             <input
                 {...register("website")}
@@ -153,7 +143,6 @@ export default function ContactForm() {
                     .
                 </label>
             </div>
-            {errors.consent && <p className="-mt-3 text-xs text-danger">{errors.consent.message}</p>}
 
             {/* Aviso general: al enviar se acepta la política (independiente del SMS) */}
             <p className="mt-2 text-xs leading-relaxed text-fg-muted">

@@ -1,22 +1,12 @@
-export type Revenue = "under-1m" | "1m-3m" | "3m-5m" | "5m-plus";
-export type Tenure = "under-1" | "1-3" | "3-5" | "5-plus";
-export type Timeline = "now" | "weeks" | "3-months" | "6-months";
-
 export type BookDemoData = {
     firstName: string;
     lastName: string;
     email: string;
     phone: string;
-    company: string;
+    /** Consentimiento SMS: opcional (TCPA) */
     smsConsent: boolean;
-    revenue: Revenue | null;
-    territories: string[];
-    tenure: Tenure | null;
-    support: string[];
-    usesCrm: boolean | null;
-    platforms: string[];
-    timeline: Timeline | null;
-    source: string | null;
+    /** Contacto + política de privacidad: obligatorio para enviar */
+    privacy: boolean;
 };
 
 export const INITIAL_DATA: BookDemoData = {
@@ -24,16 +14,8 @@ export const INITIAL_DATA: BookDemoData = {
     lastName: "",
     email: "",
     phone: "",
-    company: "",
     smsConsent: false,
-    revenue: null,
-    territories: [],
-    tenure: null,
-    support: [],
-    usesCrm: null,
-    platforms: [],
-    timeline: null,
-    source: null,
+    privacy: false,
 };
 
 export type StepProps = {

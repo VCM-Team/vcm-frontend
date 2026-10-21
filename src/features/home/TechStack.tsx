@@ -13,7 +13,7 @@ type ClientLogo = {
 };
 
 const TECH_STACK = {
-    badge: "Our Tech Stack",
+    badge: "Partnership",
 };
 
 const LOGO_DIR = "/assets/logos/";
@@ -25,6 +25,7 @@ const LOGOS: readonly ClientLogo[] = [
     { key: "advanced-roofing", name: "Advanced Roofing Team Construction", src: `${LOGO_DIR}/advanced-roofing.svg`, width: 155, height: 81 },
     { key: "kondrat", name: "Kondrat & Associates", src: `${LOGO_DIR}/kondrat.svg`, width: 214, height: 54 },
     { key: "mast", name: "Mast Roofing & Construction", src: `${LOGO_DIR}/mast.svg`, width: 171, height: 75 },
+    { key: "premier", name: "Premier construction", src: `${LOGO_DIR}/premier.svg`, width: 214, height: 54 },
     { key: "new-edge", name: "New Edge Improvement Co.", src: `${LOGO_DIR}/new-edge.svg`, width: 183, height: 68 },
     { key: "coast-mountain", name: "Coast Mountain Roof", src: `${LOGO_DIR}/coast-mountain.svg`, width: 143, height: 101 },
     { key: "nitro", name: "Nitro Roofing & Construction", src: `${LOGO_DIR}/nitro.svg`, width: 174, height: 48 },

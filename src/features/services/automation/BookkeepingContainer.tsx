@@ -15,7 +15,7 @@ const HERO = {
     description:
         "We help construction and roofing companies put AI and automation to work: connected systems, automated workflows and dashboards that give you answers without chasing spreadsheets.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/07/juanbook-2048x960.png",
+    image: "/assets/images/shared/team/IMG_271313.jpg"
 };
 
 const INTRO = {
@@ -60,7 +60,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Is Time Not Spent Growing",
     description:
         "Every hour your team spends copying data, building reports or chasing updates is an hour away from customers and projects. Connected systems and automated workflows give that time back and reduce the errors that come with manual work.",
-    image: "https://workninjas.com/wp-content/uploads/2025/06/davidbook.png",
+    image: "/assets/images/shared/team/IMG_123.jpg"
 };
 
 const PROCESS = {
@@ -97,7 +97,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/success-story" },
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const WHY_US = {
@@ -107,7 +107,7 @@ const WHY_US = {
     description:
         "We fix the process first and automate it second, so technology speeds up work that already makes sense.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/prefooterbook.png",
+    image: "/assets/images/shared/team/IMG_3065.jpeg"
 };
 
 export default function BookkeepingContainer() {

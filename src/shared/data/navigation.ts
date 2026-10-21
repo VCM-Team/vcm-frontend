@@ -17,7 +17,6 @@ export type NavItem = {
 };
 
 export const NAV_ITEMS: NavItem[] = [
-    { key: "home", label: "Home", href: "/" },
     {
         key: "services",
         label: "Services",
@@ -37,7 +36,7 @@ export const NAV_ITEMS: NavItem[] = [
                 { label: "Financial Performance", href: "/services/finance" },
                 { label: "Lead Management Specialists", href: "/services/lead-management-specialists" },
                 { label: "Marketing", href: "/services/marketing" },
-                { label: "IA Automation", href: "/services/automation" },
+                { label: "AI & Business Automation", href: "/services/automation" },
                 { label: "Leadership", href: "/services/leadership" },
             ],
         },
@@ -51,12 +50,10 @@ export const NAV_ITEMS: NavItem[] = [
             links: [
                 { label: "Who we are", href: "/about-us" },
                 { label: "Team", href: "/about-us/team" },
-                { label: "Careers", href: "/about-us/jobs" },
-                { label: "Success story", href: "/success-story" },
+                { label: "Join us", href: "/about-us/join-us" },
                 { label: "Partnerships", href: "/partnerships" },
             ],
         },
     },
     { key: "blog", label: "Blog", href: "/blog" },
-    { key: "contact", label: "Contact", href: "/contact-us" },
 ];

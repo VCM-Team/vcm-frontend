@@ -2,7 +2,7 @@ import PageHero from "@/src/shared/components/ui/PageHero";
 import AccordionSection from "@/src/shared/components/ui/AccordionSection";
 import FeatureSplit from "@/src/shared/components/ui/FeatureSplit";
 import ProcessSection from "@/src/shared/components/ui/ProcessSection";
-import IconListSplit, { type IconListItem } from "@/src/shared/components/ui/IconListSplit";
+import IconListSplit, { type ProjectScopeItem } from "@/src/shared/components/ui/IconListSplit";
 import TestimonialsSection from "@/src/shared/components/ui/TestimonialsSection";
 import StickyCardSection from "@/src/shared/components/ui/StickyCardSection";
 import type { AccordionItem } from "@/src/shared/components/ui/Accordion";
@@ -16,7 +16,7 @@ const HERO = {
     description:
         "Dedicated estimators who handle takeoffs, plan reading and cost estimates, so your team can keep bidding without slowing down the rest of the operation.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Measutements-2048x1366.jpg",
+    image: "/assets/images/shared/team/IMG_2824.jpeg",
 };
 
 const INTRO = {
@@ -61,7 +61,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Shapes Your Margin",
     description:
         "An estimate that misses quantities or costs puts the margin of the whole project at risk. Dedicated estimating support gives your team the capacity to review every bid with the attention it needs.",
-    image: "https://workninjas.com/wp-content/uploads/2025/06/DSC01347-Editada-2.png",
+    image: "/assets/images/shared/team/sales_rep_2.jpeg",
 };
 
 const PROCESS = {
@@ -94,24 +94,25 @@ const PROCESS_STEPS: readonly NumberedCardItem[] = [
 ];
 
 const SCALE = {
-    title: "Residential and Commercial Projects",
+    title: "Residential and",
+    titleAccent: "Commercial Projects",
     description:
         "Our estimators support both residential and commercial work, adapting to the scope and requirements of each type of project.",
-    image: "https://workninjas.com/wp-content/uploads/2025/07/measurements-scaled-e1752185952231.png",
+    image: "/assets/images/shared/insights/takeoff_page_2.png",
 };
 
-const SCALE_ITEMS: readonly IconListItem[] = [
+const SCALE_ITEMS: readonly ProjectScopeItem[] = [
     {
         key: "residential",
         title: "Residential Roofing",
         description: "Takeoffs and estimates for residential projects, from plans to a ready-to-send number.",
-        Icon: HouseIcon,
+        tags: ["Single-family homes", "Re-roofs", "Plan & aerial takeoffs"],
     },
     {
         key: "commercial",
         title: "Commercial Roofing",
         description: "Support for commercial projects, where larger scopes need careful quantities and cost control.",
-        Icon: BuildingIcon,
+        tags: ["Low-slope roofs", "Multi-building sites", "Bid packages"],
     },
 ];
 
@@ -120,7 +121,7 @@ const TESTIMONIALS_HEADING = {
     title: "Trusted by Construction",
     titleAccent: "Companies",
     titleRest: "Across North America",
-    cta: { label: "See Case Studies", href: "/success-story" },
+    cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const WHY_US = {
@@ -130,7 +131,7 @@ const WHY_US = {
     description:
         "Dedicated professionals evaluated for estimating skills and English, integrated into your process with ongoing support.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "https://workninjas.com/wp-content/uploads/2025/06/Dani-scaled.jpg",
+    image: "/assets/images/shared/stickyCard/IMG_17202.png",
 };
 
 export default function MeasurementsContainer() {

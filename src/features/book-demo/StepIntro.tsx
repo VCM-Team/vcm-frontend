@@ -7,13 +7,13 @@ import { StepButton } from "./book-demo.ui";
 const INTRO = {
     logo: "/assets/brand/vcm_text_logo.webp",
     back: { label: "Back to home", href: "/" },
-    badge: "Scale Readiness Diagnostic",
+    badge: "Free Strategy Session",
     title: "Ready to scale your",
-    titleRest: "roofing company?",
+    titleRest: "construction business?",
     description:
-        "Take our 2-minute growth assessment to see if you qualify for our premium scaling blueprint and a complimentary strategy call.",
-    cta: "Start Assessment",
-    note: "Takes about 2 minutes",
+        "Leave your contact details and our team will reach out to schedule a free strategy call about what is holding your business back.",
+    cta: "Book My Free Call",
+    note: "Takes less than a minute",
 };
 
 export default function StepIntro({ next }: { next: () => void }) {

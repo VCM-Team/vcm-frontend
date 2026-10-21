@@ -22,8 +22,8 @@ const GROUPS = {
 const LINE_DRAW =
     "origin-left scale-x-0 transition-[scale] duration-700 ease-out group-data-[inview=true]/reveal:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none";
 
-// Los dos grids usan 4 columnas en desktop; el retraso va por columna
-const GRID_COLUMNS = 4;
+// Los dos grids usan 3 columnas en desktop; el retraso va por columna
+const GRID_COLUMNS = 3;
 const VCM_TEAM_VARIANTS = [REVEAL.blur, REVEAL.up] as const;
 const MARKETING_VARIANTS = [REVEAL.up, REVEAL.zoomIn] as const;
 
@@ -70,19 +70,21 @@ export default function OurPeople() {
                         <div className={cn("w-fit", REVEAL.zoomIn)}>
                             <Badge>{GROUPS.leadership}</Badge>
                         </div>
+                    </RevealSection>
 
-                        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                            {LEADERSHIP.map((member, i) => (
+                    <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center [&>*]:lg:w-[calc((100%-2.5rem)/3)]">
+                        {LEADERSHIP.map((member, i) => (
+                            /* Un RevealSection por tarjeta: cada una anima al llegar a ella, también en móvil */
+                            <RevealSection key={member.slug} className="h-full">
                                 <div
-                                    key={member.slug}
                                     className={cn("h-full", VCM_TEAM_VARIANTS[i % VCM_TEAM_VARIANTS.length])}
                                     style={{ transitionDelay: `${150 + (i % GRID_COLUMNS) * 100}ms` }}
                                 >
                                     <PersonCard member={member} href={`/about-us/team/${member.slug}`} />
                                 </div>
-                            ))}
-                        </div>
-                    </RevealSection>
+                            </RevealSection>
+                        ))}
+                    </div>
 
                     {/* ── Marketing Area: grid ──
                     <RevealSection>
