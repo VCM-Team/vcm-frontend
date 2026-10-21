@@ -60,7 +60,7 @@ const at = (ms: number): CSSProperties => ({ transitionDelay: `${ms}ms` });
 
 export default function TalentPerformance({ badge, title, titleRest, titleAccent, className }: Props) {
     return (
-        <RevealSection className={cn("overflow-x-clip py-16 lg:py-24", className)}>
+        <RevealSection className={cn("overflow-x-clip py-10", className)}>
             <Container>
                 {/* ── Encabezado: igual que la sección de Talent Solutions ── */}
                 <div className={REVEAL.fade}>
