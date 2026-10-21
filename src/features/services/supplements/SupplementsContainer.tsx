@@ -96,7 +96,7 @@ const TESTIMONIALS_HEADING = {
     badge: "Testimonials",
     title: "Trusted by Construction",
     titleAccent: "Companies",
-    titleRest: "Across North America",
+    titleRest: "Across North America and Canada",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 

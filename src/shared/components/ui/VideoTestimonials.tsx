@@ -251,7 +251,7 @@ function QuoteCard({ item }: { item: Extract<VideoTestimonial, { variant: "quote
 
                 <span className="min-w-0">
                     <span className="block text-[15px] font-medium text-fg">
-                        {item.authorName} — {item.authorRole}
+                        {item.authorName}
                     </span>
                     <span className="block text-[11px] uppercase tracking-[0.08em] text-fg-muted">
                         {item.company}

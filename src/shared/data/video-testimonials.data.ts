@@ -48,9 +48,9 @@ export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
             title: "A Team That Works Like Part of Ours",
         },
         quote:
-            "Before VCM, every call, estimate and follow-up went through me. They helped us organize our processes first and then built a team in LATAM that works inside our tools like they’ve been here for years. I finally spend my time growing the business instead of running it.",
-        authorName: "Michael Turner",
-        authorRole: "Owner",
-        company: "Northline Roofing & Exteriors",
+            "I’m genuinely impressed by what your sales team has accomplished in less than six months. The progress in lead management, customer outreach, and sales development is remarkable, work that many other teams might take three to five years to achieve.",
+        authorName: "Sales Team",
+        authorRole: "Leader",
+        company: "Sales Manager",
     },
 ];
