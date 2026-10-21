@@ -21,8 +21,8 @@ export const TESTIMONIALS: readonly Testimonial[] = [
     {
         key: "testimonio-2",
         quote: "Looks like you’re doing a great job with the marketing... We haven’t had this many quote requests from the website before. Good job.",
-        authorName: "Marketing Team",
-        authorRole: "Leader",
-        company: "Marketing Manager",
+        authorName: "Operations Team",
+        authorRole: "Office Manager",
+        company: "Office Manager",
     },
 ];

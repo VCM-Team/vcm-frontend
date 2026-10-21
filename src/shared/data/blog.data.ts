@@ -25,7 +25,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>This article isn’t about hype. It’s a clear explanation of what IRE is, when it happens, how to attend, and why so many roofing companies treat it as a must-attend event — from the perspective of VCM, a team that helps construction and roofing companies grow every day.</p>
 
       <h2>What Exactly Is the International Roofing Expo?</h2>
-      <p>IRE is the <strong>largest roofing and exterior construction trade show in North America</strong>. Once a year, owners, operations managers, sales teams, project managers, manufacturers, suppliers, and service providers come together in one place.</p>
+      <p>IRE is the <strong>largest roofing and exterior construction trade show in North America and Canada</strong>. Once a year, owners, operations managers, sales teams, project managers, manufacturers, suppliers, and service providers come together in one place.</p>
       <p>Unlike generic construction expos, IRE is <strong>100% focused on roofing and exterior systems</strong>. It covers:</p>
       <ul>
         <li>Residential and commercial roofing</li>
@@ -213,7 +213,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Efficiency is key in handling insurance jobs. We’ll help you streamline your processes, from initial inspections to final repairs, making the entire workflow more manageable and profitable. <strong>Did you know</strong> that efficient processes can reduce job completion time by up to 25%?</p>
 
       <h2>About Us</h2>
-      <p>Work Ninjas is a team of roofing experts delivering dynamic front and back-end solutions. Our highly-trained Ninjas act as an extension of your team, helping scale your roofing business to new heights. Our mission is to support roofing contractors in North America by providing the tools, expertise, and assistance they need to expand and grow their businesses.</p>
+      <p>Work Ninjas is a team of roofing experts delivering dynamic front and back-end solutions. Our highly-trained Ninjas act as an extension of your team, helping scale your roofing business to new heights. Our mission is to support roofing contractors in North America and Canada by providing the tools, expertise, and assistance they need to expand and grow their businesses.</p>
       <p>Founded by seasoned roofing professionals, Work Ninjas began from managing a successful roofing company and creating a back office in Central America. This success led us to offer our services to other contractors at a fraction of the cost.</p>
       <p><strong>Ready to simplify your insurance jobs and maximize your profits?</strong></p>
       <p><a href="/contact-us">Contact us</a> to get started.</p>
