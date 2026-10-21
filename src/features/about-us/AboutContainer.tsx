@@ -46,7 +46,7 @@ export default function AboutContainer() {
             </RevealSection>
 
             <OurProcess />
-            <OurStory />
+            {/*<OurStory />*/}
             <WhyUs />
         </div>
     );
