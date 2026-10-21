@@ -19,7 +19,6 @@ const CTA = {
 
 const CONTACT = {
     label: "CONTACT US",
-    phone: { label: "Our Phone", value: "(866) 969-5155", href: "tel:+18669695155" },
     email: { label: "Our Email", value: "consulting@discovervcm.com", href: "mailto:consulting@discovervcm.com" },
     note: "Remote, Time Zone Aligned with U.S.",
 };
@@ -120,20 +119,6 @@ export default function Footer() {
                         <dl className="mt-8 grid gap-8 sm:grid-cols-2">
                             <div>
                                 <dt className="text-[15px] text-white/70">
-                                    {CONTACT.phone.label}
-                                </dt>
-                                <dd className="mt-1">
-                                    <Link
-                                        href={CONTACT.phone.href}
-                                        className="text-[15px] text-white underline underline-offset-4 transition-colors hover:text-brand-400"
-                                    >
-                                        {CONTACT.phone.value}
-                                    </Link>
-                                </dd>
-                            </div>
-
-                            <div>
-                                <dt className="text-[15px] text-white/70">
                                     {CONTACT.email.label}
                                 </dt>
                                 <dd className="mt-1">
@@ -145,11 +130,15 @@ export default function Footer() {
                                     </Link>
                                 </dd>
                             </div>
-                        </dl>
 
-                        <p className="mx-auto mt-8 max-w-[24ch] text-[15px] text-white/80 lg:mx-0">
-                            {CONTACT.note}
-                        </p>
+                            <div>
+                                <dd className="mt-1">
+                                    <p className="mx-auto max-w-[24ch] text-[15px] text-white/80 lg:mx-0">
+                                        {CONTACT.note}
+                                    </p>
+                                </dd>
+                            </div>
+                        </dl>
                     </div>
                 </div>
 
