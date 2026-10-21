@@ -25,7 +25,7 @@ export const LEADERSHIP: readonly TeamMember[] = [
         slug: "roberto-cordova",
         name: "Roberto Cordova",
         role: "Chief Operating Officer (COO)",
-        image: `${TEAM_PHOTOS}/roberto.png`,
+        image: `${TEAM_PHOTOS}/roberto_.png`,
         bio: "Roberto oversees operational strategy and execution, optimising systems, workflows, and team performance to build scalable operations that consistently deliver value to VCM and its clients.",
     },
     {
@@ -53,7 +53,7 @@ export const LEADERSHIP: readonly TeamMember[] = [
         slug: "alejandra-martel",
         name: "Alejandra Martel",
         role: "Executive Assistant",
-        image: `${TEAM_PHOTOS}/alejandra.png`,
+        image: `${TEAM_PHOTOS}/alejandra_.png`,
         bio: "Alejandra supports the CEO and leadership team by managing calendars, coordinating communication, and organising priorities to keep decisions moving forward and operations aligned.",
     },
     {
