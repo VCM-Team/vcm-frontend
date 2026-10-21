@@ -27,7 +27,7 @@ const CONTENT = {
 };
 
 const VIDEO = {
-    src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1792531551/Premier_Group-Vcm_omyrjn.mp4",
+    src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1792613573/Nuevo_2_nuefz7.mp4",
     poster: "/assets/images/shared/team/team_2.jpeg",
     title: "This is VCM",
 };

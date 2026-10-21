@@ -36,7 +36,7 @@ export const NAV_ITEMS: NavItem[] = [
                 { label: "Financial Performance", href: "/services/finance" },
                 { label: "Lead Management Specialists", href: "/services/lead-management-specialists" },
                 { label: "Marketing", href: "/services/marketing" },
-                { label: "IA Automation", href: "/services/automation" },
+                { label: "AI & Business Automation", href: "/services/automation" },
                 { label: "Leadership", href: "/services/leadership" },
             ],
         },
