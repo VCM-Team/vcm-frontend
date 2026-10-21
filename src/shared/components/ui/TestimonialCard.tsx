@@ -75,7 +75,7 @@ export default function TestimonialCard({
                             isDark ? "text-white" : "text-fg"
                         )}
                     >
-                        {testimonial.authorName} — {testimonial.authorRole}
+                        {testimonial.authorName} {/*— {testimonial.authorRole}*/}
                     </span>
                     <span
                         className={cn(
