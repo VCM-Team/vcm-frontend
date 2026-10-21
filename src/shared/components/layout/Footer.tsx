@@ -26,10 +26,9 @@ const CONTACT = {
 const FOOTER_NAV = [
     { label: "Who we are", href: "/about-us" },
     { label: "Join Us", href: "/about-us/join-us" },
-    { label: "Roofing Services", href: "/services" },
+    { label: "Our Services", href: "/services" },
     { label: "Blog", href: "/blog" },
-    { label: "Contact Us", href: "/contact-us" },
-    { label: "FAQ", href: "/faq" },
+    { label: "Contact Us", href: "/contact-us" }
 ];
 
 const LEGAL = [
