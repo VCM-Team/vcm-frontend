@@ -30,14 +30,14 @@ const INSIGHTS_ITEMS: readonly InsightItem[] = [
         title:
             "International Roofing Expo (IRE): What It Is, When It Happens, and Why Roofers Take It Seriously",
         href: "/blog/international-roofing-expo",
-        image: "/assets/images/shared/insights/IMG_2816.jpeg",
+        image: "/assets/images/shared/insights/IMG_2816.webp",
     },
     {
         key: "subcontractors",
         category: "Business Development",
         title: "Communication with Subcontractors and Manufacturers",
         href: "/blog/communication-subcontractors",
-        image: "/assets/images/shared/insights/building_vcm_2.jpg",
+        image: "/assets/images/shared/insights/building_vcm_2.webp",
     },
 ];
 

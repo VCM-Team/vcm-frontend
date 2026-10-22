@@ -60,7 +60,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Is a Risk",
     description:
         "When the numbers arrive late or incomplete, problems show up only when they are expensive to fix. Clear, timely financial information lets you protect margins and plan your growth with confidence.",
-    image: "/assets/images/shared/team/IMG_2705.jpeg",
+    image: "/assets/images/shared/team/IMG_2705.webp",
 };
 
 const PROCESS = {
@@ -107,7 +107,7 @@ const WHY_US = {
     description:
         "We bring structure to your financial information first, then add the finance talent to keep it running every day.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_3084.jpeg",
+    image: "/assets/images/shared/team/IMG_3084.webp",
 };
 
 export default function SupplementsContainer() {

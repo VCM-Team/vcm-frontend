@@ -59,7 +59,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Its Leadership",
     description:
         "When every decision goes through one person, growth slows to the speed of that person’s calendar. Clear roles, defined decision rights and consistent accountability let your team move faster without losing control.",
-    image: "/assets/images/shared/team/ea.jpeg"
+    image: "/assets/images/shared/team/ea.webp"
 };
 
 const FOCUS = {
@@ -143,7 +143,7 @@ const WHY_US = {
     description:
         "We define the structure and ownership first, then add the talent to fill each role, so the business can grow beyond its founder.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_14291.jpg"
+    image: "/assets/images/shared/team/IMG_14291.webp"
 };
 
 export default function CrmMigrationContainer() {

@@ -10,7 +10,7 @@ const DISCOVERY_CALL = {
     badge: "Contact Us",
     title: "Book your Discovery Call",
     cta: { label: "Book a Demo Now!", href: "/book-demo" },
-    image: "/assets/images/shared/contact/IMG_27391.jpeg",
+    image: "/assets/images/shared/contact/IMG_27391.webp",
     note: "Fill out our form, and we’ll contact you within one business day.",
 };
 

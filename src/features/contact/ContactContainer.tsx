@@ -24,7 +24,7 @@ const INFO = [
 ];
 
 const FORM_IMAGE = "/assets/images/shared/team/IMG_2816.jpeg";
-const BOTTOM_IMAGE = "/assets/images/shared/team/IMG_3164.jpeg";
+const BOTTOM_IMAGE = "/assets/images/shared/team/IMG_3164.webp";
 
 // Hero visible al cargar: basta con @starting-style (variante starting:)
 const ENTER =

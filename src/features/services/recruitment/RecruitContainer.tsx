@@ -16,7 +16,7 @@ const HERO = {
     description:
         "We recruit, evaluate, onboard and integrate professionals from our LATAM team as part of your team, inside your tools and your processes.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_2601.jpeg",
+    image: "/assets/images/shared/team/IMG_2601.webp",
 };
 
 const INTRO = {
@@ -143,7 +143,7 @@ const WHY_US = {
     description:
         "Every role starts with a clear strategy and ends with a professional integrated into your operation, with ongoing support.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_2694.jpg",
+    image: "/assets/images/shared/team/IMG_2694.webp",
 };
 
 export default function RecruitContainer() {

@@ -15,7 +15,7 @@ const HERO = {
     titleRest: "for U.S. Construction",
     description:
         "Our mission is to help U.S. construction companies recruit, hire, train and scale through reliable nearshore talent, with a dedicated team based in LATAM.",
-    image: "/assets/images/shared/team/vcm_tower_.jpg",
+    image: "/assets/images/shared/team/vcm_tower_.webp",
 };
 
 const ABOUT_STATS: readonly StatItem[] = [

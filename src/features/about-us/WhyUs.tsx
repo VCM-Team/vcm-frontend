@@ -28,7 +28,7 @@ const CONTENT = {
 
 const VIDEO = {
     src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1792613573/Nuevo_2_nuefz7.mp4",
-    poster: "/assets/images/shared/team/team_2.jpeg",
+    poster: "/assets/images/shared/team/team_2.webp",
     title: "This is VCM",
 };
 
@@ -41,7 +41,7 @@ const QUOTE: QuoteCardData = {
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
-const TEAM_IMAGE = "/assets/images/shared/team/IMG_17033.jpeg";
+const TEAM_IMAGE = "/assets/images/shared/team/IMG_17033.webp";
 
 const JOIN_CARD = {
     title: "Join a LATAM team helping U.S. construction companies grow.",
