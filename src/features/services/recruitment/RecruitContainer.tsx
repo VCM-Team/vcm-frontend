@@ -16,7 +16,7 @@ const HERO = {
     description:
         "We recruit, evaluate, onboard and integrate professionals from our LATAM team as part of your team, inside your tools and your processes.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_2601.jpeg",
+    image: "/assets/images/shared/team/IMG_2601.webp",
 };
 
 const INTRO = {

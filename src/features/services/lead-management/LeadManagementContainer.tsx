@@ -14,7 +14,7 @@ const HERO = {
     description:
         "Dedicated lead management specialists who respond to inquiries, qualify prospects, schedule appointments and keep your CRM up to date, so your sales team spends its time closing.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_2808.jpeg",
+    image: "/assets/images/shared/team/IMG_2808.webp",
 };
 
 const INTRO = {
@@ -59,7 +59,7 @@ const WHY_IT_MATTERS = {
     titleRest: "Faster Than You Think",
     description:
         "Every lead you pay for is an opportunity with an expiration date. When response times slip and follow-up is inconsistent, marketing spend turns into missed projects. A dedicated team keeps every lead moving while your sales team focuses on closing.",
-    image: "/assets/images/shared/team/IMG_2649.jpeg",
+    image: "/assets/images/shared/team/IMG_2649.webp",
 };
 
 const PROCESS = {
@@ -106,7 +106,7 @@ const WHY_US = {
     description:
         "Dedicated professionals from our LATAM team, integrated into your tools and sales process, with ongoing support from day one.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_2796.jpeg",
+    image: "/assets/images/shared/team/IMG_2796.webp",
 };
 
 export default function LeadManagementContainer() {
