@@ -16,7 +16,7 @@ export const BLOG_POSTS: BlogPost[] = [
         title:
             "International Roofing Expo (IRE): What It Is, When It Happens, and Why Roofers Take It Seriously",
         date: "2024-08-08",
-        image: "/assets/images/shared/insights/IMG_2818.jpeg",
+        image: "/assets/images/shared/insights/IMG_2818.webp",
         excerpt:
             "A clear, honest look at what the International Roofing Expo is, when it happens, how to attend, and why so many roofing companies treat it as a must-attend event.",
         tags: ["Roofing Contractors", "Subcontractors"],

@@ -116,7 +116,7 @@ export default function StickyCardSection({
             <div
                 aria-hidden
                 className={cn(
-                    "pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-black/60 via-black/35 to-black/10 backdrop-blur-[1.5px]",
+                    "pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-black/60 via-black/35 to-black/10 backdrop-blur-[1.8px]",
                     REVEAL.fade,
                     "duration-1000"
                 )}

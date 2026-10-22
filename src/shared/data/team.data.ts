@@ -18,63 +18,63 @@ export const LEADERSHIP: readonly TeamMember[] = [
         slug: "victor-alvarado",
         name: "Victor Alvarado",
         role: "CEO",
-        image: `${TEAM_PHOTOS}/victor.png`,
+        image: `${TEAM_PHOTOS}/victor.webp`,
         bio: "Victor leads VCM’s vision and strategy, helping U.S. construction and roofing companies scale through stronger systems, streamlined operations, and dedicated nearshore talent.",
     },
     {
         slug: "roberto-cordova",
         name: "Roberto Cordova",
         role: "Chief Operating Officer (COO)",
-        image: `${TEAM_PHOTOS}/roberto_.png`,
+        image: `${TEAM_PHOTOS}/roberto_.webp`,
         bio: "Roberto oversees operational strategy and execution, optimising systems, workflows, and team performance to build scalable operations that consistently deliver value to VCM and its clients.",
     },
     {
         slug: "yuriko-shiomura",
         name: "Yuriko Shiomura",
         role: "General Manager",
-        image: `${TEAM_PHOTOS}/yuriko.png`,
+        image: `${TEAM_PHOTOS}/yuriko_.webp`,
         bio: "Yuriko leads VCM’s day-to-day business operations, aligning people, processes, and priorities to drive efficiency, strengthen performance, and support the company’s continued growth.",
     },
     {
         slug: "angel-passini",
         name: "Angel Passini",
         role: "Sales, Marketing & Key Account Manager",
-        image: `${TEAM_PHOTOS}/angel.png`,
+        image: `${TEAM_PHOTOS}/angel.webp`,
         bio: "Angel drives business development, marketing strategy, and client relationships, connecting companies with tailored nearshore talent solutions that strengthen operations, accelerate growth, and build lasting partnerships.",
     },
     {
         slug: "estefania-otero",
         name: "Estefanía Otero",
         role: "Office Administrator", // PLACEHOLDER: poner su cargo
-        image: `${TEAM_PHOTOS}/estefania.png`,
+        image: `${TEAM_PHOTOS}/estefania.webp`,
         bio: "Estefania oversees office administration and workplace coordination, maintaining organised systems and efficient day-to-day processes that keep VCM’s team productive and operations running smoothly.", // PLACEHOLDER: ajustar a su cargo
     },
     {
         slug: "alejandra-martel",
         name: "Alejandra Martel",
         role: "Executive Assistant",
-        image: `${TEAM_PHOTOS}/alejandra_.png`,
+        image: `${TEAM_PHOTOS}/alejandra_.webp`,
         bio: "Alejandra supports the CEO and leadership team by managing calendars, coordinating communication, and organising priorities to keep decisions moving forward and operations aligned.",
     },
     {
         slug: "samantha-rios",
         name: "Samantha Rios",
         role: "Hiring & Recruiting Analyst",
-        image: `${TEAM_PHOTOS}/samantha.png`,
+        image: `${TEAM_PHOTOS}/samantha.webp`,
         bio: "Sammantha drives talent sourcing and recruitment coordination, identifying qualified professionals and matching candidates with client requirements to build reliable, high-performing teams.",
     },
     {
         slug: "alessandro-passini",
         name: "Alessandro Passini",
         role: "Logistics & Administrative Assistant",
-        image: `${TEAM_PHOTOS}/alessandro.png`,
+        image: `${TEAM_PHOTOS}/alessandro.webp`,
         bio: "Alessandro coordinates logistics, resources, and administrative processes, ensuring VCM’s workplace and internal operations remain organised, efficient, and equipped to support business needs.",
     },
     {
         slug: "luzca-izcue",
         name: "Luzca Izcue",
         role: "Selection Assistant",
-        image: `${TEAM_PHOTOS}/luska.png`,
+        image: `${TEAM_PHOTOS}/luska.webp`,
         bio: "Luzca supports candidate evaluation and selection, coordinating screening activities and helping identify professionals whose skills and experience align with client expectations and VCM’s quality standards.", // PLACEHOLDER: ajustar a su cargo
     }
 ];

@@ -11,7 +11,7 @@ const HERO = {
     description:
         "Join our LATAM team and work side by side with U.S. construction and roofing companies, building real skills in a team that grows with you.",
     cta: { label: "See Open Positions", href: "#open-positions" },
-    image: "/assets/images/shared/team/IMG_3055.jpeg",
+    image: "/assets/images/shared/team/IMG_3055.webp",
 };
 
 export default function JobsContainer() {

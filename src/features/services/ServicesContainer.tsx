@@ -11,7 +11,7 @@ const HERO = {
     description:
         "We diagnose what is holding your business back, prioritize what matters most, implement the systems your team needs and scale with dedicated talent, so growth becomes predictable instead of chaotic.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "/assets/images/shared/team/team.jpeg",
+    image: "/assets/images/shared/team/team.webp",
 };
 
 const SERVICES_HEADING = {
@@ -25,37 +25,37 @@ const SERVICES: readonly ServiceCardItem[] = [
         key: "roofing-specialists",
         title: "Roofing Specialists",
         href: "/services/roofing-specialists",
-        image: "/assets/images/shared/services/sales.jpg",
+        image: "/assets/images/shared/services/sales.webp",
     },
     {
         key: "lead-management",
         title: "Lead Management Specialists",
         href: "/services/lead-management-specialists",
-        image: "/assets/images/shared/services/operational.jpeg",
+        image: "/assets/images/shared/services/operational.webp",
     },
     {
         key: "leadership",
         title: "Leadership & Organizational Development",
         href: "/services/leadership",
-        image: "/assets/images/shared/services/leadership.jpeg",
+        image: "/assets/images/shared/services/leadership.webp",
     },
     {
         key: "financial-performance",
         title: "Financial Performance",
         href: "/services/finance",
-        image: "/assets/images/shared/services/financial.png",
+        image: "/assets/images/shared/services/financial.webp",
     },
     {
         key: "marketing",
         title: "Marketing & Customer Acquisition",
         href: "/services/marketing",
-        image: "/assets/images/shared/services/IMG_277825.jpg",
+        image: "/assets/images/shared/services/IMG_277825.webp",
     },
     {
         key: "ai-automation",
         title: "AI & Business Automation",
         href: "/services/automation",
-        image: "/assets/images/shared/services/automation.jpg",
+        image: "/assets/images/shared/services/automation.webp",
     },
 ];
 
@@ -66,7 +66,7 @@ const WHY_US = {
     description:
         "Most staffing firms just fill seats. We find the bottleneck, design the process and then add the talent to execute it.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "/assets/images/shared/stickyCard/woman_in_board.png",
+    image: "/assets/images/shared/stickyCard/woman_in_board.webp",
 };
 
 const INSIGHTS_HEADING = {
@@ -83,14 +83,14 @@ const INSIGHTS: readonly InsightItem[] = [
         label: "Business Development",
         title: "International Roofing Expo (IRE): What It Is, When It Happens, and Why Roofers Take It Seriously",
         href: "/blog/international-roofing-expo",
-        image: "/assets/images/shared/insights/IMG_2816.jpeg",
+        image: "/assets/images/shared/insights/IMG_2816.webp",
     },
     {
         key: "communication-subcontractors",
         label: "Business Development",
         title: "Communication with Subcontractors and Manufacturers",
         href: "/blog/communication-subcontractors",
-        image: "/assets/images/shared/insights/building_vcm_2.jpg",
+        image: "/assets/images/shared/insights/building_vcm_2.webp",
     },
 ];
 

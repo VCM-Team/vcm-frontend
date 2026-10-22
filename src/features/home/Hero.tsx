@@ -11,7 +11,7 @@ const HERO = {
     cta: { label: "Free Consultation", href: "/contact-us" },
     pillars: ["Clarity", "Systems", "Results"],
     image: {
-        src: "/assets/images/hero/two_colleagues_golden_.webp",
+        src: "/assets/images/hero/two_colleagues_golden.jpg",
         alt: "",
     },
 } as const;

@@ -15,7 +15,7 @@ const HERO = {
     description:
         "We help construction and roofing companies put AI and automation to work: connected systems, automated workflows and dashboards that give you answers without chasing spreadsheets.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_271313.jpg"
+    image: "/assets/images/shared/team/IMG_271313.webp"
 };
 
 const INTRO = {
@@ -107,7 +107,7 @@ const WHY_US = {
     description:
         "We fix the process first and automate it second, so technology speeds up work that already makes sense.",
     cta: { label: "Book a Free Strategy Session", href: "/book-demo" },
-    image: "/assets/images/shared/team/IMG_3065.jpeg"
+    image: "/assets/images/shared/stickyCard/IMG_3065.webp"
 };
 
 export default function BookkeepingContainer() {

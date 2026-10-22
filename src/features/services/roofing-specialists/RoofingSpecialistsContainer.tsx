@@ -16,7 +16,7 @@ const HERO = {
     description:
         "Dedicated nearshore professionals who know how a roofing business works, from sales and estimating to customer service and admin, integrated into your tools and your processes.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/estimators.jpg",
+    image: "/assets/images/shared/team/estimators.webp",
 };
 
 const INTRO = {
@@ -152,7 +152,7 @@ const WHY_US = {
     description:
         "Dedicated professionals from our LATAM team, trained for the construction industry and integrated into your daily operation.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/office_meeting_2.jpg",
+    image: "/assets/images/shared/team/office_meeting_2.webp",
 };
 
 export default function RoofingSpecialistsContainer() {

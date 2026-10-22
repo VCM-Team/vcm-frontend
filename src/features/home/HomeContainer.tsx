@@ -75,7 +75,7 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
         badge: "About Us",
         title: "Growth consulting and nearshore talent for U.S. construction companies.",
         href: "/about-us",
-        image: "/assets/images/shared/v_.webp",
+        image: "/assets/images/shared/v.webp",
     },
     {
         key: "careers",
@@ -90,7 +90,7 @@ const PROMO_CARDS: readonly PromoCardItem[] = [
         badge: "Partnerships",
         title: "Meet the construction and roofing companies growing with VCM.",
         href: "/partnerships",
-        image: "/assets/images/shared/m.webp",
+        image: "/assets/images/shared/m_.webp",
     },
 ];
 
@@ -106,43 +106,43 @@ const SERVICES: readonly ServiceCardItem[] = [
         key: "roofing-specialists",
         title: "Roofing Specialists",
         href: "/services/roofing-specialists",
-        image: "/assets/images/shared/services/sales.jpg",
+        image: "/assets/images/shared/services/sales.webp",
     },
     {
         key: "lead-management",
         title: "Lead Management Specialists",
         href: "/services/lead-management-specialists",
-        image: "/assets/images/shared/services/operational.jpeg",
+        image: "/assets/images/shared/services/operational.webp",
     },
     {
         key: "leadership",
         title: "Leadership & Organizational Development",
         href: "/services/leadership",
-        image: "/assets/images/shared/services/leadership.jpeg",
+        image: "/assets/images/shared/services/leadership.webp",
     },
     {
         key: "financial-performance",
         title: "Financial Performance",
         href: "/services/finance",
-        image: "/assets/images/shared/services/financial.png",
+        image: "/assets/images/shared/services/financial.webp",
     },
     {
         key: "marketing",
         title: "Marketing & Customer Acquisition",
         href: "/services/marketing",
-        image: "/assets/images/shared/services/IMG_277825.jpg",
+        image: "/assets/images/shared/services/IMG_277825.webp",
     },
     {
         key: "ai-automation",
         title: "AI & Business Automation",
         href: "/services/automation",
-        image: "/assets/images/shared/services/automation.jpg",
+        image: "/assets/images/shared/services/automation.webp",
     },
 ];
 
 const VIDEO = {
     src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1792613573/Nuevo_2_nuefz7.mp4",
-    poster: "/assets/images/shared/team/team_2.jpeg",
+    poster: "/assets/images/shared/team/team_2.webp",
     title: "This is VCM",
 };
 
@@ -183,59 +183,15 @@ const IMAGE_CTA = {
     title: "Build the Team",
     titleRest: "Your Growth Needs",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/team/vcm_tower_.jpg",
+    image: "/assets/images/shared/team/vcm_tower_.webp",
 };
 
 const TALENT = {
     badge: "Talent Solutions",
     title: "Dedicated Talent",
     titleRest: "for Every Part of",
-    titleAccent: "Your Business",
-    image: "/assets/images/shared/chart.png",
+    titleAccent: "Your Business"
 };
-
-const TALENT_ITEMS: readonly AccordionItem[] = [
-    {
-        key: "customer-service",
-        title: "Customer Service",
-        content: "Professionals who answer, route and follow up with your customers, so every call and message gets a timely response.",
-    },
-    {
-        key: "sales",
-        title: "Sales",
-        content: "Sales support that keeps leads moving, your CRM up to date and your pipeline visible.",
-    },
-    {
-        key: "marketing",
-        title: "Marketing",
-        content: "Support for campaigns, content and lead nurturing that keeps your brand consistent.",
-    },
-    {
-        key: "estimating",
-        title: "Estimating",
-        content: "Estimators who work on takeoffs, plan reading and cost estimates for residential and commercial projects.",
-    },
-    {
-        key: "accounting",
-        title: "Accounting & Finance",
-        content: "Support for automation, costs, budgets and reporting, so you always know where your numbers stand.",
-    },
-    {
-        key: "executive-assistants",
-        title: "Executive Assistants",
-        content: "Assistants who manage calendars, inboxes and follow-ups, so leadership can focus on what matters most.",
-    },
-    {
-        key: "project-management",
-        title: "Project Management",
-        content: "Coordinators who track schedules, tasks and communication to help keep projects on track.",
-    },
-    {
-        key: "administrative",
-        title: "Administrative Support",
-        content: "Help with documentation, data entry, permitting paperwork and the daily tasks that keep operations moving.",
-    },
-];
 
 export default function HomeContainer() {
     return (

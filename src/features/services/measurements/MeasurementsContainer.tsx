@@ -131,7 +131,7 @@ const WHY_US = {
     description:
         "Dedicated professionals evaluated for estimating skills and English, integrated into your process with ongoing support.",
     cta: { label: "Build Your Team", href: "/book-demo" },
-    image: "/assets/images/shared/stickyCard/IMG_17202.png",
+    image: "/assets/images/shared/stickyCard/IMG_17202.webp",
 };
 
 export default function MeasurementsContainer() {
