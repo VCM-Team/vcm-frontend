@@ -55,7 +55,7 @@ const SERVICES: readonly ServiceCardItem[] = [
         key: "ai-automation",
         title: "AI & Business Automation",
         href: "/services/automation",
-        image: "/assets/images/shared/services/automation.webp",
+        image: "/assets/images/shared/services/automations.webp",
     },
 ];
 
