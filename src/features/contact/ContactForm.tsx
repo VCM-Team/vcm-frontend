@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,20 +18,46 @@ type ContactFormInput = z.infer<typeof contactFormSchema>;
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+// Campos de texto que el navegador puede autocompletar
+const TEXT_FIELDS = ["firstName", "lastName", "phone", "email"] as const;
+
 const LEGAL_LINK = "font-semibold text-fg underline underline-offset-2 hover:text-brand-500";
 
 export default function ContactForm() {
     const [status, setStatus] = useState<Status>("idle");
+    const formRef = useRef<HTMLFormElement>(null);
 
     const {
         register,
         handleSubmit,
         reset,
+        getValues,
+        setValue,
         formState: { errors, isValid },
     } = useForm<ContactFormInput>({
         resolver: zodResolver(contactFormSchema),
-        mode: "onChange",
+        mode: "onTouched",
     });
+
+    // Pasa al formulario los valores que el navegador autocompletó sin avisar.
+    // Chrome no expone esos valores hasta que el usuario interactúa con la página.
+    const syncAutofill = useCallback(() => {
+        const form = formRef.current;
+        if (!form) return;
+
+        for (const name of TEXT_FIELDS) {
+            const input = form.elements.namedItem(name) as HTMLInputElement | null;
+            if (input && input.value !== (getValues(name) ?? "")) {
+                setValue(name, input.value, { shouldValidate: true });
+            }
+        }
+    }, [getValues, setValue]);
+
+    // Primera sincronización, por si el autocompletado ya está disponible al cargar
+    useEffect(() => {
+        const timer = window.setTimeout(syncAutofill, 600);
+        return () => window.clearTimeout(timer);
+    }, [syncAutofill]);
 
     const onSubmit = async (data: ContactFormInput) => {
         // honeypot: si viene relleno, es un bot. Fingimos éxito.
@@ -55,15 +81,21 @@ export default function ContactForm() {
         }
     };
 
+    // Antes de enviar, sincroniza el autocompletado y luego valida con los valores reales
+    const submit = (e: React.FormEvent<HTMLFormElement>) => {
+        syncAutofill();
+        return handleSubmit(onSubmit)(e);
+    };
+
     if (status === "sent") {
         return (
             <div className="flex h-full min-h-[28rem] flex-col items-center justify-center text-center">
                 {/* Check que confirma el envío */}
                 <span className="grid size-14 place-items-center rounded-full bg-brand-400/20 text-brand-500">
-                <svg viewBox="0 0 24 24" fill="none" className="size-7" aria-hidden>
-                    <path d="m6 12.5 4 4 8-9" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-            </span>
+                    <svg viewBox="0 0 24 24" fill="none" className="size-7" aria-hidden>
+                        <path d="m6 12.5 4 4 8-9" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </span>
 
                 <p className="mt-6 text-2xl font-semibold text-fg">Message sent</p>
                 <p className="mt-3 max-w-[36ch] text-sm leading-relaxed text-fg-muted">
@@ -82,9 +114,19 @@ export default function ContactForm() {
     }
 
     const isSending = status === "sending";
+    // Gris mientras el formulario no está completo (pero el botón sigue respondiendo al clic)
+    const looksDisabled = !isValid && !isSending;
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-6">
+        <form
+            ref={formRef}
+            onSubmit={submit}
+            // Cualquier interacción con el formulario sincroniza el autocompletado
+            onPointerDown={syncAutofill}
+            onFocus={syncAutofill}
+            noValidate
+            className="flex flex-col gap-6"
+        >
             <p className="text-sm text-fg">Please provide your contact information*</p>
 
             <Field
@@ -196,10 +238,17 @@ export default function ContactForm() {
                 </div>
             )}
 
+            {/* Se ve gris si falta algo, pero al pulsar valida y muestra los errores */}
             <button
                 type="submit"
-                disabled={!isValid || isSending}
-                className="inline-flex cursor-pointer items-center gap-2 self-end rounded-full bg-brand-400 px-7 py-3 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white disabled:cursor-not-allowed disabled:bg-black/10 disabled:text-black/40 disabled:hover:bg-black/10 disabled:hover:text-black/40"
+                disabled={isSending}
+                aria-busy={isSending}
+                aria-disabled={looksDisabled}
+                className={
+                    looksDisabled
+                        ? "inline-flex cursor-pointer items-center gap-2 self-end rounded-full bg-black/10 px-7 py-3 text-[15px] font-semibold leading-none text-black/40 transition-colors duration-300"
+                        : "inline-flex cursor-pointer items-center gap-2 self-end rounded-full bg-brand-400 px-7 py-3 text-[15px] font-semibold leading-none text-black transition-colors duration-300 hover:bg-brand-500 hover:text-white disabled:cursor-wait disabled:opacity-70"
+                }
             >
                 {isSending && <SpinnerIcon className="size-4 animate-spin" />}
                 {isSending ? "Sending…" : "Send Message"}
