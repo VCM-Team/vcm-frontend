@@ -4,10 +4,21 @@ import { useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import Field from "@/src/shared/components/ui/Field";
-import { contactSchema, type ContactInput } from "@/src/shared/lib/contact-schema";
+import { contactSchema } from "@/src/shared/lib/contact-schema";
+
+// Solo en este formulario: el consentimiento SMS es obligatorio.
+// contactSchema (compartido con book-demo y la API) no cambia.
+const contactFormSchema = contactSchema.extend({
+    consent: z.literal(true, "Please accept to continue"),
+});
+
+type ContactFormInput = z.infer<typeof contactFormSchema>;
 
 type Status = "idle" | "sending" | "sent" | "error";
+
+const LEGAL_LINK = "font-semibold text-fg underline underline-offset-2 hover:text-brand-500";
 
 export default function ContactForm() {
     const [status, setStatus] = useState<Status>("idle");
@@ -17,12 +28,12 @@ export default function ContactForm() {
         handleSubmit,
         reset,
         formState: { errors, isValid },
-    } = useForm<ContactInput>({
-        resolver: zodResolver(contactSchema),
+    } = useForm<ContactFormInput>({
+        resolver: zodResolver(contactFormSchema),
         mode: "onChange",
     });
 
-    const onSubmit = async (data: ContactInput) => {
+    const onSubmit = async (data: ContactFormInput) => {
         // honeypot: si viene relleno, es un bot. Fingimos éxito.
         if (data.website) {
             setStatus("sent");
@@ -46,16 +57,23 @@ export default function ContactForm() {
 
     if (status === "sent") {
         return (
-            <div className="rounded-card bg-bg p-10 text-center">
-                <p className="text-lg font-semibold text-fg">Message sent</p>
-                <p className="mt-2 text-sm text-fg-muted">
+            <div className="flex h-full min-h-[28rem] flex-col items-center justify-center text-center">
+                {/* Check que confirma el envío */}
+                <span className="grid size-14 place-items-center rounded-full bg-brand-400/20 text-brand-500">
+                <svg viewBox="0 0 24 24" fill="none" className="size-7" aria-hidden>
+                    <path d="m6 12.5 4 4 8-9" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+            </span>
+
+                <p className="mt-6 text-2xl font-semibold text-fg">Message sent</p>
+                <p className="mt-3 max-w-[36ch] text-sm leading-relaxed text-fg-muted">
                     Thanks for reaching out. Someone from our team will contact you within one business day.
                 </p>
 
                 <button
                     type="button"
                     onClick={() => setStatus("idle")}
-                    className="mt-6 cursor-pointer text-sm font-semibold text-brand-500 underline underline-offset-4"
+                    className="mt-8 cursor-pointer text-sm font-semibold text-brand-500 underline underline-offset-4"
                 >
                     Send another message
                 </button>
@@ -121,33 +139,42 @@ export default function ContactForm() {
                 className="absolute -left-[9999px] size-px opacity-0"
             />
 
-            {/* Consentimiento SMS: debe ser opcional (TCPA: no puede ser condición para enviar el formulario) */}
-            <div className="flex gap-3">
-                <input
-                    id="consent"
-                    type="checkbox"
-                    {...register("consent")}
-                    className="mt-0.5 size-4 shrink-0 rounded border-field-border cursor-pointer accent-accent"
-                />
-                <label htmlFor="consent" className="text-xs leading-relaxed text-fg-muted">
-                    I agree to receive text messages from VCM about my inquiry and our services at the phone
-                    number provided. Message frequency varies. Message and data rates may apply. Reply STOP to
-                    opt out or HELP for help. Consent is not a condition of purchase. See our{" "}
-                    <Link href="/privacy-policy" className="font-semibold text-fg underline underline-offset-2 hover:text-brand-500">
-                        Privacy Policy
-                    </Link>{" "}
-                    and{" "}
-                    <Link href="/terms-of-service" className="font-semibold text-fg underline underline-offset-2 hover:text-brand-500">
-                        Terms of Service
-                    </Link>
-                    .
-                </label>
+            {/* Consentimiento SMS: obligatorio en este formulario */}
+            <div>
+                <div className="flex gap-3">
+                    <input
+                        id="consent"
+                        type="checkbox"
+                        aria-invalid={Boolean(errors.consent)}
+                        aria-describedby={errors.consent ? "consent-error" : undefined}
+                        {...register("consent")}
+                        className="mt-0.5 size-4 shrink-0 cursor-pointer rounded border-field-border accent-accent"
+                    />
+                    <label htmlFor="consent" className="text-xs leading-relaxed text-fg-muted">
+                        I agree to receive text messages from VCM about my inquiry and our services at the phone
+                        number provided. Message frequency varies. Message and data rates may apply. Reply STOP to
+                        opt out or HELP for help. See our{" "}
+                        <Link href="/privacy-policy" className={LEGAL_LINK}>
+                            Privacy Policy
+                        </Link>{" "}
+                        and{" "}
+                        <Link href="/terms-of-service" className={LEGAL_LINK}>
+                            Terms of Service
+                        </Link>
+                        .
+                    </label>
+                </div>
+                {errors.consent && (
+                    <p id="consent-error" className="mt-1.5 pl-7 text-xs text-danger">
+                        {errors.consent.message}
+                    </p>
+                )}
             </div>
 
-            {/* Aviso general: al enviar se acepta la política (independiente del SMS) */}
-            <p className="mt-2 text-xs leading-relaxed text-fg-muted">
+            {/* Aviso general: al enviar se acepta la política (sin casilla) */}
+            <p className="text-xs leading-relaxed text-fg-muted">
                 By submitting this form, you agree to be contacted by VCM and accept our{" "}
-                <Link href="/privacy-policy" className="font-semibold text-fg underline underline-offset-2 hover:text-brand-500">
+                <Link href="/privacy-policy" className={LEGAL_LINK}>
                     Privacy Policy
                 </Link>
                 .
