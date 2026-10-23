@@ -10,11 +10,11 @@ import { REVEAL } from "@/src/lib/reveal";
 import { cn } from "@/src/lib/utils";
 
 const CTA = {
-    title: "Time to",
-    titleAccent: "Ditch the Chaos",
-    titleRest: "and Lead Like a Pro.",
-    subtitle: "Tell us your goals, we've got your back.",
-    button: { label: "Free Consultation", href: "/contact-us" },
+    title: "Ready to",
+    titleAccent: "Scale Smarter",
+    titleRest: "and Grow With Confidence?",
+    subtitle: "Tell us where your business is today, and we’ll help you build the path forward.",
+    button: { label: "Book a Free Strategy Session", href: "/book-demo" },
 };
 
 const CONTACT = {
