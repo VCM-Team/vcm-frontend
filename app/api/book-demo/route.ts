@@ -46,7 +46,7 @@ export async function POST(req: Request) {
         const fullName = `${d.firstName ?? ""} ${d.lastName ?? ""}`.trim();
 
         await resend.emails.send({
-            from: "Advanced Leads <info@contact.advancedteamelite.com>",
+            from: "VCM <notifications@team.discovervcm.com>",
             to: process.env.NOTIFICATION_EMAIL || "dtalledo@advancedteamelite.com",
             subject: `New Discovery Call Request: ${fullName}`,
             html: `
