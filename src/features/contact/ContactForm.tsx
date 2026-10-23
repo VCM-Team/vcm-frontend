@@ -18,7 +18,7 @@ type ContactFormInput = z.infer<typeof contactFormSchema>;
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-// Campos de texto que el navegador puede autocompletar
+// Campos de texto que el navegador puede autocompletar (el honeypot NO va aquí)
 const TEXT_FIELDS = ["firstName", "lastName", "phone", "email"] as const;
 
 const LEGAL_LINK = "font-semibold text-fg underline underline-offset-2 hover:text-brand-500";
@@ -171,15 +171,20 @@ export default function ContactForm() {
                 {...register("email")}
             />
 
-            {/* honeypot */}
-            <input
-                {...register("website")}
-                type="text"
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden
-                className="absolute -left-[9999px] size-px opacity-0"
-            />
+            {/* Honeypot: invisible para personas; Chrome no lo autocompleta
+                gracias al id/etiqueta neutros y autoComplete="new-password" */}
+            <div aria-hidden className="absolute -left-[9999px] size-px overflow-hidden opacity-0">
+                <label htmlFor="hp-field">Leave this field empty</label>
+                <input
+                    id="hp-field"
+                    {...register("website")}
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="new-password"
+                    data-lpignore="true"
+                    data-1p-ignore
+                />
+            </div>
 
             {/* Consentimiento SMS: obligatorio en este formulario */}
             <div>
