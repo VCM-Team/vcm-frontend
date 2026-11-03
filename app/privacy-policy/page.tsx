@@ -3,7 +3,7 @@ import Link from "next/link";
 import LegalPage from "@/src/shared/components/ui/LegalPage";
 
 // Pendiente de confirmar: correo de contacto real de VCM
-const CONTACT_EMAIL = "email@dominio.com";
+const CONTACT_EMAIL = "consulting@discovervcm.com";
 
 export const metadata: Metadata = {
     title: "Privacy Policy",
