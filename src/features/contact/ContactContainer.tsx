@@ -10,7 +10,7 @@ import { cn } from "@/src/lib/utils";
 import ContactForm from "./ContactForm";
 
 // Pendiente de confirmar: VCM no publica su correo en la web
-const CONTACT_EMAIL = "email@dominio.com";
+const CONTACT_EMAIL = "consulting@discovervcm.com";
 
 const INFO = [
     { label: "Our Team", value: "Based in LATAM", Icon: PinIcon },
