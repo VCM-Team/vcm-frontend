@@ -66,7 +66,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${urbanist.variable} ${montserrat.variable}`}>
         <body className="min-h-dvh overflow-x-clip bg-bg font-sans text-ink-900 antialiased">
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
+        <GoogleTagManager gtmId={process.env.NEXT_GTM_ID!} />
         <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
