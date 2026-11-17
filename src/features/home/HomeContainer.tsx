@@ -1,6 +1,6 @@
 import Hero from "./Hero";
 import type { StatItem } from "@/src/shared/components/ui/Stats";
-import type { AccordionItem } from "@/src/shared/components/ui/Accordion";
+import Accordion, { type AccordionItem } from "@/src/shared/components/ui/Accordion";
 import AccordionSection from "@/src/shared/components/ui/AccordionSection";
 import PromoCardsGrid from "@/src/shared/components/ui/PromoCardsGrid";
 import type { PromoCardItem } from "@/src/shared/components/ui/PromoCard";
@@ -8,17 +8,21 @@ import ServicesGrid from "@/src/shared/components/ui/ServicesGrid";
 import type { ServiceCardItem } from "@/src/shared/components/ui/ServiceCard";
 import VideoEmbed from "@/src/shared/components/ui/VideoEmbed";
 import Container from "@/src/shared/components/ui/Container";
+import Badge from "@/src/shared/components/ui/Badge";
 import BubbleFeatures, { type BubbleFeatureItem } from "@/src/shared/components/ui/BubbleFeatures";
 import ImageCta from "@/src/shared/components/ui/ImageCta";
-import ImageAccordionSplit from "@/src/shared/components/ui/ImageAccordionSplit";
 import VideoTestimonials from "@/src/shared/components/ui/VideoTestimonials";
 import { VIDEO_TESTIMONIALS } from "@/src/shared/data/video-testimonials.data";
 import Insights from "@/src/features/home/Insights";
 import TechStack from "@/src/features/home/TechStack";
 import DiscoveryCall from "@/src/features/home/DiscoveryCall";
 import RevealSection from "@/src/shared/components/ui/RevealSection";
-import ScrollPath from "@/src/shared/components/ui/ScrollPath";
 import TalentPerformance from "@/src/features/home/TalentPerformance";
+import { REVEAL } from "@/src/lib/reveal";
+import { cn } from "@/src/lib/utils";
+
+// Dominio canónico: el mismo que metadataBase en app/layout.tsx
+const SITE_URL = "https://discovervcm.com";
 
 const HOME_STATS: readonly StatItem[] = [
     { value: "4", suffix: " Years", label: "Building nearshore teams for U.S. companies" },
@@ -144,6 +148,9 @@ const VIDEO = {
     src: "https://res.cloudinary.com/dca79rb3c/video/upload/v1792613573/Nuevo_2_nuefz7.mp4",
     poster: "/assets/images/shared/team/team_2.webp",
     title: "This is VCM",
+    // Para los datos estructurados (VideoObject)
+    description: "Meet VCM: business growth consulting and dedicated nearshore talent from LATAM for U.S. construction and roofing companies.",
+    uploadDate: "2026-10-21", // fecha de subida del video a Cloudinary
 };
 
 const EXPERTISE = {
@@ -190,12 +197,106 @@ const TALENT = {
     badge: "Talent Solutions",
     title: "Dedicated Talent",
     titleRest: "for Every Part of",
-    titleAccent: "Your Business"
+    titleAccent: "Your Business",
+};
+
+/* ── FAQ: responde búsquedas reales de dueños de constructoras (SEO de cola larga) ── */
+
+const FAQ_HEADING = {
+    badge: "FAQ",
+    title: "Questions Construction Owners",
+    titleAccent: "Ask Us",
+};
+
+const FAQ_ITEMS: readonly AccordionItem[] = [
+    {
+        key: "what-is-vcm",
+        title: "What does VCM do for construction and roofing companies?",
+        content:
+            "VCM helps U.S. construction and roofing companies grow by combining business growth consulting with dedicated nearshore talent from LATAM. We assess your operations, build a growth roadmap and then recruit, onboard and train the team you need to execute it.",
+    },
+    {
+        key: "nearshore",
+        title: "What is nearshore staffing, and why LATAM?",
+        content:
+            "Nearshore staffing means building your team with professionals in nearby countries instead of overseas. Our LATAM team works in time zones close to the U.S., so they collaborate with your office in real time and work inside your own tools and systems.",
+    },
+    {
+        key: "roles",
+        title: "Which roles can VCM fill for a roofing company?",
+        content:
+            "We cover roles across your operation, including roofing specialists, lead management specialists, estimating and takeoffs, marketing and customer acquisition, financial performance, and AI and business automation.",
+    },
+    {
+        key: "english",
+        title: "Do VCM professionals speak English?",
+        content:
+            "Yes. Every professional is evaluated for both role-specific skills and English before joining a client team, so they can communicate directly with your staff and customers.",
+    },
+    {
+        key: "how-to-start",
+        title: "How does working with VCM start?",
+        content:
+            "It starts with a free strategy session. From there, we run a business assessment, define a prioritized growth roadmap, guide the implementation and, when your operation is ready, build the team that helps you scale.",
+    },
+];
+
+/* ── Datos estructurados (JSON-LD) de la home ── */
+
+const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+
+const HOME_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        // Servicios: qué ofrece VCM, a quién y dónde
+        {
+            "@type": "ItemList",
+            "@id": `${SITE_URL}/#services`,
+            name: "VCM Services",
+            itemListElement: SERVICES.map((service, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                item: {
+                    "@type": "Service",
+                    name: service.title,
+                    url: `${SITE_URL}${service.href}`,
+                    provider: { "@id": ORGANIZATION_ID },
+                    areaServed: { "@type": "Country", name: "United States" },
+                    audience: { "@type": "BusinessAudience", audienceType: "Construction and roofing companies" },
+                },
+            })),
+        },
+        // Video: puede aparecer en los resultados de video de Google
+        {
+            "@type": "VideoObject",
+            name: VIDEO.title,
+            description: VIDEO.description,
+            thumbnailUrl: `${SITE_URL}${VIDEO.poster}`,
+            contentUrl: VIDEO.src,
+            uploadDate: VIDEO.uploadDate,
+            publisher: { "@id": ORGANIZATION_ID },
+        },
+        // Preguntas frecuentes: el mismo texto que se ve en la página
+        {
+            "@type": "FAQPage",
+            mainEntity: FAQ_ITEMS.map((faq) => ({
+                "@type": "Question",
+                name: faq.title,
+                acceptedAnswer: { "@type": "Answer", text: faq.content },
+            })),
+        },
+    ],
 };
 
 export default function HomeContainer() {
     return (
         <>
+            {/* Datos estructurados. El replace evita que un "<" en el texto cierre la etiqueta script */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(HOME_JSON_LD).replace(/</g, "\\u003c") }}
+            />
+
             <Hero />
             <AccordionSection
                 badge={INTRO.badge}
@@ -252,8 +353,34 @@ export default function HomeContainer() {
             <VideoTestimonials items={VIDEO_TESTIMONIALS} />
             <Insights />
             <TechStack />
-            <DiscoveryCall />
 
+            {/* FAQ: antes de la llamada final, para resolver dudas justo antes del CTA */}
+            <RevealSection className="py-16 lg:py-24">
+                <Container>
+                    <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+                        <div>
+                            <div className={REVEAL.fade}>
+                                <Badge>{FAQ_HEADING.badge}</Badge>
+                            </div>
+                            <h2
+                                className={cn(
+                                    "mt-6 max-w-[16ch] text-3xl font-semibold leading-[1.15] text-fg sm:text-4xl lg:text-[2.75rem]",
+                                    REVEAL.blur,
+                                    "delay-100"
+                                )}
+                            >
+                                {FAQ_HEADING.title}{" "}
+                                <span className="text-accent">{FAQ_HEADING.titleAccent}</span>
+                            </h2>
+                        </div>
+                        <div className={cn(REVEAL.up, "delay-200")}>
+                            <Accordion items={FAQ_ITEMS} />
+                        </div>
+                    </div>
+                </Container>
+            </RevealSection>
+
+            <DiscoveryCall />
         </>
     );
 }
